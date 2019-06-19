@@ -7,7 +7,7 @@ namespace App\Mapper\Entity;
 use App\Entity\AbstractEntity;
 use App\Entity\Exception\UnexpectedProperty;
 
-class GarminActivityMapper extends AbstractActivity implements MapperEntityInterface
+class GarminEntityMapper implements MapperEntityInterface
 {
     protected $dataToObject = [
         'id' => 'garminId',

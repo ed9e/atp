@@ -3,8 +3,8 @@
 
 namespace App\Garmin\Stock\Response;
 
-use App\Mapper\Response\EntityFieldIndicator as EFI;
-use App\Mapper\Response\Mapper;
+use App\Mapper\Type\Response\EntityFieldIndicator as EFI;
+use App\Mapper\Type\Response\Mapper;
 
 class ActivityDetailsResponseMapper extends Mapper
 {

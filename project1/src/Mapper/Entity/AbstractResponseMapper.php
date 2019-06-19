@@ -5,14 +5,13 @@ namespace App\Mapper\Entity;
 
 
 use App\Entity\AbstractEntity;
-use App\Garmin\Stock\Response\ActivityDetailsResponseMapper;
-use App\Mapper\Response\Mapper;
-use App\Mapper\Response\ValuePath;
+use App\Mapper\Type\Response\Mapper;
+use App\Mapper\Type\Response\ValuePath;
 
 abstract class AbstractResponseMapper implements MapperEntityInterface
 {
     /**
-     * @var ActivityDetailsResponseMapper
+     * @var Mapper
      */
     protected $responseMapper;
 
@@ -46,6 +45,8 @@ abstract class AbstractResponseMapper implements MapperEntityInterface
 //            dump($fieldKey);
         }
     }
+
+    public function mapObjectToData($object, &$data){}
 
 
     protected function fetchValue($data, ValuePath $path)

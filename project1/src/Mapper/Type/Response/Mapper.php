@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Mapper\Response;
+namespace App\Mapper\Type\Response;
 
 
-use App\Mapper\Response\EntityFieldIndicator as EFI;
+use App\Mapper\Type\Response\EntityFieldIndicator as EFI;
 
 class Mapper
 {

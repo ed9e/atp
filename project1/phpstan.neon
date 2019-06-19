@@ -1,0 +1,8 @@
+parameters:
+    level: 7 #vendor/phpstan/phpstan/conf/
+    paths:
+        - src/
+    excludes_analyse:
+        - src/Migrations/
+    autoload_files:
+        - vendor/autoload.php

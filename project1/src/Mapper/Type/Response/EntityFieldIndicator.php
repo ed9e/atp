@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Mapper\Response;
+namespace App\Mapper\Type\Response;
 
 
 class EntityFieldIndicator
