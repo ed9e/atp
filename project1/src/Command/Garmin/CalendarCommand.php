@@ -3,9 +3,7 @@
 namespace App\Command\Garmin;
 
 use App\Command\AbstractCommand;
-use App\Garmin\Stock\Calendar;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Output\OutputInterface;
+use App\Garmin\Stock\Request\Calendar;
 
 class CalendarCommand extends AbstractCommand
 {

@@ -3,10 +3,8 @@
 namespace App\Command\Garmin;
 
 use App\Command\AbstractCommand;
-use App\Garmin\Stock\ActivityDetails;
-use App\Garmin\Stock\Calendar;
+use App\Garmin\Stock\Request\ActivityDetails as ActivityDetailsRequest;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Output\OutputInterface;
 
 class ActivityCommand extends AbstractCommand
 {
@@ -27,7 +25,7 @@ class ActivityCommand extends AbstractCommand
     protected function handle()
     {
         $this->activity_id = $this->input->getArgument($this->paramStringActivityId);
-        $garmin = new ActivityDetails();
+        $garmin = new ActivityDetailsRequest();
         $garmin->setActivityId($this->activity_id);
         $this->info($garmin->fetch());
     }

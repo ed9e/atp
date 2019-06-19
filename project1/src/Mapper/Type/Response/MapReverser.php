@@ -6,9 +6,9 @@ namespace App\Mapper\Type\Response;
 
 use App\Mapper\Type\Response\EntityFieldIndicator as EFI;
 
-class Mapper
+class MapReverser
 {
-    protected $response;
+    protected $responseMap;
     protected $mapIterator;
 
     private $path;
@@ -20,9 +20,9 @@ class Mapper
         $this->reverseFieldsMap();
     }
 
-    public function getResponse()
+    public function getResponseMap()
     {
-        return $this->response;
+        return $this->responseMap;
     }
 
     public function getMap()
@@ -32,7 +32,7 @@ class Mapper
 
     public function reverseFieldsMap()
     {
-        $this->reverse($this->response, 0, 1);
+        $this->reverse($this->responseMap, 0, 1);
     }
 
     protected function reverse($array, $fkey = 0, $level = 1)

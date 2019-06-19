@@ -5,7 +5,7 @@ namespace App\Service;
 
 
 use App\Entity\GarminActivity;
-use App\Garmin\Stock\Calendar;
+use App\Garmin\Stock\Request\Calendar;
 use App\Mapper\Entity\GarminEntityMapper as Mapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;

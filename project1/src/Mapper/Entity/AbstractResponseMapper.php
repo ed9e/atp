@@ -5,24 +5,24 @@ namespace App\Mapper\Entity;
 
 
 use App\Entity\AbstractEntity;
-use App\Mapper\Type\Response\Mapper;
+use App\Mapper\Type\Response\MapReverser;
 use App\Mapper\Type\Response\ValuePath;
 
 abstract class AbstractResponseMapper implements MapperEntityInterface
 {
     /**
-     * @var Mapper
+     * @var MapReverser
      */
     protected $responseMapper;
 
-    public function setResponseMapper(Mapper $responseMapper)
+    public function setResponseMapper(MapReverser $responseMapper)
     {
         $this->responseMapper = $responseMapper;
     }
 
     public function getResponseFields()
     {
-        $this->responseMapper->getResponse();
+        $this->responseMapper->getResponseMap();
     }
 
     public function mapDataToObject($data, AbstractEntity $object)

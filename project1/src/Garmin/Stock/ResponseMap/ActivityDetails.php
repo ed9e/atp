@@ -1,16 +1,16 @@
 <?php
 
 
-namespace App\Garmin\Stock\Response;
+namespace App\Garmin\Stock\ResponseMap;
 
 use App\Mapper\Type\Response\EntityFieldIndicator as EFI;
-use App\Mapper\Type\Response\Mapper;
+use App\Mapper\Type\Response\MapReverser;
 
-class ActivityDetailsResponseMapper extends Mapper
+class ActivityDetails extends MapReverser
 {
     public function __construct()
     {
-        $this->response = [
+        $this->responseMap = [
 
             'activityId' => new EFI('string', 'activityId'),
             'activityUUID' =>

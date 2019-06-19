@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Garmin\Stock;
+namespace App\Garmin\Stock\Request;
 
 
 class Goal

@@ -1,11 +1,7 @@
 <?php
 
 
-namespace App\Garmin\Stock;
-
-use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\BrowserKit\CookieJar;
-use Symfony\Component\HttpClient\HttpClient;
+namespace App\Garmin\Stock\Request;
 
 
 class Calendar extends Base
