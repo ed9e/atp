@@ -7,7 +7,7 @@ namespace App\Service;
 use App\Entity\GarminActivity;
 use App\Garmin\Stock\ActivityDetails;
 use App\Garmin\Stock\Response\ActivityDetailsResponseMapper;
-use App\Mapper\Entity\GarminActivityDetailsMapper as Mapper;
+use App\Mapper\Entity\GarminResponseMapperDetailsMapper as Mapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -32,11 +32,10 @@ class GarminActivityDetailsManager
     public function import()
     {
         $item = [];
-//        $garmin = new ActivityDetails();
-//        $garmin->fetch();
-//
-//
-//        $item = $garmin->get();
+        $garmin = new ActivityDetails();
+        $garmin->fetch();
+
+        $item = $garmin->get();
 
         $activity = new GarminActivity();
         $this->mapper->setResponseMapper($this->responseMapper);

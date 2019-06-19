@@ -17,34 +17,34 @@ class EntityFieldMap
     }
 
     /**
-     * @param mixed $efi
+     * @param EntityFieldIndicator $efi
      * @return EntityFieldMap
      */
-    public function setEfi($efi)
+    public function setEfi(EntityFieldIndicator $efi): EntityFieldMap
     {
         $this->efi = $efi;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return ValuePath
      */
-    public function getPath()
+    public function getPath(): ValuePath
     {
         return $this->path;
     }
 
     /**
-     * @param mixed $path
+     * @param ValuePath $path
      * @return EntityFieldMap
      */
-    public function setPath($path)
+    public function setPath(ValuePath $path): EntityFieldMap
     {
         $this->path = $path;
         return $this;
     }
 
-    public function __construct($efi, $path)
+    public function __construct(EntityFieldIndicator $efi, ValuePath $path)
     {
         $this->setEfi($efi);
         $this->setPath($path);

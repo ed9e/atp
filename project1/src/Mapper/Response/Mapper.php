@@ -11,7 +11,7 @@ class Mapper
     protected $response;
     protected $mapIterator;
 
-    private $fieldPath;
+    private $path;
     private $inc;
 
     public function __construct()
@@ -41,17 +41,18 @@ class Mapper
         foreach ($array as $key => $value) {
 
             if (is_array($value)) {
-                $this->fieldPath[$this->inc] = $key;
+                $this->path[$this->inc] = $key;
                 $this->reverse($value, $key, $level + 1);
             } else {
                 if ($value instanceof EFI) {
-                    $this->fieldPath[$this->inc] = $key;
-                    $this->mapIterator->add(new EntityFieldMap($value, $this->fieldPath));
+                    $this->path[$this->inc] = $key;
+
+                    $this->mapIterator->add(new EntityFieldMap($value, new ValuePath($this->path)));
                 }
-                unset($this->fieldPath[$this->inc]);
+                unset($this->path[$this->inc]);
             }
         }
         $this->inc--;
-        unset($this->fieldPath[$this->inc]);
+        unset($this->path[$this->inc]);
     }
 }
