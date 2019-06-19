@@ -4,7 +4,9 @@
 namespace App\Mapper\Entity;
 
 
-class GarminResponseMapperDetailsMapper extends AbstractResponseMapper
+use App\Mapper\Type\Response\AbstractResponseTypeMapper;
+
+class GarminActivityDetailsEntityMapper extends AbstractResponseTypeMapper
 {
      protected $entity = 'GarminActivity';
 

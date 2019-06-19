@@ -7,7 +7,7 @@ namespace App\Service;
 use App\Entity\GarminActivity;
 use App\Garmin\Stock\Request\ActivityDetails as ActivityDetailsRequest;
 use App\Garmin\Stock\ResponseMap\ActivityDetails;
-use App\Mapper\Entity\GarminResponseMapperDetailsMapper as Mapper;
+use App\Mapper\Entity\GarminActivityDetailsEntityMapper as Mapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 

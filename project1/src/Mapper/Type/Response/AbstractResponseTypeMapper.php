@@ -1,14 +1,13 @@
 <?php
 
 
-namespace App\Mapper\Entity;
+namespace App\Mapper\Type\Response;
 
 
 use App\Entity\AbstractEntity;
-use App\Mapper\Type\Response\MapReverser;
-use App\Mapper\Type\Response\ValuePath;
+use App\Mapper\Entity\MapperEntityInterface;
 
-abstract class AbstractResponseMapper implements MapperEntityInterface
+abstract class AbstractResponseTypeMapper implements MapperEntityInterface
 {
     /**
      * @var MapReverser
