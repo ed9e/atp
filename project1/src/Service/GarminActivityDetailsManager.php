@@ -48,6 +48,11 @@ class GarminActivityDetailsManager
         return null;
     }
 
+    public function getMap()
+    {
+        return $this->responseMapper->getMap();
+    }
+
     public function setActivityId($id)
     {
         $this->activityId = $id;

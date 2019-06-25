@@ -27,12 +27,17 @@ class ImportActivityDetailsCommand extends AbstractCommand
         $this
             ->setDescription('Imports garmin activity details.')
             ->setHelp('')
-        ;
+            ->addArgument('show', InputArgument::OPTIONAL, 'Show keys and path.');
     }
 
     protected function handle()
     {
-        $this->garminManager->import();
+        if ($this->input->getArgument('show') == '1') {
+            dump($this->garminManager->getMap());
+        } else {
+            $this->garminManager->import();
+        }
+
 
         $this->info('ok');
     }
