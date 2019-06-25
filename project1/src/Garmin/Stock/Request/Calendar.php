@@ -13,4 +13,8 @@ class Calendar extends Base
         return $this->toArray()['calendarItems'];
     }
 
+    public function response(): \App\Garmin\Stock\Response\Base
+    {
+        return new \App\Garmin\Stock\Response\ActivityDetails($this);
+    }
 }

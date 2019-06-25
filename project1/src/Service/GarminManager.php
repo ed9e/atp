@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Entity\GarminActivity;
+use App\Entity\GarminActivityDetails;
 use App\Garmin\Stock\Request\Calendar;
 use App\Mapper\Entity\GarminEntityMapper as Mapper;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,13 +15,14 @@ class GarminManager
 {
     protected $entityManager;
     protected $mapper;
-    protected $logger;
+    protected $activityDetailsService;
 
-    public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, LoggerInterface $logger)
+
+    public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, GarminActivityDetailsManager $activityDetailsService)
     {
         $this->entityManager = $entityManager;
         $this->mapper = $mapper;
-        $this->logger = $logger;
+        $this->activityDetailsService = $activityDetailsService;
     }
 
     /**
@@ -30,11 +32,16 @@ class GarminManager
     {
         $garminCalendar = new Calendar();
         $garminCalendar->fetch();
-        $this->logger->info(print_r($garminCalendar->getCalendarItems(), true));
+
 
         foreach ($garminCalendar->getCalendarItems() as $item) {
             $activity = new GarminActivity();
             $this->mapper->mapDataToObject($item, $activity);
+
+            if($activity->getItemType() == 'activity') {
+                $this->activityDetailsService->setActivityId($activity->getGarminId());
+                $this->activityDetailsService->import();
+            }
 
             $this->entityManager->merge($activity);
 

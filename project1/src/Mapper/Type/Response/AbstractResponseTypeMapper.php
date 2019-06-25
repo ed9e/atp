@@ -5,6 +5,7 @@ namespace App\Mapper\Type\Response;
 
 
 use App\Entity\AbstractEntity;
+use App\Garmin\Stock\Response\Base;
 use App\Mapper\Entity\MapperEntityInterface;
 
 abstract class AbstractResponseTypeMapper implements MapperEntityInterface
@@ -24,24 +25,23 @@ abstract class AbstractResponseTypeMapper implements MapperEntityInterface
         $this->responseMapper->getResponseMap();
     }
 
-    public function mapDataToObject($data, AbstractEntity $object)
+    public function mapDataToObject(Base $response, AbstractEntity $object)
     {
         $mapIterator = $this->responseMapper->getMap();
-//dump($mapIterator);
+
         foreach ($mapIterator as $entityFiled => $fieldMap) {
             $fieldKey = $fieldMap->getEfi()->getName();
+            $value = $response->value($fieldMap->getPath());
 
-            $val = $this->fetchValue($data, $fieldMap->getPath());
-            dump([$fieldKey => $val]);
-//            try {
-//                $object->__set($fieldKey, $val);
-//            } catch (\Exception $e) {
-//                if ($e instanceof UnexpectedProperty) {
-//                    //log new property or break if required
-//
-//                }
-//            }
-//            dump($fieldKey);
+            try {
+                $object->__set($fieldKey, $value);
+            } catch (\Exception $e) {
+                if ($e instanceof UnexpectedProperty) {
+                    //log new property or break if required
+
+                }
+            }
+
         }
     }
 

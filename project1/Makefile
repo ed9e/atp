@@ -76,6 +76,7 @@ garmin-calendar-import:
 	php bin/console garmin:calendar:import
 
 ## analiza statyczna PHPStanem
-phpstan: # analiza statyczna PHPStanem
-    ./vendor/bin/phpstan analyse
+phpstan: 
+	./vendor/bin/phpstan analyse
+
 

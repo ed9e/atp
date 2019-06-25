@@ -4,7 +4,7 @@
 namespace App\Service;
 
 
-use App\Entity\GarminActivity;
+use App\Entity\GarminActivityDetails;
 use App\Garmin\Stock\Request\ActivityDetails as ActivityDetailsRequest;
 use App\Garmin\Stock\ResponseMap\ActivityDetails;
 use App\Mapper\Entity\GarminActivityDetailsEntityMapper as Mapper;
@@ -17,6 +17,7 @@ class GarminActivityDetailsManager
     protected $mapper;
     protected $responseMapper;
     protected $logger;
+    protected $activityId;
 
     public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, ActivityDetails $responseMapper, LoggerInterface $logger)
     {
@@ -31,20 +32,24 @@ class GarminActivityDetailsManager
      */
     public function import()
     {
-        $item = [];
-        $garmin = new ActivityDetailsRequest();
-        $garmin->fetch();
+        $request = new ActivityDetailsRequest();
+        $request->setActivityId($this->activityId);
+        $request->fetch();
+        $activity = new GarminActivityDetails();
 
-        $item = $garmin->get();
-
-        $activity = new GarminActivity();
         $this->mapper->setResponseMapper($this->responseMapper);
-        $this->mapper->mapDataToObject($item, $activity);
-        //$this->entityManager->merge($activity);
+        $this->mapper->mapDataToObject($request->response(), $activity);
+
+        $this->entityManager->merge($activity);
 
 
-        //$this->entityManager->flush();
+        $this->entityManager->flush();
 
         return null;
+    }
+
+    public function setActivityId($id)
+    {
+        $this->activityId = $id;
     }
 }

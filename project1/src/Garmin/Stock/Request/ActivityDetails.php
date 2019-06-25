@@ -26,4 +26,9 @@ class ActivityDetails extends Base
     {
         return $this->toArray();
     }
+
+    public function response(): \App\Garmin\Stock\Response\Base
+    {
+        return new \App\Garmin\Stock\Response\ActivityDetails($this);
+    }
 }
