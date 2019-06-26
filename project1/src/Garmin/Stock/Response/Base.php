@@ -18,6 +18,9 @@ class Base
     {
         $_data = $this->request->toArray();
         foreach ($path->getArray() as $pathKey) {
+            if(!key_exists($pathKey, $_data)) {
+                return null;
+            }
             $_data = $_data[$pathKey];
         }
         return $_data;
