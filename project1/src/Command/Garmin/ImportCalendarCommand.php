@@ -27,11 +27,15 @@ class ImportCalendarCommand extends AbstractCommand
         $this
             ->setDescription('Imports garmin calendar elements.')
             ->setHelp('')
-        ;
+            ->addArgument('month', InputArgument::REQUIRED, 'Month is required!');
     }
 
     protected function handle()
     {
+        $this->garminManager->getGarminCalendar()->setMonth(
+            $this->input->getArgument('month')
+        );
+
         $this->garminManager->importCalendar();
 
         $this->info('ok');

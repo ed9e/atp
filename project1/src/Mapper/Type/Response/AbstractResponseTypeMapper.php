@@ -31,7 +31,14 @@ abstract class AbstractResponseTypeMapper implements MapperEntityInterface
 
         foreach ($mapIterator as $entityFiled => $fieldMap) {
             $fieldKey = $fieldMap->getEfi()->getName();
-            $value = $this->convertFunction($response->value($fieldMap->getPath()), $fieldMap->getEfi()->getConvertFunction());
+            $value = $this->convertFunctions(
+                $response->value(
+                    $fieldMap->getPath()
+                ),
+                $fieldMap->getEfi()->getConvertFunctions()
+            );
+
+
 
             try {
                 $object->__set($fieldKey, $value);
@@ -45,14 +52,16 @@ abstract class AbstractResponseTypeMapper implements MapperEntityInterface
         }
     }
 
-    protected function convertFunction($value, $function = null)
+    protected function convertFunctions($value, $functions = null)
     {
-        if (!$function) {
+        if (!$functions || count($functions) == 0) {
             return $value;
         }
-dump($value);
-        if (method_exists($this->responseMapper, $function)) {
-            return $this->responseMapper->$function($value);
+
+        foreach ($functions as $function) {
+            if (method_exists($this->responseMapper, $function)) {
+                return $this->responseMapper->$function($value);
+            }
         }
 
     }

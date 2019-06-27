@@ -12,18 +12,18 @@ class ActivityDetails extends MapReverser
     {
         $this->responseMap = [
 
-            'activityId' => new EFI('string', 'activityId', false),
+            'activityId' => (new EFI('bigint', 'activityId', false))->setConvertFunction('dumpp'),
             'activityUUID' =>
                 [
                     'uuid' => new EFI('string', 'activityUUID', '0e45ee7f-6971-43a3-8d39-d46c7379f52b'),
                 ],
-            'activityName' => new EFI('string', 'activityName'),
+            'activityName' => (new EFI('string', 'activityName'))->setConvertFunction('dumpp'),
             'userProfileId' => new EFI('bigint', 'userProfileId', '9358035'),
             'isMultiSportParent' => new EFI('boolean', 'isMultiSportParent'),
             'activityTypeDTO' =>
                 [
-                    'typeId' => new EFI('integer', 'activityTypeId', '1'),
-                    'typeKey' => new EFI('string', 'activityTypeKey', 'running'),
+                    'typeId' => (new EFI('integer', 'activityTypeId', '1'))->setConvertFunction('dumpp'),
+                    'typeKey' => (new EFI('string', 'activityTypeKey', 'running'))->setConvertFunction('dumpp'),
                     'parentTypeId' => 17,
                     'sortOrder' => 3,
                 ],
