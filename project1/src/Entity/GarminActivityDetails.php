@@ -17,47 +17,47 @@ class GarminActivityDetails extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="string", nullable=false)
      */
     private $activityId;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $activityUUID;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $activityName;
 
     /**
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="bigint", nullable=true)
      */
     private $userProfileId;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isMultiSportParent;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $activityTypeId;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $activityTypeKey;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isOriginal;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $userDIsplayName;
 
@@ -67,7 +67,7 @@ class GarminActivityDetails extends AbstractEntity
     private $associatedWorkoutId;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $elevationCorrected;
 
@@ -214,6 +214,11 @@ class GarminActivityDetails extends AbstractEntity
     /**
      * @ORM\Column(type="float", nullable=true)
      */
+    private $verticalRatio;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
     private $lactateThresholdSpeed;
 
     /**
@@ -231,12 +236,12 @@ class GarminActivityDetails extends AbstractEntity
         return $this->id;
     }
 
-    public function getActivityId(): ?int
+    public function getActivityId(): ?string
     {
         return $this->activityId;
     }
 
-    public function setActivityId(int $activityId): self
+    public function setActivityId(string $activityId): self
     {
         $this->activityId = $activityId;
 
@@ -248,7 +253,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->activityUUID;
     }
 
-    public function setActivityUUID(string $activityUUID): self
+    public function setActivityUUID(?string $activityUUID): self
     {
         $this->activityUUID = $activityUUID;
 
@@ -260,7 +265,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->activityName;
     }
 
-    public function setActivityName(string $activityName): self
+    public function setActivityName(?string $activityName): self
     {
         $this->activityName = $activityName;
 
@@ -272,7 +277,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->userProfileId;
     }
 
-    public function setUserProfileId(int $userProfileId): self
+    public function setUserProfileId(?int $userProfileId): self
     {
         $this->userProfileId = $userProfileId;
 
@@ -284,7 +289,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->isMultiSportParent;
     }
 
-    public function setIsMultiSportParent(bool $isMultiSportParent): self
+    public function setIsMultiSportParent(?bool $isMultiSportParent): self
     {
         $this->isMultiSportParent = $isMultiSportParent;
 
@@ -296,7 +301,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->activityTypeId;
     }
 
-    public function setActivityTypeId(int $activityTypeId): self
+    public function setActivityTypeId(?int $activityTypeId): self
     {
         $this->activityTypeId = $activityTypeId;
 
@@ -308,7 +313,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->activityTypeKey;
     }
 
-    public function setActivityTypeKey(string $activityTypeKey): self
+    public function setActivityTypeKey(?string $activityTypeKey): self
     {
         $this->activityTypeKey = $activityTypeKey;
 
@@ -320,7 +325,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->isOriginal;
     }
 
-    public function setIsOriginal(bool $isOriginal): self
+    public function setIsOriginal(?bool $isOriginal): self
     {
         $this->isOriginal = $isOriginal;
 
@@ -332,7 +337,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->userDIsplayName;
     }
 
-    public function setUserDIsplayName(string $userDIsplayName): self
+    public function setUserDIsplayName(?string $userDIsplayName): self
     {
         $this->userDIsplayName = $userDIsplayName;
 
@@ -356,7 +361,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->elevationCorrected;
     }
 
-    public function setElevationCorrected(bool $elevationCorrected): self
+    public function setElevationCorrected(?bool $elevationCorrected): self
     {
         $this->elevationCorrected = $elevationCorrected;
 
@@ -368,9 +373,9 @@ class GarminActivityDetails extends AbstractEntity
         return $this->startTimeLocal;
     }
 
-    public function setStartTimeLocal(?string $startTimeLocal): self
+    public function setStartTimeLocal(?\DateTimeInterface $startTimeLocal): self
     {
-        $this->startTimeLocal = new \DateTime($startTimeLocal);
+        $this->startTimeLocal = $startTimeLocal;
 
         return $this;
     }
@@ -380,9 +385,9 @@ class GarminActivityDetails extends AbstractEntity
         return $this->startTimeGMT;
     }
 
-    public function setStartTimeGMT(?string $startTimeGMT): self
+    public function setStartTimeGMT(?\DateTimeInterface $startTimeGMT): self
     {
-        $this->startTimeGMT = new \DateTime($startTimeGMT);
+        $this->startTimeGMT = $startTimeGMT;
 
         return $this;
     }
@@ -695,6 +700,18 @@ class GarminActivityDetails extends AbstractEntity
     public function setTrainingEffect(?float $trainingEffect): self
     {
         $this->trainingEffect = $trainingEffect;
+
+        return $this;
+    }
+
+    public function getVerticalRatio(): ?float
+    {
+        return $this->verticalRatio;
+    }
+
+    public function setVerticalRatio(?float $verticalRatio): self
+    {
+        $this->verticalRatio = $verticalRatio;
 
         return $this;
     }

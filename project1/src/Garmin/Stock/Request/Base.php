@@ -12,7 +12,7 @@ abstract class Base
 {
     protected $uri;
 
-    protected $cookieStr = '__cfduid=d3481a4eab81924cbbe1e6ea3a5a90e371544269004; exp_last_visit=1555453778; exp_last_activity=1555539193; utag_main=v_id:01678d9b088d000291c7728e3e0e0104c002100900bd0$_sn:54$_ss:1$_st:1561583896591$ses_id:1561582096591%3Bexp-session$_pn:1%3Bexp-session; __utma=143254506.1798640067.1544269007.1560974302.1561487306.51; __utmz=143254506.1560807763.46.23.utmcsr=sso.garmin.com|utmccn=(referral)|utmcmd=referral|utmcct=/sso/signin; _ga=GA1.2.1798640067.1544269007; __cfduid=dd1213e31a829d3db1ec850cb2bd5400b1553706286; GarminGlobalStorage=%7B%22global%22%3A%7B%22locale%22%3A%22pl-PL%22%2C%22language%22%3A%22pl%22%2C%22country%22%3A%22PL%22%7D%7D; notice_preferences=2:; notice_gdpr_prefs=0,1,2:; gc__last_visit=1555270050; gc__last_activity=1555350549; G_ENABLED_IDPS=google; GARMIN-SSO=1; GarminNoCache=true; GARMIN-SSO-GUID=7EE1EAA41CFFAA748F052D108860CE96CC9FB062; GARMIN-SSO-CUST-GUID=6300101696356451; __atuvc=1%7C26; SESSIONID=5df53fd6-d8d6-41ce-a4f5-4fd948d24ef5';
+    protected $cookieStr = 'G_AUTHUSER_H=0; __cfduid=dff6031eadfabcae9cc6a1a18d41cab631559565953; utag_main=v_id:016b1d604de9000ab5cf19ecde0a0104c002200900bd0$_sn:23$_ss:1$_st:1561644576742$ses_id:1561642776742%3Bexp-session$_pn:1%3Bexp-session; __utma=143254506.849559551.1559565979.1560944914.1561444382.18; __utmz=143254506.1560147763.8.2.utmcsr=sso.garmin.com|utmccn=(referral)|utmcmd=referral|utmcct=/sso/signin; G_ENABLED_IDPS=google; GarminUserPrefs=en-US; ADRUM=s=1561642773649&r=https%3A%2F%2Fconnect.garmin.com%2Fmodern%2F%3F0; GARMIN-SSO=1; GarminNoCache=true; GARMIN-SSO-GUID=7EE1EAA41CFFAA748F052D108860CE96CC9FB062; GARMIN-SSO-CUST-GUID=6300101696356451; SESSIONID=586d8257-486e-43ef-9fe8-976c4c25bde6';
 
     protected $content;
 
@@ -47,7 +47,7 @@ abstract class Base
         $response = $httpClient->request('GET', $this->uri, $options);
         $this->content = $response->getContent();
 
-        return $this->content;
+        return $this;
     }
 
     protected function prepareUri()
@@ -56,6 +56,11 @@ abstract class Base
     public function toArray()
     {
         return json_decode($this->content, true);
+    }
+
+    public function getContent()
+    {
+        return $this->content;
     }
 
     abstract public function response(): \App\Garmin\Stock\Response\Base;

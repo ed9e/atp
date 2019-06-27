@@ -24,10 +24,7 @@ final class Version20190625183511 extends AbstractMigration
 
         $this->addSql('CREATE SEQUENCE activity_details_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE activity_details (id INT NOT NULL, activity_id BIGINT NOT NULL, activity_uuid VARCHAR(255) NOT NULL, activity_name VARCHAR(255) NOT NULL, user_profile_id BIGINT NOT NULL, is_multi_sport_parent BOOLEAN NOT NULL, activity_type_id INT NOT NULL, activity_type_key VARCHAR(255) NOT NULL, is_original BOOLEAN NOT NULL, user_display_name VARCHAR(255) NOT NULL, associated_workout_id BIGINT NOT NULL, elevation_corrected BOOLEAN NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('ALTER TABLE garmin_activity DROP insert_time');
-        $this->addSql('ALTER TABLE garmin_activity DROP update_time');
-        $this->addSql('ALTER TABLE garmin_calendar DROP insert_time');
-        $this->addSql('ALTER TABLE garmin_calendar DROP update_time');
+
     }
 
     public function down(Schema $schema) : void

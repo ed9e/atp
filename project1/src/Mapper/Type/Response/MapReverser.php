@@ -55,4 +55,11 @@ class MapReverser
         $this->inc--;
         unset($this->path[$this->inc]);
     }
+
+    public function strToTime($value)
+    {
+        return $date = date('Y-m-d H:i:s', strtotime($value));
+        dump($date);
+        return new \DateTime($date);
+    }
 }

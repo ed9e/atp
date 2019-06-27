@@ -4,18 +4,67 @@
 namespace App\Mapper\Type\Response;
 
 
+use Doctrine\ORM\Mapping\Entity;
+
 class EntityFieldIndicator
 {
     protected $type;
     protected $name;
+    protected $nullable;
+
+    /**
+     * @return mixed
+     */
+    public function getNullable()
+    {
+        return $this->nullable;
+    }
+
+    /**
+     * @param mixed $nullable
+     * @return EntityFieldIndicator
+     */
+    public function setNullable($nullable)
+    {
+        $this->nullable = $nullable;
+        return $this;
+    }
     protected $description;
+    protected $convertFunction;
+
+    public function __construct(string $doctrineType, string $name, bool $nullable=true, string $description = null, string $convertFunction = null)
+    {
+        $this->setType($doctrineType);
+        $this->setName($name);
+        $this->setNullable($nullable);
+        $this->setDescription($description);
+        $this->setConvertFunction($convertFunction);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConvertFunction()
+    {
+        return $this->convertFunction;
+    }
+
+    /**
+     * @param mixed $convertFunction
+     * @return EntityFieldIndicator
+     */
+    public function setConvertFunction($convertFunction)
+    {
+        $this->convertFunction = $convertFunction;
+        return $this;
+    }
 
     /**
      * @return mixed
      */
     public function getDescription()
     {
-        return $this->description;
+        return (array) $this->description;
     }
 
     /**
@@ -62,11 +111,5 @@ class EntityFieldIndicator
     {
         $this->name = $name;
         return $this;
-    }
-    public function __construct($type, $name, $description = null)
-    {
-        $this->setType($type);
-        $this->setName($name);
-        $this->setDescription($description);
     }
 }
