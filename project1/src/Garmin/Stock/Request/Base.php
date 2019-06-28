@@ -12,7 +12,7 @@ abstract class Base
 {
     protected $uri;
 
-    protected $cookieStr = '__cfduid=d3481a4eab81924cbbe1e6ea3a5a90e371544269004; exp_last_visit=1555453778; exp_last_activity=1555539193; utag_main=v_id:01678d9b088d000291c7728e3e0e0104c002100900bd0$_sn:54$_ss:1$_st:1561583896591$ses_id:1561582096591%3Bexp-session$_pn:1%3Bexp-session; __utma=143254506.1798640067.1544269007.1560974302.1561487306.51; __utmz=143254506.1560807763.46.23.utmcsr=sso.garmin.com|utmccn=(referral)|utmcmd=referral|utmcct=/sso/signin; _ga=GA1.2.1798640067.1544269007; __cfduid=dd1213e31a829d3db1ec850cb2bd5400b1553706286; GarminGlobalStorage=%7B%22global%22%3A%7B%22locale%22%3A%22pl-PL%22%2C%22language%22%3A%22pl%22%2C%22country%22%3A%22PL%22%7D%7D; notice_preferences=2:; notice_gdpr_prefs=0,1,2:; gc__last_visit=1555270050; gc__last_activity=1555350549; G_ENABLED_IDPS=google; GARMIN-SSO=1; GarminNoCache=true; GARMIN-SSO-GUID=7EE1EAA41CFFAA748F052D108860CE96CC9FB062; GARMIN-SSO-CUST-GUID=6300101696356451; __atuvc=1%7C26; SESSIONID=61112422-a5a9-4b5c-9793-f99fe1b9ba11; ADRUM_BTa=R:0|g:e0bdedca-fe25-47ef-b5c8-ff9d6da0333d|n:garmin_869629ee-d273-481d-b5a4-f4b0a8c4d5a3; ADRUM_BT1=R:0|i:259024';
+    protected $cookieStr = 'G_AUTHUSER_H=0; __cfduid=dff6031eadfabcae9cc6a1a18d41cab631559565953; utag_main=v_id:016b1d604de9000ab5cf19ecde0a0104c002200900bd0$_sn:25$_ss:1$_st:1561706843113$ses_id:1561705043113%3Bexp-session$_pn:1%3Bexp-session; __utma=143254506.849559551.1559565979.1560944914.1561444382.18; __utmz=143254506.1560147763.8.2.utmcsr=sso.garmin.com|utmccn=(referral)|utmcmd=referral|utmcct=/sso/signin; G_ENABLED_IDPS=google; GarminUserPrefs=en-US; ADRUM=s=1561705078968&r=https%3A%2F%2Fconnect.garmin.com%2Fmodern%2Factivity%2F3790159632%3F0; GARMIN-SSO=1; GarminNoCache=true; GARMIN-SSO-GUID=7EE1EAA41CFFAA748F052D108860CE96CC9FB062; GARMIN-SSO-CUST-GUID=6300101696356451; SESSIONID=c1c4c83d-4c9d-457f-a13f-50810b8b4858';
 
     protected $content;
 
@@ -52,6 +52,11 @@ abstract class Base
 
     protected function prepareUri()
     {}
+
+    public function get()
+    {
+        return $this->toArray();
+    }
 
     public function toArray()
     {

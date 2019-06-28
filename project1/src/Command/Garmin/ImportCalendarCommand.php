@@ -3,16 +3,13 @@
 namespace App\Command\Garmin;
 
 use App\Command\AbstractCommand;
-use App\Garmin\Stock\Calendar;
 use App\Service\GarminManager;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportCalendarCommand extends AbstractCommand
 {
-    protected $title = 'Import garmin calendar';
     protected static $defaultName = 'garmin:calendar:import';
-
+    protected $title = 'Import garmin calendar';
     private $garminManager;
 
     public function __construct(GarminManager $garminManager)
@@ -27,7 +24,9 @@ class ImportCalendarCommand extends AbstractCommand
         $this
             ->setDescription('Imports garmin calendar elements.')
             ->setHelp('')
-            ->addArgument('month', InputArgument::REQUIRED, 'Month is required!');
+            ->addArgument('month', InputArgument::REQUIRED, 'Calendar month required')
+            ->addArgument('year', InputArgument::REQUIRED, 'Calendar month required')
+            ;
     }
 
     protected function handle()
@@ -35,7 +34,9 @@ class ImportCalendarCommand extends AbstractCommand
         $this->garminManager->getGarminCalendar()->setMonth(
             $this->input->getArgument('month')
         );
-
+        $this->garminManager->getGarminCalendar()->setYear(
+            $this->input->getArgument('year')
+        );
         $this->garminManager->importCalendar();
 
         $this->info('ok');

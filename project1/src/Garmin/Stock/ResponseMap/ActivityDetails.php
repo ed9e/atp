@@ -12,7 +12,7 @@ class ActivityDetails extends MapReverser
     {
         $this->responseMap = [
 
-            'activityId' => (new EFI('bigint', 'activityId', false))->setConvertFunction('dumpp'),
+            'activityId' => new EFI('bigin', 'activityId', false),
             'activityUUID' =>
                 [
                     'uuid' => new EFI('string', 'activityUUID', '0e45ee7f-6971-43a3-8d39-d46c7379f52b'),
@@ -22,8 +22,8 @@ class ActivityDetails extends MapReverser
             'isMultiSportParent' => new EFI('boolean', 'isMultiSportParent'),
             'activityTypeDTO' =>
                 [
-                    'typeId' => (new EFI('integer', 'activityTypeId', '1'))->setConvertFunction('dumpp'),
-                    'typeKey' => (new EFI('string', 'activityTypeKey', 'running'))->setConvertFunction('dumpp'),
+                    'typeId' => new EFI('integer', 'activityTypeId', '1'),
+                    'typeKey' => new EFI('string', 'activityTypeKey', 'running'),
                     'parentTypeId' => 17,
                     'sortOrder' => 3,
                 ],
@@ -177,8 +177,8 @@ class ActivityDetails extends MapReverser
                 ],
             'summaryDTO' =>
                 [
-                    'startTimeLocal' => (new EFI('time', 'startTimeLocal'))->setConvertFunction('strToTime'),
-                    'startTimeGMT' => (new EFI('time', 'startTimeGMT'))->setConvertFunction('strToTime'),
+                    'startTimeLocal' => (new EFI('datetime', 'startTimeLocal'))->setConvertFunction('strToTime'),
+                    'startTimeGMT' => (new EFI('datetime', 'startTimeGMT'))->setConvertFunction('strToTime'),
                     'startLatitude' => new EFI('float', 'startLatitude'),
                     'startLongitude' => new EFI('float', 'startLongitude'),
                     'distance' => new EFI('float', 'distance', '8560.76'),

@@ -16,8 +16,6 @@ class GarminManager
     protected $entityManager;
     protected $mapper;
     protected $activityDetailsService;
-
-    /** @var Calendar $garminCalendar */
     protected $garminCalendar;
 
     /**
@@ -29,12 +27,15 @@ class GarminManager
     }
 
     /**
-     * @return EntityManagerInterface
+     * @param Calendar $garminCalendar
+     * @return GarminManager
      */
-    public function getEntityManager(): EntityManagerInterface
+    public function setGarminCalendar(Calendar $garminCalendar): GarminManager
     {
-        return $this->entityManager;
+        $this->garminCalendar = $garminCalendar;
+        return $this;
     }
+
 
     public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, GarminActivityDetailsManager $activityDetailsService)
     {
@@ -56,7 +57,6 @@ class GarminManager
             $this->mapper->mapDataToObject($item, $activity);
 
             if($activity->getItemType() == 'activity') {
-
                 $this->activityDetailsService->setActivityId($activity->getGarminId());
                 $this->activityDetailsService->import();
             }

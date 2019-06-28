@@ -3,28 +3,31 @@
 
 namespace App\Garmin\Stock\Request;
 
+use App\Garmin\Stock\Request\Traits\PrepareUri;
+
 class ActivityDetails extends Base
 {
-    protected $activity_id = '3720067292'; //Example id
-    protected $uri = 'https://connect.garmin.com/modern/proxy/activity-service/activity/{id}';
+    use PrepareUri;
 
-    public function setActivityId($id)
+    protected $activityId = '3720067292';
+    protected $uri = 'https://connect.garmin.com/modern/proxy/activity-service/activity/{activityId}';
+
+    /**
+     * @return string
+     */
+    public function getActivityId(): string
     {
-        $this->activity_id = $id;
+        return $this->activityId;
     }
 
-    protected function prepareUri()
+    /**
+     * @param string $activityId
+     * @return ActivityDetails
+     */
+    public function setActivityId(string $activityId): ActivityDetails
     {
-        parent::prepareUri();
-        if (!$this->activity_id) {
-            throw new \Exception('Activity ID not set');
-        }
-        $this->uri = str_replace('{id}', $this->activity_id, $this->uri);
-    }
-
-    public function get()
-    {
-        return $this->toArray();
+        $this->activityId = $activityId;
+        return $this;
     }
 
     public function response(): \App\Garmin\Stock\Response\Base
