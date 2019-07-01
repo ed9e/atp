@@ -9,15 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class GarminActivityDetails extends AbstractEntity
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Id()
+     * @ORM\Column(type="bigint")
      */
     private $activityId;
 
@@ -72,12 +67,12 @@ class GarminActivityDetails extends AbstractEntity
     private $elevationCorrected;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $startTimeLocal;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $startTimeGMT;
 
@@ -231,17 +226,12 @@ class GarminActivityDetails extends AbstractEntity
      */
     private $endLongitude;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getActivityId(): ?string
+    public function getActivityId(): ?int
     {
         return $this->activityId;
     }
 
-    public function setActivityId(string $activityId): self
+    public function setActivityId(int $activityId): self
     {
         $this->activityId = $activityId;
 

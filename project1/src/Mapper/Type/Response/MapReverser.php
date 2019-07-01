@@ -58,8 +58,14 @@ class MapReverser
 
     public function strToTime($value)
     {
-        return $date = date('Y-m-d H:i:s', strtotime($value));
-        dump($date);
-        return new \DateTime($date);
+        $ret = new \DateTime($value);
+        return $ret;
+
+    }
+
+    public function dumpp($value)
+    {
+        dump($value);
+        return $value;
     }
 }
