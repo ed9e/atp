@@ -4,6 +4,7 @@
 namespace App\Garmin\Stock\Request;
 
 use App\Garmin\Stock\Request\Traits\PrepareUri;
+use App\Garmin\Stock\Response\Iterators\ActivitiesIterator;
 use App\Garmin\Stock\Response\Iterators\BaseIteratorResponse;
 
 class Activities extends Base
@@ -11,9 +12,9 @@ class Activities extends Base
     use PrepareUri;
 
     protected $activityType = '';
-    protected $start = 0;
-    protected $limit = 20;
-    protected $uri = 'https://connect.garmin.com/modern/proxy/activitylist-service/activities/search/activities';
+    protected $start = 1600;
+    protected $limit = 100;
+    protected $uri = 'https://connect.garmin.com/modern/proxy/activitylist-service/activities/search/activities?limit={limit}&start={start}';
 
     /**
      * @return string
@@ -89,6 +90,6 @@ class Activities extends Base
 
     public function response(): BaseIteratorResponse
     {
-        return new \App\Garmin\Stock\Response\Iterators\Activities($this);
+        return new ActivitiesIterator($this);
     }
 }

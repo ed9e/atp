@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Entity\GarminActivity;
+use App\Entity\GarminActivityDetails;
 use App\Garmin\Stock\Request\Activities as ActivitiesRequest;
 use App\Garmin\Stock\ResponseMap\Activity;
 use App\Mapper\Entity\GarminActivityDetailsEntityMapper as Mapper;
@@ -35,17 +36,16 @@ class GarminActivitiesManager
         $request = new ActivitiesRequest();
 
         $request->fetch();
-        $activity = new GarminActivity();
+        $activity = new GarminActivityDetails();
 
         $this->mapper->setResponseMapper($this->responseMapper);
 
         foreach ($request->response() as $item) {
             $this->mapper->mapDataToObject($item, $activity);
-            dump($activity->getTitle());
-            //$this->entityManager->merge($activity);
+            $this->entityManager->merge($activity);
         }
 
-        //$this->entityManager->flush();
+        $this->entityManager->flush();
 
         return null;
     }

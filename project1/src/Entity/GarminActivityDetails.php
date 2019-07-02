@@ -52,11 +52,6 @@ class GarminActivityDetails extends AbstractEntity
     private $isOriginal;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $userDIsplayName;
-
-    /**
      * @ORM\Column(type="bigint", nullable=true)
      */
     private $associatedWorkoutId;
@@ -233,6 +228,71 @@ class GarminActivityDetails extends AbstractEntity
      */
     private $userDisplayName;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $description;
+
+    /**
+     * 1
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $activityParentTypeId;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $comments;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $ownerFullName;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $averageSwolf;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $steps;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numberOfActivityLikes;
+
+    /**
+     * 3.0
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $trainingEffectAnaerobic;
+
+    /**
+     * 53.0
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $vO2MaxValue;
+
+    /**
+     * 254.89999389648438
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $avgGroundContactBalance;
+
+    /**
+     * ?
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $lactateThresholdBpm;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $deviceId;
+
     public function getActivityId(): ?int
     {
         return $this->activityId;
@@ -370,7 +430,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->startTimeLocal;
     }
 
-    public function setStartTimeLocal(?\DateTimeInterface $startTimeLocal): self
+    public function setStartTimeLocal(\DateTimeInterface $startTimeLocal): self
     {
         $this->startTimeLocal = $startTimeLocal;
 
@@ -382,7 +442,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->startTimeGMT;
     }
 
-    public function setStartTimeGMT(?\DateTimeInterface $startTimeGMT): self
+    public function setStartTimeGMT(\DateTimeInterface $startTimeGMT): self
     {
         $this->startTimeGMT = $startTimeGMT;
 
@@ -418,7 +478,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->distance;
     }
 
-    public function setDistance(?float $distance): self
+    public function setDistance(float $distance): self
     {
         $this->distance = $distance;
 
@@ -430,7 +490,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->duration;
     }
 
-    public function setDuration(?float $duration): self
+    public function setDuration(float $duration): self
     {
         $this->duration = $duration;
 
@@ -745,6 +805,150 @@ class GarminActivityDetails extends AbstractEntity
     public function setEndLongitude(?float $endLongitude): self
     {
         $this->endLongitude = $endLongitude;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getActivityParentTypeId(): ?int
+    {
+        return $this->activityParentTypeId;
+    }
+
+    public function setActivityParentTypeId(?int $activityParentTypeId): self
+    {
+        $this->activityParentTypeId = $activityParentTypeId;
+
+        return $this;
+    }
+
+    public function getComments(): ?string
+    {
+        return $this->comments;
+    }
+
+    public function setComments(?string $comments): self
+    {
+        $this->comments = $comments;
+
+        return $this;
+    }
+
+    public function getOwnerFullName(): ?string
+    {
+        return $this->ownerFullName;
+    }
+
+    public function setOwnerFullName(?string $ownerFullName): self
+    {
+        $this->ownerFullName = $ownerFullName;
+
+        return $this;
+    }
+
+    public function getAverageSwolf(): ?float
+    {
+        return $this->averageSwolf;
+    }
+
+    public function setAverageSwolf(?float $averageSwolf): self
+    {
+        $this->averageSwolf = $averageSwolf;
+
+        return $this;
+    }
+
+    public function getSteps(): ?int
+    {
+        return $this->steps;
+    }
+
+    public function setSteps(?int $steps): self
+    {
+        $this->steps = $steps;
+
+        return $this;
+    }
+
+    public function getNumberOfActivityLikes(): ?int
+    {
+        return $this->numberOfActivityLikes;
+    }
+
+    public function setNumberOfActivityLikes(?int $numberOfActivityLikes): self
+    {
+        $this->numberOfActivityLikes = $numberOfActivityLikes;
+
+        return $this;
+    }
+
+    public function getTrainingEffectAnaerobic(): ?float
+    {
+        return $this->trainingEffectAnaerobic;
+    }
+
+    public function setTrainingEffectAnaerobic(?float $trainingEffectAnaerobic): self
+    {
+        $this->trainingEffectAnaerobic = $trainingEffectAnaerobic;
+
+        return $this;
+    }
+
+    public function getVO2MaxValue(): ?float
+    {
+        return $this->vO2MaxValue;
+    }
+
+    public function setVO2MaxValue(?float $vO2MaxValue): self
+    {
+        $this->vO2MaxValue = $vO2MaxValue;
+
+        return $this;
+    }
+
+    public function getAvgGroundContactBalance(): ?float
+    {
+        return $this->avgGroundContactBalance;
+    }
+
+    public function setAvgGroundContactBalance(?float $avgGroundContactBalance): self
+    {
+        $this->avgGroundContactBalance = $avgGroundContactBalance;
+
+        return $this;
+    }
+
+    public function getLactateThresholdBpm(): ?float
+    {
+        return $this->lactateThresholdBpm;
+    }
+
+    public function setLactateThresholdBpm(?float $lactateThresholdBpm): self
+    {
+        $this->lactateThresholdBpm = $lactateThresholdBpm;
+
+        return $this;
+    }
+
+    public function getDeviceId(): ?float
+    {
+        return $this->deviceId;
+    }
+
+    public function setDeviceId(?float $deviceId): self
+    {
+        $this->deviceId = $deviceId;
 
         return $this;
     }

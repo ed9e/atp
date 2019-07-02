@@ -8,8 +8,7 @@ use App\Entity\GarminActivityDetails;
 use App\Garmin\Stock\Request\Activities as ActivitiesRequest;
 use App\Garmin\Stock\Request\Activities;
 use App\Mapper\Type\Response\EntityFieldMap;
-use App\Service\GarminActivityDetailsManager;
-use Symfony\Bundle\MakerBundle\Util\ClassSourceManipulator;
+use App\Service\GarminActivitiesManager;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -18,13 +17,13 @@ class FetchActivitiesCommand extends AbstractCommand
     use EntityManipulate;
 
     protected static $defaultName = 'garmin:activities';
-    protected $title = 'Get garmin activities';
+    protected $title = 'Dej treninga';
 
     protected $params;
 
     private $garminManager;
 
-    public function __construct(GarminActivityDetailsManager $garminManager, ParameterBagInterface $params)
+    public function __construct(GarminActivitiesManager $garminManager, ParameterBagInterface $params)
     {
         $this->params = $params;
         $this->garminManager = $garminManager;
@@ -44,9 +43,19 @@ class FetchActivitiesCommand extends AbstractCommand
     {
         switch ($this->input->getArgument('action'))
         {
+            case 'import':
+                $this->garminManager->import();
+                $this->info('ok');
+                break;
             case 'entity':
                 $className = explode('\\', GarminActivityDetails::class);
                 $this->entityManipulate(end($className));
+                break;
+            case 'fields':
+                dump($this->getActivityEntityFields());
+                break;
+            case 'map':
+                dump($this->getActivityMap());
                 break;
             default:
             case 'response':
@@ -56,6 +65,19 @@ class FetchActivitiesCommand extends AbstractCommand
         }
     }
 
+    protected function getActivityEntityFields()
+    {
+        $ret = [];
+        foreach ($this->garminManager->getMap() as $fieldMap) {
+            /**@var EntityFieldMap $fieldMap */
+            $ret[$fieldMap->getEfi()->getName()] = $fieldMap->getEfi()->getType();
+        }
+        return $ret;
+    }
+    protected function getActivityMap()
+    {
+        return $this->garminManager->getMap();
+    }
 
     protected function getActivityResponse()
     {
