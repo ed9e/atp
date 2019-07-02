@@ -4,14 +4,14 @@
 namespace App\Service;
 
 
-use App\Entity\GarminActivityDetails;
-use App\Garmin\Stock\Request\ActivityDetails as ActivityDetailsRequest;
-use App\Garmin\Stock\ResponseMap\ActivityDetails;
+use App\Entity\GarminActivity;
+use App\Garmin\Stock\Request\Activities as ActivitiesRequest;
+use App\Garmin\Stock\ResponseMap\Activity;
 use App\Mapper\Entity\GarminActivityDetailsEntityMapper as Mapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 
-class GarminActivityDetailsManager
+class GarminActivitiesManager
 {
     protected $entityManager;
     protected $mapper;
@@ -19,7 +19,7 @@ class GarminActivityDetailsManager
     protected $logger;
     protected $activityId;
 
-    public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, ActivityDetails $responseMapper, LoggerInterface $logger)
+    public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, Activity $responseMapper, LoggerInterface $logger)
     {
         $this->entityManager = $entityManager;
         $this->mapper = $mapper;
@@ -32,19 +32,20 @@ class GarminActivityDetailsManager
      */
     public function import()
     {
-        $request = new ActivityDetailsRequest();
-        $request->setActivityId($this->activityId);
+        $request = new ActivitiesRequest();
+
         $request->fetch();
-        $activity = new GarminActivityDetails();
+        $activity = new GarminActivity();
 
         $this->mapper->setResponseMapper($this->responseMapper);
+
         foreach ($request->response() as $item) {
             $this->mapper->mapDataToObject($item, $activity);
-            $this->entityManager->merge($activity);
+            dump($activity->getTitle());
+            //$this->entityManager->merge($activity);
         }
 
-
-        $this->entityManager->flush();
+        //$this->entityManager->flush();
 
         return null;
     }

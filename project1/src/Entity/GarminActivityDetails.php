@@ -228,12 +228,17 @@ class GarminActivityDetails extends AbstractEntity
      */
     private $startTimeGMT;
 
-    public function getActivityId()
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $userDisplayName;
+
+    public function getActivityId(): ?int
     {
         return $this->activityId;
     }
 
-    public function setActivityId($activityId): self
+    public function setActivityId(int $activityId): self
     {
         $this->activityId = $activityId;
 
@@ -324,14 +329,14 @@ class GarminActivityDetails extends AbstractEntity
         return $this;
     }
 
-    public function getUserDIsplayName(): ?string
+    public function getUserDisplayName(): ?string
     {
-        return $this->userDIsplayName;
+        return $this->userDisplayName;
     }
 
-    public function setUserDIsplayName(?string $userDIsplayName): self
+    public function setUserDisplayName(?string $userDisplayName): self
     {
-        $this->userDIsplayName = $userDIsplayName;
+        $this->userDisplayName = $userDisplayName;
 
         return $this;
     }

@@ -5,6 +5,8 @@ namespace App\Garmin\Stock\Request;
 
 
 use App\Garmin\Stock\Request\Traits\PrepareUri;
+use App\Garmin\Stock\Response\ActivityDetailsIterator;
+use App\Garmin\Stock\Response\Iterators\BaseIteratorResponse;
 
 class Calendar extends Base
 {
@@ -55,10 +57,10 @@ class Calendar extends Base
         return $this->toArray()['calendarItems'];
     }
 
-    public function response(): \App\Garmin\Stock\Response\Base
-    {
-        return new \App\Garmin\Stock\Response\ActivityDetails($this);
-    }
+//    public function response(): BaseIteratorResponse
+//    {
+//        return new ActivityDetailsIterator($this);
+//    }
 
 
 }

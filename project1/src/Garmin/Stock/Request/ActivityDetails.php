@@ -4,6 +4,8 @@
 namespace App\Garmin\Stock\Request;
 
 use App\Garmin\Stock\Request\Traits\PrepareUri;
+use App\Garmin\Stock\Response\Iterators\ActivityDetailsIterator;
+use App\Garmin\Stock\Response\Iterators\BaseIteratorResponse;
 
 class ActivityDetails extends Base
 {
@@ -30,8 +32,8 @@ class ActivityDetails extends Base
         return $this;
     }
 
-    public function response(): \App\Garmin\Stock\Response\Base
+    public function response(): BaseIteratorResponse
     {
-        return new \App\Garmin\Stock\Response\ActivityDetails($this);
+        return new ActivityDetailsIterator($this);
     }
 }

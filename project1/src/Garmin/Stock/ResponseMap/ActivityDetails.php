@@ -12,18 +12,18 @@ class ActivityDetails extends MapReverser
     {
         $this->responseMap = [
 
-            'activityId' => new EFI('bigin', 'activityId', false),
+            'activityId' => new EFI('bigint', 'activityId', false),
             'activityUUID' =>
                 [
-                    'uuid' => new EFI('string', 'activityUUID', '0e45ee7f-6971-43a3-8d39-d46c7379f52b'),
+                    'uuid' => new EFI('string', 'activityUUID', true,'0e45ee7f-6971-43a3-8d39-d46c7379f52b'),
                 ],
             'activityName' => (new EFI('string', 'activityName'))->setConvertFunction('dumpp'),
-            'userProfileId' => new EFI('bigint', 'userProfileId', '9358035'),
+            'userProfileId' => new EFI('bigint', 'userProfileId', true, '9358035'),
             'isMultiSportParent' => new EFI('boolean', 'isMultiSportParent'),
             'activityTypeDTO' =>
                 [
-                    'typeId' => new EFI('integer', 'activityTypeId', '1'),
-                    'typeKey' => new EFI('string', 'activityTypeKey', 'running'),
+                    'typeId' => new EFI('integer', 'activityTypeId', true,'1'),
+                    'typeKey' => new EFI('string', 'activityTypeKey', true, 'running'),
                     'parentTypeId' => 17,
                     'sortOrder' => 3,
                 ],
@@ -67,7 +67,7 @@ class ActivityDetails extends MapReverser
                     'userInfoDto' =>
                         [
                             'userProfilePk' => 9358035,
-                            'displayname' => new EFI('string', 'userDIsplayName', 'lbrzozowski'),
+                            'displayname' => new EFI('string', 'userDisplayName', 'lbrzozowski'),
                             'fullname' => 'Łukasz Brzozowski',
                             'profileImageUrlLarge' => NULL,
                             'profileImageUrlMedium' => 'https://s3.amazonaws.com/garmin-connect-prod/profile_images/ed9baa89-2b2d-4616-a8d2-b27f3f4d231d-9358035.png',
