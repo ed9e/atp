@@ -12,7 +12,7 @@ abstract class Base
 {
     protected $uri;
 
-    protected $cookieStr = 'G_AUTHUSER_H=0; __cfduid=dff6031eadfabcae9cc6a1a18d41cab631559565953; utag_main=v_id:016b1d604de9000ab5cf19ecde0a0104c002200900bd0$_sn:25$_ss:1$_st:1561706843113$ses_id:1561705043113%3Bexp-session$_pn:1%3Bexp-session; __utma=143254506.849559551.1559565979.1560944914.1561444382.18; __utmz=143254506.1560147763.8.2.utmcsr=sso.garmin.com|utmccn=(referral)|utmcmd=referral|utmcct=/sso/signin; G_ENABLED_IDPS=google; GarminUserPrefs=en-US; ADRUM=s=1561705078968&r=https%3A%2F%2Fconnect.garmin.com%2Fmodern%2Factivity%2F3790159632%3F0; GARMIN-SSO=1; GarminNoCache=true; GARMIN-SSO-GUID=7EE1EAA41CFFAA748F052D108860CE96CC9FB062; GARMIN-SSO-CUST-GUID=6300101696356451; SESSIONID=c1c4c83d-4c9d-457f-a13f-50810b8b4858';
+    protected $cookieStr = 'G_AUTHUSER_H=0; __cfduid=dff6031eadfabcae9cc6a1a18d41cab631559565953; utag_main=v_id:016b1d604de9000ab5cf19ecde0a0104c002200900bd0$_sn:27$_ss:0$_st:1562052118939$ses_id:1562050259156%3Bexp-session$_pn:2%3Bexp-session; __utma=143254506.849559551.1559565979.1560944914.1561444382.18; __utmz=143254506.1560147763.8.2.utmcsr=sso.garmin.com|utmccn=(referral)|utmcmd=referral|utmcct=/sso/signin; G_ENABLED_IDPS=google; GARMIN-SSO=1; GarminNoCache=true; GARMIN-SSO-GUID=7EE1EAA41CFFAA748F052D108860CE96CC9FB062; GARMIN-SSO-CUST-GUID=4eea51a6-05e4-4483-a4f8-9745a8d447a1; GarminUserPrefs=en-US; notice_preferences=2:; notice_gdpr_prefs=0,1,2:; ADRUM=s=1562050369943&r=https%3A%2F%2Fconnect.garmin.com%2Fmodern%2Fprofile%2F9b0f050b-414e-4292-92ac-7eebd193c635%3F0; SESSIONID=cfe75687-931a-4e3a-b722-779a2c095734';
 
     protected $content;
 
