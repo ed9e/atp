@@ -17,8 +17,7 @@ class CalendarCommand extends AbstractCommand
         $this
             ->setDescription('Creates a new user.')
             ->setHelp('')
-            ->addArgument('action', InputArgument::OPTIONAL, 'Action: response, ')
-        ;
+            ->addArgument('action', InputArgument::OPTIONAL, 'Action: response, ');
     }
 
     protected function handle()
@@ -27,7 +26,7 @@ class CalendarCommand extends AbstractCommand
             default:
             case 'response':
                 $garminCalendar = new Calendar();
-                $this->info(print_r($garminCalendar->fetch()->toArray(), true));
+                $this->info($garminCalendar->fetch()->getContent());
                 break;
         }
     }

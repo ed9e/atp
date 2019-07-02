@@ -4,9 +4,33 @@
 namespace App\Garmin\Stock\Request;
 
 
+use App\Garmin\Stock\Request\Traits\PrepareUri;
+
 class Calendar extends Base
 {
-    protected $month;
+    use PrepareUri;
+
+    protected $uri = 'https://connect.garmin.com/modern/proxy/calendar-service/year/{year}/month/{month}';
+    protected $month = null;
+    protected $year = null;
+
+    /**
+     * @return mixed
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param mixed $year
+     * @return Calendar
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+        return $this;
+    }
 
     /**
      * @return mixed
@@ -18,23 +42,13 @@ class Calendar extends Base
 
     /**
      * @param mixed $month
+     * @return Calendar
      */
-    public function setMonth($month): void
+    public function setMonth($month)
     {
         $this->month = $month;
+        return $this;
     }
-
-    protected $uri = 'https://connect.garmin.com/modern/proxy/calendar-service/year/2019/month/{month}';
-
-    protected function prepareUri()
-    {
-        parent::prepareUri();
-        if (!$this->month) {
-            throw new \Exception('Month not set');
-        }
-        $this->uri = str_replace('{month}', $this->month, $this->uri);
-    }
-
 
     public function getCalendarItems()
     {
@@ -45,4 +59,6 @@ class Calendar extends Base
     {
         return new \App\Garmin\Stock\Response\ActivityDetails($this);
     }
+
+
 }

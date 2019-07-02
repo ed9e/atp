@@ -4,6 +4,8 @@
 namespace App\Mapper\Type\Response;
 
 
+use Doctrine\ORM\Mapping\Entity;
+
 class EntityFieldIndicator
 {
     protected $type;
@@ -27,38 +29,24 @@ class EntityFieldIndicator
         $this->nullable = $nullable;
         return $this;
     }
-
     protected $description;
-    protected $convertFunctions;
+    protected $convertFunction;
 
-    /**
-     * @param array $convertFunctions
-     * @return EntityFieldIndicator
-     */
-    public function setConvertFunctions(array $convertFunctions)
-    {
-        foreach ($convertFunctions as $convertFunction) {
-            $this->convertFunctions[$convertFunction] = $convertFunction;
-        }
-
-        return $this;
-    }
-
-    public function __construct(string $doctrineType, string $name, bool $nullable = true, string $description = null)
+    public function __construct(string $doctrineType, string $name, bool $nullable=true, string $description = null, string $convertFunction = null)
     {
         $this->setType($doctrineType);
         $this->setName($name);
         $this->setNullable($nullable);
         $this->setDescription($description);
-
+        $this->setConvertFunction($convertFunction);
     }
 
     /**
      * @return mixed
      */
-    public function getConvertFunctions()
+    public function getConvertFunction()
     {
-        return $this->convertFunctions;
+        return $this->convertFunction;
     }
 
     /**
@@ -67,7 +55,7 @@ class EntityFieldIndicator
      */
     public function setConvertFunction($convertFunction)
     {
-        $this->convertFunctions[$convertFunction] = $convertFunction;
+        $this->convertFunction = $convertFunction;
         return $this;
     }
 
@@ -76,7 +64,7 @@ class EntityFieldIndicator
      */
     public function getDescription()
     {
-        return (array)$this->description;
+        return (array) $this->description;
     }
 
     /**

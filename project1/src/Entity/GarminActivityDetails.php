@@ -12,7 +12,7 @@ class GarminActivityDetails extends AbstractEntity
 
     /**
      * @ORM\Id()
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="bigint", nullable=false)
      */
     private $activityId;
 
@@ -66,15 +66,7 @@ class GarminActivityDetails extends AbstractEntity
      */
     private $elevationCorrected;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $startTimeLocal;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $startTimeGMT;
+    
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -226,12 +218,22 @@ class GarminActivityDetails extends AbstractEntity
      */
     private $endLongitude;
 
-    public function getActivityId(): ?int
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $startTimeLocal;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $startTimeGMT;
+
+    public function getActivityId()
     {
         return $this->activityId;
     }
 
-    public function setActivityId(int $activityId): self
+    public function setActivityId($activityId): self
     {
         $this->activityId = $activityId;
 
