@@ -13,7 +13,7 @@ class ActivityDetailsIterator extends BaseIteratorResponse implements \Iterator
     public function __construct(\App\Garmin\Stock\Request\ActivityDetails $request)
     {
         parent::__construct();
-        $this->add(new ActivityDetails($request));
+        $this->add(new ActivityDetails($request->toArray()));
     }
 
     public function add(ActivityDetails $activity)

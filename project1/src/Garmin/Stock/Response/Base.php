@@ -8,15 +8,15 @@ use App\Mapper\Type\Response\ValuePath;
 
 class Base
 {
-    protected $request;
-    public function __construct(\App\Garmin\Stock\Request\Base $request)
+    protected $arrayContent;
+    public function __construct(array $arrayContent)
     {
-        $this->request = $request;
+        $this->arrayContent = $arrayContent;
     }
 
     public function value(ValuePath $path)
     {
-        $_data = $this->request->toArray();
+        $_data = $this->arrayContent;
         foreach ($path->getArray() as $pathKey) {
             if(!key_exists($pathKey, $_data)) {
                 return null;

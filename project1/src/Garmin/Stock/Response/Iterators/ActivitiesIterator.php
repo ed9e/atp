@@ -3,16 +3,18 @@
 
 namespace App\Garmin\Stock\Response\Iterators;
 
+use App\Garmin\Stock\Request\Activities;
 use App\Garmin\Stock\Response\Activity;
 
-class Activities extends BaseIteratorResponse implements \Iterator
+class ActivitiesIterator extends BaseIteratorResponse implements \Iterator
 {
 
     protected $activities = [];
 
-    public function __construct(\App\Garmin\Stock\Request\Activities $request)
+    public function __construct(Activities $request)
     {
         parent::__construct();
+
         foreach ($request->toArray() as $item) {
             $this->add(new Activity($item));
         }
