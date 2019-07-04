@@ -12,7 +12,7 @@ class Activities extends Base
     use PrepareUri;
 
     protected $activityType = '';
-    protected $start = 1600;
+    protected $start = 0;
     protected $limit = 100;
     protected $uri = 'https://connect.garmin.com/modern/proxy/activitylist-service/activities/search/activities?limit={limit}&start={start}';
 
