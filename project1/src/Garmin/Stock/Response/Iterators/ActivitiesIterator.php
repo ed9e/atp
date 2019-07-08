@@ -4,6 +4,7 @@
 namespace App\Garmin\Stock\Response\Iterators;
 
 use App\Garmin\Stock\Request\Activities;
+use App\Garmin\Stock\Request\InterfaceRequestStockGarmin;
 use App\Garmin\Stock\Response\Activity;
 
 class ActivitiesIterator extends BaseIteratorResponse implements \Iterator
@@ -11,7 +12,7 @@ class ActivitiesIterator extends BaseIteratorResponse implements \Iterator
 
     protected $activities = [];
 
-    public function __construct(Activities $request)
+    public function __construct(InterfaceRequestStockGarmin $request)
     {
         parent::__construct();
 

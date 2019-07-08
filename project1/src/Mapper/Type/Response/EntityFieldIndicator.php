@@ -4,8 +4,6 @@
 namespace App\Mapper\Type\Response;
 
 
-use Doctrine\ORM\Mapping\Entity;
-
 class EntityFieldIndicator
 {
     protected $type;

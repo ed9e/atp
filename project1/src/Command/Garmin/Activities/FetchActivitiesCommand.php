@@ -5,8 +5,8 @@ namespace App\Command\Garmin\Activities;
 use App\Command\AbstractCommand;
 use App\Command\Garmin\Traits\EntityManipulate;
 use App\Entity\GarminActivityDetails;
-use App\Garmin\Stock\Request\Activities as ActivitiesRequest;
 use App\Garmin\Stock\Request\Activities;
+use App\Garmin\Stock\Request\Activities as ActivitiesRequest;
 use App\Mapper\Type\Response\EntityFieldMap;
 use App\Service\GarminActivitiesManager;
 use Symfony\Component\Console\Input\InputArgument;
@@ -36,14 +36,15 @@ class FetchActivitiesCommand extends AbstractCommand
             ->setDescription('Getting garmin activities.')
             ->setHelp('')
             ->addArgument('action', InputArgument::REQUIRED, 'Action: response, map, fields, entity')
-        ;
+            ->addArgument('user', InputArgument::OPTIONAL, 'User display name');
     }
 
     protected function handle()
     {
-        switch ($this->input->getArgument('action'))
-        {
+        switch ($this->input->getArgument('action')) {
             case 'import':
+                if (null !== $this->input->getArgument('user'))
+                    $this->garminManager->setUserDisplayName($this->input->getArgument('user'));
                 $this->garminManager->import();
                 $this->info('ok');
                 break;
@@ -74,6 +75,7 @@ class FetchActivitiesCommand extends AbstractCommand
         }
         return $ret;
     }
+
     protected function getActivityMap()
     {
         return $this->garminManager->getMap();
@@ -81,7 +83,6 @@ class FetchActivitiesCommand extends AbstractCommand
 
     protected function getActivityResponse()
     {
-        $garmin = new ActivitiesRequest();
-        return $garmin->fetch()->toArray();
+        return $this->garminManager->getRequest()->fetch()->toArray();
     }
 }
