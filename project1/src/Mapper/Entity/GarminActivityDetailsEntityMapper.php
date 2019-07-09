@@ -11,7 +11,7 @@ class GarminActivityDetailsEntityMapper extends AbstractResponseTypeMapper
      protected $entity = 'GarminActivity';
 
 
-    public function mapObjectToData($object, &$data)
+    public function mapObjectToData($object, &$data): void
     {
     }
 

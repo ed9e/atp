@@ -9,7 +9,7 @@ use App\Mapper\Type\Response\AbstractResponseTypeMapper;
 class GarminActivitiesEntityMapper extends AbstractResponseTypeMapper
 {
     
-    public function mapObjectToData($object, &$data)
+    public function mapObjectToData($object, &$data): void
     {
     }
 

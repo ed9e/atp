@@ -15,17 +15,17 @@ abstract class AbstractResponseTypeMapper implements MapperEntityInterface
      */
     protected $responseMapper;
 
-    public function setResponseMapper(MapReverser $responseMapper)
+    public function setResponseMapper(MapReverser $responseMapper): void
     {
         $this->responseMapper = $responseMapper;
     }
 
     public function getResponseFields()
     {
-        $this->responseMapper->getResponseMap();
+        return $this->responseMapper->getResponseMap();
     }
 
-    public function mapDataToObject(Base $response, AbstractEntity $object)
+    public function mapDataToObject(Base $response, AbstractEntity $object): void
     {
         $mapIterator = $this->responseMapper->getMap();
 
@@ -57,7 +57,7 @@ abstract class AbstractResponseTypeMapper implements MapperEntityInterface
         return $value;
     }
 
-    public function mapObjectToData($object, &$data)
+    public function mapObjectToData($object, &$data): void
     {
     }
 

@@ -3,7 +3,6 @@
 
 namespace App\Garmin\Stock\Response\Iterators;
 
-use App\Garmin\Stock\Request\Activities;
 use App\Garmin\Stock\Request\InterfaceRequestStockGarmin;
 use App\Garmin\Stock\Response\Activity;
 

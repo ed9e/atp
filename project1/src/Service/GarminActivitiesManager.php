@@ -19,20 +19,17 @@ class GarminActivitiesManager
     protected $responseMapper;
     protected $request;
     protected $activityId;
-    protected $userDisplayName = null;
+    protected $userDisplayName;
 
     public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, Activity $responseMapper)
     {
         $this->entityManager = $entityManager;
         $this->mapper = $mapper;
-        $this->responseMapper = $responseMapper;
 
+                $this->responseMapper = $responseMapper;
     }
 
-    /**
-     * @return int|null
-     */
-    public function import()
+    public function import(): void
     {
         $this->getRequest()->fetch();
         $activity = new GarminActivityDetails();
@@ -44,10 +41,7 @@ class GarminActivitiesManager
             $this->entityManager->merge($activity);
 
         }
-
         $this->entityManager->flush();
-
-        return null;
     }
 
     public function getRequest(): AbstractActivities
@@ -87,7 +81,7 @@ class GarminActivitiesManager
         return $this->responseMapper->getMap();
     }
 
-    public function setActivityId($id)
+    public function setActivityId($id): void
     {
         $this->activityId = $id;
     }
