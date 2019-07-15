@@ -5,8 +5,6 @@ namespace App\Command\Garmin\Activities;
 use App\Command\AbstractCommand;
 use App\Command\Garmin\Traits\EntityManipulate;
 use App\Entity\GarminActivityDetails;
-use App\Garmin\Stock\Request\Activities;
-use App\Garmin\Stock\Request\Activities as ActivitiesRequest;
 use App\Mapper\Type\Response\EntityFieldMap;
 use App\Service\GarminActivitiesManager;
 use Symfony\Component\Console\Input\InputArgument;
@@ -39,7 +37,7 @@ class FetchActivitiesCommand extends AbstractCommand
             ->addArgument('action', InputArgument::REQUIRED, 'Action: response, map, fields, entity')
             ->addArgument('user', InputArgument::OPTIONAL, 'User display name')
             ->addOption('start', 's', InputOption::VALUE_OPTIONAL)
-        ;
+            ->addOption('run', 'r', InputOption::VALUE_OPTIONAL);
     }
 
     protected function handle()
@@ -51,7 +49,11 @@ class FetchActivitiesCommand extends AbstractCommand
                 }
 
                 $this->garminManager->getRequest()->setStart($this->input->getOption('start'));
-                $this->garminManager->import();
+                if ($this->input->getOption('run') === '1') {
+                    $this->garminManager->run();
+                } else {
+                    $this->garminManager->import();
+                }
                 $this->info('ok');
                 break;
             case 'entity':

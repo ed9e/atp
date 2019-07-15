@@ -29,9 +29,11 @@ abstract class AbstractActivities extends Base
      * @param int $start
      * @return AbstractActivities
      */
-    public function setStart(int $start): AbstractActivities
+    public function setStart(?int $start): AbstractActivities
     {
-        $this->start = $start;
+        if ($start) {
+            $this->start = $start;
+        }
         return $this;
     }
 

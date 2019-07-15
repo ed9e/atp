@@ -12,7 +12,7 @@ class Activity extends MapReverser
     {
         $this->responseMap = [
             'activityId' => new EFI('bigint', 'activityId', false, 3799835428),
-            'activityName' => (new EFI('string', 'activityName'))->setConvertFunction('dumpp'),
+            'activityName' => (new EFI('string', 'activityName')),
             'description' => (new EFI('string', 'description')),
             'startTimeLocal' => (new EFI('datetime', 'startTimeLocal', false, '2019-06-30 20:56:34'))->setConvertFunction('strToTime'),
             'startTimeGMT' => (new EFI('datetime', 'startTimeGMT', false, '2019-06-30 20:56:34'))->setConvertFunction('strToTime'),
