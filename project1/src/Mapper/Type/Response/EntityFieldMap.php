@@ -4,7 +4,7 @@
 namespace App\Mapper\Type\Response;
 
 
-class EntityFieldMap
+class EntityFieldMap extends MapAbstract implements MapInterface
 {
 
     protected $efi;

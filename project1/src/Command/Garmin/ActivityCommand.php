@@ -61,7 +61,7 @@ class ActivityCommand extends AbstractCommand
 
     protected function getActivityMap()
     {
-        return $this->garminManager->getMap();
+        return $this->garminManager->getGroupMapIterator();
     }
 
     protected function getActivityEntityFields()

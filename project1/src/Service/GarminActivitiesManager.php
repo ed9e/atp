@@ -21,7 +21,7 @@ class GarminActivitiesManager
     protected $activityId;
     protected $userDisplayName;
     protected $running;
-    protected $sleepTime = 2 * 60;
+    protected $sleepTime = 5 * 60;
 
     public function __construct(EntityManagerInterface $entityManager, Mapper $mapper, Activity $responseMapper)
     {

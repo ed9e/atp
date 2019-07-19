@@ -4,7 +4,10 @@
 namespace App\Mapper\Type\Response;
 
 
-class EntityFieldIndicator
+use App\Mapper\Type\Response\Indicator\IndicatorAbstract;
+use App\Mapper\Type\Response\Indicator\IndicatorInterface;
+
+class EntityFieldIndicator extends IndicatorAbstract implements IndicatorInterface
 {
     protected $type;
     protected $name;
@@ -37,6 +40,11 @@ class EntityFieldIndicator
         $this->setNullable($nullable);
         $this->setDescription($description);
         $this->setConvertFunction($convertFunction);
+    }
+
+    public function createMap($path): MapInterface
+    {
+        return new EntityFieldMap($this, new ValuePath($path));
     }
 
     /**

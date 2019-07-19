@@ -4,6 +4,8 @@
 namespace App\Garmin\Stock\ResponseMap;
 
 use App\Mapper\Type\Response\EntityFieldIndicator as EFI;
+use App\Mapper\Type\Response\GroupIndicator;
+use App\Mapper\Type\Response\Indicator\ActivityType;
 use App\Mapper\Type\Response\MapReverser;
 
 class ActivityDetails extends MapReverser
@@ -22,9 +24,17 @@ class ActivityDetails extends MapReverser
             'isMultiSportParent' => new EFI('boolean', 'isMultiSportParent'),
             'activityTypeDTO' =>
                 [
-                    'typeId' => new EFI('integer', 'activityTypeId', true,'1'),
-                    'typeKey' => new EFI('string', 'activityTypeKey', true, 'running'),
-                    'parentTypeId' => 17,
+                    'typeId' => new GroupIndicator([
+                        new EFI('integer', 'activityTypeId', true, '1'),
+                        new ActivityType('integer', 'activityTypeId', true, '1'),
+                    ]),
+                    'typeKey' => new GroupIndicator([
+                        new EFI('string', 'activityTypeKey', true, 'running'),
+                        new ActivityType('string', 'activityTypeKey', true, 'running'),
+                    ]),
+                    'parentTypeId' => new GroupIndicator([
+                        new ActivityType('integer', 'parentTypeId', true, '17'),
+                    ]),
                     'sortOrder' => 3,
                 ],
             'eventTypeDTO' =>

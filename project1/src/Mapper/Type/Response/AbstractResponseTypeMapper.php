@@ -30,6 +30,7 @@ abstract class AbstractResponseTypeMapper implements MapperEntityInterface
         $mapIterator = $this->responseMapper->getMap();
 
         foreach ($mapIterator as $entityFiled => $fieldMap) {
+
             $fieldKey = $fieldMap->getEfi()->getName();
             $value = $this->convertFunction($response->value($fieldMap->getPath()), $fieldMap->getEfi()->getConvertFunction());
 
@@ -38,10 +39,18 @@ abstract class AbstractResponseTypeMapper implements MapperEntityInterface
             } catch (\Exception $e) {
                 if ($e instanceof UnexpectedProperty) {
                     //log new property or break if required
-
                 }
             }
+        }
+    }
 
+    public function mapDataToObjects(Base $response)
+    {
+        $mapIterator = $this->responseMapper->getGroupMapIterator();
+        /** @var MapAbstract $map */
+        foreach ($mapIterator as $map)
+        {
+            $key = $map->getEfi()->getName();
         }
     }
 

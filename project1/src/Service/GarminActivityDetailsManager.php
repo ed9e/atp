@@ -54,6 +54,11 @@ class GarminActivityDetailsManager
         return $this->responseMapper->getMap();
     }
 
+    public function getGroupMapIterator()
+    {
+        return $this->responseMapper->getGroupMapIterator();
+    }
+
     public function setActivityId($id)
     {
         $this->activityId = $id;

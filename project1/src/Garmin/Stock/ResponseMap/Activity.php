@@ -4,6 +4,8 @@
 namespace App\Garmin\Stock\ResponseMap;
 
 use App\Mapper\Type\Response\EntityFieldIndicator as EFI;
+use App\Mapper\Type\Response\GroupIndicator;
+use App\Mapper\Type\Response\Indicator\ActivityType;
 use App\Mapper\Type\Response\MapReverser;
 
 class Activity extends MapReverser
@@ -18,7 +20,10 @@ class Activity extends MapReverser
             'startTimeGMT' => (new EFI('datetime', 'startTimeGMT', false, '2019-06-30 20:56:34'))->setConvertFunction('strToTime'),
             'activityType' =>
                 array(
-                    'typeId' => new EFI('integer', 'activityTypeId', true, '1'),
+                    'typeId' => new GroupIndicator([
+                        new EFI('integer', 'activityTypeId', true, '1'),
+                        new ActivityType('integer', 'activityTypeId', true, '1'),
+                    ]),
                     'typeKey' => new EFI('string', 'activityTypeKey', true, 'running'),
                     'parentTypeId' => new EFI('integer', 'activityParentTypeId', true, '1'),
                     'sortOrder' => 3,
