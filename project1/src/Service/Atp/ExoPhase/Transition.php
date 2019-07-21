@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Atp\Phase;
+namespace App\Service\Atp\ExoPhase;
 
 
 class Transition extends PhaseAbstract

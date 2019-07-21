@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Service\Atp\Phase\Base;
+namespace App\Service\Atp\ExoPhase\Base;
 
 
-use App\Service\Atp\Phase\PhaseAbstract;
+use App\Service\Atp\ExoPhase\PhaseAbstract;
 
 class BaseAbstract extends PhaseAbstract
 {

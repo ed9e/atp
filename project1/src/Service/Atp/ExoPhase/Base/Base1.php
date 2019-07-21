@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service\Atp\Phase\Base;
+namespace App\Service\Atp\ExoPhase\Base;
 
 
 class Base1 extends BaseAbstract
