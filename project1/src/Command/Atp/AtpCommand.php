@@ -44,7 +44,7 @@ class AtpCommand extends AbstractCommand
         $start = new \DateTime($options['from']);
         $end = new \DateTime($options['to']);
 
-        $interval = new \DateInterval('P6D');
+        $interval = new \DateInterval('P1W');
         $period = new \DatePeriod($start, $interval, $end);
 
         dump(iterator_count($period));
