@@ -6,8 +6,13 @@ use App\Command\AbstractCommand;
 use App\Command\Traits\ActionMap;
 use App\Command\Traits\ActionMapElement;
 use App\Config\Service;
+use App\Service\Atp\Calendar;
+use App\Service\Atp\ExoPhase\Base\Base3;
+use App\Service\Atp\ExoPhase\Build\Build1;
+use App\Service\Atp\ExoPhase\Peak;
+use App\Service\Atp\ExoPhase\PhaseIterator;
+use App\Service\Atp\ExoPhase\Race;
 use Symfony\Component\Console\Input\InputOption;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\iterator;
 
 class AtpCommand extends AbstractCommand
 {
@@ -34,8 +39,7 @@ class AtpCommand extends AbstractCommand
             ->setHelp('...')
             ->addOption('from', 'f', InputOption::VALUE_OPTIONAL, 'Date from')
             ->addOption('to', 't', InputOption::VALUE_OPTIONAL, 'Date to')
-            ->addOption('avgH', null, InputOption::VALUE_OPTIONAL, 'Average hours')
-        ;
+            ->addOption('avgH', null, InputOption::VALUE_OPTIONAL, 'Average hours');
     }
 
 
@@ -48,10 +52,20 @@ class AtpCommand extends AbstractCommand
         $period = new \DatePeriod($start, $interval, $end);
 
         dump(iterator_count($period));
-
-
+        $dateArray = [];
         foreach ($period as $date) {
-            dump($date->format('W') . " of " . $date->format('Y'));
+            $dateArray[] = $date->format('Y-m-d');
+        }
+        $reversedDates = array_reverse($dateArray);
+        $calendar = new Calendar($reversedDates);
+        $atp[] = new Race($calendar);
+        $atp[] = new Peak($calendar);
+        $atp[] = new Build1($calendar);
+        $atp[] = new Base3($calendar);
+        $phasesIterator = new PhaseIterator($atp);
+        foreach ($phasesIterator as $phase)
+        {
+            $phase->takePlace();
         }
     }
 

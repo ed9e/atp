@@ -4,6 +4,7 @@
 namespace App\Service\Atp\ExoPhase;
 
 
+use App\Service\Atp\Calendar;
 use App\Service\Atp\MesoPhase\MesoPhaseAbstract;
 
 abstract class PhaseAbstract
@@ -18,7 +19,14 @@ abstract class PhaseAbstract
     /** @var integer */
     protected $mesoPhaseCount;
 
+    protected $calendar;
 
+    public function __construct(Calendar $calendar)
+    {
+        $this->calendar = $calendar;
+    }
 
     abstract public function getPercentOfWeeklyAvgHours(): float;
+
+    abstract public function takePlace();
 }
