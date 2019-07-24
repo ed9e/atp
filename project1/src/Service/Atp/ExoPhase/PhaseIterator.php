@@ -17,7 +17,7 @@ class PhaseIterator implements \Iterator
         $this->position = 0;
     }
 
-    public function current(): PhaseAbstract
+    public function current(): ExoPhaseAbstract
     {
         return $this->phases[$this->position];
     }

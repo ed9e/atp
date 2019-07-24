@@ -14,22 +14,9 @@ class ActionMapElement
         $this->functionName = $functionName;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getInfo()
+    public function __toString()
     {
-        return $this->info;
-    }
-
-    /**
-     * @param mixed $info
-     * @return ActionMapElement
-     */
-    public function setInfo($info)
-    {
-        $this->info = $info;
-        return $this;
+        return $this->getFunctionName() . ' => ' . $this->getInfo();
     }
 
     /**
@@ -46,5 +33,23 @@ class ActionMapElement
     public function setFunctionName($functionName): void
     {
         $this->functionName = $functionName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInfo()
+    {
+        return $this->info;
+    }
+
+    /**
+     * @param mixed $info
+     * @return ActionMapElement
+     */
+    public function setInfo($info)
+    {
+        $this->info = $info;
+        return $this;
     }
 }

@@ -12,12 +12,9 @@ abstract class MesoPhaseAbstract
      */
     protected $microPhaseCount;
 
-
-    /**
-     * @return array
-     */
-    public function getMicroPhaseCount(): array
+    public function iterationMicroPhasesCount(): int
     {
-        return $this->microPhaseCount;
+        /** pierwszą wartość, TODO: opcjonalna ilość */
+        return $this->microPhaseCount[0];
     }
 }

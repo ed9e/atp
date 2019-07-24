@@ -8,7 +8,7 @@ use App\Service\Atp\MicroPhase\MicroPhase;
 
 class Peak extends MesoPhaseAbstract
 {
-    protected $microPhaseCount = [0, 1, 2];
+    protected $microPhaseCount = [1];
     protected function calculateMicroPhases()
     {
         return [

@@ -14,7 +14,7 @@ trait ActionMap
     protected function handle(): void
     {
         $action = $this->input->getArgument($this->argumentName);
-        dump($action);
+
         if (!$action) {
             $this->info($this->actionMap);
         } else {

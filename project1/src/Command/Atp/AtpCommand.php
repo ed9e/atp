@@ -7,16 +7,14 @@ use App\Command\Traits\ActionMap;
 use App\Command\Traits\ActionMapElement;
 use App\Config\Service;
 use App\Service\Atp\Calendar;
-use App\Service\Atp\ExoPhase\Base\Base3;
-use App\Service\Atp\ExoPhase\Build\Build1;
-use App\Service\Atp\ExoPhase\Peak;
+use App\Service\Atp\Component;
 use App\Service\Atp\ExoPhase\PhaseIterator;
-use App\Service\Atp\ExoPhase\Race;
+use App\Service\Atp\PlanIterator;
 use Symfony\Component\Console\Input\InputOption;
 
 class AtpCommand extends AbstractCommand
 {
-    //use ActionMap;
+    use ActionMap;
     protected static $defaultName = 'atp:config';
     protected $title = 'Atp config';
 
@@ -51,22 +49,32 @@ class AtpCommand extends AbstractCommand
         $interval = new \DateInterval('P1W');
         $period = new \DatePeriod($start, $interval, $end);
 
-        dump(iterator_count($period));
+        //dump(iterator_count($period));
         $dateArray = [];
         foreach ($period as $date) {
             $dateArray[] = $date->format('Y-m-d');
         }
         $reversedDates = array_reverse($dateArray);
         $calendar = new Calendar($reversedDates);
-        $atp[] = new Race($calendar);
-        $atp[] = new Peak($calendar);
-        $atp[] = new Build1($calendar);
-        $atp[] = new Base3($calendar);
-        $phasesIterator = new PhaseIterator($atp);
-        foreach ($phasesIterator as $phase)
-        {
-            $phase->takePlace();
+        /** Składowe jakie będą brały udział w tworzeniu planu */
+        $phasesComponent = new Component($calendar);
+        /** Liczba iteracji do stworzenia planu */
+        $planIterator = new PlanIterator(4);
+
+        foreach ($planIterator as $iterationNo => $iteration) {
+
+            $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
+            foreach ($phasesIterator as $phase) {
+                try {
+                    /** Zabieranie wolnych mikrofaz */
+                    $phase->getPlaceTaker()->takePlace($iterationNo);
+                } catch (\Exception $e) {
+
+                }
+            }
         }
+        dump($calendar->getCountWeeks());
+        $phasesComponent->showTaken();
     }
 
 }

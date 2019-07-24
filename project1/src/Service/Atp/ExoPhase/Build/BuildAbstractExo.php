@@ -4,9 +4,9 @@
 namespace App\Service\Atp\ExoPhase\Build;
 
 
-use App\Service\Atp\ExoPhase\PhaseAbstract;
+use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
 
-class BuildAbstract extends PhaseAbstract
+abstract class BuildAbstractExo extends ExoPhaseAbstract
 {
     protected $description = 'Mezocykl kontrolny, praca wiąże się ściśle z uczestnictwem w szeregu testach, próbach, zawodach';
     protected $percentOfWeeklyAvgHours = [1, 0.95];

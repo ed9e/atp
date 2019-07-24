@@ -4,9 +4,9 @@
 namespace App\Service\Atp\ExoPhase\Base;
 
 
-use App\Service\Atp\ExoPhase\PhaseAbstract;
+use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
 
-class BaseAbstract extends PhaseAbstract
+abstract class BaseAbstractExo extends ExoPhaseAbstract
 {
     protected $percentOfWeeklyAvgHours = [0.55, 0.85, 1, 1.15];
 
@@ -14,4 +14,5 @@ class BaseAbstract extends PhaseAbstract
     {
         return $this->percentOfWeeklyAvgHours;
     }
+
 }

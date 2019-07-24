@@ -4,19 +4,29 @@
 namespace App\Service\Atp\ExoPhase\Preparation;
 
 
-use App\Service\Atp\ExoPhase\PhaseAbstract;
+use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
+use App\Service\Atp\MesoPhase\Iteration\Config;
+use App\Service\Atp\MesoPhase\Iteration\ConfigArrayAccess;
+use App\Service\Atp\PlanIterator;
 
-class Preparation extends PhaseAbstract
+class Preparation extends ExoPhaseAbstract
 {
     protected $percentOfWeeklyAvgHours = 0.65;
-    protected $mesoPhaseCount = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 
-    /**
-     * @return float
-     */
     public function getPercentOfWeeklyAvgHours(): float
     {
-        return $this->percentOfWeeklyAvgHours;
+        return 1.0;
+    }
+
+    protected function setUp(): void
+    {
+        $this->mesoPhase = new \App\Service\Atp\MesoPhase\Preparation();
+        $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
+            PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
+            PlanIterator::SECOND_ITERATION => (new Config())->setValue(0),
+            PlanIterator::THIRD_ITERATION => (new Config())->setValue(0),
+            PlanIterator::FOURTH_ITERATION => (new Config())->setMin(0)->setMax(20)
+        ]);
     }
 }
