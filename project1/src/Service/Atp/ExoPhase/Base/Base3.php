@@ -18,7 +18,11 @@ class Base3 extends BaseAbstractExo
         $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
             PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
             PlanIterator::SECOND_ITERATION => (new Config())->setValue(1),
-            PlanIterator::THIRD_ITERATION => (new Config())->setValue(1)
+            PlanIterator::THIRD_ITERATION => (new Config())->setValue(1),
+            PlanIterator::FOURTH_ITERATION => (new Config())->setValue(1),
+            PlanIterator::FIFTH_ITERATION => (new Config())->setValue(1),
+            PlanIterator::SIXTH_ITERATION => (new Config())->setValue(1),
+            PlanIterator::SEVENTH_ITERATION => (new Config())->setValue(1),
         ]);
     }
 }

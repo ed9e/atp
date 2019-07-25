@@ -46,7 +46,5 @@ abstract class ExoPhaseAbstract
         return $this->mesoPhaseIterationConfig;
     }
 
-
     abstract public function getPercentOfWeeklyAvgHours(): float;
-
 }

@@ -9,6 +9,22 @@ class Config
     protected $value;
     protected $min;
     protected $max;
+    protected $minMax = [];
+
+    public function setMinMax($min, $max): Config
+    {
+        $this->minMax[] = $min;
+        $this->minMax[] = $max;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMinMax(): array
+    {
+        return $this->minMax;
+    }
 
     /**
      * @return mixed

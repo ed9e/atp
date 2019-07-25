@@ -10,6 +10,9 @@ class PlanIterator implements \Iterator
     public const SECOND_ITERATION = 1;
     public const THIRD_ITERATION = 2;
     public const FOURTH_ITERATION = 3;
+    public const FIFTH_ITERATION = 4;
+    public const SIXTH_ITERATION = 5;
+    public const SEVENTH_ITERATION = 6;
 
     protected $iterations = [];
     protected $position = 0;

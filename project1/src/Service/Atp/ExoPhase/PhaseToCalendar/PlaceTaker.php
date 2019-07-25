@@ -14,16 +14,16 @@ class PlaceTaker
     protected $iterationNo;
     protected $taken;
 
-    public function getTaken()
-    {
-        return $this->taken;
-    }
-
     public function __construct(Calendar $calendar, ExoPhaseAbstract $phase)
     {
         $this->calendar = $calendar;
         $this->phase = $phase;
 
+    }
+
+    public function getTaken()
+    {
+        return $this->taken;
     }
 
     public function takePlace($iterationNo)
@@ -35,7 +35,11 @@ class PlaceTaker
         }
         $this->calendar->sub($toTake);
         $this->taken += $toTake;
-        dump(get_class($this) . ' ' . $toTake);
+        if($toTake>0) {
+            dump(get_class($this->phase) . ' ' . $toTake);
+        }else{
+            dump("");
+        }
     }
 
     protected function iterationMicroPhasesCount(): int
@@ -49,6 +53,14 @@ class PlaceTaker
             return 0;
         }
         $config = $this->phase->getMesoPhaseIterationConfig()[$this->iterationNo];
-        return $config->getValue();
+        if ($config->getValue() !== null) {
+            return $config->getValue();
+        }
+        if($config->getMax() !== null)
+        {
+            return min([$this->calendar->getCountWeeks(), $config->getMax()]);
+
+        }
+
     }
 }

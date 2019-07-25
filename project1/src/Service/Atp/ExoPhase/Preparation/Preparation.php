@@ -26,7 +26,10 @@ class Preparation extends ExoPhaseAbstract
             PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
             PlanIterator::SECOND_ITERATION => (new Config())->setValue(0),
             PlanIterator::THIRD_ITERATION => (new Config())->setValue(0),
-            PlanIterator::FOURTH_ITERATION => (new Config())->setMin(0)->setMax(20)
+            PlanIterator::FOURTH_ITERATION => (new Config())->setValue(0),
+            PlanIterator::FIFTH_ITERATION => (new Config())->setValue(4),
+            PlanIterator::SIXTH_ITERATION => (new Config())->setMax(2),
+            PlanIterator::SEVENTH_ITERATION => (new Config())->setMax(18),
         ]);
     }
 }

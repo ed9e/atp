@@ -10,7 +10,6 @@ use App\Service\Atp\PlanIterator;
 
 class Peak extends ExoPhaseAbstract
 {
-    protected $mesoPhaseIterationConfig = [PlanIterator::FIRST_ITERATION => 1, PlanIterator::SECOND_ITERATION => 1];
 
     public function getPercentOfWeeklyAvgHours(): float
     {
@@ -21,8 +20,10 @@ class Peak extends ExoPhaseAbstract
     {
         $this->mesoPhase = new \App\Service\Atp\MesoPhase\Peak();
         $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
-            PlanIterator::FIRST_ITERATION => (new Config())->setValue(1),
-            PlanIterator::SECOND_ITERATION => (new Config())->setValue(1)
+            PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
+            PlanIterator::SECOND_ITERATION => (new Config())->setValue(0),
+            PlanIterator::THIRD_ITERATION => (new Config())->setValue(1),
+            PlanIterator::FOURTH_ITERATION => (new Config())->setValue(1),
         ]);
     }
 }

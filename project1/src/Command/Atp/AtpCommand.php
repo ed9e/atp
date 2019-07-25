@@ -46,7 +46,7 @@ class AtpCommand extends AbstractCommand
         $start = new \DateTime($options['from']);
         $end = new \DateTime($options['to']);
 
-        $interval = new \DateInterval('P1W');
+        $interval = new \DateInterval('P7D');
         $period = new \DatePeriod($start, $interval, $end);
 
         //dump(iterator_count($period));
@@ -59,7 +59,7 @@ class AtpCommand extends AbstractCommand
         /** Składowe jakie będą brały udział w tworzeniu planu */
         $phasesComponent = new Component($calendar);
         /** Liczba iteracji do stworzenia planu */
-        $planIterator = new PlanIterator(4);
+        $planIterator = new PlanIterator(7);
 
         foreach ($planIterator as $iterationNo => $iteration) {
 
