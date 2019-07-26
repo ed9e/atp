@@ -11,14 +11,13 @@ use App\Service\Atp\PlanIterator;
 
 class Base3 extends BaseAbstractExo
 {
-
     protected function setUp(): void
     {
-        $this->mesoPhase = new Base();
+        $this->mesoPhase = Base\Base3::class;
         $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
             PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
             PlanIterator::SECOND_ITERATION => (new Config())->setValue(1),
-            PlanIterator::THIRD_ITERATION => (new Config())->setValue(1),
+            PlanIterator::THIRD_ITERATION => (new Config())->setValue(0),
             PlanIterator::FOURTH_ITERATION => (new Config())->setValue(1),
             PlanIterator::FIFTH_ITERATION => (new Config())->setValue(1),
             PlanIterator::SIXTH_ITERATION => (new Config())->setValue(1),

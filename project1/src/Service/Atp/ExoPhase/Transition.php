@@ -18,7 +18,8 @@ class Transition extends ExoPhaseAbstract
 
     protected function setUp(): void
     {
-        $this->mesoPhase = new \App\Service\Atp\MesoPhase\Transition();
+        $this->mesoPhase = \App\Service\Atp\MesoPhase\Transition::class;
+
         $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
             PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
             PlanIterator::SECOND_ITERATION => (new Config())->setValue(1),

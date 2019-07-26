@@ -5,7 +5,6 @@ namespace App\Service\Atp\ExoPhase\Build;
 
 
 use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
-use App\Service\Atp\MesoPhase\Build;
 use App\Service\Atp\MesoPhase\Iteration\Config;
 use App\Service\Atp\MesoPhase\Iteration\ConfigArrayAccess;
 use App\Service\Atp\PlanIterator;
@@ -20,7 +19,7 @@ class Build2 extends ExoPhaseAbstract
 
     protected function setUp(): void
     {
-        $this->mesoPhase = new Build();
+        $this->mesoPhase = \App\Service\Atp\MesoPhase\Build\Build2::class;
         $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
             PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
             PlanIterator::SECOND_ITERATION => (new Config())->setValue(1),

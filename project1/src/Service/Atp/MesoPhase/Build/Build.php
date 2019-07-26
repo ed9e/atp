@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Service\Atp\MesoPhase;
+namespace App\Service\Atp\MesoPhase\Build;
 
 
+use App\Service\Atp\MesoPhase\MesoPhaseAbstract;
 use App\Service\Atp\MicroPhase\MicroPhase;
 
 class Build extends MesoPhaseAbstract

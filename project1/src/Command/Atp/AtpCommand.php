@@ -9,6 +9,7 @@ use App\Config\Service;
 use App\Service\Atp\Calendar;
 use App\Service\Atp\Component;
 use App\Service\Atp\ExoPhase\PhaseIterator;
+use App\Service\Atp\MesoPhase\MesoPhaseAbstract;
 use App\Service\Atp\PlanIterator;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -73,8 +74,20 @@ class AtpCommand extends AbstractCommand
                 }
             }
         }
+
+
         dump($calendar->getCountWeeks());
         $phasesComponent->showTaken();
+
+        $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
+        foreach ($phasesIterator as $phase) {
+            dump(get_class($phase));
+
+            foreach ($phase->getMesoPhases() as $mesoPhase) {
+                /** @var MesoPhaseAbstract $mesoPhase */
+                dump($mesoPhase->getMicroPhases());
+            }
+        }
     }
 
 }

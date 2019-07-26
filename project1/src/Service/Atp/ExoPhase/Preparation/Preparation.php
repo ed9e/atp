@@ -21,13 +21,13 @@ class Preparation extends ExoPhaseAbstract
 
     protected function setUp(): void
     {
-        $this->mesoPhase = new \App\Service\Atp\MesoPhase\Preparation();
+        $this->mesoPhase = \App\Service\Atp\MesoPhase\Preparation::class;
         $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
             PlanIterator::FIRST_ITERATION => (new Config())->setValue(0),
             PlanIterator::SECOND_ITERATION => (new Config())->setValue(0),
             PlanIterator::THIRD_ITERATION => (new Config())->setValue(0),
             PlanIterator::FOURTH_ITERATION => (new Config())->setValue(0),
-            PlanIterator::FIFTH_ITERATION => (new Config())->setValue(4),
+            PlanIterator::FIFTH_ITERATION => (new Config())->setMax(4),
             PlanIterator::SIXTH_ITERATION => (new Config())->setMax(2),
             PlanIterator::SEVENTH_ITERATION => (new Config())->setMax(18),
         ]);

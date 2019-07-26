@@ -16,29 +16,44 @@ abstract class ExoPhaseAbstract
     protected $cyclesCount;
     protected $cycleLength;
 
-    /** @var MesoPhaseAbstract $mesoPhase */
+    /** @var string class name of mesoPhase */
     protected $mesoPhase;
+    /** @var \App\Service\Atp\MesoPhase\PhaseIterator */
+    protected $mesoPhases;
+
     /** @var ConfigArrayAccess $mesoPhaseIterationConfig */
     protected $mesoPhaseIterationConfig;
     /** @var PlaceTaker $placeTaker */
     protected $placeTaker;
 
+    /** @var Calendar */
+    protected $calendar;
+
     public function __construct(Calendar $calendar)
     {
         $this->setUp();
+        $this->calendar = $calendar;
         $this->placeTaker = new PlaceTaker($calendar, $this);
+        $this->mesoPhases = new \App\Service\Atp\MesoPhase\PhaseIterator();
     }
 
     abstract protected function setUp(): void;
 
+    public function createMesoPhase(): MesoPhaseAbstract
+    {
+        $this->mesoPhases[] = new $this->mesoPhase();
+        $this->lastMesoPhase()->setCalendar($this->calendar);
+        return $this->lastMesoPhase();
+    }
+
+    public function lastMesoPhase(): MesoPhaseAbstract
+    {
+        return $this->mesoPhases->current();
+    }
+
     public function getPlaceTaker(): PlaceTaker
     {
         return $this->placeTaker;
-    }
-
-    public function getMesoPhase(): MesoPhaseAbstract
-    {
-        return $this->mesoPhase;
     }
 
     public function getMesoPhaseIterationConfig(): ConfigArrayAccess
@@ -47,4 +62,11 @@ abstract class ExoPhaseAbstract
     }
 
     abstract public function getPercentOfWeeklyAvgHours(): float;
+
+    public function getMesoPhases(): \App\Service\Atp\MesoPhase\PhaseIterator
+    {
+        return $this->mesoPhases;
+    }
+
+
 }

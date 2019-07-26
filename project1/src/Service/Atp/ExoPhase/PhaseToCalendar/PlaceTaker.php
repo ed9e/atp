@@ -10,6 +10,7 @@ use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
 class PlaceTaker
 {
     protected $calendar;
+    /** @var ExoPhaseAbstract */
     protected $phase;
     protected $iterationNo;
     protected $taken;
@@ -29,22 +30,28 @@ class PlaceTaker
     public function takePlace($iterationNo)
     {
         $this->iterationNo = $iterationNo;
+        $this->phase->createMesoPhase();
         $toTake = $this->iterationMicroPhasesCount();
-        if (!$this->calendar->valid($toTake)) {
-            throw new \Exception();
+        if ($toTake > 0) {
+            if (!$this->calendar->valid($toTake)) {
+                throw new \Exception();
+            }
+            $this->phase->lastMesoPhase()->setMicroPhases($toTake);
+        } else {
+            $this->phase->getMesoPhases()->pop();
         }
         $this->calendar->sub($toTake);
         $this->taken += $toTake;
-        if($toTake>0) {
-            dump(get_class($this->phase) . ' ' . $toTake);
-        }else{
-            dump("");
-        }
+//        if($toTake>0) {
+//            dump(get_class($this->phase) . ' ' . $toTake);
+//        }else{
+//            dump("");
+//        }
     }
 
     protected function iterationMicroPhasesCount(): int
     {
-        return $this->iterationMesoPhaseCount() * $this->phase->getMesoPhase()->iterationMicroPhasesCount();
+        return $this->iterationMesoPhaseCount() * $this->phase->lastMesoPhase()->iterationMicroPhasesCount();
     }
 
     protected function iterationMesoPhaseCount()
@@ -56,8 +63,7 @@ class PlaceTaker
         if ($config->getValue() !== null) {
             return $config->getValue();
         }
-        if($config->getMax() !== null)
-        {
+        if ($config->getMax() !== null) {
             return min([$this->calendar->getCountWeeks(), $config->getMax()]);
 
         }

@@ -23,7 +23,7 @@ class Race extends ExoPhaseAbstract
 
     protected function setUp(): void
     {
-        $this->mesoPhase = new \App\Service\Atp\MesoPhase\Race();
+        $this->mesoPhase = \App\Service\Atp\MesoPhase\Race::class;
         $this->mesoPhaseIterationConfig = new ConfigArrayAccess([
             PlanIterator::FIRST_ITERATION => (new Config())->setValue(1),
         ]);
