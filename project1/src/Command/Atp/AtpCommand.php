@@ -62,9 +62,10 @@ class AtpCommand extends AbstractCommand
         /** Liczba iteracji do stworzenia planu */
         $planIterator = new PlanIterator(7);
 
+        $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
+
         foreach ($planIterator as $iterationNo => $iteration) {
 
-            $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
             foreach ($phasesIterator as $phase) {
                 try {
                     /** Zabieranie wolnych mikrofaz */
@@ -79,7 +80,6 @@ class AtpCommand extends AbstractCommand
         dump($calendar->getCountWeeks());
         $phasesComponent->showTaken();
 
-        $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
         foreach ($phasesIterator as $phase) {
             dump(get_class($phase));
 

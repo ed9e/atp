@@ -16,6 +16,14 @@ class Calendar
         dump($this->countWeeks);
     }
 
+    public function setExoPhase($count, $exoPhaseName)
+    {
+        while ($count > 0) {
+            $count--;
+            next($this->weeks);
+        }
+    }
+
     /**
      * @return int
      */
