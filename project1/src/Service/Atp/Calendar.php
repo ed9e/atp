@@ -8,6 +8,16 @@ class Calendar
 {
     protected $weeks;
     protected $countWeeks;
+    protected $weekPointer = 0;
+    protected $calendar;
+
+    /**
+     * @return mixed
+     */
+    public function getCalendar()
+    {
+        return $this->calendar;
+    }
 
     public function __construct($weeks)
     {
@@ -16,11 +26,13 @@ class Calendar
         dump($this->countWeeks);
     }
 
-    public function setExoPhase($count, $exoPhaseName)
+    public function setExoPhase($count, $exoPhaseName): void
     {
         while ($count > 0) {
             $count--;
-            next($this->weeks);
+
+            $this->calendar[$this->weeks[$this->weekPointer]] = $exoPhaseName;
+            $this->weekPointer++;
         }
     }
 

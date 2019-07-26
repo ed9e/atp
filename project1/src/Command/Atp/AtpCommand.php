@@ -81,13 +81,16 @@ class AtpCommand extends AbstractCommand
         $phasesComponent->showTaken();
 
         foreach ($phasesIterator as $phase) {
-            dump(get_class($phase));
+
 
             foreach ($phase->getMesoPhases() as $mesoPhase) {
                 /** @var MesoPhaseAbstract $mesoPhase */
-                dump($mesoPhase->getMicroPhases());
+                foreach ($mesoPhase->getMicroPhases() as $val) {
+                    $calendar->setExoPhase($val, get_class($phase));
+                }
             }
         }
+        dump($calendar->getCalendar());
     }
 
 }
