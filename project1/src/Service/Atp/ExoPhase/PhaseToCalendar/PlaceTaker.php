@@ -27,10 +27,10 @@ class PlaceTaker
         return $this->taken;
     }
 
-    public function takePlace($iterationNo)
+    public function takePlace($iterationNo): void
     {
         $this->iterationNo = $iterationNo;
-        $this->phase->createMesoPhase();
+
         $toTake = $this->iterationMicroPhasesCount();
         if ($toTake > 0) {
             if (!$this->calendar->valid($toTake)) {
@@ -38,7 +38,7 @@ class PlaceTaker
             }
             $this->phase->lastMesoPhase()->setMicroPhases($toTake);
         } else {
-            $this->phase->getMesoPhases()->pop();
+            //$this->phase->getMesoPhases()->pop();
         }
         $this->calendar->sub($toTake);
         $this->taken += $toTake;
@@ -51,7 +51,15 @@ class PlaceTaker
 
     protected function iterationMicroPhasesCount(): int
     {
-        return $this->iterationMesoPhaseCount() * $this->phase->lastMesoPhase()->iterationMicroPhasesCount();
+        $mesoPhaseCount = $this->iterationMesoPhaseCount();
+        $microPhasesCount = 0;
+
+        for ($i = $mesoPhaseCount; $i > 0; $i--) {
+
+            $this->phase->createMesoPhase();
+            $microPhasesCount += $this->phase->lastMesoPhase()->iterationMicroPhasesCount();
+        }
+        return $microPhasesCount;
     }
 
     protected function iterationMesoPhaseCount()
