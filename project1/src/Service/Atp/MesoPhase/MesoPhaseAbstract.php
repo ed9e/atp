@@ -17,6 +17,26 @@ abstract class MesoPhaseAbstract
      */
     protected $microPhaseIterationConfig;
 
+    /**
+     * @return mixed
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param mixed $number
+     * @return MesoPhaseAbstract
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+        return $this;
+    }
+
+    protected $number;
+
     public function getMicroPhases(): array
     {
         return $this->microPhases;

@@ -28,6 +28,7 @@ abstract class ExoPhaseAbstract
 
     /** @var Calendar */
     protected $calendar;
+    protected $i = 0;
 
     public function __construct(Calendar $calendar)
     {
@@ -42,13 +43,14 @@ abstract class ExoPhaseAbstract
     public function createMesoPhase(): MesoPhaseAbstract
     {
         $this->mesoPhases[] = new $this->mesoPhase();
-        $this->lastMesoPhase()->setCalendar($this->calendar);
+        $this->i++;
+        $this->lastMesoPhase()->setCalendar($this->calendar)->setNumber($this->i);
         return $this->lastMesoPhase();
     }
 
     public function lastMesoPhase(): MesoPhaseAbstract
     {
-        return $this->mesoPhases->current();
+        return $this->mesoPhases->end();
     }
 
     public function getPlaceTaker(): PlaceTaker

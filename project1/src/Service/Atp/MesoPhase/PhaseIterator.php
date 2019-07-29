@@ -14,6 +14,7 @@ class PhaseIterator implements Iterator, ArrayAccess, Countable
     protected $phases = [];
     /** @var int $position */
     protected $position;
+    protected $i = 0;
 
     public function __construct()
     {
@@ -57,6 +58,8 @@ class PhaseIterator implements Iterator, ArrayAccess, Countable
 
     public function offsetSet($offset, $value): void
     {
+        $this->i++;
+
         if ($offset === null) {
             $this->phases[] = $value;
         } else {
@@ -77,5 +80,10 @@ class PhaseIterator implements Iterator, ArrayAccess, Countable
     public function pop()
     {
         array_pop($this->phases);
+    }
+
+    public function end()
+    {
+        return end($this->phases);
     }
 }

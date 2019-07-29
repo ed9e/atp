@@ -77,20 +77,24 @@ class AtpCommand extends AbstractCommand
         }
 
 
-        dump($calendar->getCountWeeks());
-        $phasesComponent->showTaken();
+        // dump($calendar->getCountWeeks());
+        //$phasesComponent->showTaken();
 
         foreach ($phasesIterator as $phase) {
 
-
+            dump(get_class($phase));
+            dump($phase->getMesoPhases()->count());
             foreach ($phase->getMesoPhases() as $mesoPhase) {
+
                 /** @var MesoPhaseAbstract $mesoPhase */
                 foreach ($mesoPhase->getMicroPhases() as $val) {
-                    $calendar->setExoPhase($val, get_class($phase));
+                    // dump($val);
+                    $calendar->setExoPhase($val, get_class($mesoPhase) . ' ' . $mesoPhase->getNumber());
                 }
             }
         }
         dump($calendar->getCalendar());
+
     }
 
 }
