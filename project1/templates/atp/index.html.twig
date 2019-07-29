@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script src="http://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+
+    <script src="{{ asset('js/graphTest.js') }}"></script>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/css/graph.css">
+{% endblock %}
+
+{% block body %}
+    <div class="tunecontainer" style="padding-top: 2px;">
+        <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
+            <span></span>
+        </div>
+        <canvas id="chartJSContainer" style="background-color : #eee;" width="1200" height="300"></canvas>
+        <div style="border:1px solid black; width:100%;">
+            <span id="yPos" style="margin:4px;">?</span>
+        </div>
+    </div>
+    <button id="applyChanges">Apply Changes</button>
+    <button id="cancelChanges">Cancel Edits</button>
+    <button id="undoChanges">Undo Applied Changes</button>
+{% endblock %}
+

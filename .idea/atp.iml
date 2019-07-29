@@ -43,7 +43,9 @@
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/sensio/framework-extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/stof/doctrine-extensions-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/browser-kit" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/cache" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/cache-contracts" />
@@ -77,10 +79,15 @@
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/routing" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/stopwatch" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/twig-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/twig-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/var-exporter" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/web-server-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/twig/extensions" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/zendframework/zend-code" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/zendframework/zend-eventmanager" />
     </content>

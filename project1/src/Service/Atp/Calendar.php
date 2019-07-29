@@ -23,7 +23,6 @@ class Calendar
     {
         $this->weeks = $weeks;
         $this->countWeeks = count($weeks);
-        dump($this->countWeeks);
     }
 
     public function setExoPhase($count, $exoPhaseName): void
