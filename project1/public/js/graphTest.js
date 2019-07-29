@@ -1,7 +1,7 @@
-var defaultY = Array.from({length: 100}, (v, k) => 50 * Math.random());
-var animationCallback = undefined;
-var options = {
-    type: 'bar',
+let defaultY = Array.from({length: 100}, (v, k) => 50 * Math.random());
+let animationCallback = undefined;
+let options = {
+    type: 'line',
     data: {
         labels: Array.from({length: 100}, (v, k) => k),
         datasets: [{
@@ -9,7 +9,7 @@ var options = {
             backgroundColor: "rgba(196, 93, 105, 0.3)",
             fill: true,
             data: defaultY.slice(),
-            pointHitRadius: 30,
+            pointHitRadius: 10,
             pointHoverRadius: 6,
             borderWidth: 1,
             borderDash: [2, 2],
@@ -20,7 +20,8 @@ var options = {
             fill: true,
             data: defaultY.slice(),
             borderWidth: 1,
-            xAxisID: "bar-x-axis1"
+            xAxisID: "bar-x-axis1",
+
         }]
     },
     options: {
@@ -36,7 +37,6 @@ var options = {
                 }
             }
         },
-
         scales: {
             xAxes: [{
                 id: "bar-x-axis1",
@@ -45,12 +45,18 @@ var options = {
                 scaleLabel: {
                     display: true,
                     labelString: 'RPM',
+                },
+                gridLines: {
+                    color: "rgba(.01, .01, .01, 0.1)",
                 }
             }],
             yAxes: [{
                 scaleLabel: {
                     display: true,
                     labelString: 'Power %'
+                },
+                gridLines: {
+                    color: "rgba(.10, .10, .10, .05)",
                 },
                 ticks: {
                     reverse: false,
@@ -62,9 +68,9 @@ var options = {
     }
 };
 
-var chartTune = document.getElementById('chartJSContainer')
-var ctx = chartTune.getContext('2d');
-var chartInstance = new Chart(ctx, options);
+let chartTune = document.getElementById('chartJSContainer')
+let ctx = chartTune.getContext('2d');
+let chartInstance = new Chart(ctx, options);
 
 d3.select(chartInstance.chart.canvas).call(
     d3.drag().container(chartInstance.chart.canvas)
@@ -73,7 +79,7 @@ d3.select(chartInstance.chart.canvas).call(
         .on('end', callback)
 );
 
-var par = {
+let par = {
     chart: undefined,
     element: undefined,
     scale: undefined,
@@ -88,7 +94,7 @@ var par = {
 
 //Get an class of {points: [{x, y},], type: event.type} clicked or touched
 function getEventPoints(event) {
-    var retval = {
+    let retval = {
         point: [],
         type: event.type
     };
@@ -96,8 +102,8 @@ function getEventPoints(event) {
     if (event.type.startsWith("touch")) {
         //Return x,y of one or more touches
         //Note 'changedTouches' has missing iterators and can not be iterated with forEach
-        for (var i = 0; i < event.changedTouches.length; i++) {
-            var touch = event.changedTouches.item(i);
+        for (let i = 0; i < event.changedTouches.length; i++) {
+            let touch = event.changedTouches.item(i);
             retval.point.push({
                 x: touch.clientX,
                 y: touch.clientY
@@ -114,7 +120,7 @@ function getEventPoints(event) {
 }
 
 function getElement() {
-    var e = d3.event.sourceEvent;
+    let e = d3.event.sourceEvent;
 
     //would be nice if the reference to chartinstance was found in e
     //How?
@@ -140,7 +146,7 @@ function getElement() {
 
 
 function updateData() {
-    var e = d3.event.sourceEvent;
+    let e = d3.event.sourceEvent;
 
     if (par.datasetIndex == 1) {
         return;
@@ -155,7 +161,7 @@ function updateData() {
 }
 
 
-var chartXyDisplay = document.getElementById("yPos");
+let chartXyDisplay = document.getElementById("yPos");
 
 //Show y data after point drag
 function callback() {
@@ -163,7 +169,7 @@ function callback() {
 }
 
 //Apply changes to old dataset
-var history = [];
+let history = [];
 document.getElementById('applyChanges').addEventListener('click', function () {
     history.push(options.data.datasets[1].data.slice());
     options.data.datasets[1].data = options.data.datasets[0].data.slice();
