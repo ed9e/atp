@@ -6,11 +6,7 @@ use App\Command\AbstractCommand;
 use App\Command\Traits\ActionMap;
 use App\Command\Traits\ActionMapElement;
 use App\Config\Service;
-use App\Service\Atp\Calendar;
-use App\Service\Atp\Component;
-use App\Service\Atp\ExoPhase\PhaseIterator;
-use App\Service\Atp\MesoPhase\MesoPhaseAbstract;
-use App\Service\Atp\PlanIterator;
+use App\Service\Atp\Plan;
 use Symfony\Component\Console\Input\InputOption;
 
 class AtpCommand extends AbstractCommand
@@ -44,55 +40,8 @@ class AtpCommand extends AbstractCommand
 
     protected function createAtp($args, $options)
     {
-        $start = new \DateTime($options['from']);
-        $end = new \DateTime($options['to']);
-
-        $interval = new \DateInterval('P7D');
-        $period = new \DatePeriod($start, $interval, $end);
-
-        //dump(iterator_count($period));
-        $dateArray = [];
-        foreach ($period as $date) {
-            $dateArray[] = $date->format('Y-m-d');
-        }
-        $reversedDates = array_reverse($dateArray);
-        $calendar = new Calendar($reversedDates);
-        /** Składowe jakie będą brały udział w tworzeniu planu */
-        $phasesComponent = new Component($calendar);
-        /** Liczba iteracji do stworzenia planu */
-        $planIterator = new PlanIterator(7);
-
-        $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
-
-        foreach ($planIterator as $iterationNo => $iteration) {
-
-            foreach ($phasesIterator as $phase) {
-                try {
-                    /** Zabieranie wolnych mikrofaz */
-                    $phase->getPlaceTaker()->takePlace($iterationNo);
-                } catch (\Exception $e) {
-
-                }
-            }
-        }
-
-
-        // dump($calendar->getCountWeeks());
-        //$phasesComponent->showTaken();
-
-        foreach ($phasesIterator as $phase) {
-
-            dump(get_class($phase));
-            dump($phase->getMesoPhases()->count());
-            foreach ($phase->getMesoPhases() as $mesoPhase) {
-
-                /** @var MesoPhaseAbstract $mesoPhase */
-                foreach ($mesoPhase->getMicroPhases() as $val) {
-                    // dump($val);
-                    $calendar->setExoPhase($val, get_class($mesoPhase) . ' ' . $mesoPhase->getNumber());
-                }
-            }
-        }
+        $plan = new Plan();
+        $calendar = $plan->create($options);
         dump($calendar->getCalendar());
 
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\Atp\Plan;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,11 +20,17 @@ class AtpController extends AbstractController
      */
     public function index()
     {
-        $posts = 'ASDF';
+        $plan = new Plan();
+
+        $calendar = $plan->create([
+            'from' => '2020-08-09',
+            'to' => '2021-07-04',
+        ]);
+
 
         return $this->render(
             'atp/index.html.twig',
-            ['articles' => $posts]
+            ['calendar' => $calendar]
         );
     }
 }

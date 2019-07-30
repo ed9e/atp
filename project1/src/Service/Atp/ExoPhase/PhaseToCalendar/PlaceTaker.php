@@ -6,6 +6,7 @@ namespace App\Service\Atp\ExoPhase\PhaseToCalendar;
 
 use App\Service\Atp\Calendar;
 use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
+use Exception;
 
 class PlaceTaker
 {
@@ -34,19 +35,14 @@ class PlaceTaker
         $toTake = $this->iterationMicroPhasesCount();
         if ($toTake > 0) {
             if (!$this->calendar->valid($toTake)) {
-                throw new \Exception();
+                throw new Exception();
             }
-            $this->phase->lastMesoPhase()->setMicroPhases($toTake);
+            $this->phase->lastMesoPhase()->setUpMicroPhases($toTake);
         } else {
             //$this->phase->getMesoPhases()->pop();
         }
         $this->calendar->sub($toTake);
         $this->taken += $toTake;
-//        if($toTake>0) {
-//            dump(get_class($this->phase) . ' ' . $toTake);
-//        }else{
-//            dump("");
-//        }
     }
 
     protected function iterationMicroPhasesCount(): int
@@ -75,6 +71,7 @@ class PlaceTaker
             return min([$this->calendar->getCountWeeks(), $config->getMax()]);
 
         }
-
+        //TODO: rozbudować
+        return 0;
     }
 }

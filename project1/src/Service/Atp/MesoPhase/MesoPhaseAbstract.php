@@ -10,43 +10,44 @@ abstract class MesoPhaseAbstract
 {
     /** @var Calendar */
     protected $calendar;
-    protected $microPhases = [];
+    /** @var \App\Service\Atp\MicroPhase\PhaseIterator */
+    protected $microPhases;
     /**
      * Ilość mikrocykli w tym cyklu
      * @var array $microPhaseIterationConfig
      */
     protected $microPhaseIterationConfig;
+    protected $number;
 
-    /**
-     * @return mixed
-     */
+    public function __construct()
+    {
+        $this->microPhases = new \App\Service\Atp\MicroPhase\PhaseIterator();
+    }
+
     public function getNumber()
     {
         return $this->number;
     }
 
-    /**
-     * @param mixed $number
-     * @return MesoPhaseAbstract
-     */
-    public function setNumber($number)
+    public function setNumber($number): MesoPhaseAbstract
     {
         $this->number = $number;
         return $this;
     }
 
-    protected $number;
-
-    public function getMicroPhases(): array
+    public function getMicroPhases(): \App\Service\Atp\MicroPhase\PhaseIterator
     {
         return $this->microPhases;
     }
 
-    public function setMicroPhases($week): MesoPhaseAbstract
+    public function setUpMicroPhases($microPhasesCount): MesoPhaseAbstract
     {
-        $this->microPhases[] = $week;
+        $this->microPhases->push($this->calculateMicroPhases($microPhasesCount));
+
         return $this;
     }
+
+    abstract protected function calculateMicroPhases(int $microPhasesCount, $number = 0): array;
 
     public function setCalendar(Calendar $calendar): MesoPhaseAbstract
     {

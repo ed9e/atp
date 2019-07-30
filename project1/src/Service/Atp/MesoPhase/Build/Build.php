@@ -12,10 +12,17 @@ class Build extends MesoPhaseAbstract
     /** Tu jest opcja 3 lub 4 */
     protected $microPhaseIterationConfig = [4, 3];
 
-    protected function calculateMicroPhases()
+    protected function calculateMicroPhases(int $count, $number = 0): array
     {
+        if ($count == 4) {
+            return [
+                (new MicroPhase())->setTimeValue(315),
+                (new MicroPhase())->setTimeValue(315),
+                (new MicroPhase())->setTimeValue(315),
+                (new MicroPhase())->setTimeValue(155),
+            ];
+        }
         return [
-            (new MicroPhase())->setTimeValue(315),
             (new MicroPhase())->setTimeValue(315),
             (new MicroPhase())->setTimeValue(315),
             (new MicroPhase())->setTimeValue(155),

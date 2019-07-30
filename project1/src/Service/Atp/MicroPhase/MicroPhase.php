@@ -12,6 +12,14 @@ class MicroPhase
     protected $timeValue;
 
     /**
+     * @return mixed
+     */
+    public function getTimeValue()
+    {
+        return $this->timeValue;
+    }
+
+    /**
      * @param mixed $timeValue
      * @return MicroPhase
      */

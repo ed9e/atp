@@ -11,7 +11,7 @@ class Preparation extends MesoPhaseAbstract
     protected  $description = 'Dla tego mezocyklu dlugosc cyklu wynosi 1 mikrocykl';
     protected $microPhaseIterationConfig = [1];
 
-    protected function calculateMicroPhases()
+    protected function calculateMicroPhases(int $count, $number = 0): array
     {
         return [
             (new MicroPhase())->setTimeValue(155),
