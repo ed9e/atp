@@ -1,9 +1,13 @@
-let defaultY = Array.from({length: 100}, (v, k) => 50 * Math.random());
+Array.prototype.ftp = function (callback/*, thisArg*/) {
+    console.log(this[1])
+};
+//let defaultY = Array.from({length: 100}, (v, k) => 50 * Math.random());
+let yAxes = {max: 600};
 let animationCallback = undefined;
 let options = {
-    type: 'line',
+    type: 'bar',
     data: {
-        labels: Array.from({length: 100}, (v, k) => k),
+        labels: keys,
         datasets: [{
             label: 'New Tuning ',
             backgroundColor: "rgba(196, 93, 105, 0.3)",
@@ -13,20 +17,45 @@ let options = {
             pointHoverRadius: 6,
             borderWidth: 1,
             borderDash: [2, 2],
-            xAxisID: "bar-x-axis1"
+            xAxisID: "x-axis1",
         }, {
             label: 'Old Tuning',
             backgroundColor: "rgba(32, 162, 219, 0.05)",
             fill: true,
             data: defaultY.slice(),
             borderWidth: 1,
-            xAxisID: "bar-x-axis1",
+            xAxisID: "x-axis1",
 
-        }]
+        }, {
+            label: 'New Tuning ',
+            type: 'line',
+            backgroundColor: "rgba(196, 93, 105, 0.3)",
+            fill: true,
+            data: defaultY.slice().ftp(),
+
+            borderWidth: 1,
+            borderDash: [2, 2],
+            xAxisID: "x-axis1",
+        }
+        ]
     },
     options: {
+        responsive: true,
+        layout: {
+            padding: {
+                left: 10,
+                right: 0,
+                top: 0,
+                bottom: 0
+            }
+        },
+        legend: {
+            display: false,
+        },
         tooltips: {
-            enabled: false
+            mode: 'nearest',
+            intersect: true,
+            enabled: true
         },
         animation: {
             duration: 1000,
@@ -37,38 +66,42 @@ let options = {
                 }
             }
         },
+        scaleStartValue: 10,
         scales: {
             xAxes: [{
-                id: "bar-x-axis1",
                 stacked: true,
-                display: true,
+                id: "x-axis1",
+                display: false,
                 scaleLabel: {
-                    display: true,
+                    display: false,
                     labelString: 'RPM',
                 },
                 gridLines: {
                     color: "rgba(.01, .01, .01, 0.1)",
-                }
+                },
+
             }],
             yAxes: [{
                 scaleLabel: {
-                    display: true,
+                    display: false,
                     labelString: 'Power %'
                 },
                 gridLines: {
+                    display: false,
                     color: "rgba(.10, .10, .10, .05)",
                 },
                 ticks: {
                     reverse: false,
                     min: 0,
-                    max: 100
+                    max: yAxes.max,
+                    beginAtZero: true
                 }
             }]
         }
     }
 };
 
-let chartTune = document.getElementById('chartJSContainer')
+let chartTune = document.getElementById('chartJSContainer');
 let ctx = chartTune.getContext('2d');
 let chartInstance = new Chart(ctx, options);
 
@@ -155,8 +188,12 @@ function updateData() {
 
     par.value = Math.floor(par.scale.getValueForPixel(
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
-    par.value = Math.max(0, Math.min(100, par.value));
+    par.value = Math.max(0, Math.min(yAxes.max - 100, par.value));
+
     par.chart.config.data.datasets[par.datasetIndex].data[par.index] = par.value;
+    par.chart.config.data.datasets[2].data[par.index] = par.value;
+    par.chart.config.data.datasets[2].data.ftp();
+
     chartInstance.update(0);
 }
 

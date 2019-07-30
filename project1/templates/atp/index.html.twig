@@ -2,7 +2,12 @@
 {% block javascripts %}
     <script src="http://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    <script type="application/javascript">
 
+        let keys = {{ keys|json_encode|raw }};
+        let defaultY = {{ timeVal|json_encode|raw }};
+
+    </script>
     <script src="{{ asset('js/graphTest.js') }}"></script>
 
 {% endblock %}
@@ -16,7 +21,7 @@
         <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
             <span></span>
         </div>
-        <canvas id="chartJSContainer" style="background-color : #eee;" width="1200" height="300"></canvas>
+        <canvas id="chartJSContainer" style="background-color : #eee;" width="1200" height="200"></canvas>
         <div style="border:1px solid black; width:100%;">
             <span id="yPos" style="margin:4px;">?</span>
         </div>

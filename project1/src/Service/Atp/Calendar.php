@@ -25,10 +25,11 @@ class Calendar
      */
     public function getCalendar()
     {
+        $ret = [];
         foreach ($this->calendar as $week => $phases) {
-            $ret[$week] = get_class($phases['mesophase']) . ': ' . $phases['microphase']->getTimeValue();
+            $ret[$week] = $phases['microphase']->getTimeValue();
         }
-        return $ret;
+        return array_reverse($ret);
     }
 
     public function fill(PhaseIterator $phaseIterator)

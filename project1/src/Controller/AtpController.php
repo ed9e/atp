@@ -25,12 +25,15 @@ class AtpController extends AbstractController
         $calendar = $plan->create([
             'from' => '2020-08-09',
             'to' => '2021-07-04',
-        ]);
+        ])->getCalendar();
 
 
         return $this->render(
             'atp/index.html.twig',
-            ['calendar' => $calendar]
+            [
+                'keys' => array_keys($calendar),
+                'timeVal' => array_values($calendar),
+            ]
         );
     }
 }
