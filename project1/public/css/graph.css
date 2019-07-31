@@ -1,4 +1,7 @@
-
+body {
+    background-color: #74c98f;
+}
 canvas {
-    background-color: #eee;
+    background-color: #74c98f;
+    padding-bottom: 40px;
 }

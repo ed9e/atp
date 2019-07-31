@@ -1,21 +1,46 @@
+let general = {
+    chart1: {
+        //bg: "rgba(42, 187, 155, 1)"
+        bg: "#c6ffdf"
+    },
+    chart2: {
+        bg: "#85e5a3"
+    },
+    chart3: {
+        bg: '#aaffcc',
+    },
+
+};
 Array.prototype.ftp = function (data1) {
 
-    let A, k;
+    let A, k, sum, l, dzielnik;
     let O = Object(this);
     let len = O.length >>> 0;
     A = new Array(len);
     k = 0;
+
+    sum = 0;
     while (k < len) {
         let kValue, mappedValue;
         if (k in O) {
             kValue = O[k];
             pData = data1[k];
             pValue = 1;
+            sum += pData;
             if (k > 0) {
                 pValue = O[k - 1];
                 pData = data1[k - 1]
             }
-            mappedValue = pData / 1.5 + pValue / 1.5;
+            mappedValue = data1[k];
+            l = 1;
+            while (l <= k) {
+                dzielnik = (1.9 * l);
+                if (k == 0) {
+                    dzielnik = 2;
+                }
+                mappedValue += data1[k - l] / dzielnik;
+                l++;
+            }
 
             A[k] = mappedValue;
         }
@@ -26,7 +51,7 @@ Array.prototype.ftp = function (data1) {
 
 };
 //let defaultY = Array.from({length: 100}, (v, k) => 50 * Math.random());
-let yAxes = {max: 1000};
+let yAxes = {max: 1300};
 let animationCallback = undefined;
 let options = {
     type: 'bar',
@@ -34,7 +59,7 @@ let options = {
         labels: keys,
         datasets: [{
             label: 'New Tuning ',
-            backgroundColor: "rgba(110, 100, 100, 0.1)",
+            backgroundColor: general.chart1.bg,
             fill: true,
             data: defaultY.slice(),
             pointHitRadius: 10,
@@ -44,26 +69,32 @@ let options = {
             xAxisID: "x-axis1",
         }, {
             label: 'Old Tuning',
-            backgroundColor: "rgba(32, 162, 219, 0.05)",
+            backgroundColor: general.chart2.bg,
             fill: true,
             data: defaultY.slice(),
             borderWidth: 0,
             xAxisID: "x-axis1",
 
         }, {
-            label: 'New Tuning ',
+            bezierCurve: false,
+            label: 'FTP',
             type: 'line',
-            backgroundColor: "rgba(196, 93, 105, 0.3)",
+            backgroundColor: general.chart3.bg,
             fill: false,
             data: defaultY.slice().ftp(defaultY.slice()),
-
-            borderWidth: 1,
+            borderColor: general.chart3.bg,
+            borderWidth: 2,
             borderDash: [2, 2],
             xAxisID: "x-axis1",
         }
         ]
     },
     options: {
+        elements: {
+            point: {radius: 1}, line: {
+                tension: 0.1
+            }
+        },
         responsive: true,
         layout: {
             padding: {
@@ -98,17 +129,31 @@ let options = {
                 display: false,
                 scaleLabel: {
                     display: false,
-                    labelString: 'RPM',
+                    labelString: 'TIME',
                 },
                 gridLines: {
-                    color: "rgba(.01, .01, .01, 0.1)",
+                    color: "rgba(255, 255, 255, 1)",
                 },
 
-            }],
+            },
+                {
+                    stacked: true,
+                    id: "x-axis2",
+                    display: false,
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'TIME',
+                    },
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 1)",
+                    },
+
+                }],
             yAxes: [{
+                display: false,
                 scaleLabel: {
                     display: false,
-                    labelString: 'Power %'
+                    labelString: 'VALUE'
                 },
                 gridLines: {
                     display: false,
@@ -185,6 +230,7 @@ function getElement() {
     par.scale = undefined;
 
     par.element = chartInstance.getElementAtEvent(e)[0];
+
     par.chart = par.element['_chart'];
     par.scale = par.element['_yScale'];
 
@@ -205,7 +251,7 @@ function getElement() {
 function updateData() {
     let e = d3.event.sourceEvent;
 
-    if (par.datasetIndex == 1) {
+    if (par.datasetIndex != 0) {
         return;
     }
 
@@ -240,6 +286,7 @@ document.getElementById('applyChanges').addEventListener('click', function () {
 //Cancel changes - rrevert to old dataset
 document.getElementById('cancelChanges').addEventListener('click', function () {
     options.data.datasets[0].data = options.data.datasets[1].data.slice();
+    options.data.datasets[2].data = options.data.datasets[2].data.slice().ftp(options.data.datasets[1].data.slice());
     chartInstance.update();
 });
 
@@ -249,6 +296,8 @@ document.getElementById('undoChanges').addEventListener('click', function () {
     if (data) {
         options.data.datasets[0].data = data.slice();
         options.data.datasets[1].data = data.slice();
+        options.data.datasets[2].data = options.data.datasets[2].data.ftp(data.slice());
+
         chartInstance.update();
     }
 });
