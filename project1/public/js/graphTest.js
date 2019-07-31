@@ -1,8 +1,32 @@
-Array.prototype.ftp = function (callback/*, thisArg*/) {
-    console.log(this[1])
+Array.prototype.ftp = function (data1) {
+
+    let A, k;
+    let O = Object(this);
+    let len = O.length >>> 0;
+    A = new Array(len);
+    k = 0;
+    while (k < len) {
+        let kValue, mappedValue;
+        if (k in O) {
+            kValue = O[k];
+            pData = data1[k];
+            pValue = 1;
+            if (k > 0) {
+                pValue = O[k - 1];
+                pData = data1[k - 1]
+            }
+            mappedValue = pData / 1.5 + pValue / 1.5;
+
+            A[k] = mappedValue;
+        }
+        k++;
+    }
+
+    return A;
+
 };
 //let defaultY = Array.from({length: 100}, (v, k) => 50 * Math.random());
-let yAxes = {max: 600};
+let yAxes = {max: 1000};
 let animationCallback = undefined;
 let options = {
     type: 'bar',
@@ -10,28 +34,28 @@ let options = {
         labels: keys,
         datasets: [{
             label: 'New Tuning ',
-            backgroundColor: "rgba(196, 93, 105, 0.3)",
+            backgroundColor: "rgba(110, 100, 100, 0.1)",
             fill: true,
             data: defaultY.slice(),
             pointHitRadius: 10,
             pointHoverRadius: 6,
-            borderWidth: 1,
-            borderDash: [2, 2],
+            borderWidth: 0,
+            borderDash: [0, 0],
             xAxisID: "x-axis1",
         }, {
             label: 'Old Tuning',
             backgroundColor: "rgba(32, 162, 219, 0.05)",
             fill: true,
             data: defaultY.slice(),
-            borderWidth: 1,
+            borderWidth: 0,
             xAxisID: "x-axis1",
 
         }, {
             label: 'New Tuning ',
             type: 'line',
             backgroundColor: "rgba(196, 93, 105, 0.3)",
-            fill: true,
-            data: defaultY.slice().ftp(),
+            fill: false,
+            data: defaultY.slice().ftp(defaultY.slice()),
 
             borderWidth: 1,
             borderDash: [2, 2],
@@ -191,8 +215,8 @@ function updateData() {
     par.value = Math.max(0, Math.min(yAxes.max - 100, par.value));
 
     par.chart.config.data.datasets[par.datasetIndex].data[par.index] = par.value;
-    par.chart.config.data.datasets[2].data[par.index] = par.value;
-    par.chart.config.data.datasets[2].data.ftp();
+    //par.chart.config.data.datasets[2].data[par.index] =  par.value;
+    par.chart.config.data.datasets[2].data = par.chart.config.data.datasets[2].data.ftp(par.chart.config.data.datasets[par.datasetIndex].data);
 
     chartInstance.update(0);
 }
