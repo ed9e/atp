@@ -20,19 +20,26 @@ class AtpController extends AbstractController
      */
     public function index()
     {
-        $plan = new Plan();
+        $plan = new Plan([
+            'from' => '2020-08-09',
+            'to' => '2021-07-04',
+        ]);
 
         $calendar = $plan->create([
             'from' => '2020-08-09',
             'to' => '2021-07-04',
         ])->getCalendar();
 
+        $keys = array_merge(array_keys($calendar), $plan->createIntervalArrayBy($plan->getEnd(), 'P10W'));
+        $values = array_values($calendar);
+        $diff = array_diff($keys, $values);
+        $values = array_merge($values, array_fill_keys(array_keys($diff), 15));
 
         return $this->render(
             'atp/index.html.twig',
             [
-                'keys' => array_keys($calendar),
-                'timeVal' => array_values($calendar),
+                'keys' => $keys,
+                'timeVal' => $values,
             ]
         );
     }

@@ -1,16 +1,3 @@
-let general = {
-    chart1: {
-        //bg: "rgba(42, 187, 155, 1)"
-        bg: "#c6ffdf"
-    },
-    chart2: {
-        bg: "#85e5a3"
-    },
-    chart3: {
-        bg: '#aaffcc',
-    },
-
-};
 Array.prototype.ftp = function (data1) {
 
     let A, k, sum, l, dzielnik;
@@ -42,7 +29,7 @@ Array.prototype.ftp = function (data1) {
                 l++;
             }
 
-            A[k] = mappedValue;
+            A[k] = Math.floor(mappedValue);
         }
         k++;
     }
@@ -50,8 +37,53 @@ Array.prototype.ftp = function (data1) {
     return A;
 
 };
-//let defaultY = Array.from({length: 100}, (v, k) => 50 * Math.random());
-let yAxes = {max: 1300};
+let chartTune = document.getElementById('chartJSContainer');
+let ctx = chartTune.getContext('2d');
+
+let barGradient = ctx.createLinearGradient(0, 0, 0, 600);
+let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 600);
+let FTPgradient = ctx.createLinearGradient(0, 0, 0, 600);
+let gridGradient = ctx.createLinearGradient(0, 0, 0, 600);
+barGradient.addColorStop(0, '#ff4e00ff');
+barGradient.addColorStop(0.3, '#ff4e0044');
+barGradient.addColorStop(1, '#ff4e0000');
+
+bar2Gradient.addColorStop(0, '#eb2966ff');
+bar2Gradient.addColorStop(0.5, '#f5b51244');
+bar2Gradient.addColorStop(1, '#eb296600');
+
+FTPgradient.addColorStop(0, '#ff6900ff');
+FTPgradient.addColorStop(0.5, '#ff4e0044');
+FTPgradient.addColorStop(1, '#30323d00');
+
+gridGradient.addColorStop(0, '#42444eff');
+gridGradient.addColorStop(0.3, '#42444e55');
+gridGradient.addColorStop(0.7, '#ff4e00aa');
+
+let general = {
+    ftp: {
+        //bg: "rgba(42, 187, 155, 1)"
+        bg: FTPgradient,
+        borderColor: FTPgradient
+    },
+    newVal: {
+        bg: barGradient,
+        borderColor: '#ff4e00aa'
+    },
+    oldVal: {
+        bg: bar2Gradient,
+        borderColor: '#ff4e0000'
+    },
+    tooltip: {
+        bg: '#5a5b60',
+        bodyColor: '#ababb0',
+        titleColor: '#ababb0',
+        borderColor: '#5a5b60',
+    }
+};
+
+
+let yAxes = {max: 1500};
 let animationCallback = undefined;
 let options = {
     type: 'bar',
@@ -59,40 +91,47 @@ let options = {
         labels: keys,
         datasets: [{
             label: 'New Tuning ',
-            backgroundColor: general.chart1.bg,
+            backgroundColor: general.newVal.bg,
             fill: true,
             data: defaultY.slice(),
             pointHitRadius: 10,
-            pointHoverRadius: 6,
-            borderWidth: 0,
-            borderDash: [0, 0],
-            xAxisID: "x-axis1",
-        }, {
-            label: 'Old Tuning',
-            backgroundColor: general.chart2.bg,
-            fill: true,
-            data: defaultY.slice(),
-            borderWidth: 0,
-            xAxisID: "x-axis1",
-
-        }, {
-            bezierCurve: false,
-            label: 'FTP',
-            type: 'line',
-            backgroundColor: general.chart3.bg,
-            fill: false,
-            data: defaultY.slice().ftp(defaultY.slice()),
-            borderColor: general.chart3.bg,
-            borderWidth: 2,
+            pointHoverRadius: 3,
+            borderWidth: 1,
             borderDash: [2, 2],
             xAxisID: "x-axis1",
+            borderColor: general.newVal.borderColor,
+        }, {
+            label: 'Old Tuning',
+            backgroundColor: general.oldVal.bg,
+            fill: true,
+            data: defaultY.slice(),
+
+            borderWidth: 1,
+            borderDash: [2, 2],
+            borderColor: general.oldVal.borderColor,
+            xAxisID: "x-axis1",
+            pointHitRadius: 10,
+            pointHoverRadius: 3,
+        }, {
+
+            label: 'FTP',
+            type: 'line',
+            backgroundColor: general.ftp.bg,
+            fill: true,
+            data: defaultY.slice().ftp(defaultY.slice()),
+            borderColor: general.ftp.borderColor,
+            borderWidth: 2,
+            borderDash: [1, 2],
+            xAxisID: "x-axis1",
+            pointHitRadius: 10,
+            pointHoverRadius: 2,
         }
         ]
     },
     options: {
         elements: {
             point: {radius: 1}, line: {
-                tension: 0.1
+                tension: 0.2
             }
         },
         responsive: true,
@@ -108,9 +147,18 @@ let options = {
             display: false,
         },
         tooltips: {
-            mode: 'nearest',
-            intersect: true,
-            enabled: true
+            mode: 'index',
+            enabled: true,
+            titleFontSize: 11,
+            bodyFontSize: 11,
+            displayColors: false,
+            backgroundColor: general.tooltip.bg,
+            bodyFontColor: general.tooltip.bodyColor,
+            titleFontColor: general.tooltip.titleColor,
+            borderColor: general.tooltip.borderColor,
+            borderWidth: 1,
+            caretSize: 5,
+            cornerRadius: 10
         },
         animation: {
             duration: 1000,
@@ -121,19 +169,28 @@ let options = {
                 }
             }
         },
-        scaleStartValue: 10,
+        scaleStartValue: 0,
         scales: {
             xAxes: [{
                 stacked: true,
                 id: "x-axis1",
-                display: false,
+                display: true,
                 scaleLabel: {
                     display: false,
                     labelString: 'TIME',
                 },
                 gridLines: {
-                    color: "rgba(255, 255, 255, 1)",
+                    drawTicks: false,
+                    display: true,
+                    color: gridGradient,
+                    borderDash: [1, 2],
+                    zeroLineWidth: 0,
+                    offsetGridLines: true,
+
                 },
+                ticks: {
+                    padding: 10
+                }
 
             },
                 {
@@ -145,33 +202,36 @@ let options = {
                         labelString: 'TIME',
                     },
                     gridLines: {
-                        color: "rgba(255, 255, 255, 1)",
+                        color: gridGradient,
                     },
 
                 }],
             yAxes: [{
-                display: false,
+
+                display: true,
                 scaleLabel: {
                     display: false,
                     labelString: 'VALUE'
                 },
                 gridLines: {
-                    display: false,
-                    color: "rgba(.10, .10, .10, .05)",
+                    drawTicks: false,
+                    display: true,
+                    color: gridGradient,
+                    borderDash: [1, 2],
+                    zeroLineWidth: 0
                 },
                 ticks: {
                     reverse: false,
                     min: 0,
                     max: yAxes.max,
-                    beginAtZero: true
+                    display: true,
+                    padding: 10
                 }
             }]
         }
     }
 };
 
-let chartTune = document.getElementById('chartJSContainer');
-let ctx = chartTune.getContext('2d');
 let chartInstance = new Chart(ctx, options);
 
 d3.select(chartInstance.chart.canvas).call(

@@ -11,19 +11,34 @@ use Exception;
 
 class Plan
 {
-    public function create(array $options): Calendar
+    protected $start;
+    protected $end;
+
+    public function __construct($options)
     {
-        $start = new DateTime($options['from']);
-        $end = new DateTime($options['to']);
+        $this->start = $options['from'];
+        $this->end = $options['to'];
+    }
 
-        $interval = new DateInterval('P7D');
-        $period = new DatePeriod($start, $interval, $end);
+    public function getStart()
+    {
+        return $this->start;
+    }
 
-        //dump(iterator_count($period));
-        $dateArray = [];
-        foreach ($period as $date) {
-            $dateArray[] = $date->format('Y-m-d');
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    public function create(array $options = null): Calendar
+    {
+        if (null === $options) {
+            $options['from'] = $this->getStart();
+            $options['to'] = $this->getEnd();
         }
+
+        $dateArray = $this->createIntervalArray($options['from'], $options['to']);
+
         $reversedDates = array_reverse($dateArray);
         $calendar = new Calendar($reversedDates);
         /** Składowe jakie będą brały udział w tworzeniu planu */
@@ -47,5 +62,34 @@ class Plan
 
         $calendar->fill($phasesIterator);
         return $calendar;
+    }
+
+    public function createIntervalArray($start, $end, $interval_spec = 'P7D')
+    {
+        if (!($start instanceof DateTime)) {
+            $start = new DateTime($start);
+        }
+        if (!($end instanceof DateTime)) {
+            $end = new DateTime($end);
+        }
+
+        $interval = new DateInterval($interval_spec);
+        $period = new DatePeriod($start, $interval, $end);
+
+        //dump(iterator_count($period));
+        $dateArray = [];
+        foreach ($period as $date) {
+            $dateArray[] = $date->format('Y-m-d');
+        }
+        return $dateArray;
+    }
+
+    public function createIntervalArrayBy($start, $by_interval_spec = 'P7D', $interval_spec = 'P7D')
+    {
+        $start = new DateTime($start);
+        $end = clone($start);
+        $end->add(new DateInterval($by_interval_spec));
+
+        return $this->createIntervalArray($start, $end);
     }
 }
