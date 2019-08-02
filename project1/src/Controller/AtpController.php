@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\Atp\ATP;
 use App\Service\Atp\Plan;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -25,10 +26,7 @@ class AtpController extends AbstractController
             'to' => '2021-07-04',
         ]);
 
-        $calendar = $plan->create([
-            'from' => '2020-08-09',
-            'to' => '2021-07-04',
-        ])->getCalendar();
+        $calendar = $plan->create()->getCalendar();
 
         $keys = array_merge(array_keys($calendar), $plan->createIntervalArrayBy($plan->getEnd(), 'P10W'));
         $values = array_values($calendar);
@@ -42,5 +40,20 @@ class AtpController extends AbstractController
                 'timeVal' => $values,
             ]
         );
+    }
+
+    /**
+     * @Route("/current")
+     */
+    public function current()
+    {
+        $atp = new ATP();
+        $atp->createPlan([
+            'from' => '2020-08-09',
+            'to' => '2021-07-04'
+        ])->fetchData()->rework();
+
+
+        return $this->render('atp/index.html.twig', $atp->getAtp());
     }
 }

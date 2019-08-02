@@ -1,22 +1,30 @@
 {% extends 'base.html.twig' %}
-{% block javascripts %}
-    <script src="http://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-    <script type="application/javascript">
-
-        let keys = {{ keys|json_encode|raw }};
-        let defaultY = {{ timeVal|json_encode|raw }};
-
-    </script>
-    <script src="{{ asset('js/graphTest.js') }}"></script>
-
-{% endblock %}
-
+{% block title %}ATP!{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/graph.css') }}">
+    {{ parent() }}
+    {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+    {{ encore_entry_link_tags('atp') }}
+    <!-- Renders a link tag (if your module requires any CSS)
+                     <link rel="stylesheet" href="/build/app.css"> -->
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('atp') }}
+
+    <!-- Renders app.js & a webpack runtime.js file
+        <script src="/build/runtime.js"></script>
+        <script src="/build/app.js"></script> -->
+{% endblock %}
+
 
 {% block body %}
+
+    <script type="application/javascript">
+
+        let xKeys = {{ keys|json_encode|raw }};
+        let yValues = {{ values|json_encode|raw }};
+
+    </script>
     <div class="tunecontainer" style="padding-top: 2px;">
         <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
             <span></span>
@@ -30,4 +38,3 @@
     <button id="cancelChanges">Cancel Edits</button>
     <button id="undoChanges">Undo Applied Changes</button>
 {% endblock %}
-

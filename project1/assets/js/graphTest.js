@@ -1,42 +1,31 @@
-Array.prototype.ftp = function (data1) {
+Array.prototype.ftp = function () {
 
-    let A, k, sum, l, dzielnik;
+    let A, k, l, divider, muppet;
     let O = Object(this);
     let len = O.length >>> 0;
     A = new Array(len);
     k = 0;
 
-    sum = 0;
     while (k < len) {
-        let kValue, mappedValue;
         if (k in O) {
-            kValue = O[k];
-            pData = data1[k];
-            pValue = 1;
-            sum += pData;
-            if (k > 0) {
-                pValue = O[k - 1];
-                pData = data1[k - 1]
-            }
-            mappedValue = data1[k];
+            muppet = O[k];
             l = 1;
             while (l <= k) {
-                dzielnik = (1.9 * l);
-                if (k == 0) {
-                    dzielnik = 2;
+                divider = (1.9 * l);
+                if (k === 0) {
+                    divider = 1.9;
                 }
-                mappedValue += data1[k - l] / dzielnik;
+                muppet += O[k - l] / divider;
                 l++;
             }
-
-            A[k] = Math.floor(mappedValue);
+            A[k] = Math.floor(muppet);
         }
         k++;
     }
 
     return A;
-
 };
+
 let chartTune = document.getElementById('chartJSContainer');
 let ctx = chartTune.getContext('2d');
 
@@ -88,12 +77,12 @@ let animationCallback = undefined;
 let options = {
     type: 'bar',
     data: {
-        labels: keys,
+        labels: xKeys,
         datasets: [{
             label: 'New Tuning ',
             backgroundColor: general.newVal.bg,
             fill: true,
-            data: defaultY.slice(),
+            data: yValues.slice(),
             pointHitRadius: 10,
             pointHoverRadius: 3,
             borderWidth: 1,
@@ -104,7 +93,7 @@ let options = {
             label: 'Old Tuning',
             backgroundColor: general.oldVal.bg,
             fill: true,
-            data: defaultY.slice(),
+            data: yValues.slice(),
 
             borderWidth: 1,
             borderDash: [2, 2],
@@ -118,7 +107,7 @@ let options = {
             type: 'line',
             backgroundColor: general.ftp.bg,
             fill: true,
-            data: defaultY.slice().ftp(defaultY.slice()),
+            data: yValues.slice().ftp(),
             borderColor: general.ftp.borderColor,
             borderWidth: 2,
             borderDash: [1, 2],
@@ -233,6 +222,7 @@ let options = {
 };
 
 let chartInstance = new Chart(ctx, options);
+import * as d3 from 'd3';
 
 d3.select(chartInstance.chart.canvas).call(
     d3.drag().container(chartInstance.chart.canvas)
@@ -245,8 +235,6 @@ let par = {
     chart: undefined,
     element: undefined,
     scale: undefined,
-    datasetIndex: undefined,
-    index: undefined,
     value: undefined,
     grabOffsetY: undefined,
     index: undefined,
@@ -322,7 +310,7 @@ function updateData() {
 
     par.chart.config.data.datasets[par.datasetIndex].data[par.index] = par.value;
     //par.chart.config.data.datasets[2].data[par.index] =  par.value;
-    par.chart.config.data.datasets[2].data = par.chart.config.data.datasets[2].data.ftp(par.chart.config.data.datasets[par.datasetIndex].data);
+    par.chart.config.data.datasets[2].data = par.chart.config.data.datasets[par.datasetIndex].data.ftp();
 
     chartInstance.update(0);
 }
@@ -346,7 +334,7 @@ document.getElementById('applyChanges').addEventListener('click', function () {
 //Cancel changes - rrevert to old dataset
 document.getElementById('cancelChanges').addEventListener('click', function () {
     options.data.datasets[0].data = options.data.datasets[1].data.slice();
-    options.data.datasets[2].data = options.data.datasets[2].data.slice().ftp(options.data.datasets[1].data.slice());
+    options.data.datasets[2].data = options.data.datasets[1].data.slice().ftp();
     chartInstance.update();
 });
 
@@ -356,7 +344,7 @@ document.getElementById('undoChanges').addEventListener('click', function () {
     if (data) {
         options.data.datasets[0].data = data.slice();
         options.data.datasets[1].data = data.slice();
-        options.data.datasets[2].data = options.data.datasets[2].data.ftp(data.slice());
+        options.data.datasets[2].data = data.slice().ftp();
 
         chartInstance.update();
     }
