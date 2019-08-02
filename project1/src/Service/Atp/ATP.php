@@ -13,6 +13,7 @@ class ATP
 
     public function createPlan(array $options)
     {
+        
         $this->plan = new Plan([
             'from' => $options['from'],
             'to' => $options['to']
