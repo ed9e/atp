@@ -79,4 +79,8 @@ garmin-calendar-import:
 phpstan: 
 	./vendor/bin/phpstan analyse
 
+## .js i .css kompilacja
+encore-watch:
+	yarn encore dev --watch
+
 
