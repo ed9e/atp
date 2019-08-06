@@ -9,11 +9,12 @@ class ATP
     /** @var Plan */
     protected $plan;
     protected $data;
+    protected $dataxy;
     protected $atp;
 
     public function createPlan(array $options)
     {
-        
+
         $this->plan = new Plan([
             'from' => $options['from'],
             'to' => $options['to']
