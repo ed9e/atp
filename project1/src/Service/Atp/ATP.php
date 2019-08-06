@@ -9,16 +9,38 @@ class ATP
     /** @var Plan */
     protected $plan;
     protected $data;
-    protected $dataxy;
+    protected $groupPhases;
+
+    /**
+     * @return Plan
+     */
+    public function getPlan(): Plan
+    {
+        return $this->plan;
+    }
+
+    public function setData($data)
+    {
+        $this->data = $data;
+        return $this;
+    }
+
     protected $atp;
 
-    public function createPlan(array $options)
+    public function plan(array $options)
     {
 
         $this->plan = new Plan([
             'from' => $options['from'],
             'to' => $options['to']
         ]);
+        return $this;
+    }
+
+    public function fetchPlan()
+    {
+        $this->data = array_reverse($this->plan->create()->fetch()->getTimeValueByWeek());
+        $this->groupPhases = $this->plan->getCalendar()->getGroupedExoPhase();
         return $this;
     }
 
@@ -34,7 +56,18 @@ class ATP
         $values = array_values($this->data);
         $diff = array_diff($keys, $values);
         $values = array_merge($values, array_fill_keys(array_keys($diff), 15));
-        $this->atp = ['keys' => $keys, 'values' => $values];
+
+        $phases = array_flip(
+            array_map(function ($x) {
+                $from = (new \DateTime(end($x)))->getTimestamp();
+                $to = (new \DateTime(reset($x) . '+7 days'))->getTimestamp();
+                $diff = $to - $from;
+                $halfTime = $from + floor($diff / 2);
+                return date('Y-m-d', $halfTime);
+            }, $this->groupPhases)
+        );
+
+        $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases];
         return $this;
     }
 

@@ -13,6 +13,24 @@ class Calendar
     protected $countWeeks;
     protected $weekPointer = 0;
     protected $calendar;
+    protected $groupedExoPhase;
+    protected $timeValueByWeek;
+
+    /**
+     * @return mixed
+     */
+    public function getTimeValueByWeek()
+    {
+        return $this->timeValueByWeek;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGroupedExoPhase()
+    {
+        return $this->groupedExoPhase;
+    }
 
     public function __construct($weeks)
     {
@@ -23,13 +41,24 @@ class Calendar
     /**
      * @return mixed
      */
-    public function getCalendar()
+    public function fetch(): Calendar
     {
-        $ret = [];
+
         foreach ($this->calendar as $week => $phases) {
-            $ret[$week] = $phases['microphase']->getTimeValue();
+            $this->timeValueByWeek[$week] = $phases['microphase']->getTimeValue();
+            $this->groupedExoPhase[$phases['exophase']->getLabel()][] = $week;
         }
-        return array_reverse($ret);
+
+        return $this;
+        //return array_reverse($ret);
+    }
+
+    public function calculateMidOfInterval($from, $to)
+    {
+        $from = date_create($from)->getTimestamp();
+        $to = date_create($to)->getTimestamp();
+        $halfTime = $from - floor($to / 2);
+        return date('Y-m-d', $halfTime);
     }
 
     public function fill(PhaseIterator $phaseIterator)
