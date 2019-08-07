@@ -82,6 +82,7 @@ exports.green = {
         bar2: '#23cba7',
         time: '#23cba7',
         ftp: '#2ecc71',
+        ftpDone: '#86e2d5',
         grid: '#91b496',
     },
     borderColor: {

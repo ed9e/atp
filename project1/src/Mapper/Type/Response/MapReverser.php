@@ -5,7 +5,7 @@ namespace App\Mapper\Type\Response;
 
 
 use App\Mapper\Type\Response\EntityFieldIndicator as EFI;
-use App\Mapper\Type\Response\Indicator\ActivityType;
+use DateTime;
 
 class MapReverser
 {
@@ -40,7 +40,13 @@ class MapReverser
                 if ($value instanceof GroupIndicator) {
                     //TODO:GroupIndicator jako Iterrator
                     foreach ($value->getArray() as $indicator) {
+
                         $this->groupMapIterator->add($indicator->createMap($this->path));
+                        if ($indicator instanceof EFI) {
+                            $this->path[$this->inc] = $key;
+
+                            $this->mapIterator->add(new EntityFieldMap($indicator, new ValuePath($this->path)));
+                        }
                     }
                 }
 
@@ -86,7 +92,7 @@ class MapReverser
 
     public function strToTime($value)
     {
-        return new \DateTime($value);
+        return new DateTime($value);
     }
 
     public function dumpp($value)

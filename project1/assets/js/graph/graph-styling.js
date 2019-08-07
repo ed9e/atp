@@ -3,6 +3,7 @@ global.theme = require('./themes/orange.js').green;
 let barGradient = ctx.createLinearGradient(0, 0, 0, 600);
 let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 600);
 let FTPgradient = ctx.createLinearGradient(0, 0, 0, 600);
+let FTPDonegradient = ctx.createLinearGradient(0, 0, 0, 600);
 let gridGradient = ctx.createLinearGradient(0, 0, 0, 600);
 let timeGradient = ctx.createLinearGradient(0, 0, 1500, 0);
 barGradient.addColorStop(0, theme.gradient.bar + 'ff');
@@ -17,9 +18,12 @@ bar2Gradient.addColorStop(0, theme.gradient.bar2 + 'ff');
 bar2Gradient.addColorStop(0.5, theme.gradient.bar2 + '44');
 bar2Gradient.addColorStop(1, theme.gradient.bar2 + '00');
 
-FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
+FTPgradient.addColorStop(0, theme.gradient.ftp + 'ee');
 FTPgradient.addColorStop(0.5, theme.gradient.ftp + '44');
 FTPgradient.addColorStop(1, theme.gradient.ftp + '00');
+FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
+FTPDonegradient.addColorStop(0.5, theme.gradient.ftpDone + '44');
+FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
 
 gridGradient.addColorStop(0, theme.gradient.grid + 'ff');
 gridGradient.addColorStop(0.3, theme.gradient.grid + '55');
@@ -33,6 +37,10 @@ global.general = {
         //bg: "rgba(42, 187, 155, 1)"
         bg: FTPgradient,
         borderColor: FTPgradient
+    },
+    ftpDone: {
+        bg: FTPDonegradient,
+        borderColor: FTPDonegradient
     },
     newVal: {
         bg: barGradient,

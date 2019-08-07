@@ -102,4 +102,13 @@ class Plan
 
         return $this->createIntervalArray($start, $end);
     }
+
+    public function createIntervalArrayByPrev($start, $by_interval_spec = 'P7D', $interval_spec = 'P7D')
+    {
+        $start = new DateTime($start);
+        $end = clone($start);
+        $end->sub(new DateInterval($by_interval_spec));
+
+        return $this->createIntervalArray($end, $start);
+    }
 }

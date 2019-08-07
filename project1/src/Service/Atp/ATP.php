@@ -52,12 +52,32 @@ class ATP
         return $this;
     }
 
+    public function getDone()
+    {
+        return [
+            '2019-08-05' => 108,
+            '2019-07-29' => 154,
+            '2019-07-22' => 201,
+            '2019-07-15' => 249,
+            '2019-07-08' => 101,
+            '2019-07-01' => 249,
+            '2019-06-24' => 278,
+            '2019-06-17' => 116,
+            '2019-06-10' => 213,
+        ];
+
+    }
+
     public function rework()
     {
-        $keys = array_merge(array_keys($this->data), $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P10W'));
+        //$prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P10W');
+        $prev = [];
+        $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P10W');
+        $keys = array_merge($prev, array_keys($this->data), $last);
         $values = array_values($this->data);
-        $diff = array_diff($keys, $values);
-        $values = array_merge($values, array_fill_keys(array_keys($diff), 15));
+        $values = array_merge(array_fill_keys(array_keys($prev), 15), $values);
+        $values = array_merge($values, array_fill_keys(array_keys($last), 15));
+
 
         $phases = array_flip(
             array_map(function ($x) {
@@ -75,7 +95,12 @@ class ATP
             return [$from, $to];
         }, $this->groupPhases);
 
-        $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2];
+//        $diff = array_diff($keys, array_keys($this->getDone()));
+//        $done = array_merge(array_fill_keys($diff, 15), $this->getDone());
+//        ksort($done);
+//        $done = array_values($done);
+        $done = [];
+        $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
         //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
         return $this;
     }

@@ -30,7 +30,6 @@ global.atpOptions = {
             pointHitRadius: 10,
             pointHoverRadius: 3,
         }, {
-
             label: 'FTP',
             type: 'line',
             backgroundColor: general.ftp.bg,
@@ -42,7 +41,28 @@ global.atpOptions = {
             xAxisID: "x-axis1",
             pointHitRadius: 10,
             pointHoverRadius: 2,
-        }
+        }, {
+            label: 'Done',
+            backgroundColor: '#00000088',
+            fill: true,
+            data: done.slice(),
+            borderWidth: 1,
+            borderDash: [2, 2],
+            borderColor: general.ftp.borderColor,
+            xAxisID: "x-axis1",
+        }, {
+            label: 'FTP DONE',
+            type: 'line',
+            backgroundColor: general.ftpDone.bg,
+            fill: true,
+            data: done.slice().ftp(),
+            borderColor: general.ftpDone.borderColor,
+            borderWidth: 2,
+            borderDash: [1, 2],
+            xAxisID: "x-axis1",
+            pointHitRadius: 10,
+            pointHoverRadius: 2,
+        },
         ]
     },
     options: {
@@ -61,11 +81,11 @@ global.atpOptions = {
             }
         },
         legend: {
-            display: false,
+            display: true,
         },
         tooltips: {
             mode: 'index',
-            enabled: false,
+            enabled: true,
             titleFontSize: 11,
             bodyFontSize: 11,
             displayColors: false,
@@ -76,10 +96,10 @@ global.atpOptions = {
             borderWidth: 1,
             caretSize: 5,
             cornerRadius: 10,
-            callbacks: {
-                label: tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`,
-                title: () => null,
-            }
+            // callbacks: {
+            //     label: tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`,
+            //     title: () => null,
+            // }
         },
         animation: {
             duration: 1000,

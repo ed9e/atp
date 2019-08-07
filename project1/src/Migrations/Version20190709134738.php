@@ -27,6 +27,7 @@ final class Version20190709134738 extends AbstractMigration
      round(avg(foo.training_effect)::numeric, 2) AS training_effect, 
      round((sum(foo.distance) / 1000::double precision)::numeric, 3) AS distance_sum, 
      to_char((sum(foo.duration) || \' second\'::text)::interval, \'HH24:MI:SS\'::text) AS time_sum, 
+     round((sum(foo.duration)/60)::numeric, 0) AS time_minute_sum, 
      array_agg((round((foo.distance / 1000::double precision)::numeric, 3)::text || \'km \'::text) || to_char(foo.start_time_local, \'Day\'::text)) AS array_agg, 
      date_trunc(\'week\'::text, foo.start_time_local + \'00:00:00\'::interval)::date AS weekly, 
      foo.user_display_name 
@@ -92,7 +93,6 @@ final class Version20190709134738 extends AbstractMigration
    ORDER BY date_trunc(\'week\'::text, foo.start_time_local + \'00:00:00\'::interval)::date DESC;');
 
 
-        $this->addSql('DROP VIEW weekly_activity');
 
 
     }
