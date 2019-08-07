@@ -4,6 +4,8 @@
 namespace App\Service\Atp;
 
 
+use DateTime;
+
 class ATP
 {
     /** @var Plan */
@@ -59,15 +61,21 @@ class ATP
 
         $phases = array_flip(
             array_map(function ($x) {
-                $from = (new \DateTime(end($x)))->getTimestamp();
-                $to = (new \DateTime(reset($x) . '+7 days'))->getTimestamp();
+                $from = (new DateTime(end($x)))->getTimestamp();
+                $to = (new DateTime(reset($x) . '+7 days'))->getTimestamp();
                 $diff = $to - $from;
                 $halfTime = $from + floor($diff / 2);
                 return date('Y-m-d', $halfTime);
             }, $this->groupPhases)
         );
 
-        $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases];
+        $phases2 = array_map(function ($x) {
+            $from = (new DateTime(end($x)))->format('Y-m-d');
+            $to = (new DateTime(reset($x) . '+7 days'))->format('Y-m-d');
+            return [$from, $to];
+        }, $this->groupPhases);
+
+        $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2];
         return $this;
     }
 

@@ -49,5 +49,17 @@ global.general = {
     timeline: {
         thick: 15,
         color: timeGradient
+    },
+    phaseDataset: {
+        color: {
+            Preparation: '#ffcb05',
+            Base1: '#7befb2',
+            Base2: '#19b5fe',
+            Base3: '#3a539b',
+            Build1: '#be90d4',
+            Build2: '#9a12b3',
+            Peak: '#2ecc71',
+            Race: '#cf000f',
+        }
     }
 };

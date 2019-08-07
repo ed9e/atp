@@ -1,6 +1,7 @@
 global.atpYAxes = {max: 1500};
 let animationCallback = undefined;
 
+
 global.atpOptions = {
     type: 'bar',
 
@@ -41,32 +42,6 @@ global.atpOptions = {
             xAxisID: "x-axis1",
             pointHitRadius: 10,
             pointHoverRadius: 2,
-        }, {
-            label: 'Phase 1',
-            type: 'line',
-            backgroundColor: '#ff4e00ff',
-            fill: false,
-            data: getDateArray('2020-12-20', '2021-01-10'),
-            borderColor: '#ff4e00ff',
-            borderWidth: 3,
-            pointStyle: 'line',
-            radius: 0,
-            xAxisID: "czas",
-            pointHitRadius: 0,
-            pointHoverRadius: 0,
-        }, {
-            label: 'Phase 2',
-            type: 'line',
-            backgroundColor: '#ff4e00ff',
-            fill: false,
-            data: getDateArray('2021-02-07', '2021-03-07'),
-            borderColor: '#ff4e00ff',
-            borderWidth: 3,
-            pointStyle: 'line',
-            radius: 0,
-            xAxisID: "czas",
-            pointHitRadius: 0,
-            pointHoverRadius: 0,
         }
         ]
     },
@@ -86,7 +61,7 @@ global.atpOptions = {
             }
         },
         legend: {
-            display: true,
+            display: false,
         },
         tooltips: {
             mode: 'index',
@@ -148,12 +123,12 @@ global.atpOptions = {
                         min: moment(xKeys[0])
                     },
                     gridLines: {
-                        drawTicks: true,
+                        drawTicks: false,
                         display: true,
                         color: general.grid.gridLinesColor,
                         borderDash: [1, 2],
                         zeroLineWidth: 0,
-                        offsetGridLines: false,
+                        offsetGridLines: true,
                     },
                     ticks: {
                         padding: 0,
@@ -176,17 +151,16 @@ global.atpOptions = {
                         stepSize: 1
                     },
                     gridLines: {
-                        drawTicks: true,
+                        drawTicks: false,
                         display: false,
-                        color: general.grid.gridLinesColor,
+                        color: '#ffffff00',
                         borderDash: [1, 2],
                         zeroLineWidth: 0,
                         offsetGridLines: false,
                     },
                     ticks: {
-                        padding: 0,
+                        padding: 5,
                         callback: function (value, index, values) {
-                            console.log(value)
                             return phases[value];
                         }
                     }
@@ -218,6 +192,30 @@ global.atpOptions = {
         }
     }
 };
+
+Object.entries(phases2).forEach(createPhaseDataset);
+
+function createPhaseDataset(d) {
+    let label = d[0];
+    let from = d[1][0];
+    let to = d[1][1];
+
+    let dataset = {
+        label: label,
+        type: 'line',
+        backgroundColor: general.phaseDataset.color[label],
+        fill: false,
+        data: getDateArray(from, to),
+        borderColor: general.phaseDataset.color[label],
+        borderWidth: 3,
+        pointStyle: 'line',
+        radius: 0,
+        xAxisID: "czas",
+        pointHitRadius: 0,
+        pointHoverRadius: 0,
+    };
+    atpOptions.data.datasets.push(dataset);
+}
 
 global.chartAtpInstance = new Chart(ctx, atpOptions);
 

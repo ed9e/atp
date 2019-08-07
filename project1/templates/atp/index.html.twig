@@ -24,6 +24,7 @@
         let xKeys = {{ keys|json_encode|raw }};
         let yValues = {{ values|json_encode|raw }};
         let phases = {{ phases|json_encode|raw }};
+        let phases2 = {{ phases2|json_encode|raw }};
 
     </script>
     <div class="tunecontainer" style="padding-top: 2px;">
@@ -35,7 +36,7 @@
             <span id="yPos" style="margin:4px;">?</span>
         </div>
     </div>
-    <button id="applyChanges">Apply Changes</button>
-    <button id="cancelChanges">Cancel Edits</button>
-    <button id="undoChanges">Undo Applied Changes</button>
+    <button class="btn btn-flat" id="applyChanges">Apply Changes</button>
+    <button class="btn btn-flat" id="cancelChanges">Cancel Edits</button>
+    <button class="btn btn-flat" id="undoChanges">Undo Applied Changes</button>
 {% endblock %}
