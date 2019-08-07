@@ -13,6 +13,16 @@ class Plan
 {
     protected $start;
     protected $end;
+    protected $calendar;
+
+    /**
+     * @return mixed
+     */
+    public function getCalendar(): Calendar
+    {
+        return $this->calendar;
+    }
+
 
     public function __construct($options)
     {
@@ -40,9 +50,9 @@ class Plan
         $dateArray = $this->createIntervalArray($options['from'], $options['to']);
 
         $reversedDates = array_reverse($dateArray);
-        $calendar = new Calendar($reversedDates);
+        $this->calendar = new Calendar($reversedDates);
         /** Składowe jakie będą brały udział w tworzeniu planu */
-        $phasesComponent = new Component($calendar);
+        $phasesComponent = new Component($this->calendar);
         /** Liczba iteracji do stworzenia planu */
         $planIterator = new PlanIterator(7);
 
@@ -60,8 +70,8 @@ class Plan
             }
         }
 
-        $calendar->fill($phasesIterator);
-        return $calendar;
+        $this->calendar->fill($phasesIterator);
+        return $this->calendar;
     }
 
     public function createIntervalArray($start, $end, $interval_spec = 'P7D')

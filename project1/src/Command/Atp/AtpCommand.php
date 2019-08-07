@@ -42,7 +42,7 @@ class AtpCommand extends AbstractCommand
     {
         $plan = new Plan();
         $calendar = $plan->create($options);
-        dump($calendar->getCalendar());
+        dump($calendar->fetch());
 
     }
 

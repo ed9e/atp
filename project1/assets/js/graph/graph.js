@@ -1,15 +1,10 @@
 global.atpYAxes = {max: 1500};
 let animationCallback = undefined;
-let phases = {
-    '2021-02-21': 'Phase 1'
-};
+
 global.atpOptions = {
     type: 'bar',
 
     data: {
-        onAnimationComplete: function () {
-            console.log('asd')
-        },
         labels: xKeys,
         datasets: [{
             label: 'New Tuning ',
@@ -176,7 +171,9 @@ global.atpOptions = {
                         min: moment(xKeys[0]),
                         displayFormats: {
                             day: 'YYYY-MM-DD'
-                        }
+                        },
+                        minUnit: 'day',
+                        stepSize: 1
                     },
                     gridLines: {
                         drawTicks: true,
@@ -189,6 +186,7 @@ global.atpOptions = {
                     ticks: {
                         padding: 0,
                         callback: function (value, index, values) {
+                            console.log(value)
                             return phases[value];
                         }
                     }

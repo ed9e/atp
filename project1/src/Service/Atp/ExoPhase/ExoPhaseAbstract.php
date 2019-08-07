@@ -15,6 +15,13 @@ abstract class ExoPhaseAbstract
     protected $percentOfWeeklyAvgHours;
     protected $cyclesCount;
     protected $cycleLength;
+    protected $label;
+
+    public function getLabel(): string
+    {
+        return (new \ReflectionClass($this))->getShortName();
+        //return $this->label;
+    }
 
     /** @var string class name of mesoPhase */
     protected $mesoPhase;
