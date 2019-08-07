@@ -1,5 +1,5 @@
 global.atpYAxes = {max: 1500};
-let animationCallback = undefined;
+let callback = undefined;
 
 
 global.atpOptions = {
@@ -65,7 +65,7 @@ global.atpOptions = {
         },
         tooltips: {
             mode: 'index',
-            enabled: true,
+            enabled: false,
             titleFontSize: 11,
             bodyFontSize: 11,
             displayColors: false,
@@ -83,6 +83,7 @@ global.atpOptions = {
         },
         animation: {
             duration: 1000,
+
             onComplete: function (animation) {
                 //console.log(animation)
             }

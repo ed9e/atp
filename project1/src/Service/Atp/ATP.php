@@ -76,6 +76,7 @@ class ATP
         }, $this->groupPhases);
 
         $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2];
+        //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
         return $this;
     }
 

@@ -68,6 +68,10 @@ function getElement() {
         false
     ) - getEventPoints(e).point[0].y;
 
+    par.value = Math.floor(par.scale.getValueForPixel(
+        par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
+    par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
+    drawValue(par);
 }
 
 
@@ -88,8 +92,18 @@ function updateData() {
     par.chart.config.data.datasets[2].data = par.chart.config.data.datasets[par.datasetIndex].data.ftp();
 
     chartAtpInstance.update(0);
+
+    drawValue(par);
 }
 
+function drawValue(par) {
+    par.chart.ctx.fillStyle = general.bar.valueColor;
+    par.chart.ctx.textAlign = "center";
+    par.chart.ctx.textBaseline = "bottom";
+    let duration = moment.duration(par.value, 'minutes');
+    let text = duration.get('hours') + ':' + duration.get('minutes');
+    par.chart.ctx.fillText(text, par.element._model.x, par.element._model.y - 5);
+}
 
 let chartXyDisplay = document.getElementById("yPos");
 
