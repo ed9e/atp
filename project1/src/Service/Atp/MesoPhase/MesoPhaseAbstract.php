@@ -43,11 +43,10 @@ abstract class MesoPhaseAbstract
     public function setUpMicroPhases($microPhasesCount): MesoPhaseAbstract
     {
         $this->microPhases->push($this->calculateMicroPhases($microPhasesCount));
-
         return $this;
     }
 
-    abstract protected function calculateMicroPhases(int $microPhasesCount, $number = 0): array;
+    abstract protected function calculateMicroPhases(int $microPhasesCount): array;
 
     public function setCalendar(Calendar $calendar): MesoPhaseAbstract
     {

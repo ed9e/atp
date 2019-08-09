@@ -55,7 +55,7 @@ class ATP
     public function getDone()
     {
         return [
-            '2019-08-05' => 108,
+            '2019-08-05' => 238,
             '2019-07-29' => 154,
             '2019-07-22' => 201,
             '2019-07-15' => 249,
@@ -70,8 +70,8 @@ class ATP
 
     public function rework()
     {
-        //$prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P10W');
-        $prev = [];
+        $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P10W');
+        //$prev = [];
         $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P10W');
         $keys = array_merge($prev, array_keys($this->data), $last);
         $values = array_values($this->data);
@@ -82,7 +82,7 @@ class ATP
         $phases = array_flip(
             array_map(function ($x) {
                 $from = (new DateTime(end($x)))->getTimestamp();
-                $to = (new DateTime(reset($x) . '+7 days'))->getTimestamp();
+                $to = (new DateTime(reset($x) . '+0 days'))->getTimestamp();
                 $diff = $to - $from;
                 $halfTime = $from + floor($diff / 2);
                 return date('Y-m-d', $halfTime);
@@ -90,16 +90,16 @@ class ATP
         );
 
         $phases2 = array_map(function ($x) {
-            $from = (new DateTime(end($x)))->format('Y-m-d');
-            $to = (new DateTime(reset($x) . '+7 days'))->format('Y-m-d');
+            $from = (new DateTime(end($x) . '-4 days'))->format('Y-m-d');
+            $to = (new DateTime(reset($x) . '+4 days'))->format('Y-m-d');
             return [$from, $to];
         }, $this->groupPhases);
 
-//        $diff = array_diff($keys, array_keys($this->getDone()));
-//        $done = array_merge(array_fill_keys($diff, 15), $this->getDone());
-//        ksort($done);
+        $diff = array_diff($keys, array_keys($this->getDone()));
+        $done = array_merge(array_fill_keys($diff, 15), $this->getDone());
+        ksort($done);
 //        $done = array_values($done);
-        $done = [];
+//        $done = $this->getDone();
         $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
         //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
         return $this;

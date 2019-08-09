@@ -40,8 +40,8 @@ class AtpCommand extends AbstractCommand
 
     protected function createAtp($args, $options)
     {
-        $plan = new Plan();
-        $calendar = $plan->create($options);
+        $plan = new Plan($options);
+        $calendar = $plan->create();
         dump($calendar->fetch());
 
     }

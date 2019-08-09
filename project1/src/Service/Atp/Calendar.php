@@ -43,7 +43,6 @@ class Calendar
      */
     public function fetch(): Calendar
     {
-
         foreach ($this->calendar as $week => $phases) {
             $this->timeValueByWeek[$week] = $phases['microphase']->getTimeValue();
             $this->groupedExoPhase[$phases['exophase']->getLabel()][] = $week;

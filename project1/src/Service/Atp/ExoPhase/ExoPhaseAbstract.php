@@ -8,6 +8,7 @@ use App\Service\Atp\Calendar;
 use App\Service\Atp\ExoPhase\PhaseToCalendar\PlaceTaker;
 use App\Service\Atp\MesoPhase\Iteration\ConfigArrayAccess;
 use App\Service\Atp\MesoPhase\MesoPhaseAbstract;
+use ReflectionClass;
 
 abstract class ExoPhaseAbstract
 {
@@ -19,7 +20,7 @@ abstract class ExoPhaseAbstract
 
     public function getLabel(): string
     {
-        return (new \ReflectionClass($this))->getShortName();
+        return (new ReflectionClass($this))->getShortName();
         //return $this->label;
     }
 
@@ -50,8 +51,8 @@ abstract class ExoPhaseAbstract
     public function createMesoPhase(): MesoPhaseAbstract
     {
         $this->mesoPhases[] = new $this->mesoPhase();
-        $this->i++;
         $this->lastMesoPhase()->setCalendar($this->calendar)->setNumber($this->i);
+        $this->i++;
         return $this->lastMesoPhase();
     }
 

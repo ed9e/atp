@@ -57,7 +57,7 @@ global.general = {
         borderColor: '#5a5b60',
     },
     timeline: {
-        thick: 15,
+        thick: 25,
         color: timeGradient
     },
     phaseDataset: {

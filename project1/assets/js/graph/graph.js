@@ -7,62 +7,67 @@ global.atpOptions = {
 
     data: {
         labels: xKeys,
-        datasets: [{
-            label: 'New Tuning ',
-            backgroundColor: general.newVal.bg,
-            fill: true,
-            data: yValues.slice(),
-            pointHitRadius: 10,
-            pointHoverRadius: 3,
-            borderWidth: 1,
-            borderDash: [2, 2],
-            xAxisID: "x-axis1",
-            borderColor: general.newVal.borderColor,
-        }, {
-            label: 'Old Tuning',
-            backgroundColor: general.oldVal.bg,
-            fill: true,
-            data: yValues.slice(),
-            borderWidth: 1,
-            borderDash: [2, 2],
-            borderColor: general.oldVal.borderColor,
-            xAxisID: "x-axis1",
-            pointHitRadius: 10,
-            pointHoverRadius: 3,
-        }, {
-            label: 'FTP',
-            type: 'line',
-            backgroundColor: general.ftp.bg,
-            fill: true,
-            data: yValues.slice().ftp(),
-            borderColor: general.ftp.borderColor,
-            borderWidth: 2,
-            borderDash: [1, 2],
-            xAxisID: "x-axis1",
-            pointHitRadius: 10,
-            pointHoverRadius: 2,
-        }, {
-            label: 'Done',
-            backgroundColor: '#00000088',
-            fill: true,
-            data: done.slice(),
-            borderWidth: 1,
-            borderDash: [2, 2],
-            borderColor: general.ftp.borderColor,
-            xAxisID: "x-axis1",
-        }, {
-            label: 'FTP DONE',
-            type: 'line',
-            backgroundColor: general.ftpDone.bg,
-            fill: true,
-            data: done.slice().ftp(),
-            borderColor: general.ftpDone.borderColor,
-            borderWidth: 2,
-            borderDash: [1, 2],
-            xAxisID: "x-axis1",
-            pointHitRadius: 10,
-            pointHoverRadius: 2,
-        },
+        datasets: [
+            {
+                label: 'New Tuning ',
+                backgroundColor: general.newVal.bg,
+                fill: true,
+                data: yValues.slice(),
+                pointHitRadius: 10,
+                pointHoverRadius: 3,
+                borderWidth: 1,
+                borderDash: [2, 2],
+                xAxisID: "x-axis1",
+                borderColor: general.newVal.borderColor,
+            },
+            {
+                label: 'Old Tuning',
+                backgroundColor: general.oldVal.bg,
+                fill: true,
+                data: yValues.slice(),
+                borderWidth: 1,
+                borderDash: [2, 2],
+                borderColor: general.oldVal.borderColor,
+                xAxisID: "x-axis1",
+                pointHitRadius: 10,
+                pointHoverRadius: 3,
+            },
+            {
+                label: 'FTP',
+                type: 'line',
+                backgroundColor: general.ftp.bg,
+                fill: true,
+                data: yValues.slice().ftp(),
+                borderColor: general.ftp.borderColor,
+                borderWidth: 2,
+                borderDash: [1, 2],
+                xAxisID: "x-axis1",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+            },
+            {
+                label: 'Done',
+                backgroundColor: '#00000088',
+                fill: true,
+                data: createTimeArray(done),
+                borderWidth: 1,
+                borderDash: [2, 2],
+                borderColor: general.ftp.borderColor,
+                xAxisID: "x-axis1",
+            }
+            , {
+                label: 'FTP DONE',
+                type: 'line',
+                backgroundColor: general.ftpDone.bg,
+                fill: true,
+                data: createTimeArray(done).ftpO(),
+                borderColor: general.ftpDone.borderColor,
+                borderWidth: 2,
+                borderDash: [1, 2],
+                xAxisID: "x-axis1",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+            },
         ]
     },
     options: {
@@ -110,28 +115,42 @@ global.atpOptions = {
         },
         scaleStartValue: 0,
         scales: {
-            xAxes: [{
-                stacked: true,
-                id: "x-axis1",
-                display: true,
-                scaleLabel: {
-                    display: false,
-                    labelString: 'TIME',
-                },
-                gridLines: {
-                    drawTicks: true,
-                    tickMarkLength: 5,
+            xAxes: [
+                {
+                    stacked: true,
+                    id: "x-axis1",
                     display: true,
-                    color: '#ffffff00',
-                    borderDash: [1, 2],
-                    zeroLineWidth: 0,
-                    offsetGridLines: true,
+                    type: 'time',
+                    time: {
+                        unit: 'week',
+                        max: moment(xKeys[xKeys.length - 1]).add(0, 'days').format('YYYY-MM-DD'),
+                        min: moment(xKeys[0]).add(0, 'days').format('YYYY-MM-DD'),
+                        displayFormats: {
+                            day: 'YYYY-MM-DD'
+                        },
+                        minUnit: 'day',
+                        stepSize: 1
+                    },
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'TIME',
+                    },
+                    gridLines: {
+                        drawTicks: true,
+                        tickMarkLength: 5,
+                        display: true,
+                        color: '#ffffff00',
+                        borderDash: [1, 2],
+                        zeroLineWidth: 0,
+                        offsetGridLines: true,
+                    },
+                    ticks: {
+                        padding: 1,
+                        display: false,
+                    },
+                    categoryPercentage: .9,
+                    barPercentage: .9
                 },
-                ticks: {
-                    padding: 1,
-                    display: false,
-                }
-            },
                 {
                     display: true,
                     stacked: false,
@@ -140,8 +159,10 @@ global.atpOptions = {
                     type: 'time',
                     time: {
                         unit: 'month',
-                        max: moment(xKeys[xKeys.length - 1]).add(7, 'days').format('YYYY-MM-DD'),
-                        min: moment(xKeys[0])
+                        max: moment(xKeys[xKeys.length - 1]).add(0, 'days').format('YYYY-MM-DD'),
+                        min: moment(xKeys[0]).add(0, 'days').format('YYYY-MM-DD'),
+                        minUnit: 'day',
+                        stepSize: 1
                     },
                     gridLines: {
                         drawTicks: false,
@@ -149,7 +170,7 @@ global.atpOptions = {
                         color: general.grid.gridLinesColor,
                         borderDash: [1, 2],
                         zeroLineWidth: 0,
-                        offsetGridLines: true,
+                        offsetGridLines: false,
                     },
                     ticks: {
                         padding: 0,
@@ -163,8 +184,8 @@ global.atpOptions = {
                     type: 'time',
                     time: {
                         unit: 'day',
-                        max: moment(xKeys[xKeys.length - 1]).add(7, 'days').format('YYYY-MM-DD'),
-                        min: moment(xKeys[0]),
+                        max: moment(xKeys[xKeys.length - 1]).add(0, 'days').format('YYYY-MM-DD'),
+                        min: moment(xKeys[0]).add(0, 'days').format('YYYY-MM-DD'),
                         displayFormats: {
                             day: 'YYYY-MM-DD'
                         },
@@ -177,14 +198,15 @@ global.atpOptions = {
                         color: '#ffffff00',
                         borderDash: [1, 2],
                         zeroLineWidth: 0,
-                        offsetGridLines: false,
+                        offsetGridLines: true,
                     },
                     ticks: {
                         padding: 5,
                         callback: function (value, index, values) {
                             return phases[value];
                         }
-                    }
+                    },
+
                 },
 
             ],
@@ -228,9 +250,9 @@ function createPhaseDataset(d) {
         fill: false,
         data: getDateArray(from, to),
         borderColor: general.phaseDataset.color[label],
-        borderWidth: 3,
-        pointStyle: 'line',
-        radius: 0,
+        borderWidth: 4,
+        //pointStyle: 'line',
+        //radius: 0,
         xAxisID: "czas",
         pointHitRadius: 0,
         pointHoverRadius: 0,
@@ -253,5 +275,18 @@ function getDateArray(start, end) {
         });
         dt.setDate(dt.getDate() + 1);
     }
+    return arr;
+}
+
+function createTimeArray(oIn) {
+    let arr = [];
+
+    Object.keys(oIn).forEach(function (x) {
+        arr.push({
+            x: moment(x),
+            y: oIn[x]
+        });
+    });
+
     return arr;
 }
