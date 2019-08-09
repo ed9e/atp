@@ -8,12 +8,12 @@ Array.prototype.ftp = function () {
 
     while (k < len) {
         if (k in O) {
-            muppet = O[k];
+            muppet = O[k] / 1.5;
             l = 1;
             while (l <= k) {
-                divider = (1.9 * l);
+                divider = (2 * l);
                 if (k === 0) {
-                    divider = 1.9;
+                    divider = 2;
                 }
                 muppet += O[k - l] / divider;
                 l++;
@@ -38,13 +38,13 @@ Array.prototype.ftpO = function () {
     while (k < len) {
         if (k in O) {
 
-            muppetY = O[k].y;
+            muppetY = O[k].y / 1.5;
             muppetX = O[k].x;
             l = 1;
             while (l <= k) {
-                divider = (1.9 * l);
+                divider = (2 * l);
                 if (k === 0) {
-                    divider = 1.9;
+                    divider = 2;
                 }
                 muppetY += O[k - l].y / divider;
                 l++;

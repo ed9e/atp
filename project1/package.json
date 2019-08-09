@@ -5,6 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "chart.js": "^2.8.0",
+    "chartjs": "^0.3.24",
+    "chartjs-plugin-zoom": "^0.7.3",
     "core-js": "^3.1.4",
     "d3": "^5.9.7",
     "d3-selection": "^1.4.0",

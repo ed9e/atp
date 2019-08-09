@@ -1,4 +1,5 @@
 require('chart.js');
+require('chartjs-plugin-zoom');
 require('./graph/ftp.js');
 let chartTune = document.getElementById('chartJSContainer');
 global.ctx = chartTune.getContext('2d');

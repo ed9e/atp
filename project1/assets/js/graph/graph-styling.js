@@ -1,10 +1,10 @@
 global.theme = require('./themes/orange.js').green;
 
-let barGradient = ctx.createLinearGradient(0, 0, 0, 600);
-let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 600);
-let FTPgradient = ctx.createLinearGradient(0, 0, 0, 600);
-let FTPDonegradient = ctx.createLinearGradient(0, 0, 0, 600);
-let gridGradient = ctx.createLinearGradient(0, 0, 0, 600);
+let barGradient = ctx.createLinearGradient(0, 0, 0, 900);
+let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 900);
+let FTPgradient = ctx.createLinearGradient(0, 0, 0, 900);
+let FTPDonegradient = ctx.createLinearGradient(0, 0, 0, 900);
+let gridGradient = ctx.createLinearGradient(0, 0, 0, 900);
 let timeGradient = ctx.createLinearGradient(0, 0, 1500, 0);
 barGradient.addColorStop(0, theme.gradient.bar + 'ff');
 barGradient.addColorStop(0.3, theme.gradient.bar + '44');

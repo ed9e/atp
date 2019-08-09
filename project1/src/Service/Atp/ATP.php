@@ -70,9 +70,9 @@ class ATP
 
     public function rework()
     {
-        $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P10W');
+        $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P2W');
         //$prev = [];
-        $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P10W');
+        $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P2W');
         $keys = array_merge($prev, array_keys($this->data), $last);
         $values = array_values($this->data);
         $values = array_merge(array_fill_keys(array_keys($prev), 15), $values);

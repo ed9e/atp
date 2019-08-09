@@ -72,21 +72,22 @@ global.atpOptions = {
     },
     options: {
         elements: {
-            point: {radius: 1}, line: {
+            point: {radius: 0}, line: {
                 tension: 0.2
             }
         },
         responsive: true,
+        maintainAspectRatio: true,
         layout: {
             padding: {
-                left: 10,
+                left: 0,
                 right: 0,
                 top: 0,
                 bottom: 0
             }
         },
         legend: {
-            display: true,
+            display: false,
         },
         tooltips: {
             mode: 'index',
@@ -232,6 +233,53 @@ global.atpOptions = {
                     padding: 10
                 }
             }]
+        },
+        pan: {
+            enabled: true,
+            mode: "x",
+            speed: 10,
+            threshold: 10,
+            rangeMin: {
+                // Format of min pan range depends on scale type
+                x: null,
+                y: null
+            },
+            rangeMax: {
+                // Format of max pan range depends on scale type
+                x: null,
+                y: null
+            },
+
+            // Function called while the user is panning
+            onPan: function ({chart}) {
+            },
+            // Function called once panning is completed
+            onPanComplete: function ({chart}) {
+            }
+        },
+        zoom: {
+            enabled: true,
+            drag: false,
+            mode: "x",
+            limits: {
+                max: 10,
+                min: 0.5
+            },
+            rangeMin: {
+                x: null,
+                y: null
+            },
+            rangeMax: {
+                x: null,
+                y: null
+            },
+            // Speed of zoom via mouse wheel
+            // (percentage of zoom on a wheel event)
+            speed: 0.2,
+            onZoom: function ({chart}) {
+            },
+            onZoomComplete: function ({chart}) {
+            }
         }
     }
 };
@@ -260,6 +308,7 @@ function createPhaseDataset(d) {
     atpOptions.data.datasets.push(dataset);
 }
 
+//TODO: to tu
 global.chartAtpInstance = new Chart(ctx, atpOptions);
 
 
