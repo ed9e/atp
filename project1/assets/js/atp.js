@@ -1,4 +1,4 @@
-require('./materialize');
+require('materialize');
 require('chart.js');
 require('chartjs-plugin-zoom');
 require('./graph/ftp.js');
