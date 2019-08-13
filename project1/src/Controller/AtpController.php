@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\Atp\ATP;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/atp")
