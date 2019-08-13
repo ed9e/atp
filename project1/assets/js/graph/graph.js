@@ -1,4 +1,4 @@
-global.atpYAxes = {max: 1500};
+global.atpYAxes = {max: 1000};
 let callback = undefined;
 
 
@@ -298,7 +298,7 @@ function createPhaseDataset(d) {
         fill: false,
         data: getDateArray(from, to),
         borderColor: general.phaseDataset.color[label],
-        borderWidth: 4,
+        borderWidth: general.timeline.thick2,
         //pointStyle: 'line',
         //radius: 0,
         xAxisID: "czas",

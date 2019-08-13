@@ -1,3 +1,4 @@
+let waga = 2;
 Array.prototype.ftp = function () {
 
     let A, k, l, divider, muppet;
@@ -8,12 +9,13 @@ Array.prototype.ftp = function () {
 
     while (k < len) {
         if (k in O) {
-            muppet = O[k] / 1.5;
+
+            muppet = O[k] / 2;
             l = 1;
             while (l <= k) {
-                divider = (2 * l);
+                divider = (waga * l);
                 if (k === 0) {
-                    divider = 2;
+                    divider = waga;
                 }
                 muppet += O[k - l] / divider;
                 l++;

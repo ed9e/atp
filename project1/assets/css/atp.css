@@ -1,14 +1,6 @@
-body {
-    /*background-color: #74c98f;*/
-
-    background-color: #30323d;;
-    color: #d58512;
-}
-
 .tunecontainer {
     margin: 0 5px 0 0px;
 }
 canvas {
-
     padding-bottom: 40px;
 }

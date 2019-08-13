@@ -82,7 +82,6 @@ function updateData() {
         return;
     }
 
-
     par.value = Math.floor(par.scale.getValueForPixel(
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
@@ -123,8 +122,7 @@ document.getElementById('applyChanges').addEventListener('click', function () {
 //Cancel changes - rrevert to old dataset
 document.getElementById('cancelChanges').addEventListener('click', function () {
     atpOptions.data.datasets[0].data = atpOptions.data.datasets[1].data.slice();
-    atpOptions.data.datasets[2].data = atpOptions.data.datasets[1].data.slice().ftp();
-    chartAtpInstance.update();
+
 });
 
 //Cancel changes - rrevert to old dataset

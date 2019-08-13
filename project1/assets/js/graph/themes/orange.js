@@ -4,6 +4,7 @@ exports.orange = {
         bar2: '#ff4e00',
         time: '#ff4e00',
         ftp: '#ff6900',
+        ftpDone: '#db6d3a',
         grid: '#42444e',
     },
     borderColor: {

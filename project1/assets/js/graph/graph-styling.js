@@ -1,4 +1,4 @@
-global.theme = require('./themes/orange.js').green;
+global.theme = require('./themes/orange.js').orange;
 
 let barGradient = ctx.createLinearGradient(0, 0, 0, 900);
 let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 900);
@@ -57,7 +57,8 @@ global.general = {
         borderColor: '#5a5b60',
     },
     timeline: {
-        thick: 25,
+        thick: 12,
+        thick2: 5,
         color: timeGradient
     },
     phaseDataset: {

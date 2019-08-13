@@ -4,7 +4,9 @@
 namespace App\Service\Atp;
 
 
+use App\Entity\WeeklyActivity;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ATP
 {
@@ -12,6 +14,23 @@ class ATP
     protected $plan;
     protected $data;
     protected $groupPhases;
+    protected $done;
+    protected $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
+    /**
+     * @param mixed $done
+     * @return ATP
+     */
+    public function setDone($done)
+    {
+        $this->done = $done;
+        return $this;
+    }
 
     /**
      * @return Plan
@@ -54,8 +73,12 @@ class ATP
 
     public function getDone()
     {
+        $weekly = $this->em->getRepository(WeeklyActivity::class);
+        $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
+        return $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
+
         return [
-            '2019-08-05' => 238,
+            '2019-08-05' => 278,
             '2019-07-29' => 154,
             '2019-07-22' => 201,
             '2019-07-15' => 249,
@@ -64,13 +87,17 @@ class ATP
             '2019-06-24' => 278,
             '2019-06-17' => 116,
             '2019-06-10' => 213,
+            '2019-06-03' => 197,
+            '2019-05-27' => 176,
+            '2019-05-20' => 389,
+            '2019-05-13' => 516,
         ];
 
     }
 
     public function rework()
     {
-        $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P2W');
+        $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P20W');
         //$prev = [];
         $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P2W');
         $keys = array_merge($prev, array_keys($this->data), $last);

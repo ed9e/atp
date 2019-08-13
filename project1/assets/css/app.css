@@ -1,6 +1,12 @@
+body {
+    /*background-color: #74c98f;*/
+
+    background-color: #63687c;
+    color: #d58512;
+}
 
 .navbar {
-    background-color: #ff4e00aa;
+    background-color: #4e342e;
 }
 
 .logo {
@@ -10,9 +16,9 @@
 .content-wrapper {
     /*background-color: #74c98f;*/
 
-    background-color: #222d32;
+    background-color: #3e2723;
 }
 
 .main-sidebar {
-
+    background-color: #3e2723;
 }

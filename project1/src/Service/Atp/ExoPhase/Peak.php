@@ -24,8 +24,8 @@ class Peak extends ExoPhaseAbstract
             PlanIterator::SECOND_ITERATION => (new Config())->setValue(0),
             PlanIterator::THIRD_ITERATION => (new Config())->setValue(0),
             PlanIterator::FOURTH_ITERATION => (new Config())->setValue(0),
-            PlanIterator::FIFTH_ITERATION => (new Config())->setValue(0),
-            PlanIterator::SIXTH_ITERATION => (new Config())->setValue(1),
+            PlanIterator::FIFTH_ITERATION => (new Config())->setValue(1),
+            PlanIterator::SIXTH_ITERATION => (new Config())->setValue(0),
             PlanIterator::SEVENTH_ITERATION => (new Config())->setValue(1),
         ]);
     }

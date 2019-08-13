@@ -3,3 +3,6 @@ twig:
   debug: '%kernel.debug%'
   strict_variables: '%kernel.debug%'
   cache: false
+
+  form_themes:
+    - 'views/materialize_layout.html.twig'
