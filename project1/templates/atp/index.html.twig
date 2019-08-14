@@ -9,17 +9,6 @@
 
 {% endblock %}
 {% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('atp') }}
-
-    <!-- Renders app.js & a webpack runtime.js file
-        <script src="/build/runtime.js"></script>
-        <script src="/build/app.js"></script> -->
-{% endblock %}
-
-
-{% block page_content %}
-
     <script type="application/javascript">
 
         let xKeys = {{ keys|json_encode|raw }};
@@ -40,30 +29,46 @@
             document.getElementById('drag-switch').innerText = zoomOptions.drag ? 'Disable drag mode' : 'Enable drag mode';
         };
     </script>
+    {{ parent() }}
+    {{ encore_entry_script_tags('atp') }}
 
-    <ul class="collapsible">
-        <li>
-            <div class="collapsible-header">PLAN</div>
-            <div class="collapsible-body">
-                {{ form(form) }}
+    <!-- Renders app.js & a webpack runtime.js file
+        <script src="/build/runtime.js"></script>
+        <script src="/build/app.js"></script> -->
+{% endblock %}
 
-            </div>
-        </li>
-    </ul>
 
-    <div class="btn-group">
+{% block page_content %}
+
+    <div class="row">
+        <div class="col s4 offset-s8">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">PLAN</div>
+                    <div class="collapsible-body">
+                        {{ form(form) }}
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 offset-s6">
         <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
         <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
         <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
         <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>
-        <button class="waves-effect btn" id="drag-switch" onclick="toggleDragMode()">Disable drag mode</button>
+            <button class="waves-effect btn" id="drag-switch" onclick="toggleDragMode()">Disable zoom mode</button>
+        </div>
     </div>
 
     <div class="tunecontainer">
         <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
             <span></span>
         </div>
-        <canvas id="chartJSContainer" width="1920" height="800"></canvas>
+        <canvas id="chartJSContainer" width="1920" height="700"></canvas>
     </div>
 
 {% endblock %}

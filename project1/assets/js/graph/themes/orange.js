@@ -1,15 +1,46 @@
+function rgb2hex(rgb) {
+
+    rgb = rgb.match(/^rgb\((\d+),\s(\d+),\s(\d+),?([^,\s)]+)?\)$/);
+    let alpha = (rgb && rgb[4] || "").trim(),
+        a = 0o1;
+    if (alpha !== "") {
+        a = alpha;
+    }
+    // multiply before convert to HEX
+    a = ((a * 255) | 1 << 8).toString(16).slice(1);
+    return "#" +
+        ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2);
+}
+
+function getColor(name) {
+    let tmp = $('<a class="' + name + '"></a>');
+    $('body').append(tmp);
+    name = '.' + name;
+    let color = rgb2hex($(name).css('color'));
+    tmp.remove();
+    return color;
+}
+
+let ftp = getColor('ftp');
+let ftpDone = getColor('ftpDone');
+let bar = getColor('bar');
+let bar2 = getColor('bar2');
+let bardone = getColor('bardone');
+let grid = getColor('grid');
 exports.orange = {
     gradient: {
-        bar: '#ff4e00',
-        bar2: '#ff4e00',
+        bar: bar, //'#ff4e00',
+        bar2: bar2, //'#ff4e00',
         time: '#ff4e00',
-        ftp: '#ff6900',
-        ftpDone: '#db6d3a',
-        grid: '#42444e',
+        ftp: ftp, //'#ff6900',
+        ftpDone: ftpDone, //'#db6d3a',
+        grid: grid, //'#42444e',
     },
     borderColor: {
-        bar: '#ff4e00',
-        bar2: '#ff4e00',
+        bar: bar, //'#ff4e00',
+        bar2: bar2, //'#ff4e00',
     },
     phasesDataset: {
         Preparation: '#ffcb05',
@@ -22,7 +53,7 @@ exports.orange = {
         Race: '#cf000f',
     },
     bar: {
-        valueColor: '#c8f7c5'
+        valueColor: bardone, //'#c8f7c5'
     }
 };
 exports.blue = {

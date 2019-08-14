@@ -1,808 +1,470 @@
-body {
-  /*background-color: #74c98f;*/
+// Google Color Palette defined: http://www.google.com/design/spec/style/color.html
 
-  background-color: #30323d;;
-  color: #d58512;
+$materialize-red: (
+        "base": #e51c23,
+        "lighten-5": #fdeaeb,
+        "lighten-4": #f8c1c3,
+        "lighten-3": #f3989b,
+        "lighten-2": #ee6e73,
+        "lighten-1": #ea454b,
+        "darken-1": #d0181e,
+        "darken-2": #b9151b,
+        "darken-3": #a21318,
+        "darken-4": #8b1014,
+);
+
+$red: (
+        "base": #F44336,
+        "lighten-5": #FFEBEE,
+        "lighten-4": #FFCDD2,
+        "lighten-3": #EF9A9A,
+        "lighten-2": #E57373,
+        "lighten-1": #EF5350,
+        "darken-1": #E53935,
+        "darken-2": #D32F2F,
+        "darken-3": #C62828,
+        "darken-4": #B71C1C,
+        "accent-1": #FF8A80,
+        "accent-2": #FF5252,
+        "accent-3": #FF1744,
+        "accent-4": #D50000
+);
+
+$pink: (
+        "base": #e91e63,
+        "lighten-5": #fce4ec,
+        "lighten-4": #f8bbd0,
+        "lighten-3": #f48fb1,
+        "lighten-2": #f06292,
+        "lighten-1": #ec407a,
+        "darken-1": #d81b60,
+        "darken-2": #c2185b,
+        "darken-3": #ad1457,
+        "darken-4": #880e4f,
+        "accent-1": #ff80ab,
+        "accent-2": #ff4081,
+        "accent-3": #f50057,
+        "accent-4": #c51162
+);
+
+$purple: (
+        "base": #9c27b0,
+        "lighten-5": #f3e5f5,
+        "lighten-4": #e1bee7,
+        "lighten-3": #ce93d8,
+        "lighten-2": #ba68c8,
+        "lighten-1": #ab47bc,
+        "darken-1": #8e24aa,
+        "darken-2": #7b1fa2,
+        "darken-3": #6a1b9a,
+        "darken-4": #4a148c,
+        "accent-1": #ea80fc,
+        "accent-2": #e040fb,
+        "accent-3": #d500f9,
+        "accent-4": #aa00ff
+);
+
+$deep-purple: (
+        "base": #673ab7,
+        "lighten-5": #ede7f6,
+        "lighten-4": #d1c4e9,
+        "lighten-3": #b39ddb,
+        "lighten-2": #9575cd,
+        "lighten-1": #7e57c2,
+        "darken-1": #5e35b1,
+        "darken-2": #512da8,
+        "darken-3": #4527a0,
+        "darken-4": #311b92,
+        "accent-1": #b388ff,
+        "accent-2": #7c4dff,
+        "accent-3": #651fff,
+        "accent-4": #6200ea
+);
+
+$indigo: (
+        "base": #3f51b5,
+        "lighten-5": #e8eaf6,
+        "lighten-4": #c5cae9,
+        "lighten-3": #9fa8da,
+        "lighten-2": #7986cb,
+        "lighten-1": #5c6bc0,
+        "darken-1": #3949ab,
+        "darken-2": #303f9f,
+        "darken-3": #283593,
+        "darken-4": #1a237e,
+        "accent-1": #8c9eff,
+        "accent-2": #536dfe,
+        "accent-3": #3d5afe,
+        "accent-4": #304ffe
+);
+
+$blue: (
+        "base": #2196F3,
+        "lighten-5": #E3F2FD,
+        "lighten-4": #BBDEFB,
+        "lighten-3": #90CAF9,
+        "lighten-2": #64B5F6,
+        "lighten-1": #42A5F5,
+        "darken-1": #1E88E5,
+        "darken-2": #1976D2,
+        "darken-3": #1565C0,
+        "darken-4": #0D47A1,
+        "accent-1": #82B1FF,
+        "accent-2": #448AFF,
+        "accent-3": #2979FF,
+        "accent-4": #2962FF
+);
+
+$light-blue: (
+        "base": #03a9f4,
+        "lighten-5": #e1f5fe,
+        "lighten-4": #b3e5fc,
+        "lighten-3": #81d4fa,
+        "lighten-2": #4fc3f7,
+        "lighten-1": #29b6f6,
+        "darken-1": #039be5,
+        "darken-2": #0288d1,
+        "darken-3": #0277bd,
+        "darken-4": #01579b,
+        "accent-1": #80d8ff,
+        "accent-2": #40c4ff,
+        "accent-3": #00b0ff,
+        "accent-4": #0091ea
+);
+
+$cyan: (
+        "base": #00bcd4,
+        "lighten-5": #e0f7fa,
+        "lighten-4": #b2ebf2,
+        "lighten-3": #80deea,
+        "lighten-2": #4dd0e1,
+        "lighten-1": #26c6da,
+        "darken-1": #00acc1,
+        "darken-2": #0097a7,
+        "darken-3": #00838f,
+        "darken-4": #006064,
+        "accent-1": #84ffff,
+        "accent-2": #18ffff,
+        "accent-3": #00e5ff,
+        "accent-4": #00b8d4
+);
+
+$teal: (
+        "base": #009688,
+        "lighten-5": #e0f2f1,
+        "lighten-4": #b2dfdb,
+        "lighten-3": #80cbc4,
+        "lighten-2": #4db6ac,
+        "lighten-1": #26a69a,
+        "darken-1": #00897b,
+        "darken-2": #00796b,
+        "darken-3": #00695c,
+        "darken-4": #004d40,
+        "accent-1": #a7ffeb,
+        "accent-2": #64ffda,
+        "accent-3": #1de9b6,
+        "accent-4": #00bfa5
+);
+
+$green: (
+        "base": #4CAF50,
+        "lighten-5": #E8F5E9,
+        "lighten-4": #C8E6C9,
+        "lighten-3": #A5D6A7,
+        "lighten-2": #81C784,
+        "lighten-1": #66BB6A,
+        "darken-1": #43A047,
+        "darken-2": #388E3C,
+        "darken-3": #2E7D32,
+        "darken-4": #1B5E20,
+        "accent-1": #B9F6CA,
+        "accent-2": #69F0AE,
+        "accent-3": #00E676,
+        "accent-4": #00C853
+);
+
+$light-green: (
+        "base": #8bc34a,
+        "lighten-5": #f1f8e9,
+        "lighten-4": #dcedc8,
+        "lighten-3": #c5e1a5,
+        "lighten-2": #aed581,
+        "lighten-1": #9ccc65,
+        "darken-1": #7cb342,
+        "darken-2": #689f38,
+        "darken-3": #558b2f,
+        "darken-4": #33691e,
+        "accent-1": #ccff90,
+        "accent-2": #b2ff59,
+        "accent-3": #76ff03,
+        "accent-4": #64dd17
+);
+
+$lime: (
+        "base": #cddc39,
+        "lighten-5": #f9fbe7,
+        "lighten-4": #f0f4c3,
+        "lighten-3": #e6ee9c,
+        "lighten-2": #dce775,
+        "lighten-1": #d4e157,
+        "darken-1": #c0ca33,
+        "darken-2": #afb42b,
+        "darken-3": #9e9d24,
+        "darken-4": #827717,
+        "accent-1": #f4ff81,
+        "accent-2": #eeff41,
+        "accent-3": #c6ff00,
+        "accent-4": #aeea00
+);
+
+$yellow: (
+        "base": #ffeb3b,
+        "lighten-5": #fffde7,
+        "lighten-4": #fff9c4,
+        "lighten-3": #fff59d,
+        "lighten-2": #fff176,
+        "lighten-1": #ffee58,
+        "darken-1": #fdd835,
+        "darken-2": #fbc02d,
+        "darken-3": #f9a825,
+        "darken-4": #f57f17,
+        "accent-1": #ffff8d,
+        "accent-2": #ffff00,
+        "accent-3": #ffea00,
+        "accent-4": #ffd600
+);
+
+$amber: (
+        "base": #ffc107,
+        "lighten-5": #fff8e1,
+        "lighten-4": #ffecb3,
+        "lighten-3": #ffe082,
+        "lighten-2": #ffd54f,
+        "lighten-1": #ffca28,
+        "darken-1": #ffb300,
+        "darken-2": #ffa000,
+        "darken-3": #ff8f00,
+        "darken-4": #ff6f00,
+        "accent-1": #ffe57f,
+        "accent-2": #ffd740,
+        "accent-3": #ffc400,
+        "accent-4": #ffab00
+);
+
+$orange: (
+        "base": #ff9800,
+        "lighten-5": #fff3e0,
+        "lighten-4": #ffe0b2,
+        "lighten-3": #ffcc80,
+        "lighten-2": #ffb74d,
+        "lighten-1": #ffa726,
+        "darken-1": #fb8c00,
+        "darken-2": #f57c00,
+        "darken-3": #ef6c00,
+        "darken-4": #e65100,
+        "accent-1": #ffd180,
+        "accent-2": #ffab40,
+        "accent-3": #ff9100,
+        "accent-4": #ff6d00
+);
+
+$deep-orange: (
+        "base": #ff5722,
+        "lighten-5": #fbe9e7,
+        "lighten-4": #ffccbc,
+        "lighten-3": #ffab91,
+        "lighten-2": #ff8a65,
+        "lighten-1": #ff7043,
+        "darken-1": #f4511e,
+        "darken-2": #e64a19,
+        "darken-3": #d84315,
+        "darken-4": #bf360c,
+        "accent-1": #ff9e80,
+        "accent-2": #ff6e40,
+        "accent-3": #ff3d00,
+        "accent-4": #dd2c00
+);
+
+$brown: (
+        "base": #795548,
+        "lighten-5": #efebe9,
+        "lighten-4": #d7ccc8,
+        "lighten-3": #bcaaa4,
+        "lighten-2": #a1887f,
+        "lighten-1": #8d6e63,
+        "darken-1": #6d4c41,
+        "darken-2": #5d4037,
+        "darken-3": #4e342e,
+        "darken-4": #3e2723
+);
+
+$blue-grey: (
+        "base": #607d8b,
+        "lighten-5": #eceff1,
+        "lighten-4": #cfd8dc,
+        "lighten-3": #b0bec5,
+        "lighten-2": #90a4ae,
+        "lighten-1": #78909c,
+        "darken-1": #546e7a,
+        "darken-2": #455a64,
+        "darken-3": #37474f,
+        "darken-4": #263238
+);
+
+$grey: (
+        "base": #9e9e9e,
+        "lighten-5": #fafafa,
+        "lighten-4": #f5f5f5,
+        "lighten-3": #eeeeee,
+        "lighten-2": #e0e0e0,
+        "lighten-1": #bdbdbd,
+        "darken-1": #757575,
+        "darken-2": #616161,
+        "darken-3": #424242,
+        "darken-4": #212121
+);
+$my-orange: (
+        "base": #ff6900,
+        "lighten-5": #fafafa,
+        "lighten-4": #42444e,
+        "lighten-3": #555,
+        "lighten-2": #db6d3a,
+        "lighten-1": #bdbdbd,
+        "darken-1": #ff4e00,
+        "darken-2": #616161,
+        "darken-3": #424242,
+        "darken-4": #212121,
+        "accent-1": #ff4e00
+);
+$my-orange2: (
+        "base": #db6d3a,
+        "lighten-5": #fafafa,
+        "lighten-4": #83878f,
+        "lighten-3": #555,
+        "lighten-2": #db6d3a,
+        "lighten-1": #bdbdbd,
+        "darken-1": #ff4e00,
+        "darken-2": #616161,
+        "darken-3": #424242,
+        "darken-4": #63687c,
+        "accent-1": #ff4e00
+);
+$shades: (
+        "black": #000000,
+        "white": #FFFFFF,
+        "transparent": transparent
+);
+
+$colors: (
+        "my-orange": $my-orange,
+        "my-orange2": $my-orange2,
+        "materialize-red": $materialize-red,
+        "red": $red,
+        "pink": $pink,
+        "purple": $purple,
+        "deep-purple": $deep-purple,
+        "indigo": $indigo,
+        "blue": $blue,
+        "light-blue": $light-blue,
+        "cyan": $cyan,
+        "teal": $teal,
+        "green": $green,
+        "light-green": $light-green,
+        "lime": $lime,
+        "yellow": $yellow,
+        "amber": $amber,
+        "orange": $orange,
+        "deep-orange": $deep-orange,
+        "brown": $brown,
+        "blue-grey": $blue-grey,
+        "grey": $grey,
+        "shades": $shades,
+) !default;
+
+
+// usage: color("name_of_color", "type_of_color")
+// to avoid to repeating map-get($colors, ...)
+
+@function color($color, $type) {
+  @if map-has-key($colors, $color) {
+    $curr_color: map-get($colors, $color);
+    @if map-has-key($curr_color, $type) {
+      @return map-get($curr_color, $type);
+    }
+  }
+  @warn "Unknown `#{$color}` - `#{$type}` in $colors.";
+  @return null;
+}
+
+$body-color: desaturate(color($theme, "base"), 80%) !default;
+$menu-color: lighten(desaturate(color($theme, "base"), 40%), 10%) !default;
+$primary-color: color($theme, "lighten-2") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color($theme, "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color($theme, "lighten-5") !default;
+
+.ftp {
+  color: color($theme, "base");
+}
+
+.ftpDone {
+  color: color($theme, "lighten-2");
+}
+
+.bar {
+  color: color($theme, "darken-1");
+}
+
+.bar2 {
+  color: color($theme, "accent-1");
+}
+
+.bardone {
+  color: color($theme, "lighten-3");
+}
+
+.grid {
+  color: color($theme, "lighten-4");
 }
 
 .tunecontainer {
-  margin: 0 5px 0 0px;
+  margin: 0 5px 0 0;
 }
 
-canvas {
+.content-wrapper {
+  /*background-color: #74c98f;*/
 
-  padding-bottom: 40px;
+  background-color: $body-color;
 }
 
-/* -----------------------------------------------------
-  Material Design Sliders
-  CodePen URL: https://codepen.io/rkchauhan/pen/xVGGpR
-  By: Ravikumar Chauhan
+.sidebar-mini.sidebar-collapse .main-header .navbar {
+  background-color: $body-color;
+}
 
-  Find me on:-
-  * Twitter: https://twitter.com/rkchauhan01
-  * Facebook: https://www.facebook.com/ravi032chauhan
-  * GitHub: https://github.com/rkchauhan
-  * CodePen: https://codepen.io/rkchauhan
-  * UpLabs: http://uplabs.com/rkchauhan01
-
-  Thanks to:-
-  * Google Material design - https://www.google.com/design/spec/material-design/introduction.html
-  * Google Material Color - https://www.google.com/design/spec/style/color.html
-  * Google Material Icons - https://design.google.com/icons/
-  * Roboto Font - https://google.com/fonts/specimen/Roboto
-  * jQuery - https://jquery.com
--------------------------------------------------------- */
-
-// For Variables
-// Colors
-$white: #fff;
-$black: #000;
-$grey: #eee;
-$lightBlue: #03a9f4;
-$orange: #ff9800;
-$amber: #ffc107;
-$green: #4caf50;
-$teal: #009688;
-$cyan: #00bcd4;
-$indigo: #3f51b5;
-$deepPurple: #673ab7;
-$pink: #e91e63;
-$red: #f44336;
-$yellow: #ffeb3b;
-$lime: #cddc39;
-$brown: #795548;
-
-// Body
-$body_bg_color: #fafafa;
-$link_color: $lightBlue;
-
-
-*, *::after, *::before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
+body, .main-sidebar {
+  background-color: $body-color;
 }
 
 a {
-  color: $link_color;
-  outline: none;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  color: $link-color;
 }
 
-
-/* -----------------------------------------------------
-Color Box
--------------------------------------------------------- */
-.color-box {
-  position: fixed;
-  top: 22%;
-  right: 0px;
-  width: 100px;
-  padding: 20px 18px 14px 20px;
-  background-color: #fff;
-  border-radius: 2px 0 0 2px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.175);
-  transition: all .4s ease-in-out;
-  transform: translate3d(102px, 0, 0);
-  z-index: 2;
-
-  &.open {
-    transform: translate3d(0, 0, 0) !important;
-  }
-
-  .show-box {
-    position: absolute;
-    left: -38px;
-    top: 15px;
-    width: 38px;
-    height: 38px;
-    display: block;
-    background-color: #fff;
-    border-radius: 2px 0 0 2px;
-    box-shadow: -4px 2px 2px -2px rgba(0, 0, 0, 0.175);
-    cursor: pointer;
-    z-index: 1;
-
-    i {
-      color: rgba(0, 0, 0, 0.575);
-      font-size: 20px;
-      line-height: 38px;
-      margin-left: 8px;
-    }
-  }
-
-  p {
-    margin: 0 0 8px 0;
-    padding: 0;
-    font-size: 11px;
-  }
-
-  .colors-list {
-    margin: 0;
-    padding: 0;
-
-    li {
-      float: left;
-      display: block;
-      margin-bottom: 2px;
-      margin-right: 6px;
-
-      a {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        border-radius: 2px;
-        transition: all 0.2s linear;
-        cursor: pointer;
-
-        &.teal {
-          background-color: $teal;
-        }
-
-        &.lightBlue {
-          background-color: $lightBlue;
-        }
-
-        &.green {
-          background-color: $green;
-        }
-
-        &.amber {
-          background-color: $amber;
-        }
-
-        &.orange {
-          background-color: $orange;
-        }
-
-        &.cyan {
-          background-color: $cyan;
-        }
-
-        &.pink {
-          background-color: $pink;
-        }
-
-        &.deepPurple {
-          background-color: $deepPurple;
-        }
-
-        &.indigo {
-          background-color: $indigo;
-        }
-
-        &.red {
-          background-color: $red;
-        }
-
-        &.yellow {
-          background-color: $yellow;
-        }
-
-        &.lime {
-          background-color: $lime;
-        }
-
-        &.brown {
-          background-color: $brown;
-        }
-      }
-    }
-  }
+a:hover, a:active, a:link, a:visited {
+  color: $link-color;
 }
 
-/* -----------------------------------------------------
-   Header
--------------------------------------------------------- */
-header {
-  display: block;
-  width: 100%;
-  padding: 12px 0;
-  text-align: center;
-  background-color: $indigo;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.275);
-
-  h2 {
-    margin: 0;
-    padding: 25px 0;
-    color: #FFF;
-    font-size: 2em;
-    font-weight: 300;
-    letter-spacing: 1px;
-  }
+.tree li, .tree li a {
+  background-color: $menu-color;
 }
 
-/* -----------------------------------------------------
-    Footer
--------------------------------------------------------- */
-footer {
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  min-height: 80px;
-  background-color: #dbdbdb;
-  border-top: 1px solid #EEE;
-
-  .row {
-    width: 100%;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .footer-content {
-    margin: 0 8px;
-    padding: 25px 0 18px;
-    text-align: center;
-
-    span {
-      color: rgba(0, 0, 0, 0.525);
-      font-size: 0.857em;
-      margin-right: 5px;
-    }
-  }
-
-  @media only screen and (max-width: 768px) {
-    span {
-      display: block;
-      width: 100%;
-      margin-bottom: 8px;
-    }
-  }
+.sidebar-menu > li:hover > a > span {
+  background-color: color($theme, "darken-1");
 }
 
-/* -----------------------------------------------------
-    Main
--------------------------------------------------------- */
-main {
-  width: 100%;
-  max-width: 940px;
-  margin: 2rem auto;
-
-  section {
-    display: block;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background-color: $grey;
-    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.157);
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    .heading {
-      margin: 0;
-      padding: 0 0 8px 0;
-      font-size: 1.2rem;
-    }
-
-    .wrap {
-      display: block;
-      margin-bottom: 3em;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      .title {
-        display: block;
-        padding: 8px 0;
-        font-size: 1.3em;
-        text-align: center;
-        border-top: 1px solid rgba(0, 0, 0, 0.2);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-      }
-
-      .holder {
-        display: flex;
-        position: relative;
-        margin-bottom: .5rem 0;
-        padding: 1.5% 0 2%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-
-        &:last-child {
-          margin-bottom: 0;
-          border-bottom: none;
-        }
-
-        .demo {
-          display: block;
-          width: 68%;
-          min-height: 60px;
-          margin: 0 auto;
-          padding: 28px 0;
-          order: 2;
-        }
-
-        .captions {
-          display: block;
-          width: 25%;
-          min-height: 60px;
-          margin-right: 1%;
-          line-height: 60px;
-          font-size: 14px;
-          text-align: center;
-          order: 1;
-        }
-      }
-
-      @media only screen and (max-width: 640px) {
-
-        .holder {
-          display: block;
-          width: 100%;
-
-          .demo {
-            width: 100%;
-          }
-
-          .captions {
-            display: block;
-            width: 100%;
-            min-height: auto;
-            margin-right: 0;
-            line-height: normal;
-          }
-        }
-      }
-    }
-
-    &.bg-dark {
-      background-color: #333;
-      box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.257);
-
-      .title {
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .heading {
-        color: #7a7a7a;
-      }
-
-      .holder {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      }
-    }
-
-    &.bg-light {
-      background-color: #fff;
-    }
-  }
-
-  @media only screen and (max-width: 960px) {
-    padding: 0 1.5%;
-  }
-}
-
-/* ----------------------------------------------------------------------
-  Material Design Range Slider - by Ravikumar Chauhan
-------------------------------------------------------------------------- */
-.rkmd-slider {
-  display: block;
-  position: relative;
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
-
-  input[type="range"] {
-    overflow: hidden;
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-
-    & + .slider {
-      display: block;
-      position: relative;
-      width: 100%;
-      height: 4px;
-      background-color: #bebebe;
-
-      .slider-fill {
-        display: block;
-        position: absolute;
-        width: 0%;
-        height: 100%;
-        user-select: none;
-        z-index: 1;
-      }
-
-      .slider-handle {
-        cursor: pointer;
-        position: absolute;
-        top: -5.5px;
-        left: 0%;
-        width: 15px;
-        height: 15px;
-        margin-left: -8px;
-        border-radius: 50%;
-        transition: all .2s ease;
-        user-select: none;
-        z-index: 2;
-      }
-    }
-
-    &:disabled + .slider {
-      background-color: #b0b0b0 !important;
-
-      .slider-fill,
-      .slider-handle {
-        cursor: default !important;
-        background-color: #b0b0b0 !important;
-
-        .slider-label {
-          display: none;
-          background-color: #b0b0b0 !important;
-        }
-
-        &.is-active {
-          top: -5.5px;
-          width: 15px;
-          height: 15px;
-          margin-left: -8px;
-
-          .slider-label {
-            display: none;
-            border-radius: 50%;
-            transform: none;
-          }
-        }
-      }
-
-      .slider-handle:active {
-        box-shadow: none !important;
-        transform: scale(1) !important;
-      }
-    }
-  }
-
-  &.slider-light {
-    input[type="range"] {
-
-      & + .slider {
-        background-color: #5c5c5c;
-      }
-
-      &:disabled + .slider {
-        background-color: #5c5c5c !important;
-
-        .slider-fill,
-        .slider-handle {
-          background-color: #5c5c5c !important;
-        }
-
-      }
-    }
-  }
-}
-
-/* ----------------------------------------------------------------------
-  Continuous Range Slider - by Ravikumar Chauhan
-------------------------------------------------------------------------- */
-.rkmd-slider {
-  &.slider-continuous {
-    &.slider-scale {
-      .slider-handle:active {
-        transform: scale(1.4);
-      }
-    }
-
-    &.slider-shadow {
-      &.slider-lightBlue {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($lightBlue, .26);
-        }
-      }
-
-      &.slider-teal {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($teal, .26);
-        }
-      }
-
-      &.slider-orange {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($orange, .26);
-        }
-      }
-
-      &.slider-amber {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($amber, .26);
-        }
-      }
-
-      &.slider-green {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($green, .26);
-        }
-      }
-
-      &.slider-cyan {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($cyan, .26);
-        }
-      }
-
-      &.slider-indigo {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($indigo, .26);
-        }
-      }
-
-      &.slider-deepPurple {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($deepPurple, .26);
-        }
-      }
-
-      &.slider-pink {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($pink, .26);
-        }
-      }
-
-      &.slider-red {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($red, .26);
-        }
-      }
-
-      &.slider-yellow {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($yellow, .26);
-        }
-      }
-
-      &.slider-lime {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($lime, .26);
-        }
-      }
-
-      &.slider-brown {
-        .slider-handle:active {
-          box-shadow: 0 0 0 10px rgba($brown, .26);
-        }
-      }
-
-    }
-  }
-}
-
-/* ----------------------------------------------------------------------
-  Discrete Range Slider - by Ravikumar Chauhan
-------------------------------------------------------------------------- */
-.rkmd-slider {
-  &.slider-discrete {
-    .slider {
-      .slider-handle {
-        position: relative;
-        z-index: 1;
-
-        .slider-label {
-          position: absolute;
-          top: -17.5px;
-          left: -2px;
-          width: 30px;
-          height: 30px;
-          transform-origin: 50% 100%;
-          border-radius: 50%;
-          transform: scale(.5) rotate(-45deg);
-          transition: all .2s ease;
-
-          span {
-            position: absolute;
-            top: 7px;
-            left: 0px;
-            width: 100%;
-            color: #fff;
-            font-size: 12px;
-            text-align: center;
-            transform: rotate(45deg);
-            opacity: 0;
-            user-select: none;
-          }
-        }
-
-        &.is-active {
-          top: 0px;
-          margin-left: -2px;
-          width: 4px;
-          height: 4px;
-
-          .slider-label {
-            top: -15px;
-            left: -2px;
-            border-radius: 15px 15px 15px 0;
-            transform: rotate(-45deg) translate(23px, -25px);
-
-            span {
-              opacity: 1;
-            }
-          }
-        }
-      }
-    }
-
-    &.slider-lightBlue {
-      .slider-label {
-        background-color: $lightBlue;
-      }
-    }
-
-    &.slider-teal {
-      .slider-label {
-        background-color: $teal;
-      }
-    }
-
-    &.slider-orange {
-      .slider-label {
-        background-color: $orange;
-      }
-    }
-
-    &.slider-amber {
-      .slider-label {
-        background-color: $amber;
-      }
-    }
-
-    &.slider-green {
-      .slider-label {
-        background-color: $green;
-      }
-    }
-
-    &.slider-cyan {
-      .slider-label {
-        background-color: $cyan;
-      }
-    }
-
-    &.slider-indigo {
-      .slider-label {
-        background-color: $indigo;
-      }
-    }
-
-    &.slider-deepPurple {
-      .slider-label {
-        background-color: $deepPurple;
-      }
-    }
-
-    &.slider-pink {
-      .slider-label {
-        background-color: $pink;
-      }
-    }
-
-    &.slider-red {
-      .slider-label {
-        background-color: $red;
-      }
-    }
-
-    &.slider-yellow {
-      .slider-label {
-        background-color: $yellow;
-      }
-    }
-
-    &.slider-lime {
-      .slider-label {
-        background-color: $lime;
-      }
-    }
-
-    &.slider-brown {
-      .slider-label {
-        background-color: $brown;
-      }
-    }
-  }
-}
-
-/* ----------------------------------------------------------------------
-  Range Slider Color - by Ravikumar Chauhan
-------------------------------------------------------------------------- */
-.rkmd-slider {
-  &.slider-lightBlue {
-    .slider-fill,
-    .slider-handle {
-      background-color: $lightBlue;
-    }
-  }
-
-  &.slider-teal {
-    .slider-fill,
-    .slider-handle {
-      background-color: $teal;
-    }
-  }
-
-  &.slider-orange {
-    .slider-fill,
-    .slider-handle {
-      background-color: $orange;
-    }
-  }
-
-  &.slider-amber {
-    .slider-fill,
-    .slider-handle {
-      background-color: $amber;
-    }
-  }
-
-  &.slider-green {
-    .slider-fill,
-    .slider-handle {
-      background-color: $green;
-    }
-  }
-
-  &.slider-cyan {
-    .slider-fill,
-    .slider-handle {
-      background-color: $cyan;
-    }
-  }
-
-  &.slider-indigo {
-    .slider-fill,
-    .slider-handle {
-      background-color: $indigo;
-    }
-  }
-
-  &.slider-deepPurple {
-    .slider-fill,
-    .slider-handle {
-      background-color: $deepPurple;
-    }
-  }
-
-  &.slider-pink {
-    .slider-fill,
-    .slider-handle {
-      background-color: $pink;
-    }
-  }
-
-  &.slider-red {
-    .slider-fill,
-    .slider-handle {
-      background-color: $red;
-    }
-  }
-
-  &.slider-yellow {
-    .slider-fill,
-    .slider-handle {
-      background-color: $yellow;
-    }
-  }
-
-  &.slider-lime {
-    .slider-fill,
-    .slider-handle {
-      background-color: $lime;
-    }
-  }
-
-  &.slider-brown {
-    .slider-fill,
-    .slider-handle {
-      background-color: $brown;
-    }
-  }
+canvas {
+  padding-bottom: 40px;
 }

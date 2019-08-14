@@ -47,7 +47,7 @@ global.atpOptions = {
             },
             {
                 label: 'Done',
-                backgroundColor: '#00000088',
+                backgroundColor: general.bardone.bg,
                 fill: true,
                 data: createTimeArray(done),
                 borderWidth: 1,

@@ -44,11 +44,11 @@ global.general = {
     },
     newVal: {
         bg: barGradient,
-        borderColor: theme.borderColor.bar + 'aa'
+        borderColor: theme.borderColor.bar,
     },
     oldVal: {
         bg: bar2Gradient,
-        borderColor: theme.borderColor.bar2 + '00'
+        borderColor: theme.borderColor.bar2,
     },
     tooltip: {
         bg: '#5a5b60',
@@ -75,5 +75,8 @@ global.general = {
     },
     bar: {
         valueColor: theme.bar.valueColor
+    },
+    bardone: {
+        bg: theme.bar.valueColor
     }
 };

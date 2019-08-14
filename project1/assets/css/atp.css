@@ -1,6 +1,63 @@
-.tunecontainer {
-    margin: 0 5px 0 0px;
-}
-canvas {
-    padding-bottom: 40px;
+/*
+Error: Undefined variable: "$theme".
+        on line 400 of atp.scss
+
+395:   @warn "Unknown `#{$color}` - `#{$type}` in $colors.";
+396:   @return null;
+397: }
+398: 
+399: 
+400: $primary-color: color($theme, "lighten-2") !default;
+401: $primary-color-light: lighten($primary-color, 15%) !default;
+402: $primary-color-dark: darken($primary-color, 15%) !default;
+403: 
+404: $secondary-color: color($theme, "lighten-1") !default;
+405: $success-color: color("green", "base") !default;
+
+Backtrace:
+atp.scss:400
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/variable.rb:49:in `_perform'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/funcall.rb:173:in `perform_arg'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/funcall.rb:124:in `block in _perform'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/funcall.rb:124:in `each'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/funcall.rb:124:in `each_with_index'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/funcall.rb:124:in `each'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/funcall.rb:124:in `map'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/funcall.rb:124:in `_perform'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:472:in `visit_variable'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:161:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:384:in `_render_with_sourcemap'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/engine.rb:301:in `render_with_sourcemap'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:391:in `run'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/base.rb:52:in `parse'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/lib/sass/exec/base.rb:19:in `parse!'
+/var/lib/gems/2.5.0/gems/sass-3.4.25/bin/sass:13:in `<top (required)>'
+/usr/local/bin/sass:23:in `load'
+/usr/local/bin/sass:23:in `<main>'
+*/
+body:before {
+    white-space: pre;
+    font-family: monospace;
+    content: "Error: Undefined variable: \"$theme\".\A         on line 400 of atp.scss\A \A 395:   @warn \"Unknown `#{$color}` - `#{$type}` in $colors.\";\A 396:   @return null;\A 397: }\A 398: \A 399: \A 400: $primary-color: color($theme, \"lighten-2\") !default;\A 401: $primary-color-light: lighten($primary-color, 15%) !default;\A 402: $primary-color-dark: darken($primary-color, 15%) !default;\A 403: \A 404: $secondary-color: color($theme, \"lighten-1\") !default;\A 405: $success-color: color(\"green\", \"base\") !default;";
 }

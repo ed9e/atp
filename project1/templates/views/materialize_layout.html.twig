@@ -4,7 +4,7 @@
 
 {% block form_row -%}
     <div class="row{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
-        <div class="input-field col-lg-3 s12">
+        <div class="input-field s12">
             {{- form_widget(form) -}}
             {{- form_label(form) -}}
             {{- form_errors(form) -}}

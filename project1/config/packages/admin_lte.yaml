@@ -8,11 +8,11 @@
 
 admin_lte:
   options:
-    skin: skin-red
+    skin: skin-material
     fixed_layout: false
     boxed_layout: false
-    collapsed_sidebar: true
-    mini_sidebar: true
+    collapsed_sidebar: false
+    mini_sidebar: false
 
   knp_menu:
     enable: false
