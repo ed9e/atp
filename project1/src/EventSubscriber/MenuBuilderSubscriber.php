@@ -18,7 +18,20 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
 
     public function onSetupMenu(SidebarMenuEvent $event)
     {
-        $atpMenu = new MenuItemModel('atpId', 'ATP', '/atp', [], 'fas fa-industry');
+        $this->atp($event);
+        $this->herbs($event);
+        $this->analize($event);
+
+
+        $this->activateByRoute(
+            $event->getRequest()->get('_route'),
+            $event->getItems()
+        );
+    }
+
+    protected function atp(SidebarMenuEvent $event)
+    {
+        $atpMenu = new MenuItemModel('atpId', 'Atp', null, [], 'fas fa-industry');
 
         $atpMenu->addChild(
             new MenuItemModel('planId', 'Plan', '/atp', [], 'fas fa-hourglass-start')
@@ -27,11 +40,44 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
         );
 
         $event->addItem($atpMenu);
+    }
 
-        $this->activateByRoute(
-            $event->getRequest()->get('_route'),
-            $event->getItems()
-        );
+    protected function herbs(SidebarMenuEvent $event)
+    {
+        $menu = new MenuItemModel('herbs', 'Zioła', null, [], 'fas fa-industry');
+
+        $menu
+            ->addChild(
+                new MenuItemModel('herbsId', 'Plan', '/herbs', [], 'fas fa-hourglass-start')
+            )
+            ->addChild(
+                (new MenuItemModel('herbsListId', 'Lista', '/herbs/list', [], 'fas fa-hourglass-end'))
+                    ->addChild(new MenuItemModel('rozeniecId', 'Różeniec górski', '/herbs/rozeniec_gorski', [], 'fas fa-hourglass-end'))
+                    ->addChild(new MenuItemModel('pokrzywaId', 'Pokrzywa', '/herbs/pokrzywa', [], 'fas fa-hourglass-end'))
+            )
+            ->addChild(
+                new MenuItemModel('examineId', 'Done', '/herbs/examine', [], 'fas fa-hourglass-end')
+            );
+
+        $event->addItem($menu);
+    }
+
+    protected function analize(SidebarMenuEvent $event)
+    {
+        $menu = new MenuItemModel('analyze', 'Analize', '/analyze', [], 'fas fa-industry');
+
+        $menu
+            ->addChild(
+                new MenuItemModel('herbsId', 'Plan', '/herbs', [], 'fas fa-hourglass-start')
+            )
+            ->addChild(
+                new MenuItemModel('herbsListId', 'Herbs', '/herbs/list', [], 'fas fa-hourglass-end')
+            )
+            ->addChild(
+                new MenuItemModel('examineId', 'Done', '/herbs/examine', [], 'fas fa-hourglass-end')
+            );
+
+        $event->addItem($menu);
     }
 
     /**
