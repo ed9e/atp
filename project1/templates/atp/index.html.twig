@@ -22,11 +22,18 @@
         }
 
         window.toggleDragMode = function () {
-            var chart = chartAtpInstance;
-            var zoomOptions = chart.options.zoom;
-            zoomOptions.drag = !zoomOptions.drag;
+            let chart = chartAtpInstance;
+            let zoomOptions = chart.options.zoom;
+            zoomOptions.enabled = !zoomOptions.enabled;
             chart.update();
-            document.getElementById('drag-switch').innerText = zoomOptions.drag ? 'Disable drag mode' : 'Enable drag mode';
+            document.getElementById('zoom-switch').innerText = zoomOptions.enabled ? 'Disable zoom mode' : 'Enable zoom mode';
+        };
+        window.togglePanMode = function () {
+            let chart = chartAtpInstance;
+            let panOptions = chart.options.pan;
+            panOptions.enabled = !panOptions.enabled;
+            chart.update();
+            document.getElementById('pan-switch').innerText = panOptions.enabled ? 'Disable pan mode' : 'Enable pan mode';
         };
     </script>
     {{ parent() }}
@@ -56,11 +63,12 @@
 
     <div class="row">
         <div class="col s6 offset-s6">
-        <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
-        <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
-        <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
-        <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>
-            <button class="waves-effect btn" id="drag-switch" onclick="toggleDragMode()">Disable zoom mode</button>
+            <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
+            <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
+            <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
+            <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>
+            <button class="waves-effect btn" id="zoom-switch" onclick="toggleDragMode()">Disable zoom mode</button>
+            <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode</button>
         </div>
     </div>
 

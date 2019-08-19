@@ -323,6 +323,36 @@ $grey: (
         "darken-3": #424242,
         "darken-4": #212121
 );
+$dark: (
+        "body": #3c3c3c,
+        "menu": #323232,
+        "font": #ffffff,
+        "base": #0f0f0f,
+        "ftp": #ff7a4b,
+        "ftpborder": #ff7a4b,
+        "ftpdone": #232323,
+        "ftpdoneborder": #232323,
+        "bar1": #ff7a4b,
+        "bar1border": #ff7a4b,
+        "bar2": #dd6e42,
+        "bar2border": #dd6e42,
+        "bardone": #191919,
+        "bardoneborder": #191919,
+        "lighten-5": lighten(#3c3c3c, 6%),
+        "lighten-4": lighten(#3c3c3c, 5%),
+        "lighten-3": lighten(#3c3c3c, 4%),
+        "lighten-2": lighten(#3c3c3c, 3%),
+        "lighten-1": lighten(#3c3c3c, 2%),
+        "darken-1": desaturate(darken(#3c3c3c, 1%), 20%),
+        "darken-2": desaturate(darken(#3c3c3c, 2%), 30%),
+        "darken-3": desaturate(darken(#3c3c3c, 3%), 30%),
+        "darken-4": desaturate(darken(#3c3c3c, 4%), 30%),
+        "accent-1": #3c3c3c,
+        "accent-2": #232323,
+        "accent-3": #3c3c3c,
+        "accent-4": #3c3c3c
+);
+
 $my-orange: (
         "base": #ff6900,
         "lighten-5": #fafafa,
@@ -379,6 +409,7 @@ $colors: (
         "blue-grey": $blue-grey,
         "grey": $grey,
         "shades": $shades,
+        "dark": $dark,
 ) !default;
 
 
@@ -396,39 +427,57 @@ $colors: (
   @return null;
 }
 
-$body-color: desaturate(color($theme, "base"), 80%) !default;
-$menu-color: lighten(desaturate(color($theme, "base"), 40%), 10%) !default;
+
+$font-color: color($theme, "font") !default;
+$body-color: color($theme, "body") !default;
+$menu-color: color($theme, "menu") !default;
+$menu-level2-color: darken(color($theme, "menu"), 5%) !default;
 $primary-color: color($theme, "lighten-2") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color($theme, "lighten-1") !default;
+$secondary-color: color($theme, "accent-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-$link-color: color($theme, "lighten-5") !default;
+$link-color: color($theme, "accent-2") !default;
 
 .ftp {
-  color: color($theme, "base");
+  color: color($theme, "ftp");
 }
 
 .ftpDone {
-  color: color($theme, "lighten-2");
+  color: color($theme, "ftpdone");
 }
 
 .bar {
-  color: color($theme, "darken-1");
+  color: color($theme, "bar1");
 }
 
 .bar2 {
-  color: color($theme, "accent-1");
+  color: color($theme, "bar2");
 }
 
 .bardone {
-  color: color($theme, "lighten-3");
+  color: color($theme, "bardone");
 }
 
+.bardoneborder {
+  color: color($theme, "bardoneborder");
+}
+
+.border-bar {
+  color: color($theme, "bar1border");
+}
+
+.border-bar2 {
+  color: color($theme, "bar2border");
+}
+
+.border-ftp {
+  color: color($theme, "ftpborder");
+}
 .grid {
-  color: color($theme, "lighten-4");
+  color: $font-color;
 }
 
 .tunecontainer {
@@ -445,8 +494,14 @@ $link-color: color($theme, "lighten-5") !default;
   background-color: $body-color;
 }
 
-body, .main-sidebar {
+.main-sidebar {
+  background-color: $menu-color;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+body {
   background-color: $body-color;
+  color: $font-color;
 }
 
 a {
@@ -457,14 +512,36 @@ a:hover, a:active, a:link, a:visited {
   color: $link-color;
 }
 
-.tree li, .tree li a {
+.tree > li {
+  background-color: $menu-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+}
+
+.tree > li a:hover {
   background-color: $menu-color;
 }
 
+
+.tree li ul li {
+  background-color: $menu-level2-color;
+
+}
+
 .sidebar-menu > li:hover > a > span {
-  background-color: color($theme, "darken-1");
+  //background-color: color($theme, "darken-1");
 }
 
 canvas {
-  padding-bottom: 40px;
+  padding-bottom: 0;
 }
+
+.collapsible-header {
+
+}
+
+$collapsible-header-color: $secondary-color !default;
+$button-raised-background: $secondary-color !default;
+$button-raised-background-hover: lighten($button-raised-background, 5%) !default;
+$button-raised-color: #fff !default;
+$collapsible-border-color: color($theme, "lighten-3");

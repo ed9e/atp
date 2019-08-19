@@ -27,9 +27,13 @@ let ftp = getColor('ftp');
 let ftpDone = getColor('ftpDone');
 let bar = getColor('bar');
 let bar2 = getColor('bar2');
+let border_bar = getColor('border-bar');
+let border_bar2 = getColor('border-bar2');
+let border_ftp = getColor('border-ftp');
 let bardone = getColor('bardone');
+let bardoneBorder = getColor('bardoneborder');
 let grid = getColor('grid');
-exports.orange = {
+exports.sass = {
     gradient: {
         bar: bar, //'#ff4e00',
         bar2: bar2, //'#ff4e00',
@@ -39,8 +43,9 @@ exports.orange = {
         grid: grid, //'#42444e',
     },
     borderColor: {
-        bar: bar, //'#ff4e00',
-        bar2: bar2, //'#ff4e00',
+        bar: border_bar, //'#ff4e00',
+        bar2: border_bar2, //'#ff4e00',
+        ftp: border_ftp, //'#ff4e00',
     },
     phasesDataset: {
         Preparation: '#ffcb05',
@@ -54,6 +59,36 @@ exports.orange = {
     },
     bar: {
         valueColor: bardone, //'#c8f7c5'
+        borderColor: bardoneBorder
+    }
+};
+exports.orange = {
+    gradient: {
+        bar: '#ff4e00',
+        bar2: '#ff4e00',
+        time: '#ff4e00',
+        ftp: '#ff6900',
+        ftpDone: '#db6d3a',
+        grid: '#42444e',
+    },
+    borderColor: {
+        bar: '#ff4e00',
+        bar2: '#ff4e00',
+        ftp: '#ff4e00',
+    },
+    phasesDataset: {
+        Preparation: '#ffcb05',
+        Base1: '#7befb2',
+        Base2: '#19b5fe',
+        Base3: '#3a539b',
+        Build1: '#be90d4',
+        Build2: '#9a12b3',
+        Peak: '#2ecc71',
+        Race: '#cf000f',
+    },
+    bar: {
+        valueColor: '#c8f7c5',
+        borderColor: '#c8f7c5',
     }
 };
 exports.blue = {
@@ -62,11 +97,13 @@ exports.blue = {
         bar2: '#22a7f0',
         time: '#34495e',
         ftp: '#00b5cc',
+        ftpDone: '#00b5cc',
         grid: '#c5eff7',
     },
     borderColor: {
         bar: '#19b5fe',
         bar2: '#22a7f0',
+        ftp: '#22a7f0',
     },
     phasesDataset: {
         Preparation: '#ffcb05',
@@ -79,7 +116,8 @@ exports.blue = {
         Race: '#cf000f',
     },
     bar: {
-        valueColor: '#c8f7c5'
+        valueColor: '#c8f7c5',
+        borderColor: '#c8f7c5'
     }
 };
 exports.red = {
@@ -88,11 +126,13 @@ exports.red = {
         bar2: '#81171b',
         time: '#ad2e24',
         ftp: '#ad2e24',
+        ftpDone: '#db6d3a',
         grid: '#000000',
     },
     borderColor: {
         bar: '#cf794a',
         bar2: '#81171b',
+        ftp: '#ff000077',
     },
     phasesDataset: {
         Preparation: '#ffcb05',
@@ -105,7 +145,8 @@ exports.red = {
         Race: '#cf000f',
     },
     bar: {
-        valueColor: '#c8f7c5'
+        valueColor: '#c8f7c5',
+        borderColor: '#c8f7c5'
     }
 };
 exports.green = {
