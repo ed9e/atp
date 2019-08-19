@@ -1,49 +1,51 @@
 global.atpYAxes = {max: 1000};
 let callback = undefined;
 
-
 global.atpOptions = {
     type: 'bar',
 
     data: {
-        labels: xKeys,
+        labels: createTimeArray(done),
         datasets: [
             {
                 label: 'New Tuning ',
                 backgroundColor: general.newVal.bg,
                 fill: true,
-                data: yValues.slice(),
+                data: createTimeArray(yValues),
                 pointHitRadius: 10,
                 pointHoverRadius: 3,
                 borderWidth: 1,
                 borderDash: [0, 0],
                 xAxisID: "x-axis1",
                 borderColor: general.newVal.borderColor,
+                id: 'newTune'
             },
             {
                 label: 'Old Tuning',
                 backgroundColor: general.oldVal.bg,
                 fill: true,
-                data: yValues.slice(),
+                data: createTimeArray(yValues),
                 borderWidth: 0,
                 borderDash: [2, 2],
                 borderColor: general.oldVal.borderColor,
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 3,
+                id: 'oldTune'
             },
             {
                 label: 'FTP',
                 type: 'line',
                 backgroundColor: general.ftp.bg,
                 fill: true,
-                data: yValues.slice().ftp(),
+                data: createTimeArray(yValues).ftpO(),
                 borderColor: general.ftp.borderColor,
                 borderWidth: 1,
                 borderDash: [0, 0],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
+                id: 'FTP',
             },
             {
                 label: 'Done',
@@ -310,7 +312,14 @@ function createPhaseDataset(d) {
 
 //TODO: to tu
 global.chartAtpInstance = new Chart(ctx, atpOptions);
-
+global.chartAtpInstance.config.data.datasets.find = function (id) {
+    for (let o in this) {
+        if (this[o].id === id) {
+            return this[o];
+        }
+    }
+    return null;
+};
 
 function getDateArray(start, end) {
     let
@@ -335,6 +344,26 @@ function createTimeArray(oIn) {
             x: moment(x),
             y: oIn[x]
         });
+    });
+
+    return arr;
+}
+
+function objectConcat(oIn, pIn) {
+    let arr = [];
+
+    Object.keys(oIn).forEach(function (x) {
+        if (!(x in pIn)) {
+            arr.push({
+                x: moment(x),
+                y: oIn[x]
+            });
+        } else {
+            arr.push({
+                x: moment(x),
+                y: pIn[x]
+            });
+        }
     });
 
     return arr;

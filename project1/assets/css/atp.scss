@@ -326,7 +326,7 @@ $grey: (
 $dark: (
         "body": #3c3c3c,
         "menu": #323232,
-        "font": #ffffff,
+        "font": #eeeeee,
         "base": #0f0f0f,
         "ftp": #ff7a4b,
         "ftpborder": #ff7a4b,
@@ -335,7 +335,7 @@ $dark: (
         "bar1": #ff7a4b,
         "bar1border": #ff7a4b,
         "bar2": #dd6e42,
-        "bar2border": #dd6e42,
+        "bar2border": desaturate(#dd6e42, 20%),
         "bardone": #191919,
         "bardoneborder": #191919,
         "lighten-5": lighten(#3c3c3c, 6%),
@@ -348,7 +348,7 @@ $dark: (
         "darken-3": desaturate(darken(#3c3c3c, 3%), 30%),
         "darken-4": desaturate(darken(#3c3c3c, 4%), 30%),
         "accent-1": #3c3c3c,
-        "accent-2": #232323,
+        "accent-2": #eeeeee,
         "accent-3": #3c3c3c,
         "accent-4": #3c3c3c
 );

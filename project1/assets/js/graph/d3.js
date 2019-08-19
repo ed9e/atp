@@ -86,9 +86,9 @@ function updateData() {
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
 
-    par.chart.config.data.datasets[par.datasetIndex].data[par.index] = par.value;
+    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = par.value;
     //par.chart.config.data.datasets[2].data[par.index] =  par.value;
-    par.chart.config.data.datasets[2].data = par.chart.config.data.datasets[par.datasetIndex].data.ftp();
+    par.chart.config.data.datasets[2].data = par.chart.config.data.datasets[par.datasetIndex].data.ftpO();
 
     chartAtpInstance.update(0);
 
@@ -131,7 +131,7 @@ document.getElementById('undoChanges').addEventListener('click', function () {
     if (data) {
         atpOptions.data.datasets[0].data = data.slice();
         atpOptions.data.datasets[1].data = data.slice();
-        atpOptions.data.datasets[2].data = data.slice().ftp();
+        atpOptions.data.datasets[2].data = data.slice().ftpO();
 
         chartAtpInstance.update();
     }

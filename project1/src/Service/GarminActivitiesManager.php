@@ -76,6 +76,11 @@ class GarminActivitiesManager
         $this->entityManager->flush();
     }
 
+    public function clearRequest()
+    {
+        $this->request = null;
+        return $this;
+    }
     public function getRequest(): AbstractActivities
     {
         if (!$this->request) {

@@ -99,7 +99,7 @@ class ATP
     {
         $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P20W');
         //$prev = [];
-        $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P2W');
+        $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P10W');
         $keys = array_merge($prev, array_keys($this->data), $last);
         $values = array_values($this->data);
         $values = array_merge(array_fill_keys(array_keys($prev), 15), $values);
@@ -123,10 +123,16 @@ class ATP
         }, $this->groupPhases);
 
         $diff = array_diff($keys, array_keys($this->getDone()));
-        $done = array_merge(array_fill_keys($diff, 15), $this->getDone());
+        $done = array_merge(array_fill_keys($diff, 1), $this->getDone());
         ksort($done);
 //        $done = array_values($done);
 //        $done = $this->getDone();
+        $diff = array_diff($keys, array_keys($this->data));
+        $values = array_merge(array_fill_keys($diff, 15), $this->data);
+        ksort($values);
+        $values = [];
+        $phases = [];
+        $phases2 = [];
         $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
         //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
         return $this;

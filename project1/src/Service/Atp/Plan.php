@@ -96,7 +96,10 @@ class Plan
 
     public function createIntervalArrayBy($start, $by_interval_spec = 'P7D', $interval_spec = 'P7D')
     {
-        $start = new DateTime($start);
+        if (!($start instanceof DateTime)) {
+            $start = new DateTime($start);
+        }
+
         $end = clone($start);
         $end->add(new DateInterval($by_interval_spec));
 

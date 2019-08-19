@@ -37,6 +37,7 @@ class FetchActivitiesCommand extends AbstractCommand
             ->addArgument('action', InputArgument::REQUIRED, 'Action: response, map, fields, entity')
             ->addArgument('user', InputArgument::OPTIONAL, 'User display name')
             ->addOption('start', 's', InputOption::VALUE_OPTIONAL)
+            ->addOption('full', 'f', InputOption::VALUE_OPTIONAL)
             ->addOption('run', 'r', InputOption::VALUE_OPTIONAL);
     }
 
@@ -52,7 +53,13 @@ class FetchActivitiesCommand extends AbstractCommand
                 if ($this->input->getOption('run') === '1') {
                     $this->garminManager->run();
                 } else {
-                    $this->garminManager->import();
+                    if ($this->input->getOption('full')) {
+                        for ($i = 0; $i <= 16; $i++) {
+                            $this->garminManager->clearRequest()->getRequest()->setStart($i * 100);
+                            $this->garminManager->import();
+                        }
+                    } else
+                        $this->garminManager->import();
                 }
                 $this->info('ok');
                 break;

@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\WeeklyActivity;
 use App\Service\Atp\ATP;
+use App\Service\Atp\Plan;
 use DateInterval;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -43,15 +46,27 @@ class AtpController extends AbstractController
     /**
      * @Route("/current")
      */
-    public function current()
+    public function current(EntityManagerInterface $em)
     {
-        $atp = new ATP();
-        $atp->plan([
-            'from' => '2020-08-09',
-            'to' => '2021-07-04'
-        ])->fetchData()->rework();
+        $from = 'P80W';
+        $to = 'P20W';
 
+        $options = [
+            'from' => (new DateTime())->setTimestamp(strtotime('next monday'))->sub(new DateInterval('P120W')),
+            'to' => (new DateTime())->setTimestamp(strtotime('next monday')),
+        ];
+        $plan = new Plan($options);
+        $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
 
-        return $this->render('atp/index.html.twig', $atp->getAtp());
+        $weekly = $em->getRepository(WeeklyActivity::class);
+        $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
+        $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
+        $diff = array_diff($keys, array_keys($weeklyData));
+        $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
+        ksort($done);
+
+        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 15);
+        $template = ['keys' => $keys, 'done' => $done, 'values' => $values];
+        return $this->render('atp/current.html.twig', $template);
     }
 }
