@@ -13,14 +13,16 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
     {
         return [
             ThemeEvents::THEME_SIDEBAR_SETUP_MENU => ['onSetupMenu', 100],
+            ThemeEvents::THEME_BREADCRUMB => ['onSetupMenu', 100],
         ];
     }
 
     public function onSetupMenu(SidebarMenuEvent $event)
     {
+        $this->dashboard($event);
         $this->atp($event);
-        $this->herbs($event);
-        $this->analize($event);
+//        $this->herbs($event);
+//        $this->analize($event);
 
 
         $this->activateByRoute(
@@ -29,12 +31,23 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
         );
     }
 
+    protected function dashboard(SidebarMenuEvent $event)
+    {
+        $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-industry');
+        $atpMenu->addChild(
+            new MenuItemModel('currentId', 'Current fitness', 'app_dashboard_index', [], 'fas fa-hourglass-start')
+        )->addChild(
+            new MenuItemModel('calendarId', 'Calendar', '/dashboard/calendar', [], 'fas fa-hourglass-end')
+        );
+        $event->addItem($atpMenu);
+    }
+
     protected function atp(SidebarMenuEvent $event)
     {
         $atpMenu = new MenuItemModel('atpId', 'Atp', null, [], 'fas fa-industry');
 
         $atpMenu->addChild(
-            new MenuItemModel('planId', 'Plan', '/atp', [], 'fas fa-hourglass-start')
+            new MenuItemModel('planId', 'Plan', 'app_atp_index', [], 'fas fa-hourglass-start')
         )->addChild(
             new MenuItemModel('doneId', 'Done', '/atp/current', [], 'fas fa-hourglass-end')
         );

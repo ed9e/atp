@@ -22,9 +22,9 @@ bar2Gradient.addColorStop(0, theme.gradient.bar2 + 'aa');
 bar2Gradient.addColorStop(0.6, theme.gradient.bar2 + '55');
 bar2Gradient.addColorStop(1, theme.gradient.bar2 + '11');
 
-FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
-FTPgradient.addColorStop(0.5, theme.gradient.ftp + '88');
-FTPgradient.addColorStop(1, theme.gradient.ftp + '33');
+FTPgradient.addColorStop(0, theme.gradient.ftp + '99');
+FTPgradient.addColorStop(0.5, theme.gradient.ftp + '33');
+FTPgradient.addColorStop(1, theme.gradient.ftp + '11');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
 FTPDonegradient.addColorStop(0.5, theme.gradient.ftpDone + '77');
 FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '22');

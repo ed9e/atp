@@ -431,7 +431,8 @@ $colors: (
 $font-color: color($theme, "font") !default;
 $body-color: color($theme, "body") !default;
 $menu-color: color($theme, "menu") !default;
-$menu-level2-color: darken(color($theme, "menu"), 5%) !default;
+$menu-level2-color: darken(color($theme, "menu"), 4%) !default;
+$menu-level2-color-active: darken(color($theme, "ftp"), 3%) !default;
 $primary-color: color($theme, "lighten-2") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
@@ -512,6 +513,10 @@ a:hover, a:active, a:link, a:visited {
   color: $link-color;
 }
 
+.content-header > .breadcrumb > li > a  {
+    color: $link-color;
+}
+
 .tree > li {
   background-color: $menu-color;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -523,13 +528,18 @@ a:hover, a:active, a:link, a:visited {
 }
 
 
-.tree li ul li {
+.treeview-menu > li {
   background-color: $menu-level2-color;
-
+padding-left: 5px;
 }
 
-.sidebar-menu > li:hover > a > span {
-  //background-color: color($theme, "darken-1");
+.treeview-menu > li.active {
+    background-color: $menu-level2-color-active;
+    padding-left: 10px;
+}
+
+.treeview-menu > li:hover  {
+  background-color: $menu-level2-color-active;
 }
 
 canvas {

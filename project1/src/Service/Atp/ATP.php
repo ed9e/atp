@@ -130,9 +130,6 @@ class ATP
         $diff = array_diff($keys, array_keys($this->data));
         $values = array_merge(array_fill_keys($diff, 15), $this->data);
         ksort($values);
-        $values = [];
-        $phases = [];
-        $phases2 = [];
         $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
         //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
         return $this;

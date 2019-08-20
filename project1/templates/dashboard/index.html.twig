@@ -1,0 +1,111 @@
+{% extends 'layout.html.twig' %}
+{% block title %}ATP!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+    {{ encore_entry_link_tags('dashboard') }}
+    <!-- Renders a link tag (if your module requires any CSS)
+                     <link rel="stylesheet" href="/build/app.css"> -->
+
+{% endblock %}
+{% block javascripts %}
+    <script type="application/javascript">
+
+        let xKeys = {{ keys|json_encode|raw }};
+        let yValues = {{ values|json_encode|raw }};
+        let done = {{ done|json_encode|raw }};
+        let phases = [];
+        let phases2 = [];
+
+        function resetZoom() {
+            chartAtpInstance.resetZoom();
+        }
+
+        window.toggleDragMode = function () {
+            let chart = chartAtpInstance;
+            let zoomOptions = chart.options.zoom;
+            zoomOptions.enabled = !zoomOptions.enabled;
+            chart.update();
+            document.getElementById('zoom-switch').innerText = zoomOptions.enabled ? 'Disable zoom mode' : 'Enable zoom mode';
+        };
+        window.togglePanMode = function () {
+            let chart = chartAtpInstance;
+            let panOptions = chart.options.pan;
+            panOptions.enabled = !panOptions.enabled;
+            chart.update();
+            document.getElementById('pan-switch').innerText = panOptions.enabled ? 'Disable pan mode' : 'Enable pan mode';
+        };
+        window.toggleEdit = function () {
+            let chart = chartAtpInstance;
+            chart.config.data.datasets.find('newTune').data = objectConcat(done, yValues);
+            chart.config.data.datasets.find('FTP').data = objectConcat(done, yValues).ftpO();
+            chart.config.data.datasets.find('FTPDone').data = objectConcat(done, yValues).ftpO();
+            chart.update();
+            //objectConcat(done, yValues),
+        };
+
+        function createTimeArray(oIn) {
+            let arr = [];
+
+            Object.keys(oIn).forEach(function (x) {
+                arr.push({
+                    x: moment(x),
+                    y: oIn[x]
+                });
+            });
+
+            return arr;
+        }
+
+        function objectConcat(oIn, pIn) {
+            let arr = [];
+
+            Object.keys(oIn).forEach(function (x) {
+                if (!(x in pIn)) {
+                    arr.push({
+                        x: moment(x),
+                        y: oIn[x]
+                    });
+                } else {
+                    arr.push({
+                        x: moment(x),
+                        y: pIn[x]
+                    });
+                }
+            });
+
+            return arr;
+        }
+
+    </script>
+    {{ parent() }}
+    {{ encore_entry_script_tags('dashboard') }}
+
+    <!-- Renders app.js & a webpack runtime.js file
+        <script src="/build/runtime.js"></script>
+        <script src="/build/app.js"></script> -->
+{% endblock %}
+
+
+{% block page_content %}
+
+
+    <div class="tunecontainer">
+        <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
+            <span></span>
+        </div>
+        <canvas id="chartJSContainer" width="1920" height="700"></canvas>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
+            <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
+            <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
+            <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>
+            <button class="waves-effect btn" onclick="toggleEdit()">Edit</button>
+            <button class="waves-effect btn" id="zoom-switch" onclick="toggleDragMode()">Disable zoom mode</button>
+            <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode</button>
+        </div>
+    </div>
+
+{% endblock %}

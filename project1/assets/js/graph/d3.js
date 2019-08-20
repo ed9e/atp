@@ -53,7 +53,9 @@ function getElement() {
     par.scale = undefined;
 
     par.element = chartAtpInstance.getElementAtEvent(e)[0];
-
+    if (par.element === undefined) {
+        return;
+    }
     par.chart = par.element['_chart'];
     par.scale = par.element['_yScale'];
 
@@ -72,13 +74,25 @@ function getElement() {
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
     drawValue(par);
+    findAndSwipe();
 }
 
+function findAndSwipe() {
+    let e = d3.event.sourceEvent;
+    par.element = chartAtpInstance.getElementAtEvent(e)[0];
+    par.chart = par.element['_chart'];
+    par.datasetIndex = par.element['_datasetIndex'];
+    par.index = par.element['_index'];
+    let week = par.chart.config.data.datasets[par.datasetIndex].data[par.index];
+
+
+    console.log(week.x.format('Y-MM-DD'));
+}
 
 function updateData() {
     let e = d3.event.sourceEvent;
 
-    if (par.datasetIndex != 0) {
+    if (par.datasetIndex != 0 || par.scale == undefined) {
         return;
     }
 
@@ -104,11 +118,10 @@ function drawValue(par) {
     par.chart.ctx.fillText(text, par.element._model.x, par.element._model.y - 5);
 }
 
-let chartXyDisplay = document.getElementById("yPos");
 
 //Show y data after point drag
 function callback() {
-    chartXyDisplay.innerHTML = par.value;
+
 }
 
 //Apply changes to old dataset
