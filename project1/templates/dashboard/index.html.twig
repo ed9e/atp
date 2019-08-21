@@ -86,6 +86,13 @@
         <script src="/build/app.js"></script> -->
 {% endblock %}
 
+{% block time %}
+    <script type="application/javascript">
+        let time = new Date();
+        print(time.format('Y-MM-DD HH:I:s'));
+
+    </script>
+{% endblock %}
 
 {% block page_content %}
 
@@ -97,7 +104,7 @@
         <canvas id="chartJSContainer" width="1920" height="700"></canvas>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-lg-offset-3">
             <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
             <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
             <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
