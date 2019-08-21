@@ -17,7 +17,30 @@
         <script src="/build/app.js"></script> -->
 {% endblock %}
 
-{% block sidebar_search %}
+{% block body %}
+    <div class="curtain">
+        <div class="curtain__wrapper">
+            <input type="checkbox" checked>
+
+            <div class="curtain__panel curtain__panel--left">
+
+            </div> <!-- curtain__panel -->
+
+            <div class="curtain__content">
+
+                {{ parent() }}
+
+            </div>
+
+            <div class="curtain__panel curtain__panel--right">
+
+            </div> <!-- curtain__panel -->
+
+        </div> <!-- curtain__wrapper -->
+    </div> <!-- curtain -->
+
 {% endblock %}
+
 {% block footer %}
+
 {% endblock %}

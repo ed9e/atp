@@ -12,7 +12,7 @@ admin_lte:
     fixed_layout: false
     boxed_layout: false
     collapsed_sidebar: false
-    mini_sidebar: false
+    mini_sidebar: true
 
   knp_menu:
     enable: false
@@ -22,10 +22,11 @@ admin_lte:
     adminlte_login: login
     adminlte_profile: profile
 
+
   control_sidebar:
     home:
       icon: fas fa-home
       template: control-sidebar/home.html.twig
     settings:
       icon: fas fa-cogs
-      controller: 'App\Controller\SidebarController::index'
+      controller: 'App\Controller\ControlSidebarController::index'

@@ -324,34 +324,36 @@ $grey: (
         "darken-4": #212121
 );
 $dark: (
-        "body": #3c3c3c,
-        "menu": #323232,
-        "font": #eeeeee,
-        "base": #0f0f0f,
+        "body": #471624,
+        "menu": #ffffff,
+        "font": #83878f,
+        "base": #83878f,
         "ftp": #ff7a4b,
         "ftpborder": #ff7a4b,
-        "ftpdone": #232323,
+        "ftpdone": #131313,
         "ftpdoneborder": #232323,
         "bar1": #ff7a4b,
         "bar1border": #ff7a4b,
         "bar2": #dd6e42,
         "bar2border": desaturate(#dd6e42, 20%),
-        "bardone": #191919,
+        "bardone": #121212,
         "bardoneborder": #191919,
-        "lighten-5": lighten(#3c3c3c, 6%),
-        "lighten-4": lighten(#3c3c3c, 5%),
-        "lighten-3": lighten(#3c3c3c, 4%),
-        "lighten-2": lighten(#3c3c3c, 3%),
-        "lighten-1": lighten(#3c3c3c, 2%),
-        "darken-1": desaturate(darken(#3c3c3c, 1%), 20%),
-        "darken-2": desaturate(darken(#3c3c3c, 2%), 30%),
-        "darken-3": desaturate(darken(#3c3c3c, 3%), 30%),
-        "darken-4": desaturate(darken(#3c3c3c, 4%), 30%),
-        "accent-1": #3c3c3c,
+        "lighten-5": lighten(#1c1c1c, 6%),
+        "lighten-4": lighten(#1c1c1c, 5%),
+        "lighten-3": lighten(#1c1c1c, 4%),
+        "lighten-2": lighten(#1c1c1c, 3%),
+        "lighten-1": lighten(#1c1c1c, 2%),
+        "darken-1": desaturate(darken(#1c1c1c, 1%), 20%),
+        "darken-2": desaturate(darken(#1c1c1c, 2%), 30%),
+        "darken-3": desaturate(darken(#1c1c1c, 3%), 30%),
+        "darken-4": desaturate(darken(#1c1c1c, 4%), 30%),
+        "accent-1": #1c1c1c,
         "accent-2": #eeeeee,
-        "accent-3": #3c3c3c,
-        "accent-4": #3c3c3c
+        "accent-3": #1c1c1c,
+        "accent-4": #1c1c1c
 );
+$theme: 'red';
+$theme2: 'dark';
 
 $my-orange: (
         "base": #ff6900,
@@ -428,55 +430,56 @@ $colors: (
 }
 
 
-$font-color: color($theme, "font") !default;
-$body-color: color($theme, "body") !default;
-$menu-color: color($theme, "menu") !default;
-$menu-level2-color: darken(color($theme, "menu"), 4%) !default;
-$menu-level2-color-active: darken(color($theme, "ftp"), 3%) !default;
-$primary-color: color($theme, "lighten-2") !default;
+$font-color: color($theme2, "font") !default;
+$body-color: color($theme2, "body") !default;
+$menu-color: darken($body-color, 3%) !default;
+$menu-level2-color: darken($body-color, 6%) !default;
+$menu-level2-color-active: lighten($body-color, 2%) !default;
+$primary-color: color($theme, "base") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color($theme, "accent-1") !default;
+$secondary-color: color($theme2, "base") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-$link-color: color($theme, "accent-2") !default;
+$link-color: $font-color !default;
 
 .ftp {
-  color: color($theme, "ftp");
+  color: $secondary-color;
 }
 
 .ftpDone {
-  color: color($theme, "ftpdone");
-}
-
-.bar {
-  color: color($theme, "bar1");
-}
-
-.bar2 {
-  color: color($theme, "bar2");
+  color: $primary-color;
 }
 
 .bardone {
-  color: color($theme, "bardone");
+  color: $primary-color;
 }
 
 .bardoneborder {
-  color: color($theme, "bardoneborder");
+  color: $primary-color;
+}
+
+.bar {
+  color: $primary-color;
+}
+
+.bar2 {
+  color: $primary-color;
 }
 
 .border-bar {
-  color: color($theme, "bar1border");
+  color: $primary-color;
 }
 
 .border-bar2 {
-  color: color($theme, "bar2border");
+  color: $primary-color;
 }
 
 .border-ftp {
-  color: color($theme, "ftpborder");
+  color: $primary-color;
 }
+
 .grid {
   color: $font-color;
 }
@@ -491,13 +494,18 @@ $link-color: color($theme, "accent-2") !default;
   background-color: $body-color;
 }
 
-.sidebar-mini.sidebar-collapse .main-header .navbar {
+.main-header {
+  //box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.sidebar-mini.sidebar-collapse, .main-header, .navbar {
   background-color: $body-color;
 }
 
-.main-sidebar {
+
+.main-sidebar, .logo {
   background-color: $menu-color;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-right: solid 1px lighten($menu-color, 5%);
 }
 
 body {
@@ -513,34 +521,63 @@ a:hover, a:active, a:link, a:visited {
   color: $link-color;
 }
 
-.content-header > .breadcrumb > li > a  {
-    color: $link-color;
-}
-
-.tree > li {
-  background-color: $menu-color;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
-}
-
-.tree > li a:hover {
-  background-color: $menu-color;
+.content-header > .breadcrumb > li > a {
+  color: $link-color;
 }
 
 
-.treeview-menu > li {
-  background-color: $menu-level2-color;
-padding-left: 5px;
+.tree {
+  & > li {
+    background-color: $menu-color;
+
+    a {
+      filter: grayscale(10%);
+      transition: .2s ease-in;
+    }
+
+    & a:hover {
+      background-color: $menu-color;
+      filter: grayscale(50%);
+      border-left: solid 5px darken($menu-color, 20%);
+    }
+
+    &.active {
+      //  background-color: $menu-level2-color-active;
+    }
+
+    & .treeview-menu {
+      padding: 0;
+    }
+
+    & .treeview-menu > li {
+      background-color: $menu-color;
+      border-top: solid 1px lighten($menu-color, 2%);
+
+
+      & a {
+        padding-left: 20px;
+      }
+
+      &.active {
+        background-color: lighten($menu-level2-color-active, 10%);
+        //padding-left: 5px;
+        border-left: solid 5px lighten($menu-color, 20%);
+
+        & a:hover {
+          border-left: 0;
+        }
+
+        & a {
+          color: #bbb;
+          background-color: $menu-color;
+        }
+
+      }
+    }
+
+  }
 }
 
-.treeview-menu > li.active {
-    background-color: $menu-level2-color-active;
-    padding-left: 10px;
-}
-
-.treeview-menu > li:hover  {
-  background-color: $menu-level2-color-active;
-}
 
 canvas {
   padding-bottom: 0;
@@ -555,3 +592,80 @@ $button-raised-background: $secondary-color !default;
 $button-raised-background-hover: lighten($button-raised-background, 5%) !default;
 $button-raised-color: #fff !default;
 $collapsible-border-color: color($theme, "lighten-3");
+
+
+.curtain {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+
+    input[type=checkbox]:checked {
+      position: absolute;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      pointer-events: auto;
+      // When the checkbox is checked...
+      &:checked {
+
+        // Slide the first panel
+        & ~ div.curtain__panel--left {
+          transform: translateX(0);
+        }
+
+        // Slide the second panel
+        & ~ div.curtain__panel--right {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    background: #000000;
+    opacity: 0.7;
+    color: #fff;
+    float: left;
+    position: relative;
+    width: 50%;
+    height: 100vh;
+    transition: all 500ms ease-out;
+    z-index: 2;
+
+    &--left {
+      justify-content: flex-end;
+      transform: translateX(-100%);
+    }
+
+    &--right {
+      justify-content: flex-start;
+      transform: translateX(100%);
+    }
+  }
+
+  &__content {
+    background: #333;
+    color: #fff;
+    padding: 0rem 0;
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+
+    img {
+      width: 20%;
+    }
+  }
+
+}

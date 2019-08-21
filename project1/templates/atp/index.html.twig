@@ -61,8 +61,15 @@
         </div>
     </div>
 
+    <div class="tunecontainer">
+        <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
+            <span></span>
+        </div>
+        <canvas id="chartJSContainer" width="1920" height="700"></canvas>
+    </div>
+
     <div class="row">
-        <div class="col s6 offset-s6">
+        <div class="col">
             <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
             <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
             <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
@@ -71,12 +78,4 @@
             <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode</button>
         </div>
     </div>
-
-    <div class="tunecontainer">
-        <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
-            <span></span>
-        </div>
-        <canvas id="chartJSContainer" width="1920" height="700"></canvas>
-    </div>
-
 {% endblock %}
