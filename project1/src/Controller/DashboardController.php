@@ -49,4 +49,18 @@ class DashboardController extends AbstractController
         $template = ['keys' => $keys, 'done' => $done, 'values' => $values];
         return $this->render('dashboard/index.html.twig', $template);
     }
+
+    /**
+     * @Route("dashboard/calendar")
+     */
+    public function calendar()
+    {
+    }
+
+    /**
+     * @Route("dashboard/statistics")
+     */
+    public function statistics()
+    {
+    }
 }

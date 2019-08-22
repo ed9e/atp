@@ -34,11 +34,14 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
     protected function dashboard(SidebarMenuEvent $event)
     {
         $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-industry');
-        $atpMenu->addChild(
-            new MenuItemModel('currentId', 'Current fitness', 'app_dashboard_index', [], 'fas fa-hourglass-start')
-        )->addChild(
-            new MenuItemModel('calendarId', 'Calendar', '/dashboard/calendar', [], 'fas fa-hourglass-end')
-        );
+        $atpMenu
+            ->addChild(
+                new MenuItemModel('currentId', 'Current fitness score', 'app_dashboard_index', [], 'fas fa-running')
+            )->addChild(
+                new MenuItemModel('calendarId', 'Calendar', 'app_dashboard_calendar', [], 'far fa-calendar-alt')
+            )->addChild(
+                new MenuItemModel('statisticsId', 'Statistics', 'app_dashboard_statistics', [], 'fa-apple')
+            );
         $event->addItem($atpMenu);
     }
 

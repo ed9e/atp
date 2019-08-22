@@ -327,6 +327,7 @@ $dark: (
         "body": desaturate(darken(#471624, 15%), 40%),
         "menu": #ffffff,
         "font": #83878f,
+  //"base": #471624,
         "base": #471624,
         "ftp": #ffffff,
         "ftpborder": #ff7a4b,
@@ -355,32 +356,6 @@ $dark: (
 $theme: 'red';
 $theme2: 'dark';
 
-$my-orange: (
-        "base": #ff6900,
-        "lighten-5": #fafafa,
-        "lighten-4": #42444e,
-        "lighten-3": #555,
-        "lighten-2": #db6d3a,
-        "lighten-1": #bdbdbd,
-        "darken-1": #ff4e00,
-        "darken-2": #616161,
-        "darken-3": #424242,
-        "darken-4": #212121,
-        "accent-1": #ff4e00
-);
-$my-orange2: (
-        "base": #db6d3a,
-        "lighten-5": #fafafa,
-        "lighten-4": #83878f,
-        "lighten-3": #555,
-        "lighten-2": #db6d3a,
-        "lighten-1": #bdbdbd,
-        "darken-1": #ff4e00,
-        "darken-2": #616161,
-        "darken-3": #424242,
-        "darken-4": #63687c,
-        "accent-1": #ff4e00
-);
 $shades: (
         "black": #000000,
         "white": #FFFFFF,
@@ -388,8 +363,6 @@ $shades: (
 );
 
 $colors: (
-        "my-orange": $my-orange,
-        "my-orange2": $my-orange2,
         "materialize-red": $materialize-red,
         "red": $red,
         "pink": $pink,
@@ -535,8 +508,8 @@ a:hover, a:active, a:link, a:visited {
 
 .tree {
   & > li {
-    background-color: $menu-color;
-    background-color: #00000011;
+    //background-color: $menu-color;
+    background-color: #ffffff11;
 
     a {
       filter: grayscale(10%);
@@ -544,10 +517,11 @@ a:hover, a:active, a:link, a:visited {
     }
 
     & a:hover {
-      background-color: $menu-color;
-      background-color: #00000055;
+      //background-color: $menu-color;
+      //background-color: #00000055;
       filter: grayscale(50%);
-      border-left: solid 5px darken($menu-color, 20%);
+      color: #fff;
+      //border-left: solid 5px darken($menu-color, 20%);
     }
 
     &.active {
@@ -559,29 +533,30 @@ a:hover, a:active, a:link, a:visited {
     }
 
     & .treeview-menu > li {
-      background-color: $menu-color;
-      background-color: #00000022;
+      //background-color: $menu-color;
+      background-color: #ffffff11;
       border-top: solid 1px darken($menu-color, 2%);
 
 
       & a {
-        padding-left: 20px;
+        //padding-left: 20px;
       }
 
       &.active {
-        background-color: #00000011;
-        background-color: lighten($menu-level2-color-active, 10%);
+        //background-color: #00000011;
+        background-color: #ffffff11;
         //padding-left: 5px;
-        border-left: solid 5px lighten($menu-color, 20%);
+        border-left: solid 5px #ffffff55;
 
         & a:hover {
           border-left: 0;
+          color: #fff;
         }
 
         & a {
           color: #bbb;
-          background-color: $menu-color;
-          background-color: #00000022;
+          //background-color: $menu-color;
+          background-color: #ffffff11;
         }
 
       }
