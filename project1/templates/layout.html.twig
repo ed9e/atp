@@ -1,4 +1,4 @@
-{% extends '@AdminLTE/layout/default-layout.html.twig' %}
+{% extends 'default-layout.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -18,6 +18,69 @@
 {% endblock %}
 
 {% block sidebar_search %}
+
 {% endblock %}
 {% block footer %}
+{% endblock %}
+
+{% block body %}
+    <div class="curtain">
+        <div class="curtain__wrapper">
+            <input type="checkbox" checked>
+
+            <div class="curtain__panel curtain__panel--left">
+                <h2 id="hour"></h2>
+                {#                <h2>tajne dane agencji wywiadowczej </h2>#}
+            </div> <!-- curtain__panel -->
+
+            <div class="curtain__content">
+
+                {{ parent() }}
+
+            </div>
+
+            <div class="curtain__panel curtain__panel--right">
+                <h2 id="time"></h2>
+                <script type="application/javascript">
+                    function Clock(date) {
+                        this.date = date;
+                    }
+
+                    Clock.prototype.tick = function () {
+                        let timestamp = this.date.getTime();
+                        setInterval(() => {
+                            $('#time').html((new Date(timestamp)).toTimeString().slice(4, 8));
+                            $('#hour').html((new Date(timestamp)).toTimeString().slice(0, 4));
+                            timestamp += 1000;
+                        }, 1000);
+                    };
+                    let clock = new Clock(new Date);
+                    clock.tick();
+
+                </script>
+
+                {#                    <h3>&nbsp;Oczy, które nie..yyy...wszystko widzą</h3>#}
+            </div> <!-- curtain__panel -->
+
+        </div> <!-- curtain__wrapper -->
+    </div> <!-- curtain -->
+
+{% endblock %}
+
+{% block breadcrumb %}
+    {% if admin_lte_context.knp_menu.enable %}
+        {% include '@AdminLTE/Breadcrumb/knp-breadcrumb.html.twig' %}
+    {% else %}
+        {{ render(controller('App\\Controller\\BreadcrumbController:breadcrumbAction', {'request':app.request})) }}
+    {% endif %}
+{% endblock %}
+
+{% block logo_large %}
+{% endblock %}
+{% block logo_mini %}
+{% endblock %}
+
+{% block page_title %}
+{% endblock %}
+{% block page_subtitle %}
 {% endblock %}

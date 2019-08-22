@@ -324,11 +324,11 @@ $grey: (
         "darken-4": #212121
 );
 $dark: (
-        "body": #471624,
+        "body": desaturate(darken(#471624, 15%), 40%),
         "menu": #ffffff,
         "font": #83878f,
-        "base": #83878f,
-        "ftp": #ff7a4b,
+        "base": #471624,
+        "ftp": #ffffff,
         "ftpborder": #ff7a4b,
         "ftpdone": #131313,
         "ftpdoneborder": #232323,
@@ -491,7 +491,7 @@ $link-color: $font-color !default;
 .content-wrapper {
   /*background-color: #74c98f;*/
 
-  background-color: $body-color;
+  background-color: #ffffff00 !important;
 }
 
 .main-header {
@@ -500,17 +500,24 @@ $link-color: $font-color !default;
 
 .sidebar-mini.sidebar-collapse, .main-header, .navbar {
   background-color: $body-color;
+  background-color: #00000011;
 }
 
 
 .main-sidebar, .logo {
   background-color: $menu-color;
-  border-right: solid 1px lighten($menu-color, 5%);
+  background-color: #00000022;
+  border-right: solid 1px lighten($menu-color, 2%);
+  text-align: left;
 }
 
 body {
-  background-color: $body-color;
+  //background-color: $body-color;
+  background: linear-gradient(240deg, $body-color, rgba(255, 0, 0, 0) 67.71%),
+  linear-gradient(90deg, $body-color, rgba(0, 255, 0, 0) 67.71%),
+  linear-gradient(180deg, $body-color, rgba(0, 0, 255, 0) 67.71%);
   color: $font-color;
+  overflow: hidden;
 }
 
 a {
@@ -529,6 +536,7 @@ a:hover, a:active, a:link, a:visited {
 .tree {
   & > li {
     background-color: $menu-color;
+    background-color: #00000011;
 
     a {
       filter: grayscale(10%);
@@ -537,6 +545,7 @@ a:hover, a:active, a:link, a:visited {
 
     & a:hover {
       background-color: $menu-color;
+      background-color: #00000055;
       filter: grayscale(50%);
       border-left: solid 5px darken($menu-color, 20%);
     }
@@ -551,7 +560,8 @@ a:hover, a:active, a:link, a:visited {
 
     & .treeview-menu > li {
       background-color: $menu-color;
-      border-top: solid 1px lighten($menu-color, 2%);
+      background-color: #00000022;
+      border-top: solid 1px darken($menu-color, 2%);
 
 
       & a {
@@ -559,6 +569,7 @@ a:hover, a:active, a:link, a:visited {
       }
 
       &.active {
+        background-color: #00000011;
         background-color: lighten($menu-level2-color-active, 10%);
         //padding-left: 5px;
         border-left: solid 5px lighten($menu-color, 20%);
@@ -570,12 +581,17 @@ a:hover, a:active, a:link, a:visited {
         & a {
           color: #bbb;
           background-color: $menu-color;
+          background-color: #00000022;
         }
 
       }
     }
 
   }
+}
+
+.breadcrumb::before {
+  content: '' !important;
 }
 
 
@@ -588,9 +604,9 @@ canvas {
 }
 
 $collapsible-header-color: $secondary-color !default;
-$button-raised-background: $secondary-color !default;
-$button-raised-background-hover: lighten($button-raised-background, 5%) !default;
-$button-raised-color: #fff !default;
+$button-raised-background: lighten($secondary-color, 5%) !default;
+$button-raised-background-hover: lighten($button-raised-background, 15%) !default;
+$button-raised-color: #eee !default;
 $collapsible-border-color: color($theme, "lighten-3");
 
 
@@ -604,18 +620,20 @@ $collapsible-border-color: color($theme, "lighten-3");
     width: 100%;
     height: 100%;
 
-    input[type=checkbox]:checked {
+    input[type=checkbox] {
       position: absolute;
       cursor: pointer;
-      width: 100%;
-      height: 100%;
       z-index: 100;
-      opacity: 0;
+      opacity: 0.5;
       top: 0;
       left: 0;
       pointer-events: auto;
+
       // When the checkbox is checked...
       &:checked {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
 
         // Slide the first panel
         & ~ div.curtain__panel--left {
@@ -634,7 +652,11 @@ $collapsible-border-color: color($theme, "lighten-3");
     display: flex;
     align-items: center;
     background: #000000;
-    opacity: 0.7;
+    background: linear-gradient(240deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 0, 0, 0) 77.71%),
+    linear-gradient(120deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 0, 255, 0) 77.71%),
+    linear-gradient(0deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 255, 0, 0) 77.71%);
+
+    opacity: 1;
     color: #fff;
     float: left;
     position: relative;
@@ -655,7 +677,7 @@ $collapsible-border-color: color($theme, "lighten-3");
   }
 
   &__content {
-    background: #333;
+
     color: #fff;
     padding: 0rem 0;
     position: absolute;
