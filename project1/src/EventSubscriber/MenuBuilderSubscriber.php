@@ -33,21 +33,21 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
 
     protected function dashboard(SidebarMenuEvent $event)
     {
-        $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-industry');
+        $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-yen-sign');
         $atpMenu
             ->addChild(
-                new MenuItemModel('currentId', 'Current fitness score', 'app_dashboard_index', [], 'fas fa-running')
+                new MenuItemModel('currentId', 'Current fitness score', 'app_dashboard_index', [], 'fas fa-ruler')
             )->addChild(
                 new MenuItemModel('calendarId', 'Calendar', 'app_dashboard_calendar', [], 'far fa-calendar-alt')
             )->addChild(
-                new MenuItemModel('statisticsId', 'Statistics', 'app_dashboard_statistics', [], 'fa-apple')
+                new MenuItemModel('statisticsId', 'Statistics', 'app_dashboard_statistics', [], 'fas fa-chart-line') //chart-pie chart-area chart-bar
             );
         $event->addItem($atpMenu);
     }
 
     protected function atp(SidebarMenuEvent $event)
     {
-        $atpMenu = new MenuItemModel('atpId', 'Atp', null, [], 'fas fa-industry');
+        $atpMenu = new MenuItemModel('atpId', 'Atp', null, [], 'fas fa-globe');
 
         $atpMenu->addChild(
             new MenuItemModel('planId', 'Plan', 'app_atp_index', [], 'fas fa-hourglass-start')

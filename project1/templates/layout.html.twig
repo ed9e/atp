@@ -21,8 +21,7 @@
 {% block sidebar_search %}
 
 {% endblock %}
-{% block footer %}
-{% endblock %}
+
 
 {% block body %}
     <div class="curtain">
@@ -76,6 +75,9 @@
     {% endif %}
 {% endblock %}
 
+{% block footer %}
+    {% include 'Partials/_footer.html.twig' %}
+{% endblock %}
 {% block logo_large %}
 {% endblock %}
 {% block logo_mini %}

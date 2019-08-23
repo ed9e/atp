@@ -91,7 +91,7 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
                     {% if admin_lte_context.knp_menu.enable %}
                         {% include '@AdminLTE/Sidebar/knp-menu.html.twig' %}
                     {% else %}
-                        {{ render(controller('KevinPapst\\AdminLTEBundle\\Controller\\SidebarController:menuAction', {'request':app.request})) }}
+                        {{ render(controller('App\\Controller\\SidebarController:menuAction', {'request':app.request})) }}
                     {% endif %}
                 {% endblock %}
             </section>

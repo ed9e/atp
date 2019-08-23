@@ -505,27 +505,57 @@ a:hover, a:active, a:link, a:visited {
   color: $link-color;
 }
 
+.main-footer {
+  background-color: #00000011;
+  border: 0;
+  padding: 2px;
+  font-size: smaller;
+}
 
-.tree {
+.main-sidebar {
+  & .collapsible {
+    border: 0;
+    margin: 1px;
+  }
+
+  & .collapsible-header {
+    background-color: inherit;
+    border: 0;
+  }
+
+  & .collapsible-body {
+    border: 0;
+    margin: 1px;
+  }
+
+  & .divider {
+    margin: 0;
+    height: 4px;
+
+    background-color: transparent;
+  }
+}
+
+.sidebar-menu {
   & > li {
     //background-color: $menu-color;
-    background-color: #ffffff11;
+    background-color: lighten($secondary-color, 5%);
 
     a {
-      filter: grayscale(10%);
-      transition: .2s ease-in;
+      //filter: grayscale(10%);
+      //transition: .2s ease-in;
     }
 
     & a:hover {
       //background-color: $menu-color;
       //background-color: #00000055;
-      filter: grayscale(50%);
+      //filter: grayscale(50%);
       color: #fff;
       //border-left: solid 5px darken($menu-color, 20%);
     }
 
     &.active {
-      //  background-color: $menu-level2-color-active;
+      background-color: $menu-level2-color-active;
     }
 
     & .treeview-menu {

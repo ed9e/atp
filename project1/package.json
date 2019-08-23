@@ -12,9 +12,11 @@
     "d3": "^5.9.7",
     "d3-selection": "^1.4.0",
     "define-property": "^2.0.2",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "materialize": "^1.0.0",
     "materialize-css": "^1.0.0",
+    "materialize-js": "^1.0.0",
     "slice": "^1.0.0"
   },
   "devDependencies": {
