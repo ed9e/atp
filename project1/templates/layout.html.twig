@@ -10,9 +10,9 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('app') }}
 
+    {{ encore_entry_script_tags('app') }}
+    {{ parent() }}
     <!-- Renders app.js & a webpack runtime.js file
         <script src="/build/runtime.js"></script>
         <script src="/build/app.js"></script> -->
@@ -26,9 +26,11 @@
 {% block body %}
     <div class="curtain">
         <div class="curtain__wrapper">
-            <input type="checkbox" checked>
+            <input id="curtain__checkbox" type="checkbox" checked>
 
             <div class="curtain__panel curtain__panel--left">
+                {% block left_curtain %}
+                {% endblock %}
                 <h2 id="hour"></h2>
                 {#                <h2>tajne dane agencji wywiadowczej </h2>#}
             </div> <!-- curtain__panel -->

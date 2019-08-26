@@ -96,7 +96,7 @@
 
 {% block page_content %}
 
-
+    <input type="checkbox">
     <div class="tunecontainer">
         <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
             <span></span>
@@ -115,6 +115,68 @@
             </button>
             <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode
             </button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block left_curtain %}
+    <div class="row">
+
+        <div class="controls flat_skin">
+            <input type="checkbox">
+            <label>Checkbox 1</label>
+
+            <input type="checkbox" checked>
+            <label>Checkbox 2</label>
+
+            <input type="radio" name="iCheck">
+            <label>Radio button 1</label>
+
+            <input type="radio" name="iCheck" checked>
+            <label>Radio button 2</label>
+        </div>
+
+
+        <div class="controls polaris">
+            <input type="checkbox">
+            <label>Checkbox 1</label>
+
+            <input type="checkbox" checked>
+            <label>Checkbox 2</label>
+
+            <input type="radio" name="iCheck">
+            <label>Radio button 1</label>
+
+            <input type="radio" name="iCheck" checked>
+            <label>Radio button 2</label>
+
+            <label>
+                <input type="checkbox" name="quux[1]" disabled>
+                Foo
+            </label>
+
+            <label for="baz[1]">Bar</label>
+            <input type="radio" name="quux[2]" id="baz[1]" checked>
+
+            <label for="baz[2]">Bar</label>
+            <input type="radio" name="quux[2]" id="baz[2]">
+        </div>
+
+        <div class="col-lg-5">
+            <div class="controls line">
+                <input type="checkbox" name="name1" id="name1">
+                <label>Checkbox 1</label>
+
+                <input type="checkbox" checked>
+                <label>Checkbox 2</label>
+
+                <input type="radio" name="iCheck" value="1">
+                <label>Lorem ipusm dolor hat et uns</label>
+
+                <input type="radio" name="iCheck" value="2" checked>
+                <label>Radio button 2</label>
+            </div>
         </div>
     </div>
 

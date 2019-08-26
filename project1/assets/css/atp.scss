@@ -541,17 +541,17 @@ a:hover, a:active, a:link, a:visited {
     //background-color: $menu-color;
     background-color: lighten($secondary-color, 5%);
 
-    a {
-      //filter: grayscale(10%);
-      //transition: .2s ease-in;
+    & a {
+      filter: grayscale(10%);
+      transition: .2s ease-in;
     }
 
     & a:hover {
       //background-color: $menu-color;
-      //background-color: #00000055;
-      //filter: grayscale(50%);
+      background-color: #00000055;
+      filter: grayscale(50%);
       color: #fff;
-      //border-left: solid 5px darken($menu-color, 20%);
+      border-left: solid 5px darken($menu-color, 20%);
     }
 
     &.active {
@@ -614,6 +614,19 @@ $button-raised-background-hover: lighten($button-raised-background, 15%) !defaul
 $button-raised-color: #eee !default;
 $collapsible-border-color: color($theme, "lighten-3");
 
+.controls {
+
+
+}
+
+.icheckbox_line, .iradio_line {
+  margin-bottom: 1px;
+  background-color: $button-raised-background;
+
+  &.checked {
+    background-color: $button-raised-background-hover;
+  }
+}
 
 .curtain {
   margin: 0 auto;
@@ -625,7 +638,7 @@ $collapsible-border-color: color($theme, "lighten-3");
     width: 100%;
     height: 100%;
 
-    input[type=checkbox] {
+    & #curtain__checkbox {
       position: absolute;
       cursor: pointer;
       z-index: 100;
@@ -636,9 +649,8 @@ $collapsible-border-color: color($theme, "lighten-3");
 
       // When the checkbox is checked...
       &:checked {
-        width: 100%;
-        height: 100%;
-        opacity: 0;
+
+        opacity: 0.1;
 
         // Slide the first panel
         & ~ div.curtain__panel--left {
@@ -667,7 +679,7 @@ $collapsible-border-color: color($theme, "lighten-3");
     position: relative;
     width: 50%;
     height: 100vh;
-    transition: all 500ms ease-out;
+    transition: all 200ms ease-out;
     z-index: 2;
 
     &--left {

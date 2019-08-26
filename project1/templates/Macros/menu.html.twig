@@ -3,8 +3,7 @@
     {% if item.route or item.hasChildren %}
         <li id="{{ item.identifier }}"
             class=" {{ item.isActive ? 'active' : '' }} {{ item.hasChildren? 'treeview' : '' }}">
-            <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route|route_alias, item.routeArgs) }}"
-               class="collapsible-header waves-effect waves-red">
+            <a href="{{ item.hasChildren ? '#': '/' in item.route ? item.route : path(item.route|route_alias, item.routeArgs) }}">
                 {% if item.icon %} <i class="{{ item.icon }}"></i> {% endif %}
                 {% if item.badge is not same as(false) %}
                     <small class="label pull-right bg-{{ item.badgeColor }}">{{ item.badge }}</small>
@@ -15,7 +14,7 @@
 
             {% if item.hasChildren %}
 
-                <ul class="collapsible-body treeview-menu">
+                <ul class="treeview-menu">
                     {% for child in item.children %}
                         {% if child.hasChildren %}
                             {{ menu.menu_item(child) }}
@@ -28,9 +27,6 @@
                             </li>
                         {% endif %}
                     {% endfor %}
-                    <li>
-                        <div class="divider"></div>
-                    </li>
                 </ul>
             {% endif %}
         </li>
