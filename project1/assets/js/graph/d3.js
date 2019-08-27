@@ -87,6 +87,12 @@ function findAndSwipe() {
 
 
     console.log(week.x.format('Y-MM-DD'));
+    getActivities(week.x.format('Y-MM-DD'));
+}
+
+function getActivities(date) {
+    let url = '/api' + '/?date=' + date;
+    let table = $('#example').DataTable().ajax.url(url).load();
 }
 
 function updateData() {

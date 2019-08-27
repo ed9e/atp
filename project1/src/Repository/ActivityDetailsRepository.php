@@ -3,7 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\GarminActivityDetails;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Connection;
+use Exception;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -19,22 +22,37 @@ class ActivityDetailsRepository extends ServiceEntityRepository
         parent::__construct($registry, GarminActivityDetails::class);
     }
 
-    // /**
-    //  * @return ActivityDetails[] Returns an array of ActivityDetails objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param $value
+     * @return GarminActivityDetails[] Returns an array of ActivityDetails objects
+     * @throws Exception
+     */
+    public function findByStartTime($value)
     {
+        $dateFrom = (new DateTime())->setTimestamp(strtotime($value));
+        if ($dateFrom->format('w') !== '1') {//jeśli nie pierwszy dzień tyg
+            $dateFrom = (new DateTime())->setTimestamp(strtotime('previous monday', strtotime($value)));
+        }
+        $dateTo = (new DateTime())->setTimestamp(strtotime('next monday', strtotime($value)));
+
+        $who = 'lbrzozowski';
+        $activityType = [1, 6];
+
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
+            ->andWhere('a.startTimeLocal >= :from')
+            ->setParameter('from', $dateFrom)
+            ->andWhere('a.startTimeLocal <= :to')
+            ->setParameter('to', $dateTo)
+            ->andWhere('a.userDisplayName = :who')
+            ->setParameter('who', $who)
+            ->andWhere('a.activityTypeId IN (:type)')
+            ->setParameter('type', $activityType, Connection::PARAM_STR_ARRAY)
+            ->orderBy('a.activityId', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getArrayResult();
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?ActivityDetails

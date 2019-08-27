@@ -16,10 +16,12 @@ const $ = require('jquery');
 // require('materialize');
 require('../css/scss/materialize.scss');
 require('./materialize_init');
+
 require('icheck/icheck');
-require('icheck/skins/polaris/polaris.css');
-require('icheck/skins/futurico/futurico.css');
-require('icheck/skins/line/_all.css');
-require('icheck/skins/flat/_all.css');
+require('icheck/skins/all.css');
+
+require('ion-checkradio/js/ion.checkRadio');
+require('ion-checkradio/css/ion.checkRadio.green.css');
+
 require('./checkers.js');
 //let instance = M.Collapsible.getInstance(elem);

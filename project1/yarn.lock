@@ -943,6 +943,11 @@ adjust-sourcemap-loader@2.0.0:
     object-path "0.11.4"
     regex-parser "2.2.10"
 
+adm-zip@^0.4.7:
+  version "0.4.13"
+  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.13.tgz#597e2f8cc3672151e1307d3e95cddbc75672314a"
+  integrity sha512-fERNJX8sOXfel6qCBCMPvZLzENBEhZTzKqg6vrOW5pvoEaQuJhRU4ndTAh6lHOxn1I6jnz2NHra56ZODM751uw==
+
 admin-lte@^2.4.17:
   version "2.4.17"
   resolved "https://registry.yarnpkg.com/admin-lte/-/admin-lte-2.4.17.tgz#f9e724c0cee28ae0121e5839286986a3da37b1f2"
@@ -2623,6 +2628,23 @@ datatables.net-bs@^1.10.19:
     datatables.net "1.10.19"
     jquery ">=1.7"
 
+datatables.net-editor-bs4@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/datatables.net-editor-bs4/-/datatables.net-editor-bs4-1.6.3.tgz#48579c9f16bf88817a7fc903dc31094de4cb7caa"
+  integrity sha512-AVsY5Viym/PuTxDfcWKFjvFyzRMB+x1rQOYUcjTadUBSnSWlQah9bzfrPcmkFRknpG9MiEqlbO06qlAM1b5uag==
+
+datatables.net-editor-bs@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/datatables.net-editor-bs/-/datatables.net-editor-bs-1.6.3.tgz#34a164086e26056edf51ad79eb4c662824d88fb7"
+  integrity sha512-Qi9ogpbpEOHMyGVZnZ3VfjzT+mSAlXkr+of9DJTpuNrwr3P5pj2YxxjGOIFatn65AMWXlkZu6TzeQIW8N+NE/w==
+
+datatables.net-editor@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/datatables.net-editor/-/datatables.net-editor-1.6.5.tgz#05f3eea4d87d90e1cf6ec71b332cf6024848a6a4"
+  integrity sha512-YedIMy+5pF5R86FDMu7Ia8M/006QGuRpQa52WglmbK0fHH3WN1wZrukn33K3xX9SXSU5IcaE29qQFMuw8lRnow==
+  dependencies:
+    adm-zip "^0.4.7"
+
 datatables.net@1.10.19, datatables.net@^1.10.19:
   version "1.10.19"
   resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-1.10.19.tgz#97a1ed41c85e62d61040603481b59790a172dd1f"
@@ -4082,6 +4104,13 @@ invert-kv@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
+
+ion-checkradio@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ion-checkradio/-/ion-checkradio-2.0.0.tgz#dec03636ef0d86066116f235b0b296053621d1bb"
+  integrity sha1-3sA2Nu8NhgZhFvI1sLKWBTYh0bs=
+  dependencies:
+    jquery ">=1.8"
 
 ion-rangeslider@^2.3, ion-rangeslider@^2.3.0:
   version "2.3.0"

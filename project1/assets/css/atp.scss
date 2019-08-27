@@ -473,24 +473,23 @@ $link-color: $font-color !default;
 
 .sidebar-mini.sidebar-collapse, .main-header, .navbar {
   background-color: $body-color;
-  background-color: #ffffff22;
+  background-color: #00000011;
 }
 
 
 .main-sidebar, .logo {
   background-color: $menu-color;
-  background-color: #ffffff11;
+  background-color: #00000011;
   border-right: solid 1px lighten($menu-color, 2%);
   text-align: left;
 }
 
 body {
   //background-color: $body-color;
-  background: linear-gradient(240deg, $body-color, rgba(255, 0, 0, 0) 67.71%),
-  linear-gradient(90deg, $body-color, rgba(0, 255, 0, 0) 67.71%),
-  linear-gradient(180deg, $body-color, rgba(0, 0, 255, 0) 67.71%);
+  background: linear-gradient(to bottom, rgba(151, 151, 151, 0.46) 0%, rgba(0, 0, 0, 0.55) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, rgba(0, 0, 0, 0.73) 120%) #989898;
+  background-blend-mode: multiply, multiply;
   color: $font-color;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 a {
@@ -539,7 +538,10 @@ a:hover, a:active, a:link, a:visited {
 .sidebar-menu {
   & > li {
     //background-color: $menu-color;
-    background-color: lighten($secondary-color, 5%);
+
+    background-color: #ffffff22;
+    //background-color: desaturate(lighten($secondary-color, 15%), 10%);
+    border-top: solid 1px darken($menu-color, 2%);
 
     & a {
       filter: grayscale(10%);
@@ -548,14 +550,14 @@ a:hover, a:active, a:link, a:visited {
 
     & a:hover {
       //background-color: $menu-color;
-      background-color: #00000055;
+      background-color: #ffffff33;
       filter: grayscale(50%);
       color: #fff;
-      border-left: solid 5px darken($menu-color, 20%);
+      //border-left: solid 5px darken($menu-color, 20%);
     }
 
     &.active {
-      background-color: $menu-level2-color-active;
+      //background-color: $menu-level2-color-active;
     }
 
     & .treeview-menu {

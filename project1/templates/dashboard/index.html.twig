@@ -101,7 +101,7 @@
         <div style="width:100%; text-align: center; font-size:larger;margin-top: 2px;padding-top: 2px;margin-bottom:15px;">
             <span></span>
         </div>
-        <canvas id="chartJSContainer" width="1920" height="700"></canvas>
+        <canvas id="chartJSContainer" width="1920" height="500"></canvas>
     </div>
     <div class="row">
         <div class="col-lg-offset-3">
@@ -116,6 +116,37 @@
             <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode
             </button>
         </div>
+    </div>
+    <div class="row">
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>startTimeLocal</th>
+                <th>Activity Name</th>
+                <th>Type</th>
+                <th>Distance</th>
+                <th>Duration</th>
+                <th>Average Speed</th>
+                <th>Average HR</th>
+                <th>Average Run Cadence</th>
+                <th>Stride Length</th>
+                <th>Vertical Oscillation</th>
+                <th>Training Effect</th>
+                <th>vO2 Max</th>
+                <th>Avg Ground Contact Balance</th>
+            </tr>
+            </thead>
+            {#            <tfoot>#}
+            {#            <tr>#}
+            {#                <th>Name</th>#}
+            {#                <th>Position</th>#}
+            {#                <th>Office</th>#}
+            {#                <th>Extn.</th>#}
+            {#                <th>Start date</th>#}
+            {#                <th>Salary</th>#}
+            {#            </tr>#}
+            {#            </tfoot>#}
+        </table>
     </div>
 
 {% endblock %}
@@ -176,6 +207,35 @@
 
                 <input type="radio" name="iCheck" value="2" checked>
                 <label>Radio button 2</label>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="controls square">
+                <input type="checkbox" name="name2" id="name2">
+                <label>Checkbox 1</label>
+
+                <input type="checkbox" checked>
+                <label>Checkbox 2</label>
+
+                <input type="radio" name="iCheck" value="1">
+                <label>Lorem ipusm dolor hat et uns</label>
+
+                <input type="radio" name="iCheck" value="2" checked>
+                <label>Radio button 2</label>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="ion">
+                <label><input type="checkbox" name="think" value="0"/> Work</label>
+                <label><input type="checkbox" name="think" value="1" checked/> Rest</label>
+                <label><input type="checkbox" name="think" value="2" disabled checked/> Sex</label>
+
+                <label class="icr-label">
+                    <span class="icr-item type_radio"></span>
+                    <span class="icr-hidden"><input class="icr-input" type="radio" name="job" value="0"/></span>
+                    <span class="icr-text">Super good</span>
+                </label>
             </div>
         </div>
     </div>

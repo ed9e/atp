@@ -8,8 +8,8 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $('.flat_skin input').iCheck({
-        checkboxClass: 'icheckbox_flat',
-        radioClass: 'iradio_flat'
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat-green'
     });
 });
 $(document).ready(function () {
@@ -26,6 +26,18 @@ $(document).ready(function () {
         });
     });
 });
+$(document).ready(function () {
+    $('.square input').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green',
+        increaseArea: '20%' // optional
+    });
+});
+
+
+$(".ion input").ionCheckRadio();
+
+
 $('input').on('ifToggled', function (event) {
     console.log(this.name + ' ' + this.checked + ' ' + this.value);
 
