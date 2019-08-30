@@ -92,7 +92,7 @@ function findAndSwipe() {
 
 function getActivities(date) {
     let url = '/api' + '/?date=' + date;
-    let table = $('#example').DataTable().ajax.url(url).load();
+    let table = $('#data-table').DataTable().ajax.url(url).load();
 }
 
 function updateData() {

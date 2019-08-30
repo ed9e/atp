@@ -76,8 +76,9 @@ global.atpOptions = {
     },
     options: {
         elements: {
-            point: {radius: 0}, line: {
-                tension: 0.2
+            point: {radius: 0.5},
+            line: {
+                tension: 0.25
             }
         },
         responsive: true,
