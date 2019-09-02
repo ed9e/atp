@@ -82,7 +82,8 @@ global.atpOptions = {
             }
         },
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
+        aspectRatio: 1920/450,
         layout: {
             padding: {
                 left: 0,

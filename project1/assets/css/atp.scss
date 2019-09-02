@@ -358,8 +358,8 @@ $img: (
         "accent-2": #a7a29b,
         "base": #43A047,
         "base2": #2E7D32,
-        //"base": #795548,
-        //"base2": #8d6e63,
+  //"base": #795548,
+  //"base2": #8d6e63,
         "accent-1": #474642
 );
 
@@ -484,49 +484,87 @@ html {
     }
   }
 }
+
 .content-wrapper {
   /*background-color: #74c98f;*/
   color: $font-color;
   background-color: #ffffff00 !important;
 }
+
 .main-header {
   //box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
 .main-header, .navbar {
-  //background-color: $body-color;
-  background-color: #00000022;
+  //background-color: $primary-color;
+  //background-color: #ffffff22;
 }
-.main-sidebar, .logo {
-  background-color: $menu-color;
-  background-color: #00000044;
+
+.main-sidebar {
+  background-color: $primary-color;
+  background-color: #00000015;
   border-right: solid 1px lighten($menu-color, 2%);
   text-align: left;
 }
 
 body {
   background-color: $body-color;
-  background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
-  background-blend-mode: multiply, multiply;
+  //background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
+  //background-blend-mode: multiply, multiply;
   color: $font-color;
   //overflow: hidden;
 
   & {
+    &.sidebar-collapse .sidebar-menu {
+      & li a {
+        & i {
+          filter: grayscale(10%);
+          transition: .3s ease-in;
+          color: $link-color;
+          font-size: larger;
+        }
 
-    a {
-      color: $link-color;
+        & i.pull-right {
+          color: $link-color;
+        }
+      }
     }
+
+    .sidebar-menu {
+      & li a {
+        & i {
+          filter: grayscale(20%);
+          transition: .3s ease-out;
+          color: $primary-color;
+        }
+
+        & i.pull-right {
+          color: $link-color;
+        }
+      }
+    }
+
+
     a:hover, a:active, a:link, a:visited {
       color: $link-color;
     }
+
+    & .wrapper {
+      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
+      background-blend-mode: multiply, multiply;
+    }
+
     .content-header > .breadcrumb > li > a {
       color: $link-color;
     }
+
     .main-footer {
       background-color: #00000011;
       border: 0;
       padding: 2px;
       font-size: smaller;
     }
+
     .main-sidebar {
       & .collapsible {
         border: 0;
@@ -550,68 +588,97 @@ body {
         background-color: transparent;
       }
     }
-    .sidebar-menu {
-      & > li {
-        //background-color: $menu-color;
 
-        background-color: #ffffff22;
-        background-color: transparentize(lighten($primary-color, 1%), 0.97);
-        border-top: solid 1px darken($menu-color, 2%);
-
-        & a {
-          filter: grayscale(10%);
-          transition: .2s ease-in;
-        }
-
-        & a:hover {
-          //background-color: $menu-color;
-          background-color: #ffffff33;
-          background-color: $primary-color;
-          filter: grayscale(20%);
-          color: #fff;
-          //border-left: solid 5px darken($menu-color, 20%);
-        }
-
-        &.active {
-          //background-color: $menu-level2-color-active;
-        }
-
-        & .treeview-menu {
-          padding: 0;
-        }
-
-        & .treeview-menu > li {
-          //background-color: $menu-color;
-          background-color: #ffffff11;
-          border-top: solid 1px darken($menu-color, 2%);
-
-
-          & a {
-            //padding-left: 20px;
-          }
-
-          &.active {
-            //background-color: #00000011;
-            background-color: #ffffff11;
-            //padding-left: 5px;
-            border-left: solid 5px #ffffff55;
-
-            & a:hover {
-              border-left: 0;
-              color: #fff;
-            }
-
-            & a {
-              color: #bbb;
-              //background-color: $menu-color;
-              background-color: #ffffff11;
-            }
-
-          }
-        }
-
-      }
+    #chartJSContainer {
+    //width: 1920px;
+    //  max-height: 400px;
     }
+
+    //.sidebar-menu {
+    //  & > li {
+    //    //background-color: $menu-color;
+    //
+    //    background-color: #ffffff22;
+    //    background-color: transparentize(lighten($primary-color, 1%), 0.97);
+    //    border-top: solid 1px darken($menu-color, 2%);
+    //
+    //    & a {
+    //      filter: grayscale(10%);
+    //      transition: .2s ease-in;
+    //    }
+    //
+    //    & a:hover {
+    //      //background-color: $menu-color;
+    //      background-color: #ffffff33;
+    //      background-color: desaturate(darken($primary-color, 3%), 10%);
+    //      filter: grayscale(20%);
+    //      color: #fff;
+    //      //border-left: solid 5px darken($menu-color, 20%);
+    //    }
+    //
+    //    &.treeview {
+    //      &.menu-open a {
+    //
+    //        background-color: desaturate(darken($primary-color, 3%), 10%);
+    //      }
+    //
+    //      &.active > a {
+    //
+    //
+    //        //background-color: $menu-level2-color-active;
+    //        color: #fff;
+    //        background-color: $primary-color;
+    //      }
+    //    }
+    //
+    //
+    //    & .treeview-menu {
+    //      padding: 0;
+    //    }
+    //
+    //    & .treeview-menu li {
+    //      //background-color: $menu-color;
+    //      background-color: #ffffff11;
+    //      border-top: solid 1px darken($menu-color, 2%);
+    //
+    //
+    //      & a {
+    //        //padding-left: 20px;
+    //        background-color: #ffffff11;
+    //        background-color: darken($primary-color, 3%);
+    //      }
+    //
+    //      & a:hover {
+    //        border-left: 0;
+    //        color: #fff;
+    //        background-color: lighten($primary-color, 0%);
+    //      }
+    //
+    //      &.active {
+    //
+    //        //background-color: #00000011;
+    //        background-color: lighten($primary-color, 2%);
+    //
+    //        //padding-left: 5px;
+    //        //border-left: solid 5px #ffffff55;
+    //
+    //        & a:hover {
+    //          border-left: 0;
+    //          color: #fff;
+    //          background-color: #ffffff22;
+    //        }
+    //
+    //        & a {
+    //          color: #eee;
+    //          //background-color: $menu-color;
+    //          background-color: #ffffff11;
+    //        }
+    //
+    //      }
+    //    }
+    //
+    //  }
+    //}
 
     .breadcrumb::before {
       content: '' !important;
@@ -626,6 +693,7 @@ body {
 
     }
   }
+
 }
 
 .controls {
@@ -660,7 +728,7 @@ table {
     //background: -o-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
     //background: -ms-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
     //background: linear-gradient(135deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
-    background: linear-gradient(to bottom, transparentize(lighten(color($theme, "accent-1"), 0%), 0.66) 0%, transparentize(color($theme, "accent-1"), 0.66) 10%), radial-gradient(at top center, $primary-color 30%, darken(color($theme, "accent-1"),20%) 72%) lighten($primary-color, 0%);
+    background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, $primary-color 30%, darken($body-color, 20%) 72%) lighten($primary-color, 0%);
 
 
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0b7a1', endColorstr='#bf6e4e', GradientType=1);
@@ -668,18 +736,22 @@ table {
     & thead tr {
       background-color: #ffffff12;
     }
+
     & tbody tr {
 
-      &:nth-child(odd){
+      &:nth-child(odd) {
         background-color: #00000000;
       }
-      &:nth-child(even){
+
+      &:nth-child(even) {
         background-color: #00000012;
       }
+
       &:hover {
         background-color: #ffffff09;
         border-bottom: solid 1px #ffffff15;
       }
+
       &.selected {
         background-color: #ffffff11;
       }
@@ -703,7 +775,7 @@ table {
       cursor: pointer;
       z-index: 100;
       opacity: 0.5;
-      top: 0;
+      top: 97.7%;
       left: 0;
       pointer-events: auto;
 
