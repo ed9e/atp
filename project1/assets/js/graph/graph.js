@@ -239,7 +239,7 @@ global.atpOptions = {
                 ticks: {
                     reverse: false,
                     min: -20,
-                    max: atpYAxes.max,
+                    //max: atpYAxes.max,
                     display: false,
                     padding: 10
                 }

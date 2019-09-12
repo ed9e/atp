@@ -1,4 +1,4 @@
-global.atpYAxes = {max: 1000};
+global.atpYAxes = {max: 150};
 let callback = undefined;
 
 global.atpOptions = {
@@ -144,7 +144,7 @@ global.atpOptions = {
                     },
                     gridLines: {
                         drawTicks: true,
-                        tickMarkLength: 5,
+                        tickMarkLength: 1,
                         display: true,
                         color: '#ffffff00',
                         borderDash: [1, 2],
@@ -240,8 +240,8 @@ global.atpOptions = {
                 },
                 ticks: {
                     reverse: false,
-                    min: -20,
-                    max: atpYAxes.max,
+                    min: 0,
+                    //max: atpYAxes.max,
                     display: false,
                     padding: 10
                 }

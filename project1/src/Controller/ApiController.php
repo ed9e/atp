@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\GarminActivityDetails;
+use App\Repository\ActivityDetailsRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,8 +31,9 @@ class ApiController extends AbstractController
      */
     public function index(Request $request)
     {
-        $data = $this->entityManager->getRepository(GarminActivityDetails::class)
-            ->findByStartTime($request->query->get('date') ?? '2019-08-25');
+        /** @var ActivityDetailsRepository $repository */
+        $repository = $this->entityManager->getRepository(GarminActivityDetails::class);
+        $data = $repository->findByStartTime($request->query->get('date') ?? '2019-08-25');
         return $this->json(['data' => $data]);
     }
 }

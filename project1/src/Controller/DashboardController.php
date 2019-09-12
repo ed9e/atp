@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\WeeklyActivity;
+use App\Repository\WeeklyRepository;
 use App\Service\Atp\ATP;
 use App\Service\Atp\Plan;
 use DateInterval;
@@ -38,14 +39,15 @@ class DashboardController extends AbstractController
         $plan = new Plan($options);
         $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
 
+        /** @var WeeklyRepository $weekly */
         $weekly = $em->getRepository(WeeklyActivity::class);
         $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
-        $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
+        $weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
         $diff = array_diff($keys, array_keys($weeklyData));
         $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
         ksort($done);
 
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 15);
+        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 5);
         $template = ['keys' => $keys, 'done' => $done, 'values' => $values];
         return $this->render('dashboard/index.html.twig', $template);
     }
