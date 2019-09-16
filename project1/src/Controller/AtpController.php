@@ -65,7 +65,7 @@ class AtpController extends AbstractController
         $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
         ksort($done);
 
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 15);
+        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 5);
         $template = ['keys' => $keys, 'done' => $done, 'values' => $values];
         return $this->render('atp/current.html.twig', $template);
     }

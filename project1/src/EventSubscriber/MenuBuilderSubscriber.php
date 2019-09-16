@@ -33,7 +33,7 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
 
     protected function dashboard(SidebarMenuEvent $event)
     {
-        $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-yen-sign');
+        $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-cookie-bite');
         $atpMenu
             ->addChild(
                 new MenuItemModel('currentId', 'Current fitness score', 'app_dashboard_index', [], 'fas fa-ruler')
@@ -50,7 +50,7 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
         $atpMenu = new MenuItemModel('atpId', 'Atp', null, [], 'fas fa-globe');
 
         $atpMenu->addChild(
-            new MenuItemModel('planId', 'Plan', 'app_atp_index', [], 'fas fa-hourglass-start')
+            new MenuItemModel('planId', 'Plan', 'app_atp_index', [], 'fas  fa-edit')
         )->addChild(
             new MenuItemModel('doneId', 'Done', '/atp/current', [], 'fas fa-hourglass-end')
         );

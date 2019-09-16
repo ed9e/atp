@@ -11,11 +11,35 @@ use DateTimeInterface;
  */
 class WeeklyActivity
 {
+    /**
+     * @return mixed
+     */
+    public function getDistanceSum()
+    {
+        return $this->distanceSum;
+    }
+
+    /**
+     * @param $distanceSum
+     * @return WeeklyActivity
+     */
+    public function setDistanceSum($distanceSum): WeeklyActivity
+    {
+        $this->distanceSum = $distanceSum;
+        return $this;
+    }
 
     /**
      * @ORM\Column(type="integer")
      */
     private $timeMinuteSum;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $distanceSum;
+
+
 
     /**
      * @ORM\Id()
