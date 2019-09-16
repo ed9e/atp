@@ -21,7 +21,9 @@
             chartAtpInstance.resetZoom();
         }
 
+
         window.toggleDragMode = function () {
+            console.log('asd')
             let chart = chartAtpInstance;
             let zoomOptions = chart.options.zoom;
             zoomOptions.enabled = !zoomOptions.enabled;
@@ -93,24 +95,68 @@
 {% block page_content %}
 
     <input type="checkbox">
-    <div  class="row">
+    <div class="row">
         <div style="">
             <span></span>
         </div>
         <canvas id="chartJSContainer" width="1920" height="450"></canvas>
     </div>
-    <div class="row">
-        <div class="col-lg-offset-3">
+    <div class="row controls line">
+        <div class="col-lg-offset-9 col-xs-offset-8 col-sm-offset-8">
+            <ul class="list small float-left">
+                <li>
+                    <input type="checkbox" checked>
+                    <label>Running</label>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <label>Trail running</label>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <label>Walking</label>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <label>Cycling</label>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-xs-8">
+            <ul class="list float-right">
+                <li>
+                    <input type="checkbox" id="applyChanges">
+                    <label>Apply changes</label>
+                </li>
 
-            <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
-            <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
-            <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
-            <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>
-            <button class="waves-effect btn" onclick="toggleEdit()">Edit</button>
-            <button class="waves-effect btn" id="zoom-switch" onclick="toggleDragMode()">Disable zoom mode
-            </button>
-            <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode
-            </button>
+                <li>
+                    <input type="checkbox" id="cancelChanges">
+                    <label>Cancel changes</label>
+                </li>
+
+                <li>
+                    <input type="checkbox" id="undoChanges">
+                    <label>Undo applied changes</label>
+                </li>
+
+                <li>
+                    <input type="checkbox" onclick="resetZoom()">
+                    <label>Reset zoom</label>
+                </li>
+
+                <li>
+                    <input type="checkbox" onclick="toggleEdit()">
+                    <label>Toggle edit</label>
+                </li>
+
+                <li>
+                    <input type="checkbox" id="toggle-zoom" checked>
+                    <label>Toggle zoom</label>
+                </li>
+            </ul>
+
+{#            <button id="pan-switch" onclick="togglePanMode()">Disable pan mode#}
+{#            </button>#}
         </div>
     </div>
     <div class="row data-table">

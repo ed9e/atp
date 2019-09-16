@@ -1,6 +1,7 @@
 function rgb2hex(rgb) {
 
     rgb = rgb.match(/^rgb\((\d+),\s(\d+),\s(\d+),?([^,\s)]+)?\)$/);
+    console.log(rgb)
     let alpha = (rgb && rgb[4] || "").trim(),
         a = 0o1;
     if (alpha !== "") {
