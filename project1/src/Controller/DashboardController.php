@@ -43,6 +43,7 @@ class DashboardController extends AbstractController
         $weekly = $em->getRepository(WeeklyActivity::class);
         $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
         $weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
+        //$weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
         $diff = array_diff($keys, array_keys($weeklyData));
         $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
         ksort($done);

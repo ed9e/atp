@@ -36,7 +36,7 @@ class ActivityDetailsRepository extends ServiceEntityRepository
         $dateTo = (new DateTime())->setTimestamp(strtotime('next monday', strtotime($value)));
 
         $who = 'lbrzozowski';
-        $activityType = [1, 6, 3, 2];
+        $activityType = [1, 6];
 
         return $this->createQueryBuilder('a')
             ->andWhere('a.startTimeLocal >= :from')
