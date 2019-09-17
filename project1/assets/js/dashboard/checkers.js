@@ -15,15 +15,28 @@ $(document).ready(function () {
     });
 });
 
+class zoomOption {
+    constructor(chart) {
+        this.chart = chart;
+        this.options = this.chart.options.zoom;
+    }
 
-$('#toggle-zoom').on('ifToggled', function (event) {
+    isEnabled() {
+        return this.options.enabled
+    }
 
-    let chart = chartAtpInstance;
-    let zoomOptions = chart.options.zoom;
-    zoomOptions.enabled = !zoomOptions.enabled;
-    chart.update();
-    //document.getElementById('zoom-switch').innerText = zoomOptions.enabled ? 'Disable zoom mode' : 'Enable zoom mode';
-});
+    iCheckToggleSet(id) {
+        let options = this.options;
+        let chart = this.chart;
+        $('#' + id).on('ifToggled', function (event) {
+            options.enabled = !options.enabled;
+            chart.update();
+        });
+    }
+}
+const zoom = new zoomOption(chartAtpInstance);
+zoom.iCheckToggleSet('toggle-zoom');
+
 
 $('#toggle-pan').on('ifToggled', function (event) {
     let chart = chartAtpInstance;
@@ -53,7 +66,7 @@ $('#edit-atp').on('ifToggled', function (event) {
         chart.config.data.datasets.find('newTune').data = [];
         chart.config.data.datasets.find('FTP').data = vals.ftpOReset();
         chart.config.data.datasets.find('FTPDone').data = vals.ftpO();
-         chart.config.data.datasets.find('Done').data = vals;
+        chart.config.data.datasets.find('Done').data = vals;
         // chart.config.data.datasets.find('oldTune').data = vals;
     }
     chart.update();

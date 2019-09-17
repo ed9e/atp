@@ -22,6 +22,11 @@ let convert = require('convert-units');
 require('./dashboard/checkers');
 //import {convert} from './functions/speedConvert';
 
+/**
+ * Returns number leading 0
+ * @param size
+ * @returns {string}
+ */
 Number.prototype.pad = function (size) {
     var s = String(this);
     while (s.length < (size || 2)) {
@@ -51,16 +56,18 @@ let convertValues = {
                 case 1:
                 case 6:
                 case 3:
-                    return v = 16.67 / v;
-                    //return convert(v).from('m/s').to('km/h');
-                    //return convert.speed(v).ms().to.minkm() + ' min/km';
-                    break;
+                    let peaceFloat = (16.67 / v).toString();
+                    let peaceMinutes = peaceFloat.split(".")[0];
+                    let modulo = parseFloat(0 + '.' + (16.67 / v).toString().split(".")[1]);
+                    let peaceSeconds = Math.round(60 * modulo);
+                    return peaceMinutes + ":" + peaceSeconds.pad() + "min/km";
+                //return convert(v).from('m/s').to('km/h');
+                //return convert.speed(v).ms().to.minkm() + ' min/km';
                 case 2:
-                    return convert(v).from('m/s').to('km/h');
-                    //return Math.round(convert.speed(v).ms().to.kmh(), 1) + ' km/h';
-                    break;
+                default:
+                    return Math.round(convert(v).from('m/s').to('km/h')*100)/100 + "km/h";
+                //return Math.round(convert.speed(v).ms().to.kmh(), 1) + ' km/h';
             }
-            return convert.speed(v).ms().to.kmh()
         },
         'parameters': ['activityTypeId']
     },
@@ -146,5 +153,5 @@ $(document).ready(function () {
             $('.curtain__wrapper').css({"opacity": 1});
             $('.lds-ripple').css({'display': 'none'});
         }, 1000);
-    }, 5000);
+    }, 2000);
 });

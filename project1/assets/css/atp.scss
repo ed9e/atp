@@ -512,7 +512,7 @@ body {
   //background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
   //background-blend-mode: multiply, multiply;
   color: $font-color;
-  //overflow: hidden;
+  overflow-y: scroll;
 
   & {
     &.sidebar-collapse .sidebar-menu {
@@ -930,7 +930,7 @@ table {
 
 .lds-ripple div {
   position: absolute;
-  border: 1px dotted $primary-color-light;
+  border: 20px dotted $primary-color-light;
   opacity: 1;
   border-radius: 50%;
   animation: lds-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite ;
