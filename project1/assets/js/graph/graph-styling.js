@@ -9,7 +9,7 @@ let timeGradient = ctx.createLinearGradient(0, 0, 1500, 0);
 let bardoneBorderGradient = ctx.createLinearGradient(0, 0, 0, 700);
 barGradient.addColorStop(0, theme.gradient.bar + 'ff');
 barGradient.addColorStop(0.3, theme.gradient.bar + '77');
-barGradient.addColorStop(1, theme.gradient.bar + '22');
+barGradient.addColorStop(0.6, theme.gradient.bar + '22');
 
 timeGradient.addColorStop(1, theme.gradient.time + 'ff');
 timeGradient.addColorStop(0.6, theme.gradient.time + '88');
@@ -22,12 +22,12 @@ bar2Gradient.addColorStop(0, theme.gradient.bar2 + 'aa');
 bar2Gradient.addColorStop(0.6, theme.gradient.bar2 + '55');
 bar2Gradient.addColorStop(1, theme.gradient.bar2 + '11');
 
-FTPgradient.addColorStop(0, theme.gradient.ftp + 'ee');
+FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
 FTPgradient.addColorStop(0.5, theme.gradient.ftp + '77');
-FTPgradient.addColorStop(1, theme.gradient.ftp + '22');
+FTPgradient.addColorStop(0.8, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
-FTPDonegradient.addColorStop(0.5, theme.gradient.ftpDone + '77');
-FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '22');
+FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + '77');
+FTPDonegradient.addColorStop(0.6, theme.gradient.ftpDone + '00');
 
 gridGradient.addColorStop(0, theme.gradient.grid + 'aa');
 gridGradient.addColorStop(0.3, theme.gradient.grid + '55');

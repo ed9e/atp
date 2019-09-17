@@ -19,6 +19,7 @@ require('datatables.net-rowreorder-bs4');
 require('datatables.net-scroller-bs4');
 require('datatables.net-select-bs4');
 let convert = require('convert-units');
+require('./dashboard/checkers');
 //import {convert} from './functions/speedConvert';
 
 Number.prototype.pad = function (size) {
@@ -50,7 +51,7 @@ let convertValues = {
                 case 1:
                 case 6:
                 case 3:
-                    return v = 16.67/v;
+                    return v = 16.67 / v;
                     //return convert(v).from('m/s').to('km/h');
                     //return convert.speed(v).ms().to.minkm() + ' min/km';
                     break;
@@ -136,4 +137,14 @@ $(document).ready(function () {
         colReorder: true,
         select: true
     });
+});
+
+$(document).ready(function () {
+    setTimeout(function () {
+        $('.lds-ripple').css({"opacity": 0});
+        setTimeout(function () {
+            $('.curtain__wrapper').css({"opacity": 1});
+            $('.lds-ripple').css({'display': 'none'});
+        }, 1000);
+    }, 5000);
 });

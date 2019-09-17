@@ -432,7 +432,7 @@ $error-color: color("red", "base") !default;
 $link-color: $font-color !default;
 
 $collapsible-header-color: $secondary-color !default;
-$button-raised-background: lighten($primary-color, 2%) !default;
+$button-raised-background: darken($primary-color, 20%) !default;
 $button-raised-background-hover: lighten($button-raised-background, 15%) !default;
 $button-raised-color: #eee !default;
 $collapsible-border-color: color($theme, "accent-1");
@@ -696,7 +696,7 @@ body {
 
 }
 
-.controls {
+.controls.badges {
 
   & .list {
     list-style: none;
@@ -705,6 +705,7 @@ body {
     & li {
       margin: 0px 0px 2px 0px;
     }
+
     &.small {
 
       & li .icheckbox_line {
@@ -716,13 +717,13 @@ body {
 
     &.float-right {
       & li {
-        float: left;
+        float: right;
       }
     }
 
     &.float-left {
       & li {
-        float: right;
+        float: left;
       }
     }
 
@@ -737,12 +738,13 @@ body {
         color: $font-color;
 
         &.hover {
-          filter: brightness(110%);
+          filter: brightness(130%);
           color: darken($font-color, 90%);
         }
+
         &.checked {
           transition: .2s ease-in;
-          filter: brightness(130%);
+          filter: brightness(160%);
 
         }
       }
@@ -841,6 +843,8 @@ table {
   &__wrapper {
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transition: all 2000ms ease-in;
 
     & #curtain__checkbox {
       position: absolute;
@@ -854,7 +858,7 @@ table {
       // When the checkbox is checked...
       &:checked {
 
-        opacity: 0.1;
+        opacity: 0;
 
         // Slide the first panel
         & ~ div.curtain__panel--left {
@@ -876,7 +880,6 @@ table {
     background: linear-gradient(240deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 0, 0, 0) 77.71%),
     linear-gradient(120deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 0, 255, 0) 77.71%),
     linear-gradient(0deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 255, 0, 0) 77.71%);
-
     opacity: 1;
     color: #fff;
     float: left;
@@ -911,4 +914,45 @@ table {
     }
   }
 
+}
+
+.lds-ripple {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  transition: all 1000ms ease-in;
+  display: inline-block;
+
+  width: 64px;
+  height: 64px;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 1px dotted $primary-color-light;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite ;
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: -10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  100% {
+    top: -350px;
+    left: -350px;
+    width: 700px;
+    height: 700px;
+    opacity: 0;
+  }
 }

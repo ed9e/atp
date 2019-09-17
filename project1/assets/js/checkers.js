@@ -42,14 +42,7 @@ $('input').on('ifToggled', function (event) {
     console.log(this.name + ' ' + this.checked + ' ' + this.value);
 
 });
-$('#toggle-zoom').on('ifToggled', function (event) {
 
-    let chart = chartAtpInstance;
-    let zoomOptions = chart.options.zoom;
-    zoomOptions.enabled = !zoomOptions.enabled;
-    chart.update();
-    //document.getElementById('zoom-switch').innerText = zoomOptions.enabled ? 'Disable zoom mode' : 'Enable zoom mode';
-});
 $('input#name1').on('ifToggled', function (event) {
     $('input#curtain__checkbox').prop('checked', this.checked);
     console.log($('input#curtain__checkbox'))

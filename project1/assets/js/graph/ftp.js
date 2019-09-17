@@ -1,4 +1,4 @@
-let waga = 2;
+let waga = 1.7;
 Array.prototype.ftp = function () {
 
     let A, k, l, divider, muppet;
@@ -44,15 +44,31 @@ Array.prototype.ftpO = function () {
             muppetX = O[k].x;
             l = 1;
             while (l <= k) {
-                divider = (2 * l);
+                divider = (waga * l);
                 if (k === 0) {
-                    divider = 2;
+                    divider = waga;
                 }
                 muppetY += O[k - l].y / divider;
                 l++;
             }
             A[k] = {x: muppetX, y: Math.floor(muppetY)};
 
+        }
+        k++;
+    }
+
+    return A;
+};
+
+Array.prototype.ftpOReset = function () {
+    let O = Object(this);
+    let len = O.length >>> 0,
+        A, k;
+    A = new Array(len);
+    k = 0;
+    while (k < len) {
+        if (k in O) {
+            A[k] = {x: O[k].x, y: 0};
         }
         k++;
     }

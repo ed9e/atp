@@ -5,7 +5,7 @@ global.atpOptions = {
     type: 'bar',
 
     data: {
-        labels: createTimeArray(done),
+        labels: createTimeArray(yDone),
         datasets: [
             {
                 label: 'New Tuning ',
@@ -38,7 +38,7 @@ global.atpOptions = {
                 type: 'line',
                 backgroundColor: general.ftp.bg,
                 fill: true,
-                data: createTimeArray(yValues).ftpO(),
+                data: createTimeArray(yDone).ftpOReset(),
                 borderColor: general.ftp.borderColor,
                 borderWidth: 1,
                 borderDash: [0, 0],
@@ -51,7 +51,7 @@ global.atpOptions = {
                 label: 'Done',
                 backgroundColor: general.bardone.bg,
                 fill: true,
-                data: createTimeArray(done),
+                data: createTimeArray(yDone),
                 borderWidth: 1,
                 borderDash: [0, 0],
                 borderColor: general.bardone.borderColor,
@@ -63,7 +63,7 @@ global.atpOptions = {
                 type: 'line',
                 backgroundColor: general.ftpDone.bg,
                 fill: true,
-                data: createTimeArray(done).ftpO(),
+                data: createTimeArray(yDone).ftpO(),
                 borderColor: general.ftpDone.borderColor,
                 borderWidth: 2,
                 borderDash: [1, 2],
@@ -78,7 +78,7 @@ global.atpOptions = {
         elements: {
             point: {radius: 0.5},
             line: {
-                tension: 0.25
+                tension: 0.5
             }
         },
         responsive: true,

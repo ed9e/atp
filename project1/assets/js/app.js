@@ -23,5 +23,5 @@ require('icheck/skins/all.css');
 require('ion-checkradio/js/ion.checkRadio');
 require('ion-checkradio/css/ion.checkRadio.green.css');
 
-require('./checkers.js');
+//require('./checkers.js');
 //let instance = M.Collapsible.getInstance(elem);
