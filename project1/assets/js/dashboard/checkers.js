@@ -18,7 +18,7 @@ $(document).ready(function () {
 class zoomOption {
     constructor(chart) {
         this.chart = chart;
-        this.options = this.chart.options.zoom;
+        this.optionKey = 'zoom';
     }
 
     isEnabled() {
@@ -26,17 +26,17 @@ class zoomOption {
     }
 
     iCheckToggleSet(id) {
-        let options = this.options;
-        let chart = this.chart;
-        $('#' + id).on('ifToggled', function (event) {
-            options.enabled = !options.enabled;
-            chart.update();
+        $('#' + id).on('ifToggled', {key: this.optionKey, chart: this.chart}, function (event) {
+            let key = event.data.key;
+            event.data.chart.options[key].enabled = !event.data.chart.options[key].enabled;
+            event.data.chart.update();
         });
     }
 }
+
 const zoom = new zoomOption(chartAtpInstance);
 zoom.iCheckToggleSet('toggle-zoom');
-
+$('#edit-atp').iCheck('uncheck'); //start with unchecked edit
 
 $('#toggle-pan').on('ifToggled', function (event) {
     let chart = chartAtpInstance;

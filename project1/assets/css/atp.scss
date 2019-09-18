@@ -926,33 +926,33 @@ table {
 
   width: 64px;
   height: 64px;
-}
 
-.lds-ripple div {
-  position: absolute;
-  border: 20px dotted $primary-color-light;
-  opacity: 1;
-  border-radius: 50%;
-  animation: lds-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite ;
-}
+  & div {
+    position: absolute;
+    border: 4px dotted $primary-color-light;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 
-.lds-ripple div:nth-child(2) {
-  animation-delay: -0.3s;
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+  }
 }
 
 @keyframes lds-ripple {
   0% {
-    top: -10px;
-    left: -10px;
-    width: 20px;
-    height: 20px;
+    top: -5px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
     opacity: 1;
   }
   100% {
-    top: -350px;
-    left: -350px;
-    width: 700px;
-    height: 700px;
+    top: -50px;
+    left: -50px;
+    width: 100px;
+    height: 100px;
     opacity: 0;
   }
 }
