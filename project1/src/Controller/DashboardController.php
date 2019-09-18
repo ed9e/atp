@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -55,9 +56,13 @@ class DashboardController extends AbstractController
 
     /**
      * @Route("dashboard/calendar")
+     *
      */
-    public function calendar()
+    public function calendar(EntityManagerInterface $em)
     {
+        $weekly = $em->getRepository(WeeklyActivity::class);
+        $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
+        return new JsonResponse($weeklyResult);
     }
 
     /**

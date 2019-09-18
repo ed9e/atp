@@ -85,14 +85,14 @@ function findAndSwipe() {
     par.index = par.element['_index'];
     let week = par.chart.config.data.datasets[par.datasetIndex].data[par.index];
 
-
-    console.log(week.x.format('Y-MM-DD'));
     getActivities(week.x.format('Y-MM-DD'));
 }
 
 function getActivities(date) {
-    let url = '/api' + '/?date=' + date;
-    let table = $('#data-table').DataTable().ajax.url(url).load();
+    let dataTable = $('#data-table');
+    let url = new URL(dataTable.DataTable().ajax.url());
+    url.searchParams.set('data', date);
+    dataTable.DataTable().ajax.url(url.href).load();
 }
 
 function updateData() {

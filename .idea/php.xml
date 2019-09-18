@@ -100,6 +100,24 @@
       <path value="$PROJECT_DIR$/project1/vendor/symfony/polyfill-intl-icu" />
       <path value="$PROJECT_DIR$/project1/vendor/symfony/form" />
       <path value="$PROJECT_DIR$/project1/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/event" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/consistency" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/regex" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/math" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/protocol" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/iterator" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/ustring" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/file" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/exception" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/visitor" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/compiler" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/zformat" />
+      <path value="$PROJECT_DIR$/project1/vendor/hoa/stream" />
+      <path value="$PROJECT_DIR$/project1/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/project1/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/project1/vendor/martin-georgiev/postgresql-for-doctrine" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

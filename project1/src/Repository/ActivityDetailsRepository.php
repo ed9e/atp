@@ -27,16 +27,18 @@ class ActivityDetailsRepository extends ServiceEntityRepository
      * @return GarminActivityDetails[] Returns an array of ActivityDetails objects
      * @throws Exception
      */
-    public function findByStartTime($value)
+    public function findByStartTime($queryRequest)
     {
-        $dateFrom = (new DateTime())->setTimestamp(strtotime($value));
+        $dateFrom = (new DateTime())->setTimestamp(strtotime($queryRequest['data']));
         if ($dateFrom->format('w') !== '1') {//jeśli nie pierwszy dzień tyg
-            $dateFrom = (new DateTime())->setTimestamp(strtotime('previous monday', strtotime($value)));
+            $dateFrom = (new DateTime())->setTimestamp(strtotime('previous monday', strtotime($queryRequest['data'])));
         }
-        $dateTo = (new DateTime())->setTimestamp(strtotime('next monday', strtotime($value)));
+        $dateTo = (new DateTime())->setTimestamp(strtotime('next monday', strtotime($queryRequest['data'])));
+
+        $activityType = array_filter($queryRequest['activityId']);
 
         $who = 'lbrzozowski';
-        $activityType = [1, 6];
+        //$activityType = [1, 6];
 
         return $this->createQueryBuilder('a')
             ->andWhere('a.startTimeLocal >= :from')

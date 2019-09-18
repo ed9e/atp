@@ -12,6 +12,47 @@ use DateTimeInterface;
 class WeeklyActivity
 {
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $timeMinuteSum;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $distanceSum;
+    /**
+     * @ORM\Id()
+     * @ORM\Column(type="string")
+     */
+    private $weekly;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ownerFullName;
+
+    /**
+     * @ORM\Column(type="integer[]")
+     */
+    private $activityTypeIdAgg;
+
+    /**
+     * @return mixed
+     */
+    public function getActivityTypeIdAgg()
+    {
+        return $this->activityTypeIdAgg;
+    }
+
+    /**
+     * @param mixed $activityTypeIdAgg
+     * @return WeeklyActivity
+     */
+    public function setActivityTypeIdAgg($activityTypeIdAgg): WeeklyActivity
+    {
+        $this->activityTypeIdAgg = $activityTypeIdAgg;
+        return $this;
+    }
+
+    /**
      * @return mixed
      */
     public function getDistanceSum()
@@ -28,30 +69,6 @@ class WeeklyActivity
         $this->distanceSum = $distanceSum;
         return $this;
     }
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $timeMinuteSum;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $distanceSum;
-
-
-
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="string")
-     */
-    private $weekly;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $ownerFullName;
-
 
     public function getTimeMinuteSum(): ?int
     {

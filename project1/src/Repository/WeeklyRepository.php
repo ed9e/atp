@@ -23,6 +23,7 @@ class WeeklyRepository extends ServiceEntityRepository
     public function findByOwnerFullName($value)
     {
         return $this->createQueryBuilder('w')
+            ->where("IS_CONTAINED_BY(6,'w.activityTypeIdAgg')")
             ->andWhere('w.ownerFullName = :val')
             ->setParameter('val', $value)
             ->orderBy('w.weekly', 'DESC')

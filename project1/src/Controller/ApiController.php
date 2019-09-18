@@ -33,7 +33,17 @@ class ApiController extends AbstractController
     {
         /** @var ActivityDetailsRepository $repository */
         $repository = $this->entityManager->getRepository(GarminActivityDetails::class);
-        $data = $repository->findByStartTime($request->query->get('date') ?? '2019-08-25');
+        $data = $repository->findByStartTime($this->prepareQueryRequest($request));
         return $this->json(['data' => $data]);
+    }
+
+    protected function prepareQueryRequest($request): array
+    {
+        $data = $request->query->get('data') ?? date('Y-m-d', strtotime('-1 Monday'));
+        $activityId = explode(',', $request->query->get('activityId'));
+        return [
+            'data' => $data,
+            'activityId' => $activityId,
+        ];
     }
 }
