@@ -69,14 +69,14 @@ class ApiController extends AbstractController
 
         /** @var WeeklyRepository $weekly */
         $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->getWeekly2(['activityId' => $activity_id, 'ownerFullName' => 'Łukasz Brzozowski']);
+        $weeklyResult = $weekly->getWeekly2(['activityId' => $activity_id, 'userDisplayName' => 'lbrzozowski']);
         $weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
         //$weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
         $diff = array_diff($keys, array_keys($weeklyData));
-        $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
+        $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
         ksort($done);
 
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 5);
+        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 0);
 
         return $this->json(['data' => ['keys' => $keys, 'done' => $done, 'values' => $values]]);
     }
