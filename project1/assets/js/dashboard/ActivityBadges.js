@@ -13,6 +13,19 @@ $('ul#activity-badges li input').on('ifToggled', function (event) {
 
     dataTable.DataTable().ajax.url(url.href).load();
 
-    //chart.config.data.datasets.find('Done').data =
+    let sUrlWeekly = 'http://127.0.0.1:8000/api/weekly';
+    let urlWeekly = new URL(sUrlWeekly);
+    urlWeekly.searchParams.set('activityId', urlActivityIds);
+    $.ajax({
+        url: urlWeekly,
+        context: document.body
+    }).done(function(data) {
+        console.log(data.data.done);
+        //console.log(createTimeArray(data.data.done));
+        console.log(chartAtpInstance);
+        chartAtpInstance.config.data.datasets.find('Done').data = data.data.done;
+        chartAtpInstance.update();
+    });
+
 });
 

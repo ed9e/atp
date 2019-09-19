@@ -9,6 +9,8 @@ use App\Repository\ActivityDetailsRepository;
 use App\Repository\WeeklyRepository;
 use App\Service\Atp\Plan;
 use Doctrine\ORM\EntityManager;
+use DateTime;
+use DateInterval;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -50,6 +52,11 @@ class ApiController extends AbstractController
         ];
     }
 
+    /**
+     * @Route("/weekly")
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function weekly(Request $request, EntityManagerInterface $em)
     {
         $activity_id = array_filter(explode(',', $request->query->get('activityId')));
