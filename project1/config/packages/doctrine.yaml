@@ -26,6 +26,11 @@ doctrine:
                 alias: App
 
         dql:
+            datetime_functions:
+                DATE_TRUNC: App\DoctrineExtensions\DateTrunc
+                TIME_MINUTE_SUM: App\DoctrineExtensions\TimeMinuteSum
+                WEEKLY: App\DoctrineExtensions\Weekly
+                ARRAY_AGG: App\DoctrineExtensions\ArrayAgg
             string_functions:
                         # operators for working with array and json(b) data
                 CONTAINS: MartinGeorgiev\Doctrine\ORM\Query\AST\Functions\Contains

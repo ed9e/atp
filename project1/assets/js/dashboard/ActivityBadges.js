@@ -12,5 +12,7 @@ $('ul#activity-badges li input').on('ifToggled', function (event) {
     url.searchParams.set('activityId', urlActivityIds);
 
     dataTable.DataTable().ajax.url(url.href).load();
+
+    //chart.config.data.datasets.find('Done').data =
 });
 

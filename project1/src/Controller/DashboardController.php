@@ -42,7 +42,7 @@ class DashboardController extends AbstractController
 
         /** @var WeeklyRepository $weekly */
         $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
+        $weeklyResult = $weekly->getWeekly2(['activityId' => [1,3,6], 'ownerFullName' => 'Łukasz Brzozowski']);
         $weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
         //$weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
         $diff = array_diff($keys, array_keys($weeklyData));
@@ -61,7 +61,7 @@ class DashboardController extends AbstractController
     public function calendar(EntityManagerInterface $em)
     {
         $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
+        $weeklyResult = $weekly->getWeekly2(['activityId' => [1,2], 'ownerFullName' => 'Łukasz Brzozowski']);
         return new JsonResponse($weeklyResult);
     }
 
