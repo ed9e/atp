@@ -17,12 +17,9 @@
         let phases = [];
         let phases2 = [];
 
-        let activityTypes = {
-            running: {id: 1, txt: 'Running', checked: true},
-            trail_running: {id: 6, txt: 'Trail running', checked: true},
-            walking: {id: 3, txt: 'Hiking', checked: false},
-            cycling: {id: 2, txt: 'Cycling', checked: false},
-        };
+
+
+
 
         function createTimeArray(oIn) {
             let arr = [];
@@ -87,7 +84,7 @@
             </div>
 
             <div class="col-xs-7">
-                <ul class="list small float-right">
+                <ul class="list small float-right" id="action-badges">
                     <li>
                         <input type="checkbox" id="applyChanges">
                         <label>Apply changes</label>
@@ -122,9 +119,12 @@
                         <label>Toggle pan</label>
                     </li>
                 </ul>
-
-                {#            <button id="pan-switch" onclick="togglePanMode()">Disable pan mode#}
-                {#            </button>#}
+            </div>
+        </div>
+        <div class="row controls badges">
+            <div class="col-xs-5">
+                <ul class="list small float-left" id="config-badges">
+                </ul>
             </div>
         </div>
     </div>
@@ -205,21 +205,21 @@
     {#            <input type="radio" name="quux[2]" id="baz[2]">#}
     {#        </div>#}
 
-    {#        <div class="col-lg-5">#}
-    {#            <div class="controls line">#}
-    {#                <input type="checkbox" name="name1" id="name1">#}
-    {#                <label>Checkbox 1</label>#}
+            <div class="col-lg-5">
+                <div class="controls line">
+                    <input type="checkbox" name="name1" id="name1">
+                    <label>Checkbox 1</label>
 
-    {#                <input type="checkbox" checked>#}
-    {#                <label>Checkbox 2</label>#}
+                    <input type="checkbox" checked>
+                    <label>Checkbox 2</label>
 
-    {#                <input type="radio" name="iCheck" value="1">#}
-    {#                <label>Lorem ipusm dolor hat et uns</label>#}
+                    <input type="radio" name="iCheck" value="1">
+                    <label>Lorem ipusm dolor hat et uns</label>
 
-    {#                <input type="radio" name="iCheck" value="2" checked>#}
-    {#                <label>Radio button 2</label>#}
-    {#            </div>#}
-    {#        </div>#}
+                    <input type="radio" name="iCheck" value="2" checked>
+                    <label>Radio button 2</label>
+                </div>
+            </div>
     {#        <div class="col-lg-5">#}
     {#            <div class="controls square">#}
     {#                <input type="checkbox" name="name2" id="name2">#}

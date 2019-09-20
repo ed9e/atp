@@ -1,0 +1,47 @@
+html {
+  & {
+    .ftp {
+      color: $secondary-color;
+    }
+
+    .ftpDone {
+      color: $primary-color;
+    }
+
+    .bardone {
+      color: $primary-color;
+    }
+
+    .bardoneborder {
+      color: $primary-color;
+    }
+
+    .bar {
+      color: $secondary-color;
+    }
+
+    .bar2 {
+      color: $primary-color;
+    }
+
+    .border-bar {
+      color: $secondary-color;
+    }
+
+    .border-bar2 {
+      color: $primary-color;
+    }
+
+    .border-ftp {
+      color: $secondary-color;
+    }
+
+    .grid {
+      color: $font-color;
+    }
+
+    .tunecontainer {
+      margin: 0 5px 0 0;
+    }
+  }
+}

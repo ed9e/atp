@@ -1,0 +1,81 @@
+.curtain {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 1000ms ease-in-out;
+
+    & #curtain__checkbox {
+      position: absolute;
+      cursor: pointer;
+      z-index: 100;
+      opacity: 0.5;
+      top: 97.7%;
+      left: 0;
+      pointer-events: auto;
+
+      // When the checkbox is checked...
+      &:checked {
+
+        opacity: 0;
+
+        // Slide the first panel
+        & ~ div.curtain__panel--left {
+          transform: translateX(0);
+        }
+
+        // Slide the second panel
+        & ~ div.curtain__panel--right {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    background: #000000;
+    background: linear-gradient(240deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 0, 0, 0) 77.71%),
+    linear-gradient(120deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 0, 255, 0) 77.71%),
+    linear-gradient(0deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 255, 0, 0) 77.71%);
+    opacity: 1;
+    color: #fff;
+    float: left;
+    position: relative;
+    width: 50%;
+    height: 100vh;
+    transition: all 200ms ease-out;
+    z-index: 2;
+
+    &--left {
+      justify-content: flex-end;
+      transform: translateX(-100%);
+    }
+
+    &--right {
+      justify-content: flex-start;
+      transform: translateX(100%);
+    }
+  }
+
+  &__content {
+
+    color: #fff;
+    padding: 0rem 0;
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+
+    img {
+      width: 20%;
+    }
+  }
+
+}

@@ -1,0 +1,57 @@
+.wrapper {
+  & .control-sidebar-dark, .control-sidebar-dark + .control-sidebar-bg {
+    &:before{
+opacity: 0.1;
+    }
+    //background-color: transparentize($primary-color, 0.95);
+    background-color: #00000015;
+    border-right: solid 1px lighten($menu-color, 2%);
+    //border-left: solid 1px #00000019;
+    text-align: left;
+    & .nav-tabs.control-sidebar-tabs{
+      background-color: #000000aa;
+      & > li > a {
+        background-color: #00000088;
+      }
+    }
+  }
+
+
+  & .control-sidebar {
+    & .btn-group{
+
+    }
+    & .dropdown {
+      background-color: darken($primary-color, 20%);
+      border-radius: 2px;
+      margin: 0 0.1rem 0.1rem 0;
+
+      & button {
+        //background-color: #ffffff11;
+      }
+      & .dropdown-toggle {
+        background-color: darken($primary-color, 10%);
+        &:focus{
+          background-color: lighten($primary-color, 5%);
+        }
+        &:hover{
+          background-color: darken($primary-color, 0%);
+        }
+      }
+
+      & .dropdown-menu {
+        background-color: #00000066;
+        border-color: #00000077;
+        font-size: smaller;
+        & .dropdown-item {
+          &:hover{
+            margin: 1px;
+          }
+        }
+        & .dropdown-divider {
+
+        }
+      }
+    }
+  }
+}

@@ -11,11 +11,8 @@ require('font-awesome/css/font-awesome.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
-// require('materialize-js');
-// require('materialize-css');
-// require('materialize');
+
 require('../css/scss/materialize.scss');
-require('./materialize_init');
 
 require('icheck/icheck');
 require('icheck/skins/all.css');
@@ -32,5 +29,5 @@ $(document).ready(function () {
             $('.curtain__wrapper').css({"opacity": 1});
             $('.lds-ripple').css({'display': 'none'});
         }, 1000);
-    }, 1000);
+    }, 500);
 });

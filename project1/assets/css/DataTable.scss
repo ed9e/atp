@@ -1,0 +1,55 @@
+#data-table {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+}
+
+table {
+  color: darken($font-color, 30%);
+
+  &.dataTable {
+    border-collapse: collapse !important;
+    //background: rgb(240,183,161);
+    //background: -moz-linear-gradient(-45deg,  rgba(240,183,161,1) 0%, rgba(140,51,16,1) 50%, rgba(117,34,1,1) 51%, rgba(191,110,78,1) 100%);
+    //background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(240,183,161,1)), color-stop(50%,rgba(140,51,16,1)), color-stop(51%,rgba(117,34,1,1)), color-stop(100%,rgba(191,110,78,1)));
+    //background: -webkit-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+    //background: -o-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+    //background: -ms-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+    //background: linear-gradient(135deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
+    background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, $primary-color 30%, darken($body-color, 20%) 72%) lighten($primary-color, 0%);
+    mix-blend-mode: lighten;
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0b7a1', endColorstr='#bf6e4e', GradientType=1);
+
+    & thead tr {
+      background-color: #ffffff12;
+    }
+
+    & .text-right {
+      padding-right: 30px;
+    }
+
+    & tbody tr {
+
+      &:nth-child(odd) {
+        //background-color: #00000000;
+      }
+
+      &:nth-child(even) {
+        //background-color: #00000012;
+      }
+
+      &:hover {
+        background-color: #ffffff09;
+        border-bottom: solid 1px #ffffff15;
+      }
+
+      &.selected {
+        background-color: #ffffff11;
+      }
+    }
+  }
+
+}

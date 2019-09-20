@@ -1,7 +1,7 @@
 //http://icheck.fronteed.com/
 
 $(document).ready(function () {
-    $('.controls.badges input').each(function () {
+    $('.controls.badges #action-badges input').each(function () {
         let self = $(this),
             label = self.next(),
             label_text = label.text();

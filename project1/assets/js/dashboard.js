@@ -8,7 +8,9 @@ require('./graph/graph-styling.js');
 require('./graph/dashboard_graph.js');
 require('./graph/d3.js');
 
-require('./dashboard/checkers');
+require('./dashboard/Ajax');
 require('./dashboard/ActivityBadges');
+require('./dashboard/ActionBagdes');
+require('./dashboard/ConfigBadges');
 require('./dashboard/datatable');
 
