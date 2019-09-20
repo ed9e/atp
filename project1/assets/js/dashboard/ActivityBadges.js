@@ -22,8 +22,10 @@ $('ul#activity-badges li input').on('ifToggled', function (event) {
     }).done(function(data) {
         console.log(data.data.done);
         //console.log(createTimeArray(data.data.done));
-        console.log(chartAtpInstance);
-        chartAtpInstance.config.data.datasets.find('Done').data = data.data.done;
+        console.log(chartAtpInstance.config.data.datasets.find('Done'));
+        let vals = createTimeArray(data.data.done);
+        chartAtpInstance.config.data.datasets.find('Done').data = vals;
+        chartAtpInstance.config.data.datasets.find('FTPDone').data = vals.ftpO();
         chartAtpInstance.update();
     });
 

@@ -45,8 +45,8 @@ class WeeklyRepository extends ServiceEntityRepository
             ->groupBy('weekly')
             ->orderBy('weekly', 'DESC')
             ->setMaxResults(1000);
-        $qb->andWhere('w.ownerFullName = :ownerFullName')
-            ->setParameter('ownerFullName', $queryData['ownerFullName']);
+        $qb->andWhere('w.userDisplayName = :userDisplayName')
+            ->setParameter('userDisplayName', $queryData['userDisplayName']);
 
         $wheres = [];
         foreach ($queryData['activityId'] as $key => $val) {
