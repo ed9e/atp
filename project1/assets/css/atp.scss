@@ -42,6 +42,7 @@ $img: (
 $img2: (
         "font": #f0f5ec,
         "base": #000,
+        "accent-1": #00185c
 );
 $theme: 'img';
 $theme2: 'img2';
@@ -179,7 +180,7 @@ body {
     }
 
     & .wrapper {
-      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
+      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme2, "accent-1");
       background-blend-mode: multiply, multiply;
     }
 

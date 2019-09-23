@@ -104,7 +104,7 @@ function updateData() {
 
     par.value = Math.floor(par.scale.getValueForPixel(
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
-    par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
+    //par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
 
     par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = par.value;
     //par.chart.config.data.datasets[2].data[par.index] =  par.value;

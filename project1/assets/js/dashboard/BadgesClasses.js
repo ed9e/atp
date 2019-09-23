@@ -67,26 +67,11 @@ export class EditAtp extends Checker {
 
     ifToggled(event) {
         let chart = event.data.chart;
-        let vals = {};
         let iChecker = event.data.iChecker;
         if (iChecker.checked) {
-            if (chart.config.data.datasets.find('newTune').hasOwnProperty('data_')) {
-                vals = chart.config.data.datasets.find('newTune').data_;
-            } else {
-                vals = objectConcat(yDone, yValues);
-            }
-            chart.config.data.datasets.find('newTune').data = vals;
-            chart.config.data.datasets.find('FTP').data = vals.ftpO();
-            chart.config.data.datasets.find('FTPDone').data = vals.ftpOReset();
-            chart.config.data.datasets.find('Done').data = vals.ftpOReset();
+            global.chartDataAction.onEdit();
         } else {
-            vals = createTimeArray(yDone);
-            chart.config.data.datasets.find('newTune').data_ = chart.config.data.datasets.find('newTune').data;
-            chart.config.data.datasets.find('newTune').data = [];
-            chart.config.data.datasets.find('FTP').data = vals.ftpOReset();
-            chart.config.data.datasets.find('FTPDone').data = vals.ftpO();
-            chart.config.data.datasets.find('Done').data = vals;
-            // chart.config.data.datasets.find('oldTune').data = vals;
+            global.chartDataAction.onDisEdit();
         }
         chart.update();
     }

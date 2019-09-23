@@ -11,11 +11,14 @@ $(document).ready(function () {
             insert: '<div class="icheck_line-icon"></div>' + label_text
         });
     });
+    setTimeout(function() {
+        $('#running').iCheck('check');
+    }, 2000);
 });
 
-let activityTypes = {
-    running: {id: 1, txt: 'Running', checked: true},
-    trail_running: {id: 6, txt: 'Trail running', checked: true},
+global.activityTypes = {
+    running: {id: 1, txt: 'Running', checked: false},
+    trail_running: {id: 6, txt: 'Trail running', checked: false},
     walking: {id: 3, txt: 'Hiking', checked: false},
     cycling: {id: 2, txt: 'Cycling', checked: false},
 };
@@ -38,15 +41,13 @@ $('ul#activity-badges li input').on('ifToggled', function (event) {
     let sUrlWeekly = 'http://127.0.0.1:8000/api/weekly';
     let urlWeekly = new URL(sUrlWeekly);
     urlWeekly.searchParams.set('activityId', urlActivityIds);
+    $('#edit-atp').iCheck('uncheck');
     $.ajax({
         url: urlWeekly,
         context: document.body
     }).done(function(data) {
-        let vals = createTimeArray(data.data.done);
-        chartAtpInstance.config.data.datasets.find('Done').data = vals;
-        chartAtpInstance.config.data.datasets.find('FTPDone').data = vals.ftpO();
-        chartAtpInstance.update();
+        chartDataAction.onDataLoad(data);
+
     });
 
 });
-

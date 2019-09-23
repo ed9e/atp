@@ -55,7 +55,7 @@ let convertValues = {
                 //return convert.speed(v).ms().to.minkm() + ' min/km';
                 case 2:
                 default:
-                    return Math.round(convert(v).from('m/s').to('km/h')*100)/100 + "km/h";
+                    return Math.round(convert(v).from('m/s').to('km/h') * 100) / 100 + "km/h";
                 //return Math.round(convert.speed(v).ms().to.kmh(), 1) + ' km/h';
             }
         },
@@ -68,9 +68,14 @@ let convertValues = {
 };
 
 $(document).ready(function () {
+    let urlActivityIds = '';
+    $('ul#activity-badges li input:checked').each(function () {
+        urlActivityIds += global.activityTypes[this.id].id + ',';
+    });
+
     let table = $('#data-table').DataTable({
         'ajax': {
-            'url': 'http://127.0.0.1:8000/api/',
+            'url': 'http://127.0.0.1:8000/api/?activityId=' + urlActivityIds,
             'dataSrc': function (json) {
 
                 for (let i = 0, ien = json.data.length; i < ien; i++) {
