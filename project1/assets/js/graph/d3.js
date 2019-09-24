@@ -72,7 +72,8 @@ function getElement() {
 
     par.value = Math.floor(par.scale.getValueForPixel(
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
-    par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
+    //par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
+
     drawValue(par);
     findAndSwipe();
 }
@@ -97,7 +98,7 @@ function getActivities(date) {
 
 function updateData() {
     let e = d3.event.sourceEvent;
-
+    par.datasetIndex=0;
     if (par.datasetIndex != 0 || par.scale == undefined) {
         return;
     }
@@ -116,12 +117,12 @@ function updateData() {
 }
 
 function drawValue(par) {
-    par.chart.ctx.fillStyle = general.bar.valueColor;
+    par.chart.ctx.fillStyle = '#ffffff';
     par.chart.ctx.textAlign = "center";
     par.chart.ctx.textBaseline = "bottom";
-    let duration = moment.duration(par.value, 'minutes');
-    let text = duration.get('hours') + ':' + duration.get('minutes');
-    par.chart.ctx.fillText(text, par.element._model.x, par.element._model.y - 5);
+    // let duration = moment.duration(par.value, 'minutes');
+    // let text = duration.get('hours') + ':' + duration.get('minutes');
+    par.chart.ctx.fillText(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y, par.element._model.x, par.element._model.y - 5);
 }
 
 

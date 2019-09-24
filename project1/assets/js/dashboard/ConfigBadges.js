@@ -25,31 +25,18 @@ let configBadgesRadio = {
 for (let key in configBadgesRadio) {
     for(let radioName in configBadgesRadio[key]) {
         let checked = configBadgesRadio[key][radioName].checked ? 'checked' : '';
-        $('ul#config-badges').append('<li><input type="radio" ' + checked + ' name="'+ key+'" id="' + radioName + '-'+key+'"/><label>' + configBadgesRadio[key][radioName].label + '</label></li>');
+        $('ul#config-badges').append('<li><input type="radio" ' + checked + ' name="'+ key+'" id="' + radioName + '"/><label>' + configBadgesRadio[key][radioName].label + '</label></li>');
     }
 }
-// $('ul#activity-badges li input').on('ifToggled', function (event) {
-//     let urlActivityIds = '';
-//     $('ul#activity-badges li input:checked').each(function () {
-//         urlActivityIds += activityTypes[this.id].id + ',';
-//     });
-//     let dataTable = $('#data-table');
-//     let url = new URL(dataTable.DataTable().ajax.url());
-//     url.searchParams.set('activityId', urlActivityIds);
-//
-//     dataTable.DataTable().ajax.url(url.href).load();
-//
-//     let sUrlWeekly = 'http://127.0.0.1:8000/api/weekly';
-//     let urlWeekly = new URL(sUrlWeekly);
-//     urlWeekly.searchParams.set('activityId', urlActivityIds);
-//     $.ajax({
-//         url: urlWeekly,
-//         context: document.body
-//     }).done(function (data) {
-//         let vals = createTimeArray(data.data.done);
-//         chartAtpInstance.config.data.datasets.find('Done').data = vals;
-//         chartAtpInstance.config.data.datasets.find('FTPDone').data = vals.ftpO();
-//         chartAtpInstance.update();
-//     });
-//
-// });
+
+$('ul#config-badges li input').on('ifChecked', function (event) {
+        $('#'+event.target.id).attr('checked', 'checked');
+    $('#edit-atp').iCheck('uncheck');
+
+    $.ajax({
+        url: apiUrlConfig.hrefWeekly(),
+        context: document.body
+    }).done(function (data) {
+        chartDataAction.onDataLoad(data);
+    });
+});

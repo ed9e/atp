@@ -42,7 +42,7 @@ class DashboardController extends AbstractController
 
         /** @var WeeklyRepository $weekly */
         $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->getWeekly2(['activityId' => [1,3,6], 'userDisplayName' => 'lbrzozowski']);
+        $weeklyResult = $weekly->getWeekly2(['activityId' => [1,6], 'userDisplayName' => 'lbrzozowski']);
         //$weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
         $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
         $diff = array_diff($keys, array_keys($weeklyData));

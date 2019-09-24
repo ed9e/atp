@@ -74,7 +74,7 @@ class ATP
     public function getDone()
     {
         $weekly = $this->em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
+        $weeklyResult = $weekly->getWeekly2($queryData = ['activityId'=>[1,6], 'userDisplayName'=>'lbrzozowski']);
         return $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
 
         return [

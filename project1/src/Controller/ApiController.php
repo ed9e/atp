@@ -46,9 +46,11 @@ class ApiController extends AbstractController
     {
         $data = $request->query->get('data') ?? date('Y-m-d', strtotime('-1 Monday'));
         $activityId = explode(',', $request->query->get('activityId'));
+        $userDisplayName = $request->query->get('profileId');
         return [
             'data' => $data,
             'activityId' => $activityId,
+            'userDisplayName' => $userDisplayName
         ];
     }
 
@@ -59,7 +61,8 @@ class ApiController extends AbstractController
      */
     public function weekly(Request $request, EntityManagerInterface $em)
     {
-        $activity_id = array_filter(explode(',', $request->query->get('activityId')));
+        $queryParams = $this->prepareWeeklyQueryParams($request);
+
         $options = [
             'from' => (new DateTime())->setTimestamp(strtotime('next monday'))->sub(new DateInterval('P120W')),
             'to' => (new DateTime())->setTimestamp(strtotime('next monday')),
@@ -69,9 +72,19 @@ class ApiController extends AbstractController
 
         /** @var WeeklyRepository $weekly */
         $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->getWeekly2(['activityId' => $activity_id, 'userDisplayName' => 'lbrzozowski']);
-        //$weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
-        $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
+
+        $weeklyResult = $weekly->getWeekly2($queryParams);
+        switch ($queryParams['weeklyType']) {
+            default:
+            case 'time':
+                $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
+                break;
+            case 'distance':
+                $weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
+                break;
+        }
+
+
         $diff = array_diff($keys, array_keys($weeklyData));
         $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
         ksort($done);
@@ -79,5 +92,13 @@ class ApiController extends AbstractController
         $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 0);
 
         return $this->json(['data' => ['keys' => $keys, 'done' => $done, 'values' => $values]]);
+    }
+
+    protected function prepareWeeklyQueryParams(Request $request)
+    {
+        $activity_id = array_filter(explode(',', $request->query->get('activityId')));
+        $userDisplayName = $request->query->get('profileId');
+        $weeklyType = $request->query->get('weeklyType');
+        return ['activityId' => $activity_id, 'userDisplayName' => $userDisplayName, 'weeklyType' => $weeklyType];
     }
 }

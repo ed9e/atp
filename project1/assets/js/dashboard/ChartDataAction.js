@@ -9,36 +9,43 @@ export class ChartDataAction {
     }
 
     onEdit() {
-        let vals = {};
+        let vals = [];
         if (this.atp.hasOwnProperty('data_')) {
             vals = this.atp.data_;
         } else {
-            vals = this.done.data;
+            vals = this.done.data.kopia()
         }
-        this.atp.data = vals;
 
+        this.atp.data = vals;
+        this.atp.hidden = false;
         this.atpFTP.data = vals.ftpO();
-        this.done.data_ = this.done.data;
+        this.atpFTP.hidden = false;
+        this.done.data_ = this.done.data.kopia();
         this.done.data = vals.ftpOReset();
         this.doneFTP.data = vals.ftpOReset();
     }
 
     onDisEdit() {
-        let vals = this.done.data_;
-        this.atp.data_ = this.atp.data;
-        this.atp.data = [];
-        this.atpFTP.data = vals.ftpOReset();
+        let vals = this.done.data_.kopia();
+        this.atp.data_ = this.atp.data.kopia();
+        this.atp.data = this.atp.data.kopia().ftpOReset();
+        this.atpFTP.data = vals.kopia().ftpOReset();
         this.doneFTP.data = vals.ftpO();
         this.done.data = vals;
-
     }
 
     onDataLoad(data) {
         let vals = createTimeArray(data.data.done);
         this.done.data = vals;
+        this.atp.data = vals.kopia().ftpOReset();
+        this.atpFTP.data = vals.kopia().ftpOReset();
         this.doneFTP.data = vals.ftpO();
+
+        this.atp.hidden = true;
+        this.atpFTP.hidden = true;
+
         this.chart.update();
 
-        this.atp.hasOwnProperty('data_') ? this.atp.data_ = vals : '';
+        this.atp.hasOwnProperty('data_') ? delete this.atp.data_ : '';
     }
 }

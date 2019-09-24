@@ -75,3 +75,19 @@ Array.prototype.ftpOReset = function () {
 
     return A;
 };
+
+Array.prototype.kopia = function () {
+    let O = Object(this);
+    let len = O.length >>> 0,
+        A, k;
+    A = new Array(len);
+    k = 0;
+    while (k < len) {
+        if (k in O) {
+            A[k] = {x: O[k].x, y: O[k].y};
+        }
+        k++;
+    }
+
+    return A;
+};

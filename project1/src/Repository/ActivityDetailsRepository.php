@@ -37,7 +37,7 @@ class ActivityDetailsRepository extends ServiceEntityRepository
 
         $activityType = array_filter($queryRequest['activityId']);
 
-        $who = 'lbrzozowski';
+        $who = $queryRequest['userDisplayName'];
         //$activityType = [1, 6];
 
         return $this->createQueryBuilder('a')

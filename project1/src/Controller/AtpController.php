@@ -36,7 +36,7 @@ class AtpController extends AbstractController
 
         $atp->plan([
             'from' => '2019-06-03',
-            'to' => '2019-10-14',
+            'to' => '2020-05-04',
             //'to' => '2020-10-26',
         ])->fetchPlan()->rework();
 
@@ -58,8 +58,10 @@ class AtpController extends AbstractController
         $plan = new Plan($options);
         $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
 
+        $queryData = ['activityId'=>[1,6], 'userDisplayName'=>'lbrzozowski'];
+
         $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->findByOwnerFullName('Łukasz Brzozowski');
+        $weeklyResult = $weekly->getWeekly2($queryData);
         $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
         $diff = array_diff($keys, array_keys($weeklyData));
         $done = array_merge(array_fill_keys($diff, 1), $weeklyData);

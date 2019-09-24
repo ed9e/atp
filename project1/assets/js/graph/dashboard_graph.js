@@ -8,7 +8,7 @@ global.atpOptions = {
         labels: createTimeArray(yDone),
         datasets: [
             {
-                label: 'New Tuning ',
+                label: 'New Tuning',
                 backgroundColor: general.newVal.bg,
                 fill: true,
                 data: createTimeArray(yValues),
@@ -18,7 +18,8 @@ global.atpOptions = {
                 borderDash: [0, 0],
                 xAxisID: "x-axis1",
                 borderColor: general.newVal.borderColor,
-                id: 'newTune'
+                id: 'newTune',
+                hidden: true,
             },
             {
                 label: 'Old Tuning',
@@ -46,6 +47,7 @@ global.atpOptions = {
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
                 id: 'FTP',
+                hidden: true,
             },
             {
                 label: 'Done',
@@ -75,6 +77,13 @@ global.atpOptions = {
         ]
     },
     options: {
+        plugins: {
+            deferred: {           // enabled by default
+                xOffset: 150,     // defer until 150px of the canvas width are inside the viewport
+                yOffset: '50%',   // defer until 50% of the canvas height are inside the viewport
+                delay: 2500       // delay of 500 ms after the canvas is considered inside the viewport
+            }
+        },
         elements: {
             point: {radius: 0.5},
             line: {
@@ -114,7 +123,7 @@ global.atpOptions = {
             // }
         },
         animation: {
-            duration: 1000,
+            duration: 1200,
 
             onComplete: function (animation) {
                 //console.log(animation)

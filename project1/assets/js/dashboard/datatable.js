@@ -70,7 +70,7 @@ let convertValues = {
 $(document).ready(function () {
     let urlActivityIds = '';
     $('ul#activity-badges li input:checked').each(function () {
-        urlActivityIds += global.activityTypes[this.id].id + ',';
+        urlActivityIds += global.activityTypes.getTypes()[this.id].id + ',';
     });
 
     let table = $('#data-table').DataTable({
