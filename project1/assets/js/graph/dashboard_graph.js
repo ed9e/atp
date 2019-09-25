@@ -81,7 +81,7 @@ global.atpOptions = {
             deferred: {           // enabled by default
                 xOffset: 150,     // defer until 150px of the canvas width are inside the viewport
                 yOffset: '50%',   // defer until 50% of the canvas height are inside the viewport
-                delay: 2500       // delay of 500 ms after the canvas is considered inside the viewport
+                delay: 2000       // delay of 500 ms after the canvas is considered inside the viewport
             }
         },
         elements: {
@@ -123,7 +123,7 @@ global.atpOptions = {
             // }
         },
         animation: {
-            duration: 1200,
+            duration: 800,
 
             onComplete: function (animation) {
                 //console.log(animation)

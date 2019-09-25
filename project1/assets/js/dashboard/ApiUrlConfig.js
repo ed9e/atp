@@ -4,12 +4,12 @@ export class ApiUrlConfig {
         this.urlParams = {
             activityIds: {default: [1, 6]},
             profileId: {default: 'lbrzozowski'},
-            weeklyType: {default: 'time'}
+            weeklyType: {default: 'time'},
+            weekDate: {default:'', store:null}
         };
     }
 
-    hrefWeekly()
-    {
+    hrefWeekly() {
         let url = new URL(this.url);
         url.pathname += 'weekly';
         let searchParams = this.getSearchParams();
@@ -19,19 +19,25 @@ export class ApiUrlConfig {
 
         return url.href;
     }
-    hrefDataTable()
+
+    storeWeekDate(date)
     {
-        let dataTableUrl = new URL($('#data-table').DataTable().ajax.url());
-        let data = dataTableUrl.searchParams.get('data');
+        this.urlParams.weekDate.store = date;
+        return this;
+    }
+
+    hrefDataTable() {
+
         let url = new URL(this.url);
-        url.searchParams.append('data', data);
+        url.searchParams.append('data', this.urlParams.weekDate.store);
         let searchParams = this.getSearchParams();
         Object.keys(searchParams).forEach(function (x) {
             url.searchParams.append(x, searchParams[x])
         });
         return url.href;
     }
-    getSearchParams(){
+
+    getSearchParams() {
         let searchParams = {};
         searchParams.activityId = this.getActivityIds().join(',');
         searchParams.profileId = this.getProfileId();
@@ -54,7 +60,7 @@ export class ApiUrlConfig {
     getWeeklyType() {
         let checked = $('ul#config-badges li input:checked');
 
-        return checked.length >0 ? checked.get(0).id : this.urlParams.weeklyType.default;
+        return checked.length > 0 ? checked.get(0).id : this.urlParams.weeklyType.default;
     }
 
     inSearchParams(name) {

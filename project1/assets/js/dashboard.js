@@ -10,7 +10,8 @@ global.ctx = chartTune.getContext('2d');
 
 require('./graph/graph-styling.js');
 require('./graph/dashboard_graph.js');
-require('./graph/d3.js');
+
+require('zinggrid');
 
 global.chartDataAction = new ChartDataAction(chartAtpInstance);
 global.apiUrlConfig = new ApiUrlConfig();
@@ -19,7 +20,8 @@ require('./dashboard/datatable');
 require('./dashboard/ActivityBadges');
 require('./dashboard/ActionBagdes');
 require('./dashboard/ConfigBadges');
+require('./dashboard/ZingGrid');
 
-
+require('./graph/d3.js');
 
 

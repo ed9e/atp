@@ -85,39 +85,7 @@
 
             <div class="col-xs-7">
                 <ul class="list small float-right" id="action-badges">
-                    <li>
-                        <input type="checkbox" id="applyChanges">
-                        <label>Apply changes</label>
-                    </li>
 
-                    <li>
-                        <input type="checkbox" id="cancelChanges">
-                        <label>Cancel changes</label>
-                    </li>
-
-                    <li>
-                        <input type="checkbox" id="undoChanges">
-                        <label>Undo applied changes</label>
-                    </li>
-
-                    <li>
-                        <input type="checkbox" id="reset-zoom">
-                        <label>Reset zoom</label>
-                    </li>
-
-                    <li>
-                        <input type="checkbox" id="edit-atp">
-                        <label>Edit ATP</label>
-                    </li>
-
-                    <li>
-                        <input type="checkbox" id="toggle-zoom" checked>
-                        <label>Toggle zoom</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="toggle-pan" checked>
-                        <label>Toggle pan</label>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -128,36 +96,39 @@
             </div>
         </div>
     </div>
-    <div class="row data-table">
-        <table id="data-table" class="display" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>startTimeLocal</th>
-                <th>Activity Name</th>
-                <th>Type</th>
-                <th>Distance</th>
-                <th>Duration</th>
-                <th>Average Speed</th>
-                <th>Average HR</th>
-                <th>Average Run Cadence</th>
-                <th>Stride Length</th>
-                <th>Vertical Oscillation</th>
-                <th>Training Effect</th>
-                <th>vO2 Max</th>
-                <th>Avg Ground Contact Balance</th>
-            </tr>
-            </thead>
-            {#            <tfoot>#}
-            {#            <tr>#}
-            {#                <th>Name</th>#}
-            {#                <th>Position</th>#}
-            {#                <th>Office</th>#}
-            {#                <th>Extn.</th>#}
-            {#                <th>Start date</th>#}
-            {#                <th>Salary</th>#}
-            {#            </tr>#}
-            {#            </tfoot>#}
-        </table>
+{#    <div class="row data-table">#}
+{#        <table id="data-table" class="display" cellspacing="0" width="100%">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>startTimeLocal</th>#}
+{#                <th>Activity Name</th>#}
+{#                <th>Type</th>#}
+{#                <th>Distance</th>#}
+{#                <th>Duration</th>#}
+{#                <th>Average Speed</th>#}
+{#                <th>Average HR</th>#}
+{#                <th>Average Run Cadence</th>#}
+{#                <th>Stride Length</th>#}
+{#                <th>Vertical Oscillation</th>#}
+{#                <th>Training Effect</th>#}
+{#                <th>vO2 Max</th>#}
+{#                <th>Avg Ground Contact Balance</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{#            #}{#            <tfoot>#}
+{#            #}{#            <tr>#}
+{#            #}{#                <th>Name</th>#}
+{#            #}{#                <th>Position</th>#}
+{#            #}{#                <th>Office</th>#}
+{#            #}{#                <th>Extn.</th>#}
+{#            #}{#                <th>Start date</th>#}
+{#            #}{#                <th>Salary</th>#}
+{#            #}{#            </tr>#}
+{#            #}{#            </tfoot>#}
+{#        </table>#}
+{#    </div>#}
+    <div class="row zinggrid">
+    <zing-grid id="myGrid" sort viewport-stop></zing-grid>
     </div>
 
 {% endblock %}

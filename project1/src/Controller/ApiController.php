@@ -44,7 +44,9 @@ class ApiController extends AbstractController
 
     protected function prepareQueryRequest($request): array
     {
-        $data = $request->query->get('data') ?? date('Y-m-d', strtotime('-1 Monday'));
+        $date = $request->query->get('data');
+        $data = DateTime::createFromFormat('Y-m-d', $date);
+        $data = $data !== false ? $data->format('Y-m-d') : date('Y-m-d', strtotime('-2 Monday'));
         $activityId = explode(',', $request->query->get('activityId'));
         $userDisplayName = $request->query->get('profileId');
         return [

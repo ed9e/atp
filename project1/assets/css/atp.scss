@@ -1,4 +1,5 @@
 @import "colors";
+
 $dark: (
         "body": desaturate(darken(#471624, 15%), 40%),
         "menu": #ffffff,
@@ -32,7 +33,7 @@ $dark: (
 
 $img: (
         "accent-2": #a7a29b,
-        "base": #43A047,
+        "base": #37b83c,
         "base2": #ff6b36,
   //"base": #795548,
   //"base2": #8d6e63,
@@ -180,7 +181,7 @@ body {
     }
 
     & .wrapper {
-      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme2, "accent-1");
+      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 20%);
       background-blend-mode: multiply, multiply;
     }
 
@@ -414,3 +415,67 @@ body {
 @import "DataTable";
 @import "Curtain";
 @import "Ripple";
+
+.zinggrid {
+  margin-top: 30px;
+}
+zing-grid {
+  background: #000000;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, $primary-color 30%, darken($body-color, 20%) 72%) lighten($primary-color, 0%);
+  mix-blend-mode: lighten;
+  color: $font-color;
+  margin-top: 50px;
+  font-size: smaller;
+  --zg-watermark-background: none;
+  --zg-head-cell-background_sorted: #00000019;
+  --zg-cell-background_sorted: #00000019;
+  --zg-watermark-color: #00000019;
+  --zg-watermark-color_strong: #00000019;
+}
+
+zg-colgroup {
+  transition: max-height 0.4s linear;
+}
+
+zg-caption:hover {
+  opacity: 1;
+}
+
+zg-head, zg-row {
+  background: none !important;
+}
+
+zg-header, zg-caption {
+  background: #00000033 !important;
+}
+
+zg-row {
+  border: 1px solid #ffffff22;
+
+  &:nth-child(even) {
+    background-color: #ffffff10 !important;
+  }
+
+  &:hover:nth-child(even) {
+    background-color: #FFFFFF20 !important;
+  }
+
+  &:hover:nth-child(odd) {
+    background-color: #ffffff20 !important;
+  }
+}
+
+zg-body {
+  background: none !important;
+}
+
+zg-head {
+  background-color: transparentize(desaturate($primary-color, 20%), 0.5) !important;
+}
+
+//zg-watermark {
+//  background: #000000 !important;;
+//}

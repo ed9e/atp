@@ -7,7 +7,7 @@
 }
 
 table {
-  color: darken($font-color, 30%);
+  color: $font-color;
 
   &.dataTable {
     border-collapse: collapse !important;

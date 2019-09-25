@@ -34,7 +34,8 @@
     "materialize": "^1.0.0",
     "materialize-css": "^1.0.0",
     "materialize-js": "^1.0.0",
-    "slice": "^1.0.0"
+    "slice": "^1.0.0",
+    "zinggrid": "^1.1.1"
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.27.0",

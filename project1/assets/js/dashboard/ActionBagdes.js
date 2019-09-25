@@ -15,6 +15,35 @@ $(document).ready(function () {
     });
 });
 
+class ActionBagdes {
+    constructor() {
+        this.types = {
+            zoom: {id: 'toggle-zoom', txt: 'Toggle zoom'},
+            pan: {id: 'toggle-pan', txt: 'Toggle pan'},
+            edit_atp: {id: 'edit-atp', txt: 'Edit ATP'},
+            reset_zoom: {id: 'reset-zoom', txt: 'Reset zoom'},
+            undoChanges: {id: 'undoChanges', txt: 'Undo applied changes'},
+            cancelChanges: {id: 'cancelChanges', txt: 'Cancel changes'},
+            applyChanges: {id: 'applyChanges', txt: 'Apply changes'},
+        };
+    };
+
+    getTypes() {
+        return this.types;
+    }
+
+    createBadges() {
+        for (let key in this.getTypes()) {
+            let label = this.getTypes()[key].txt;
+            let id = this.getTypes()[key].id;
+            $('ul#action-badges').append('<li><input type="checkbox" id="' + id + '"/><label>' + label + '</label></li>');
+        }
+    }
+}
+
+let actionBadges = new ActionBagdes();
+actionBadges.createBadges();
+
 
 import {OptionChecker, EditAtp, ResetZoom} from './BadgesClasses';
 const zoom = new OptionChecker('toggle-zoom', chartAtpInstance, 'zoom');
