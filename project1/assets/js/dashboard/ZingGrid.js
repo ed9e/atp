@@ -1,3 +1,4 @@
+let convert = require('convert-units');
 let convertValues = {
     'distance': function (m) {
         return (m / 1000).toFixed(3) + ' km '
