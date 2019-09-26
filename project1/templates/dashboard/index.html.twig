@@ -18,9 +18,6 @@
         let phases2 = [];
 
 
-
-
-
         function createTimeArray(oIn) {
             let arr = [];
 
@@ -69,68 +66,69 @@
 
 {% block page_content %}
 
-    <input type="checkbox">
+
     <div class="row">
         <div style="">
             <span></span>
         </div>
         <canvas id="chartJSContainer" width="1920" height="450"></canvas>
     </div>
-    <div class="container-fluid">
-        <div class="row controls badges">
-            <div class="col-xs-5">
-                <ul class="list small float-left" id="activity-badges">
-                </ul>
+    <div class="darken-container">
+        <div class="container-fluid">
+            <div class="row controls badges">
+                <div class="col-xs-5">
+                    <ul class="list small float-left" id="activity-badges">
+                    </ul>
+                </div>
+
+                <div class="col-xs-7">
+                    <ul class="list small float-right" id="action-badges">
+
+                    </ul>
+                </div>
             </div>
-
-            <div class="col-xs-7">
-                <ul class="list small float-right" id="action-badges">
-
-                </ul>
+            <div class="row controls badges">
+                <div class="col-xs-5">
+                    <ul class="list small float-left" id="config-badges">
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="row controls badges">
-            <div class="col-xs-5">
-                <ul class="list small float-left" id="config-badges">
-                </ul>
-            </div>
+        {#    <div class="row data-table">#}
+        {#        <table id="data-table" class="display" cellspacing="0" width="100%">#}
+        {#            <thead>#}
+        {#            <tr>#}
+        {#                <th>startTimeLocal</th>#}
+        {#                <th>Activity Name</th>#}
+        {#                <th>Type</th>#}
+        {#                <th>Distance</th>#}
+        {#                <th>Duration</th>#}
+        {#                <th>Average Speed</th>#}
+        {#                <th>Average HR</th>#}
+        {#                <th>Average Run Cadence</th>#}
+        {#                <th>Stride Length</th>#}
+        {#                <th>Vertical Oscillation</th>#}
+        {#                <th>Training Effect</th>#}
+        {#                <th>vO2 Max</th>#}
+        {#                <th>Avg Ground Contact Balance</th>#}
+        {#            </tr>#}
+        {#            </thead>#}
+        {#            #}{#            <tfoot>#}
+        {#            #}{#            <tr>#}
+        {#            #}{#                <th>Name</th>#}
+        {#            #}{#                <th>Position</th>#}
+        {#            #}{#                <th>Office</th>#}
+        {#            #}{#                <th>Extn.</th>#}
+        {#            #}{#                <th>Start date</th>#}
+        {#            #}{#                <th>Salary</th>#}
+        {#            #}{#            </tr>#}
+        {#            #}{#            </tfoot>#}
+        {#        </table>#}
+        {#    </div>#}
+        <div class="row zinggrid">
+            <zing-grid id="myGrid" sort viewport-stop></zing-grid>
         </div>
     </div>
-{#    <div class="row data-table">#}
-{#        <table id="data-table" class="display" cellspacing="0" width="100%">#}
-{#            <thead>#}
-{#            <tr>#}
-{#                <th>startTimeLocal</th>#}
-{#                <th>Activity Name</th>#}
-{#                <th>Type</th>#}
-{#                <th>Distance</th>#}
-{#                <th>Duration</th>#}
-{#                <th>Average Speed</th>#}
-{#                <th>Average HR</th>#}
-{#                <th>Average Run Cadence</th>#}
-{#                <th>Stride Length</th>#}
-{#                <th>Vertical Oscillation</th>#}
-{#                <th>Training Effect</th>#}
-{#                <th>vO2 Max</th>#}
-{#                <th>Avg Ground Contact Balance</th>#}
-{#            </tr>#}
-{#            </thead>#}
-{#            #}{#            <tfoot>#}
-{#            #}{#            <tr>#}
-{#            #}{#                <th>Name</th>#}
-{#            #}{#                <th>Position</th>#}
-{#            #}{#                <th>Office</th>#}
-{#            #}{#                <th>Extn.</th>#}
-{#            #}{#                <th>Start date</th>#}
-{#            #}{#                <th>Salary</th>#}
-{#            #}{#            </tr>#}
-{#            #}{#            </tfoot>#}
-{#        </table>#}
-{#    </div>#}
-    <div class="row zinggrid">
-    <zing-grid id="myGrid" sort viewport-stop></zing-grid>
-    </div>
-
 {% endblock %}
 
 {% block left_curtain %}
@@ -176,21 +174,21 @@
     {#            <input type="radio" name="quux[2]" id="baz[2]">#}
     {#        </div>#}
 
-            <div class="col-lg-5">
-                <div class="controls line">
-                    <input type="checkbox" name="name1" id="name1">
-                    <label>Checkbox 1</label>
+    <div class="col-lg-5">
+        <div class="controls line">
+            <input type="checkbox" name="name1" id="name1">
+            <label>Checkbox 1</label>
 
-                    <input type="checkbox" checked>
-                    <label>Checkbox 2</label>
+            <input type="checkbox" checked>
+            <label>Checkbox 2</label>
 
-                    <input type="radio" name="iCheck" value="1">
-                    <label>Lorem ipusm dolor hat et uns</label>
+            <input type="radio" name="iCheck" value="1">
+            <label>Lorem ipusm dolor hat et uns</label>
 
-                    <input type="radio" name="iCheck" value="2" checked>
-                    <label>Radio button 2</label>
-                </div>
-            </div>
+            <input type="radio" name="iCheck" value="2" checked>
+            <label>Radio button 2</label>
+        </div>
+    </div>
     {#        <div class="col-lg-5">#}
     {#            <div class="controls square">#}
     {#                <input type="checkbox" name="name2" id="name2">#}

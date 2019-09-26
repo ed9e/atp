@@ -115,7 +115,19 @@ $button-raised-background-hover: lighten($button-raised-background, 15%) !defaul
 $button-raised-color: #eee !default;
 $collapsible-border-color: color($theme, "accent-1");
 
-
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 .content-wrapper {
   /*background-color: #74c98f;*/
   color: $font-color;
@@ -143,8 +155,12 @@ body {
   //background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
   //background-blend-mode: multiply, multiply;
   color: $font-color;
-  overflow-y: scroll;
+  overflow-y: hidden;
 
+  & .darken-container {
+
+    opacity: 0.7;
+  }
   & {
     &.sidebar-collapse .sidebar-menu {
       & li a {
@@ -183,7 +199,7 @@ body {
     & .wrapper {
       background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 20%);
       background-blend-mode: multiply, multiply;
-      overflow: inherit;
+      overflow: hidden;
     }
 
     .content-header > .breadcrumb > li > a {
@@ -419,8 +435,10 @@ body {
 
 .zinggrid {
   margin-top: 30px;
+  overflow: hidden !important;
 }
 zing-grid {
+  overflow: hidden;
   background: #000000;
   padding: 0px;
   margin: 0px;
@@ -476,7 +494,3 @@ zg-body {
 zg-head {
   background-color: transparentize(desaturate($primary-color, 20%), 0.5) !important;
 }
-
-//zg-watermark {
-//  background: #000000 !important;;
-//}
