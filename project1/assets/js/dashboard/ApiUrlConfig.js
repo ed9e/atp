@@ -54,7 +54,7 @@ export class ApiUrlConfig {
     }
 
     getProfileId() {
-        return 'lbrzozowski';
+        return this.urlParams.profileId.default;
     }
 
     getWeeklyType() {
