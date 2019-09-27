@@ -21,7 +21,9 @@ Number.prototype.pad = function (size) {
     }
     return s;
 };
-
+Number.prototype.round = function (places) {
+    return +(Math.round(this + "e+" + places) + "e-" + places);
+};
 let convert = require('convert-units');
 
 let convertValues = {
@@ -62,7 +64,7 @@ let convertValues = {
         'parameters': ['activityTypeId']
     },
     'averageRunCadence': function (c) {
-        return c;
+        return Math.round(c).pad();
     },
     'lactateThresholdSpeed': {
         'convert': function (v, params) {
@@ -86,11 +88,16 @@ let convertValues = {
         },
         'parameters': ['activityTypeId']
     },
-    startTimeLocal: {
-        'convert': (t) => {
-            let date = new Date(Date.parse(t.date));
-            return date.toString();
-        }
+    'startTimeLocal': function (t) {
+        console.log(t)
+        let date = new Date(Date.parse(t.date));
+        return date.toString();
+    },
+    'trainingEffect': function (t) {
+        return t != null ? t.round(2) : '';
+    },
+    'avgGroundContactBalance': (t) => {
+        return t != null ? t.round(2) : '';
     }
 
 };
@@ -141,9 +148,9 @@ $(document).ready(function () {
             {"data": "averageRunCadence"},
             {"data": "strideLength"},
             {"data": "verticalOscillation"},
-            {"data": "trainingEffect"},
-            {"data": "vO2MaxValue"},
-            {"data": "avgGroundContactBalance"},
+            {"data": "trainingEffect", className: "text-right"},
+            {"data": "vO2MaxValue", className: "text-right"},
+            {"data": "avgGroundContactBalance", className: "text-right"},
         ],
         responsive: {
             details: {

@@ -18,7 +18,7 @@ $(document).ready(function () {
 let configBadgesRadio = {
     sum: {
         distance: {label: 'Sum by distance', checked: false},
-        time: {label: 'Sum by time', checked: false}
+        time: {label: 'Sum by time', checked: true}
     }
 };
 
