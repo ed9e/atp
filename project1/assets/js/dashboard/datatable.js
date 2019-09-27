@@ -89,15 +89,25 @@ let convertValues = {
         'parameters': ['activityTypeId']
     },
     'startTimeLocal': function (t) {
-        console.log(t)
+
         let date = new Date(Date.parse(t.date));
-        return date.toString();
+
+        return {date: date.toLocaleDateString()};
     },
     'trainingEffect': function (t) {
-        return t != null ? t.round(2) : '';
+        return t != null ? t.round(2) : '––';
     },
-    'avgGroundContactBalance': (t) => {
-        return t != null ? t.round(2) : '';
+    avgGroundContactBalance: (t) => {
+        return t != null ? t.round(2).pad() : '––';
+    },
+    strideLength: (t) => {
+        return t != null ? t.round(2) : '––';
+    },
+    verticalOscillation: (t) => {
+        return t != null ? t.round(2) : '––';
+    },
+    vO2MaxValue: (t)=>{
+        return t || '––';
     }
 
 };
@@ -110,7 +120,7 @@ $(document).ready(function () {
             'dataSrc': function (json) {
                 for (let i = 0, ien = json.data.length; i < ien; i++) {
                     Object.keys(json.data[i]).forEach(function (key) {
-                        if (!(json.data[i][key] instanceof Object)) {
+                        if (true ||!(json.data[i][key] instanceof Object)) {
                             if (convertValues.hasOwnProperty(key)) {
                                 if (typeof convertValues[key] === 'function') {
                                     json.data[i][key] = convertValues[key](json.data[i][key]);
@@ -128,6 +138,8 @@ $(document).ready(function () {
                                     }
                                 }
                             }
+                        }else{
+
                         }
 
                     })
