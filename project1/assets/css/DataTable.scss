@@ -18,7 +18,8 @@ table {
     //background: -o-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
     //background: -ms-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
     //background: linear-gradient(135deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);
-    background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, $primary-color 30%, darken($body-color, 20%) 72%) lighten($primary-color, 0%);
+    //background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, $primary-color 30%, darken($body-color, 20%) 72%) lighten($primary-color, 0%);
+    background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, darken(color($theme, "accent-2"), 40%) 30%, darken($body-color, 20%) 72%) darken(color($theme, "accent-2"), 40%);
     mix-blend-mode: lighten;
 
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0b7a1', endColorstr='#bf6e4e', GradientType=1);

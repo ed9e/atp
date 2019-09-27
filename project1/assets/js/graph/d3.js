@@ -92,7 +92,7 @@ function findAndSwipe() {
 function getActivities(date) {
     let dataTable = $('#data-table');
     apiUrlConfig.storeWeekDate(date);
-    //dataTable.DataTable().ajax.url(apiUrlConfig.hrefDataTable()).load();
+    dataTable.DataTable().ajax.url(apiUrlConfig.hrefDataTable()).load();
     zingGrid.dataLoad()
 }
 

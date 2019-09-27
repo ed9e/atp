@@ -99,9 +99,8 @@ $(document).ready(function () {
 
     let table = $('#data-table').DataTable({
         'ajax': {
-            'url': apiUrlConfig.hrefDataTable(null),
+            'url': apiUrlConfig.hrefDataTable(),
             'dataSrc': function (json) {
-
                 for (let i = 0, ien = json.data.length; i < ien; i++) {
                     Object.keys(json.data[i]).forEach(function (key) {
                         if (!(json.data[i][key] instanceof Object)) {

@@ -21,6 +21,21 @@
 
       // When the checkbox is checked...
       &:checked {
+        & ~ div.curtain__content {
+          filter: blur(7px);
+          //-webkit-animation: blur 100ms ease-out;
+          transition: transform 1000ms ease-in-out;
+          //filter: sepia(60%);
+          @-webkit-keyframes blur {
+            0% {
+              -webkit-filter: blur(0px);
+            }
+            50% {
+              -webkit-filter: blur(7px);
+            }
+          }
+        }
+
 
         opacity: 0;
 

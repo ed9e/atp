@@ -158,10 +158,17 @@ body {
   overflow-y: hidden;
 
   & .darken-container {
-
-    opacity: 0.7;
+    //opacity: 0.9;
   }
   & {
+    &.sidebar-expanded-on-hover .main-sidebar {
+      background-color: transparentize(darken(color($theme, "accent-2"), 40%), 0.1);
+      transition: .2s ease-out;
+    }
+    &.sidebar-collapse .main-sidebar {
+      background-color: #00000022;
+      transition:  .5s ease-out;
+    }
     &.sidebar-collapse .sidebar-menu {
       & li a {
         & i {
@@ -434,8 +441,8 @@ body {
 @import "Ripple";
 
 .zinggrid {
-  margin-top: 30px;
-  overflow: hidden !important;
+
+  //overflow: hidden !important;
 }
 zing-grid {
   overflow: hidden;
@@ -443,7 +450,7 @@ zing-grid {
   padding: 0px;
   margin: 0px;
   border: 0px;
-  background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, $primary-color 30%, darken($body-color, 20%) 72%) lighten($primary-color, 0%);
+  background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, darken(color($theme, "accent-2"), 40%) 30%, darken($body-color, 20%) 72%) darken(color($theme, "accent-2"), 40%);
   mix-blend-mode: lighten;
   color: $font-color;
   margin-top: 50px;
