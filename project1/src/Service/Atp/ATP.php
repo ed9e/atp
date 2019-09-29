@@ -52,8 +52,8 @@ class ATP
     {
 
         $this->plan = new Plan([
-            'from' => $options['from'],
-            'to' => $options['to']
+            'from' => (new DateTime())->setTimestamp(strtotime('next monday', strtotime($options['from'])))->format('Y-m-d'),
+            'to' => (new DateTime())->setTimestamp(strtotime('next monday', strtotime($options['to'])))->format('Y-m-d')
         ]);
         return $this;
     }
@@ -128,7 +128,12 @@ class ATP
 //        $done = array_values($done);
 //        $done = $this->getDone();
         $diff = array_diff($keys, array_keys($this->data));
-        $values = array_merge(array_fill_keys($diff, 15), $this->data);
+        $czyAtpZaczacOdZera = false;
+        if(!$czyAtpZaczacOdZera) {
+            $values = array_merge($done, $this->data);
+        }else{
+            $values = array_merge(array_fill_keys($diff, 15), $this->data);
+        }
         ksort($values);
         $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
         //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
