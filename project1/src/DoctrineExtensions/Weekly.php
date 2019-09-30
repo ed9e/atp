@@ -21,8 +21,8 @@ class Weekly extends FunctionNode
     }
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker){
-        return 'date_trunc(\'week\'::text, '.
+        return '(date_trunc(\'week\'::text, '.
             $this->firstDateExpression->dispatch($sqlWalker) .
-            '+ \'00:00:00\'::interval)::date'; // (7)
+            '+ \'00:00:00\'::interval)::date + interval \'4days\')::date'; // (7)
     }
 }

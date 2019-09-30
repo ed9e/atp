@@ -14,7 +14,7 @@
         let xKeys = {{ keys|json_encode|raw }};
         let yValues = {{ values|json_encode|raw }};
         let yDone = {{ done|json_encode|raw }};
-        let phases = [];
+        let phases = {{ phases|json_encode|raw }};
         let phases2 = [];
 
 
@@ -71,7 +71,7 @@
         <div style="">
             <span></span>
         </div>
-        <canvas id="chartJSContainer" width="1920" height="450"></canvas>
+        <canvas id="chartJSContainer" width="1920" height="550"></canvas>
     </div>
     <div class="darken-container">
         <div class="container-fluid">

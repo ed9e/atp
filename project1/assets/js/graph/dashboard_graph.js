@@ -107,7 +107,7 @@ global.atpOptions = {
         tooltips: {
             mode: 'index',
             enabled: true,
-            titleFontSize: 11,
+            titleFontSize: 12,
             bodyFontSize: 11,
             displayColors: false,
             backgroundColor: general.tooltip.bg,
@@ -116,11 +116,21 @@ global.atpOptions = {
             borderColor: general.tooltip.borderColor,
             borderWidth: 1,
             caretSize: 5,
-            cornerRadius: 10,
-            // callbacks: {
-            //     label: tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`,
-            //     title: () => null,
-            // }
+            cornerRadius: 3,
+            callbacks: {
+                label: () => {
+                    //tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`
+
+                },
+                title: (x,y) => {
+
+                    let d = moment(x[0].label, 'MMM Do YYYY, h:mm:ss a');
+                    let from = d.add(-4, 'days').format('DD');
+                    let to = d.add(7, 'days').format('DD/MM/YY');
+                    return from + '-' + to;
+                    //console.log(x)
+                },
+            }
         },
         animation: {
             duration: 800,
@@ -161,11 +171,11 @@ global.atpOptions = {
                         offsetGridLines: true,
                     },
                     ticks: {
-                        padding: 1,
+                        padding: 0,
                         display: false,
                     },
-                    categoryPercentage: .9,
-                    barPercentage: .9
+                    categoryPercentage: .91,
+                    barPercentage: .91
                 },
                 {
                     display: true,
@@ -192,6 +202,8 @@ global.atpOptions = {
                     },
                     ticks: {
                         padding: 10,
+                        lineHeight: 1,
+                        fontSize: 10,
                         callback: function (value, index, values) {
                             if (index % 2)
                                 return value;
@@ -200,10 +212,11 @@ global.atpOptions = {
                     }
                 },
                 {
+
                     display: true,
                     stacked: false,
                     id: 'fazy',
-                    position: 'bottom',
+                    position: 'top',
                     type: 'time',
                     time: {
                         unit: 'day',
@@ -216,14 +229,17 @@ global.atpOptions = {
                         stepSize: 1
                     },
                     gridLines: {
-                        drawTicks: false,
-                        display: false,
-                        color: '#ffffff00',
-                        borderDash: [1, 2],
+                        drawTicks: true,
+                        tickMarkLength: 9,
+                        display: true,
+                        color: general.grid.gridPhasesLinesColor,
+                        borderDash: [1, 1],
                         zeroLineWidth: 0,
                         offsetGridLines: true,
                     },
                     ticks: {
+                        fontSize: 10,
+                        mirror: false,
                         padding: 5,
                         callback: function (value, index, values) {
                             return phases[value];

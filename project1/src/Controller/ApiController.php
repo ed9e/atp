@@ -66,8 +66,8 @@ class ApiController extends AbstractController
         $queryParams = $this->prepareWeeklyQueryParams($request);
 
         $options = [
-            'from' => (new DateTime())->setTimestamp(strtotime('next monday'))->sub(new DateInterval('P120W')),
-            'to' => (new DateTime())->setTimestamp(strtotime('next monday')),
+            'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P120W')),
+            'to' => (new DateTime())->setTimestamp(strtotime('next friday')),
         ];
         $plan = new Plan($options);
         $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
@@ -91,7 +91,7 @@ class ApiController extends AbstractController
         $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
         ksort($done);
 
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 0);
+        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);
 
         return $this->json(['data' => ['keys' => $keys, 'done' => $done, 'values' => $values]]);
     }
