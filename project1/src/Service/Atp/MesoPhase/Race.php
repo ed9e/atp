@@ -13,7 +13,7 @@ class Race extends MesoPhaseAbstract
     protected function calculateMicroPhases(int $count, $number = 0): array
     {
         return [
-            (new MicroPhase())->setTimeValue(240),
+            (new MicroPhase())->setTimeValue(140),
         ];
     }
 }

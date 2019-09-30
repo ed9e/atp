@@ -11,9 +11,9 @@ class Base2 extends Base
     {
         if ($count == 4) {
             return [
-                (new MicroPhase())->setTimeValue(230),
-                (new MicroPhase())->setTimeValue(275),
-                (new MicroPhase())->setTimeValue(305),
+                (new MicroPhase())->setTimeValue(220),
+                (new MicroPhase())->setTimeValue(265),
+                (new MicroPhase())->setTimeValue(295),
                 (new MicroPhase())->setTimeValue(115),
             ];
         }

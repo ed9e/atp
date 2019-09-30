@@ -36,11 +36,30 @@ class AtpController extends AbstractController
 
         $atp->plan([
             'from' => '2019-11-14',
-            'to' => '2020-06-04',
+            'to' => '2020-09-01',
             //'to' => '2020-10-26',
         ])->fetchPlan()->rework();
+        $atpPlan1 = $atp->getAtp();
 
-        return $this->render('atp/index.html.twig', array_merge($atp->getAtp(), ['form' => $form->createView()]));
+        $atp->plan([
+            'from' => '2020-11-14',
+            'to' => '2021-05-01',
+            //'to' => '2020-10-26',
+        ])->fetchPlan()->rework();
+        $atpPlan2 = $atp->getAtp();
+        $atpPlan = array_combine(
+            array_merge(
+                array_keys($atpPlan2), array_keys($atpPlan1)
+            ),
+            array_merge(
+                array_values($atpPlan2), array_values($atpPlan1)
+            )
+        );
+        $atpPlan['phases2']['Race2'][0] = '2019-08-29';
+        $atpPlan['phases2']['Race2'][1] = '2019-09-06';
+        $atpPlan['phases']['2019-09-02'] = 'UltraMaraton Cisna';
+        $atpPlan['phases2']['Race2']['color'] = 'Race';
+        return $this->render('atp/index.html.twig', array_merge($atpPlan, ['form' => $form->createView()]));
     }
 
     /**
@@ -58,7 +77,7 @@ class AtpController extends AbstractController
         $plan = new Plan($options);
         $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
 
-        $queryData = ['activityId'=>[1,6], 'userDisplayName'=>'lbrzozowski'];
+        $queryData = ['activityId' => [1, 6], 'userDisplayName' => 'lbrzozowski'];
 
         $weekly = $em->getRepository(WeeklyActivity::class);
         $weeklyResult = $weekly->getWeekly2($queryData);

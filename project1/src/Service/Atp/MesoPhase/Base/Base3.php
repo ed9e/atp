@@ -11,15 +11,15 @@ class Base3 extends Base
     {
         if ($count == 4) {
             return [
-                (new MicroPhase())->setTimeValue(240),
+                (new MicroPhase())->setTimeValue(230),
                 (new MicroPhase())->setTimeValue(295),
-                (new MicroPhase())->setTimeValue(325),
+                (new MicroPhase())->setTimeValue(305),
                 (new MicroPhase())->setTimeValue(115),
             ];
         }
         return [
-            (new MicroPhase())->setTimeValue(295),
-            (new MicroPhase())->setTimeValue(315),
+            (new MicroPhase())->setTimeValue(285),
+            (new MicroPhase())->setTimeValue(305),
             (new MicroPhase())->setTimeValue(115),
         ];
     }

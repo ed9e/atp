@@ -16,16 +16,16 @@ class Build extends MesoPhaseAbstract
     {
         if ($count == 4) {
             return [
-                (new MicroPhase())->setTimeValue(315),
-                (new MicroPhase())->setTimeValue(315),
-                (new MicroPhase())->setTimeValue(315),
-                (new MicroPhase())->setTimeValue(155),
+                (new MicroPhase())->setTimeValue(285),
+                (new MicroPhase())->setTimeValue(285),
+                (new MicroPhase())->setTimeValue(285),
+                (new MicroPhase())->setTimeValue(125),
             ];
         }
         return [
-            (new MicroPhase())->setTimeValue(315),
-            (new MicroPhase())->setTimeValue(315),
-            (new MicroPhase())->setTimeValue(155),
+            (new MicroPhase())->setTimeValue(285),
+            (new MicroPhase())->setTimeValue(295),
+            (new MicroPhase())->setTimeValue(125),
         ];
     }
 }

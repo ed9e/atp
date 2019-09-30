@@ -14,7 +14,7 @@ global.atpOptions = {
                 data: createTimeArray(yValues),
                 pointHitRadius: 10,
                 pointHoverRadius: 3,
-                borderWidth: 1,
+                borderWidth: 0,
                 borderDash: [0, 0],
                 xAxisID: "x-axis1",
                 borderColor: general.newVal.borderColor,
@@ -297,18 +297,21 @@ global.atpOptions = {
 
 Object.entries(phases2).forEach(createPhaseDataset);
 
+
 function createPhaseDataset(d) {
-    let label = d[0];
+    let label = d[1]['label'] || d[0];
+    let colorInd = d[1]['color'] || d[0];
     let from = d[1][0];
     let to = d[1][1];
 
+console.log(label)
     let dataset = {
         label: label,
         type: 'line',
-        backgroundColor: general.phaseDataset.color[label],
+        backgroundColor: general.phaseDataset.color[colorInd],
         fill: false,
         data: getDateArray(from, to),
-        borderColor: general.phaseDataset.color[label],
+        borderColor: general.phaseDataset.color[colorInd],
         borderWidth: general.timeline.thick2,
         //pointStyle: 'line',
         //radius: 0,
@@ -316,6 +319,7 @@ function createPhaseDataset(d) {
         pointHitRadius: 0,
         pointHoverRadius: 0,
     };
+console.log(dataset)
     atpOptions.data.datasets.push(dataset);
 }
 

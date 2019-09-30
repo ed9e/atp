@@ -13,27 +13,27 @@ class Build2 extends Build
         $phases = [
             4 => [
                 [
-                    (new MicroPhase())->setTimeValue(315),
-                    (new MicroPhase())->setTimeValue(315),
-                    (new MicroPhase())->setTimeValue(315),
-                    (new MicroPhase())->setTimeValue(155),
+                    (new MicroPhase())->setTimeValue(285),
+                    (new MicroPhase())->setTimeValue(285),
+                    (new MicroPhase())->setTimeValue(285),
+                    (new MicroPhase())->setTimeValue(115),
                 ],
                 [
-                    (new MicroPhase())->setTimeValue(300),
-                    (new MicroPhase())->setTimeValue(300),
-                    (new MicroPhase())->setTimeValue(300),
-                    (new MicroPhase())->setTimeValue(155),
+                    (new MicroPhase())->setTimeValue(285),
+                    (new MicroPhase())->setTimeValue(285),
+                    (new MicroPhase())->setTimeValue(285),
+                    (new MicroPhase())->setTimeValue(115),
                 ]
             ],
             [
                 (new MicroPhase())->setTimeValue(315),
                 (new MicroPhase())->setTimeValue(315),
-                (new MicroPhase())->setTimeValue(155),
+                (new MicroPhase())->setTimeValue(115),
             ],
             [
                 (new MicroPhase())->setTimeValue(300),
                 (new MicroPhase())->setTimeValue(300),
-                (new MicroPhase())->setTimeValue(155),
+                (new MicroPhase())->setTimeValue(115),
             ]
         ];
 
