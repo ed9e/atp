@@ -34,8 +34,8 @@ class DashboardController extends AbstractController
         $to = 'P20W';
 
         $options = [
-            'from' => (new DateTime())->setTimestamp(strtotime('next monday'))->sub(new DateInterval('P120W')),
-            'to' => (new DateTime())->setTimestamp(strtotime('next monday')),
+            'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P120W')),
+            'to' => (new DateTime())->setTimestamp(strtotime('next friday')),
         ];
         $plan = new Plan($options);
         $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
@@ -49,8 +49,16 @@ class DashboardController extends AbstractController
         $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
         ksort($done);
 
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 0);
-        $template = ['keys' => $keys, 'done' => $done, 'values' => $values];
+        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);
+        $zawody = [
+            '2019-01-26' => 'Zimowy Maraton',
+            '2019-05-18' => 'UltraRoztocze 65k',
+            '2019-09-02' => 'Gorzycka 5',
+            '2019-09-28' => 'Chartatywna 20',
+            '2019-10-12' => 'UltraMaraton 52k',
+
+        ];
+        $template = ['keys' => $keys, 'done' => $done, 'values' => $values, 'phases' => $zawody];
         return $this->render('dashboard/index.html.twig', $template);
     }
 

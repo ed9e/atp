@@ -5,6 +5,7 @@ let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 700);
 let FTPgradient = ctx.createLinearGradient(0, 0, 0, 700);
 let FTPDonegradient = ctx.createLinearGradient(0, 0, 0, 700);
 let gridGradient = ctx.createLinearGradient(0, 0, 0, 700);
+let gridPhasesGradient = ctx.createLinearGradient(0, 0, 0, 700);
 let timeGradient = ctx.createLinearGradient(0, 0, 1500, 0);
 let bardoneBorderGradient = ctx.createLinearGradient(0, 0, 0, 700);
 barGradient.addColorStop(0, theme.gradient.bar + 'ff');
@@ -26,16 +27,21 @@ FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
 FTPgradient.addColorStop(0.5, theme.gradient.ftp + '77');
 FTPgradient.addColorStop(0.8, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
-FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + '77');
-FTPDonegradient.addColorStop(0.6, theme.gradient.ftpDone + '00');
+FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'aa');
+FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '11');
+FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
 
-gridGradient.addColorStop(0, theme.gradient.grid + 'aa');
-gridGradient.addColorStop(0.3, theme.gradient.grid + '55');
-gridGradient.addColorStop(0.7, theme.gradient.grid + '00');
+gridGradient.addColorStop(0, theme.gradient.grid + '44');
+gridGradient.addColorStop(0.3, theme.gradient.grid + '11');
+gridGradient.addColorStop(0.6, theme.gradient.grid + '00');
+gridPhasesGradient.addColorStop(0, theme.gradient.grid + '44');
+gridPhasesGradient.addColorStop(0.4, theme.gradient.grid + '00');
+gridPhasesGradient.addColorStop(0.6, theme.gradient.grid + '00');
 
 global.general = {
     grid: {
-        gridLinesColor: gridGradient
+        gridLinesColor: gridGradient,
+        gridPhasesLinesColor: gridPhasesGradient
     },
     ftp: {
         //bg: "rgba(42, 187, 155, 1)"
