@@ -299,28 +299,29 @@ Object.entries(phases2).forEach(createPhaseDataset);
 
 
 function createPhaseDataset(d) {
-    let label = d[1]['label'] || d[0];
-    let colorInd = d[1]['color'] || d[0];
-    let from = d[1][0];
-    let to = d[1][1];
+    for(let i = 0; d[1][i] != undefined ;i+=2 ) {
 
-console.log(label)
-    let dataset = {
-        label: label,
-        type: 'line',
-        backgroundColor: general.phaseDataset.color[colorInd],
-        fill: false,
-        data: getDateArray(from, to),
-        borderColor: general.phaseDataset.color[colorInd],
-        borderWidth: general.timeline.thick2,
-        //pointStyle: 'line',
-        //radius: 0,
-        xAxisID: "czas",
-        pointHitRadius: 0,
-        pointHoverRadius: 0,
-    };
-console.log(dataset)
-    atpOptions.data.datasets.push(dataset);
+        let label = d[1]['label'] || d[0];
+        let colorInd = d[1]['color'] || d[0];
+        let from = d[1][i];
+        let to = d[1][i+1];
+
+        let dataset = {
+            label: label,
+            type: 'line',
+            backgroundColor: general.phaseDataset.color[colorInd],
+            fill: false,
+            data: getDateArray(from, to),
+            borderColor: general.phaseDataset.color[colorInd],
+            borderWidth: general.timeline.thick2,
+            //pointStyle: 'line',
+            //radius: 0,
+            xAxisID: "czas",
+            pointHitRadius: 0,
+            pointHoverRadius: 0,
+        };
+        atpOptions.data.datasets.push(dataset);
+    }
 }
 
 //TODO: to tu

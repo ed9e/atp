@@ -52,8 +52,8 @@ class ATP
     {
 
         $this->plan = new Plan([
-            'from' => (new DateTime())->setTimestamp(strtotime('next monday', strtotime($options['from'])))->format('Y-m-d'),
-            'to' => (new DateTime())->setTimestamp(strtotime('next monday', strtotime($options['to'])))->format('Y-m-d')
+            'from' => (new DateTime())->setTimestamp(strtotime('next friday', strtotime($options['from'])))->format('Y-m-d'),
+            'to' => (new DateTime())->setTimestamp(strtotime('next friday', strtotime($options['to'])))->format('Y-m-d')
         ]);
         return $this;
     }
@@ -123,7 +123,7 @@ class ATP
         }, $this->groupPhases);
 
         $diff = array_diff($keys, array_keys($this->getDone()));
-        $done = array_merge(array_fill_keys($diff, 1), $this->getDone());
+        $done = $this->getDone();//array_merge(array_fill_keys($diff, 1), $this->getDone());
         ksort($done);
 //        $done = array_values($done);
 //        $done = $this->getDone();

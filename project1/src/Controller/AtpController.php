@@ -25,8 +25,8 @@ class AtpController extends AbstractController
     public function index(ATP $atp)
     {
 
-        $from = (new DateTime())->setTimestamp(strtotime('next monday'));
-        $to = (new DateTime())->setTimestamp(strtotime('next monday'))->add(new DateInterval('P36W'));
+        $from = (new DateTime())->setTimestamp(strtotime('next friday'));
+        $to = (new DateTime())->setTimestamp(strtotime('next friday'))->add(new DateInterval('P36W'));
         $form = $this->createFormBuilder()
             ->add('planName', TextType::class)
             ->add('fromDate', DateType::class, ['block_prefix' => 'wrapped_text', 'widget' => 'single_text', 'data' => $from])
@@ -37,28 +37,32 @@ class AtpController extends AbstractController
         $atp->plan([
             'from' => '2019-11-14',
             'to' => '2020-09-01',
-            //'to' => '2020-10-26',
         ])->fetchPlan()->rework();
         $atpPlan1 = $atp->getAtp();
 
         $atp->plan([
-            'from' => '2020-11-14',
-            'to' => '2021-05-01',
-            //'to' => '2020-10-26',
+            'from' => '2020-09-01',
+            'to' => '2021-02-01',
         ])->fetchPlan()->rework();
         $atpPlan2 = $atp->getAtp();
-        $atpPlan = array_combine(
-            array_merge(
-                array_keys($atpPlan2), array_keys($atpPlan1)
-            ),
-            array_merge(
-                array_values($atpPlan2), array_values($atpPlan1)
-            )
-        );
-        $atpPlan['phases2']['Race2'][0] = '2019-08-29';
-        $atpPlan['phases2']['Race2'][1] = '2019-09-06';
-        $atpPlan['phases']['2019-09-02'] = 'UltraMaraton Cisna';
-        $atpPlan['phases2']['Race2']['color'] = 'Race';
+
+        $keys = array_merge($atpPlan1['keys'], $atpPlan2['keys']);
+        $done = array_merge($atpPlan1['done'], $atpPlan2['done']);
+        $values = array_merge($atpPlan1['values'], $atpPlan2['values']);
+        $phases2 = array_merge_recursive($atpPlan1['phases2'], $atpPlan2['phases2']);
+        $phases = array_merge_recursive($atpPlan1['phases'], $atpPlan2['phases']);
+
+        $atpPlan = [
+            'keys' => $keys,
+            'done' => $done,
+            'values' => $values,
+            'phases' => $phases,
+            'phases2' => $phases2
+        ];
+
+        $atpPlan['phases']['2019-09-02'] = 'UltraMaraton Cisna 2019';
+        $atpPlan['phases']['2020-08-29'] = 'UltraMaraton Cisna 2019';
+
         return $this->render('atp/index.html.twig', array_merge($atpPlan, ['form' => $form->createView()]));
     }
 
