@@ -1,4 +1,4 @@
-let waga = 1.7;
+let waga = 1.99;
 Array.prototype.ftp = function () {
 
     let A, k, l, divider, muppet;

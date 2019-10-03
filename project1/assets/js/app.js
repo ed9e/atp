@@ -28,6 +28,6 @@ $(document).ready(function () {
         setTimeout(function () {
             $('.curtain__wrapper').css({"opacity": 1});
             $('.lds-ripple').css({'display': 'none'});
-        }, 1000);
-    }, 500);
+        }, 500);
+    }, 300);
 });
