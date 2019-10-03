@@ -1,6 +1,6 @@
 .wrapper {
   & .control-sidebar-dark, .control-sidebar-dark.control-sidebar-open {
-    background-color: transparentize(darken(color($theme, "accent-2"), 40%), 0.4);
+    background-color: transparentize($body-color, 0.4);
     border-right: solid 1px lighten($menu-color, 2%);
     border-left: solid 1px lighten($menu-color, 2%);
     transition: .2s ease-out;

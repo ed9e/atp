@@ -4,12 +4,12 @@ import {ApiUrlConfig} from "./dashboard/ApiUrlConfig";
 require('chart.js');
 require('chartjs-plugin-zoom');
 require('chartjs-plugin-deferred');
-require('./graph/ftp.js');
+require('./dashboard/graph/ftp.js');
 let chartTune = document.getElementById('chartJSContainer');
 global.ctx = chartTune.getContext('2d');
 
-require('./graph/graph-styling.js');
-require('./graph/dashboard_graph.js');
+require('./dashboard/graph/graph-styling.js');
+require('./dashboard/graph/dashboard_graph.js');
 
 require('zinggrid');
 
@@ -22,7 +22,7 @@ require('./dashboard/ActionBagdes');
 require('./dashboard/ConfigBadges');
 require('./dashboard/ZingGrid');
 
-require('./graph/d3.js');
+require('./dashboard/graph/d3.js');
 
 
 

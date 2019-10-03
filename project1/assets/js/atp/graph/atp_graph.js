@@ -1,3 +1,5 @@
+import {FTP_data, bar_data, phases_dataset} from "./DataSetFunctions";
+
 global.atpYAxes = {max: 1000};
 let callback = undefined;
 
@@ -5,17 +7,19 @@ global.atpOptions = {
     type: 'bar',
 
     data: {
-        labels: createTimeArray(done),
+        labels: bar_data(done),
         datasets: [
             {
                 label: 'New Tuning ',
                 backgroundColor: general.newVal.bg,
                 fill: true,
-                data: createTimeArray(yValues),
+                data: bar_data(yValues, (x) => {
+                    return typeof x === 'string' ? 0 : x
+                }),
                 pointHitRadius: 10,
                 pointHoverRadius: 3,
-                borderWidth: 0,
-                borderDash: [0, 0],
+                borderWidth: 1,
+                borderDash: [1, 1],
                 xAxisID: "x-axis1",
                 borderColor: general.newVal.borderColor,
                 id: 'newTune'
@@ -24,7 +28,9 @@ global.atpOptions = {
                 label: 'Old Tuning',
                 backgroundColor: general.oldVal.bg,
                 fill: true,
-                data: createTimeArray(yValues),
+                data: bar_data(yValues, (x) => {
+                    return typeof x === 'string' ? 0 : x
+                }),
                 borderWidth: 0,
                 borderDash: [2, 2],
                 borderColor: general.oldVal.borderColor,
@@ -34,26 +40,12 @@ global.atpOptions = {
                 id: 'oldTune'
             },
             {
-                label: 'FTP',
-                type: 'line',
-                backgroundColor: general.ftp.bg,
-                fill: true,
-                data: createTimeArray(yValues).ftpO(),
-                borderColor: general.ftp.borderColor,
-                borderWidth: 1,
-                borderDash: [0, 0],
-                xAxisID: "x-axis1",
-                pointHitRadius: 10,
-                pointHoverRadius: 2,
-                id: 'FTP',
-            },
-            {
                 label: 'Done',
                 backgroundColor: general.bardone.bg,
                 fill: true,
-                data: createTimeArray(done),
-                borderWidth: 1,
-                borderDash: [0, 0],
+                data: bar_data(done),
+                borderWidth: 0,
+                borderDash: [1, 1],
                 borderColor: general.bardone.borderColor,
                 xAxisID: "x-axis1",
                 id: 'Done'
@@ -63,25 +55,64 @@ global.atpOptions = {
                 type: 'line',
                 backgroundColor: general.ftpDone.bg,
                 fill: true,
-                data: createTimeArray(done).ftpO(),
+                data: bar_data(done).ftpO(),
                 borderColor: general.ftpDone.borderColor,
-                borderWidth: 2,
-                borderDash: [1, 2],
+                borderWidth: 1,
+                borderDash: [2, 2],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
                 id: 'FTPDone'
             },
+            {
+                label: 'FTP DONE BG',
+                type: 'line',
+                backgroundColor: '#000000',
+                fill: true,
+                data: bar_data(done).ftpO(),
+                borderColor: '#000000',
+                borderWidth: 2,
+                //borderDash: [1, 1],
+                xAxisID: "x-axis1",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+                id: 'FTPDoneBg'
+            },
+            {
+                label: 'FTP',
+                type: 'line',
+                backgroundColor: general.ftp.bg,
+                fill: true,
+                data: FTP_data(bar_data(yValues, (x) => {
+                    return typeof x === 'string' ? 0 : x
+                })),
+                borderColor: general.ftp.borderColor,
+                borderWidth: 1,
+                borderDash: [0, 0],
+                xAxisID: "x-axis1",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+                id: 'FTP',
+            }
         ]
     },
     options: {
+        plugins: {
+            deferred: {           // enabled by default
+                xOffset: 150,     // defer until 150px of the canvas width are inside the viewport
+                yOffset: '50%',   // defer until 50% of the canvas height are inside the viewport
+                delay: 2000       // delay of 500 ms after the canvas is considered inside the viewport
+            }
+        },
         elements: {
-            point: {radius: 0}, line: {
-                tension: 0.2
+            point: {radius: 0},
+            line: {
+                tension: 0.3
             }
         },
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
+        aspectRatio: 1920/450,
         layout: {
             padding: {
                 left: 0,
@@ -220,6 +251,41 @@ global.atpOptions = {
                     },
 
                 },
+                {
+                    display: true,
+                    stacked: false,
+                    id: 'flags',
+                    position: 'top',
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                        max: moment(xKeys[xKeys.length - 1]).add(0, 'days').format('YYYY-MM-DD'),
+                        min: moment(xKeys[0]).add(0, 'days').format('YYYY-MM-DD'),
+                        displayFormats: {
+                            day: 'YYYY-MM-DD'
+                        },
+                        minUnit: 'day',
+                        stepSize: 1
+                    },
+                    gridLines: {
+                        drawTicks: true,
+                        tickMarkLength: 9,
+                        display: true,
+                        color: general.grid.gridPhasesLinesColor,
+                        borderDash: [1, 1],
+                        zeroLineWidth: 0,
+                        offsetGridLines: true,
+                    },
+                    ticks: {
+                        fontSize: 10,
+                        mirror: false,
+                        padding: 5,
+                        callback: function (value, index, values) {
+                            return flags[value];
+                        }
+                    },
+
+                },
 
             ],
             yAxes: [{
@@ -295,34 +361,10 @@ global.atpOptions = {
     }
 };
 
-Object.entries(phases2).forEach(createPhaseDataset);
 
+//paski faz
+Object.entries(phases2).forEach(phases_dataset);
 
-function createPhaseDataset(d) {
-    for(let i = 0; d[1][i] != undefined ;i+=2 ) {
-
-        let label = d[1]['label'] || d[0];
-        let colorInd = d[1]['color'] || d[0];
-        let from = d[1][i];
-        let to = d[1][i+1];
-
-        let dataset = {
-            label: label,
-            type: 'line',
-            backgroundColor: general.phaseDataset.color[colorInd],
-            fill: false,
-            data: getDateArray(from, to),
-            borderColor: general.phaseDataset.color[colorInd],
-            borderWidth: general.timeline.thick2,
-            //pointStyle: 'line',
-            //radius: 0,
-            xAxisID: "czas",
-            pointHitRadius: 0,
-            pointHoverRadius: 0,
-        };
-        atpOptions.data.datasets.push(dataset);
-    }
-}
 
 //TODO: to tu
 global.chartAtpInstance = new Chart(ctx, atpOptions);
@@ -335,33 +377,6 @@ global.chartAtpInstance.config.data.datasets.find = function (id) {
     return null;
 };
 
-function getDateArray(start, end) {
-    let
-        arr = [],
-        dt = new Date(moment(start).add(1, 'days'));
-    end = new Date(moment(end).add(-1, 'days'));
-    while (dt <= end) {
-        arr.push({
-            x: new Date(dt),
-            y: -1 * general.timeline.thick
-        });
-        dt.setDate(dt.getDate() + 1);
-    }
-    return arr;
-}
-
-function createTimeArray(oIn) {
-    let arr = [];
-
-    Object.keys(oIn).forEach(function (x) {
-        arr.push({
-            x: moment(x),
-            y: oIn[x]
-        });
-    });
-
-    return arr;
-}
 
 function objectConcat(oIn, pIn) {
     let arr = [];

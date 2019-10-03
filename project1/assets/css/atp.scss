@@ -109,7 +109,7 @@ $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: $font-color !default;
 
-$collapsible-header-color: $secondary-color !default;
+$collapsible-header-color: $body-color !default;
 $button-raised-background: darken($primary-color, 20%) !default;
 $button-raised-background-hover: lighten($button-raised-background, 15%) !default;
 $button-raised-color: #eee !default;
@@ -164,8 +164,8 @@ body{
 }
 
 .main-sidebar {
-  background-color: $primary-color;
-  background-color: #00000015;
+  //background-color: $primary-color;
+  //background-color: #00000015;
   border-right: solid 1px lighten($menu-color, 2%);
   text-align: left;
 }
@@ -182,7 +182,7 @@ body {
   }
   & {
     &.sidebar-expanded-on-hover .main-sidebar {
-      background-color: transparentize(darken(color($theme, "accent-2"), 40%), 0.1);
+      background-color: transparentize($body-color, 0.3);
       transition: .2s ease-out;
     }
     &.sidebar-collapse .main-sidebar {

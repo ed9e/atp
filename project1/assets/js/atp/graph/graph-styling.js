@@ -15,20 +15,21 @@ barGradient.addColorStop(0.6, theme.gradient.bar + '22');
 timeGradient.addColorStop(1, theme.gradient.time + 'ff');
 timeGradient.addColorStop(0.6, theme.gradient.time + '88');
 timeGradient.addColorStop(0, theme.gradient.time + '44');
-bardoneBorderGradient.addColorStop(1, theme.bar.borderColor + 'cc');
-bardoneBorderGradient.addColorStop(0.6, theme.bar.borderColor + '66');
-bardoneBorderGradient.addColorStop(0, theme.bar.borderColor + '22');
+bardoneBorderGradient.addColorStop(1, theme.bar.borderColor + 'ff');
+bardoneBorderGradient.addColorStop(0.6, theme.bar.borderColor + '88');
+bardoneBorderGradient.addColorStop(0, theme.bar.borderColor + '00');
 
 bar2Gradient.addColorStop(0, theme.gradient.bar2 + 'ff');
 bar2Gradient.addColorStop(0.6, theme.gradient.bar2 + 'aa');
 bar2Gradient.addColorStop(1, theme.gradient.bar2 + '66');
 
 FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
-FTPgradient.addColorStop(0.5, theme.gradient.ftp + '77');
-FTPgradient.addColorStop(0.8, theme.gradient.ftp + '00');
+FTPgradient.addColorStop(0.3, theme.gradient.ftp + 'dd');
+FTPgradient.addColorStop(0.7, theme.gradient.ftp + '22');
+FTPgradient.addColorStop(1, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
-FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'aa');
-FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '11');
+FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'ee');
+FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '22');
 FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
 
 gridGradient.addColorStop(0, theme.gradient.grid + '44');
@@ -50,7 +51,7 @@ global.general = {
     },
     ftpDone: {
         bg: FTPDonegradient,
-        borderColor: FTPDonegradient
+        borderColor: theme.bar.valueColor
     },
     newVal: {
         bg: barGradient,
@@ -87,7 +88,7 @@ global.general = {
         valueColor: theme.bar.valueColor
     },
     bardone: {
-        bg: theme.bar.valueColor,
-        borderColor: bardoneBorderGradient
+        bg: bardoneBorderGradient,
+        borderColor: theme.borderColor.barDone
     }
 };

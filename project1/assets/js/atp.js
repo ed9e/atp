@@ -1,9 +1,9 @@
 require('chart.js');
 require('chartjs-plugin-zoom');
-require('./graph/ftp.js');
+require('./atp/graph/ftp.js');
 let chartTune = document.getElementById('chartJSContainer');
 global.ctx = chartTune.getContext('2d');
 
-require('./graph/graph-styling.js');
-require('./graph/graph.js');
-require('./graph/d3.js');
+require('./atp/graph/graph-styling.js');
+require('./atp/graph/atp_graph.js');
+require('./atp/graph/d3.js');

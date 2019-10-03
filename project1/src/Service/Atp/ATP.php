@@ -123,14 +123,14 @@ class ATP
         }, $this->groupPhases);
 
         $diff = array_diff($keys, array_keys($this->getDone()));
-        $done = $this->getDone();//array_merge(array_fill_keys($diff, 1), $this->getDone());
+        $done = array_merge(array_fill_keys($diff, 1), $this->getDone());
         ksort($done);
 //        $done = array_values($done);
 //        $done = $this->getDone();
         $diff = array_diff($keys, array_keys($this->data));
         $czyAtpZaczacOdZera = false;
         if(!$czyAtpZaczacOdZera) {
-            $values = array_merge($done, $this->data);
+            $values = array_merge($this->getDone(), $this->data);
         }else{
             $values = array_merge(array_fill_keys($diff, 15), $this->data);
         }
