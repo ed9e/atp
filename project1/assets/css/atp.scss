@@ -116,9 +116,29 @@ $button-raised-color: #eee !default;
 $collapsible-border-color: color($theme, "accent-1");
 
 html {
-    overflow: scroll;
-    overflow-x: hidden;
-    scrollbar-width: none;
+  overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  background: #000;
+}
+body{
+  //background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  //background: linear-gradient(to bottom, #ee7752 0% , #e73c7e 100%), radial-gradient(at top center, #23a6d5 10%, #23d5ab 120%), #23a6d5  ;
+  //background: linear-gradient(to bottom, transparentize($body-color, 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 20%);
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
+
+}
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 0%;
+  }
+  //50% {
+  //  background-position: 100% 50%;
+  //}
+  100% {
+    background-position: 100% 100%;
+  }
 }
 ::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
