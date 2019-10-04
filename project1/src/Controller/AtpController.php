@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -22,7 +23,7 @@ class AtpController extends AbstractController
     /**
      * @Route("/")
      */
-    public function index(ATP $atp)
+    public function index(RequestStack $request, ATP $atp)
     {
 
         $from = (new DateTime())->setTimestamp(strtotime('next friday'));

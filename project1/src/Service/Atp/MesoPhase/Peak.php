@@ -4,8 +4,6 @@
 namespace App\Service\Atp\MesoPhase;
 
 
-use App\Service\Atp\MicroPhase\MicroPhase;
-
 class Peak extends MesoPhaseAbstract
 {
     protected $microPhaseIterationConfig = [1];
@@ -13,8 +11,8 @@ class Peak extends MesoPhaseAbstract
     protected function calculateMicroPhases(int $count): array
     {
         $phases = array_reverse([
-            (new MicroPhase())->setTimeValue(255),
-            (new MicroPhase())->setTimeValue(200),
+            (clone $this->microPhaseTmp)->setTimeValue(255),
+            (clone $this->microPhaseTmp)->setTimeValue(200),
         ]);
 
         return [$phases[$this->getNumber()]];

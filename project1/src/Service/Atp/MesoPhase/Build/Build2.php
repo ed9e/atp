@@ -4,8 +4,6 @@
 namespace App\Service\Atp\MesoPhase\Build;
 
 
-use App\Service\Atp\MicroPhase\MicroPhase;
-
 class Build2 extends Build
 {
     protected function calculateMicroPhases(int $count): array
@@ -13,27 +11,27 @@ class Build2 extends Build
         $phases = [
             4 => [
                 [
-                    (new MicroPhase())->setTimeValue(285),
-                    (new MicroPhase())->setTimeValue(285),
-                    (new MicroPhase())->setTimeValue(285),
-                    (new MicroPhase())->setTimeValue(115),
+                    (clone $this->microPhaseTmp)->setTimeValue(285),
+                    (clone $this->microPhaseTmp)->setTimeValue(285),
+                    (clone $this->microPhaseTmp)->setTimeValue(285),
+                    (clone $this->microPhaseTmp)->setTimeValue(115),
                 ],
                 [
-                    (new MicroPhase())->setTimeValue(285),
-                    (new MicroPhase())->setTimeValue(285),
-                    (new MicroPhase())->setTimeValue(285),
-                    (new MicroPhase())->setTimeValue(115),
+                    (clone $this->microPhaseTmp)->setTimeValue(285),
+                    (clone $this->microPhaseTmp)->setTimeValue(285),
+                    (clone $this->microPhaseTmp)->setTimeValue(285),
+                    (clone $this->microPhaseTmp)->setTimeValue(115),
                 ]
             ],
             [
-                (new MicroPhase())->setTimeValue(315),
-                (new MicroPhase())->setTimeValue(315),
-                (new MicroPhase())->setTimeValue(115),
+                (clone $this->microPhaseTmp)->setTimeValue(315),
+                (clone $this->microPhaseTmp)->setTimeValue(315),
+                (clone $this->microPhaseTmp)->setTimeValue(115),
             ],
             [
-                (new MicroPhase())->setTimeValue(300),
-                (new MicroPhase())->setTimeValue(300),
-                (new MicroPhase())->setTimeValue(115),
+                (clone $this->microPhaseTmp)->setTimeValue(300),
+                (clone $this->microPhaseTmp)->setTimeValue(300),
+                (clone $this->microPhaseTmp)->setTimeValue(115),
             ]
         ];
 

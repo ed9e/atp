@@ -10,6 +10,12 @@ class MicroPhase
     protected $microPhaseLength = 7;//na początek zakładamy, że tydzień
 
     protected $timeValue;
+    protected $request;
+
+    public function __construct($request)
+    {
+        $this->request = $request;
+    }
 
     /**
      * @return mixed

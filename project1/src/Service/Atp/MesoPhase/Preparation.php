@@ -4,8 +4,6 @@
 namespace App\Service\Atp\MesoPhase;
 
 
-use App\Service\Atp\MicroPhase\MicroPhase;
-
 class Preparation extends MesoPhaseAbstract
 {
     protected  $description = 'Dla tego mezocyklu dlugosc cyklu wynosi 1 mikrocykl';
@@ -18,7 +16,7 @@ class Preparation extends MesoPhaseAbstract
         $i = 0;
         while ($i < $count) {
             $return[] =
-                (new MicroPhase())->setTimeValue(125);
+                (clone $this->microPhaseTmp)->setTimeValue(125);
             $i++;
         }
         return $return;

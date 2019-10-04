@@ -7,6 +7,7 @@ namespace App\Service\Atp;
 use App\Entity\WeeklyActivity;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class ATP
 {
@@ -16,10 +17,12 @@ class ATP
     protected $groupPhases;
     protected $done;
     protected $em;
+    protected $requestStack;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, RequestStack $requestStack)
     {
         $this->em = $em;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -54,7 +57,7 @@ class ATP
         $this->plan = new Plan([
             'from' => (new DateTime())->setTimestamp(strtotime('next friday', strtotime($options['from'])))->format('Y-m-d'),
             'to' => (new DateTime())->setTimestamp(strtotime('next friday', strtotime($options['to'])))->format('Y-m-d')
-        ]);
+        ], $this->requestStack);
         return $this;
     }
 

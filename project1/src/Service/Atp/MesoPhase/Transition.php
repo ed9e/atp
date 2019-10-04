@@ -4,8 +4,6 @@
 namespace App\Service\Atp\MesoPhase;
 
 
-use App\Service\Atp\MicroPhase\MicroPhase;
-
 class Transition extends MesoPhaseAbstract
 {
     protected $microPhaseIterationConfig = [1];
@@ -13,7 +11,7 @@ class Transition extends MesoPhaseAbstract
     protected function calculateMicroPhases(int $count, $number = 0): array
     {
         return [
-            (new MicroPhase())->setTimeValue(0),
+            (clone $this->microPhaseTmp)->setTimeValue(0),
         ];
     }
 }

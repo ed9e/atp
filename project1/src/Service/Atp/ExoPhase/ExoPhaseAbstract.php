@@ -50,7 +50,7 @@ abstract class ExoPhaseAbstract
 
     public function createMesoPhase(): MesoPhaseAbstract
     {
-        $this->mesoPhases[] = new $this->mesoPhase();
+        $this->mesoPhases[] = new $this->mesoPhase($this->calendar);
         $this->lastMesoPhase()->setCalendar($this->calendar)->setNumber($this->i);
         $this->i++;
         return $this->lastMesoPhase();

@@ -15,6 +15,15 @@ class Calendar
     protected $calendar;
     protected $groupedExoPhase;
     protected $timeValueByWeek;
+    protected $requestStack;
+
+    /**
+     * @return mixed
+     */
+    public function getRequestStack()
+    {
+        return $this->requestStack;
+    }
 
     /**
      * @return mixed
@@ -32,10 +41,11 @@ class Calendar
         return $this->groupedExoPhase;
     }
 
-    public function __construct($weeks)
+    public function __construct($weeks, $requestStack)
     {
         $this->weeks = $weeks;
         $this->countWeeks = count($weeks);
+        $this->requestStack = $requestStack;
     }
 
     /**

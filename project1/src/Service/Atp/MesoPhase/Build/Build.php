@@ -5,7 +5,6 @@ namespace App\Service\Atp\MesoPhase\Build;
 
 
 use App\Service\Atp\MesoPhase\MesoPhaseAbstract;
-use App\Service\Atp\MicroPhase\MicroPhase;
 
 class Build extends MesoPhaseAbstract
 {
@@ -16,16 +15,16 @@ class Build extends MesoPhaseAbstract
     {
         if ($count == 4) {
             return [
-                (new MicroPhase())->setTimeValue(285),
-                (new MicroPhase())->setTimeValue(285),
-                (new MicroPhase())->setTimeValue(285),
-                (new MicroPhase())->setTimeValue(125),
+                (clone $this->microPhaseTmp)->setTimeValue(285),
+                (clone $this->microPhaseTmp)->setTimeValue(285),
+                (clone $this->microPhaseTmp)->setTimeValue(285),
+                (clone $this->microPhaseTmp)->setTimeValue(125),
             ];
         }
         return [
-            (new MicroPhase())->setTimeValue(285),
-            (new MicroPhase())->setTimeValue(295),
-            (new MicroPhase())->setTimeValue(125),
+            (clone $this->microPhaseTmp)->setTimeValue(285),
+            (clone $this->microPhaseTmp)->setTimeValue(295),
+            (clone $this->microPhaseTmp)->setTimeValue(125),
         ];
     }
 }

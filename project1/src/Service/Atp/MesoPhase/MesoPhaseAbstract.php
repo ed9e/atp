@@ -5,6 +5,7 @@ namespace App\Service\Atp\MesoPhase;
 
 
 use App\Service\Atp\Calendar;
+use App\Service\Atp\MicroPhase\MicroPhase;
 
 abstract class MesoPhaseAbstract
 {
@@ -12,6 +13,7 @@ abstract class MesoPhaseAbstract
     protected $calendar;
     /** @var \App\Service\Atp\MicroPhase\PhaseIterator */
     protected $microPhases;
+    protected $microPhaseTmp;
     /**
      * Ilość mikrocykli w tym cyklu
      * @var array $microPhaseIterationConfig
@@ -19,9 +21,11 @@ abstract class MesoPhaseAbstract
     protected $microPhaseIterationConfig;
     protected $number;
 
-    public function __construct()
+    public function __construct($calendar)
     {
+        $this->calendar = $calendar;
         $this->microPhases = new \App\Service\Atp\MicroPhase\PhaseIterator();
+        $this->microPhaseTmp = new MicroPhase($this->calendar->getRequestStack());
     }
 
     public function getNumber()

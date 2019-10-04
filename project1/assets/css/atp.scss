@@ -521,3 +521,7 @@ zg-body {
 zg-head {
   background-color: transparentize(desaturate($primary-color, 20%), 0.5) !important;
 }
+
+.row {
+  margin-left: 0;
+}

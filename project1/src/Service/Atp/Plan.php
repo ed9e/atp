@@ -14,6 +14,7 @@ class Plan
     protected $start;
     protected $end;
     protected $calendar;
+    protected $request;
 
     /**
      * @return mixed
@@ -24,10 +25,11 @@ class Plan
     }
 
 
-    public function __construct($options)
+    public function __construct($options, $request)
     {
         $this->start = $options['from'];
         $this->end = $options['to'];
+        $this->request = $request;
     }
 
     public function getStart()
@@ -50,7 +52,7 @@ class Plan
         $dateArray = $this->createIntervalArray($options['from'], $options['to']);
 
         $reversedDates = array_reverse($dateArray);
-        $this->calendar = new Calendar($reversedDates);
+        $this->calendar = new Calendar($reversedDates, $this->request);
         /** Składowe jakie będą brały udział w tworzeniu planu */
         $phasesComponent = new Component($this->calendar);
         /** Liczba iteracji do stworzenia planu */
