@@ -133,27 +133,27 @@ function callback() {
 
 //Apply changes to old dataset
 let history = [];
-document.getElementById('applyChanges').addEventListener('click', function () {
-    history.push(atpOptions.data.datasets.find('oldTune').data.kopia());
-    atpOptions.data.datasets.find('oldTune').data = atpOptions.data.datasets.find('newTune').data.kopia();
-    chartAtpInstance.update();
-});
-
-//Cancel changes - rrevert to old dataset
-document.getElementById('cancelChanges').addEventListener('click', function () {
-    atpOptions.data.datasets.find('newTune').data = atpOptions.data.datasets.find('oldTune').data.kopia();
-    atpOptions.data.datasets.find('FTP').data = FTP_data(atpOptions.data.datasets.find('newTune').data);
-    chartAtpInstance.update();
-});
-
-//Cancel changes - rrevert to old dataset
-document.getElementById('undoChanges').addEventListener('click', function () {
-    var data = history.pop();
-    if (data) {
-        atpOptions.data.datasets.find('newTune').data = data.kopia();
-        atpOptions.data.datasets.find('oldTune').data = data.kopia();
-        atpOptions.data.datasets.find('FTP').data = FTP_data(data.kopia());
-
-        chartAtpInstance.update();
-    }
-});
+// document.getElementById('applyChanges').addEventListener('click', function () {
+//     history.push(atpOptions.data.datasets.find('oldTune').data.kopia());
+//     atpOptions.data.datasets.find('oldTune').data = atpOptions.data.datasets.find('newTune').data.kopia();
+//     chartAtpInstance.update();
+// });
+//
+// //Cancel changes - rrevert to old dataset
+// document.getElementById('cancelChanges').addEventListener('click', function () {
+//     atpOptions.data.datasets.find('newTune').data = atpOptions.data.datasets.find('oldTune').data.kopia();
+//     atpOptions.data.datasets.find('FTP').data = FTP_data(atpOptions.data.datasets.find('newTune').data);
+//     chartAtpInstance.update();
+// });
+//
+// //Cancel changes - rrevert to old dataset
+// document.getElementById('undoChanges').addEventListener('click', function () {
+//     var data = history.pop();
+//     if (data) {
+//         atpOptions.data.datasets.find('newTune').data = data.kopia();
+//         atpOptions.data.datasets.find('oldTune').data = data.kopia();
+//         atpOptions.data.datasets.find('FTP').data = FTP_data(data.kopia());
+//
+//         chartAtpInstance.update();
+//     }
+// });

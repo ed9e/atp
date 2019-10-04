@@ -4,17 +4,14 @@ namespace App\Controller;
 
 use App\Entity\WeeklyActivity;
 use App\Repository\WeeklyRepository;
-use App\Service\Atp\ATP;
 use App\Service\Atp\Plan;
 use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,7 +25,7 @@ class DashboardController extends AbstractController
      * @return Response
      * @throws Exception
      */
-    public function index(EntityManagerInterface $em)
+    public function index(EntityManagerInterface $em, RequestStack $requestStack)
     {
         $from = 'P80W';
         $to = 'P20W';
@@ -37,7 +34,7 @@ class DashboardController extends AbstractController
             'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P120W')),
             'to' => (new DateTime())->setTimestamp(strtotime('next friday')),
         ];
-        $plan = new Plan($options);
+        $plan = new Plan($options, $requestStack);
         $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
 
         /** @var WeeklyRepository $weekly */

@@ -27,10 +27,6 @@ $('ul#activity-badges li input').on('ifToggled', function (event) {
 
     $('#edit-atp').iCheck('uncheck');
 
-    let dataTable = $('#data-table');
-    dataTable.DataTable().ajax.url(apiUrlConfig.hrefDataTable()).load();
-    zingGrid.dataLoad();
-
     $.ajax({
         url: apiUrlConfig.hrefWeekly(),
         context: document.body

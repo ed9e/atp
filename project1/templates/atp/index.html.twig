@@ -48,35 +48,57 @@
 
 {% block page_content %}
 
-    <div class="row canvas">
-        <div style="">
-            <span></span>
-        </div>
-        <canvas id="chartJSContainer" width="1920" height="650"></canvas>
+<div class="row canvas">
+    <div style="">
+        <span></span>
     </div>
+    <canvas id="chartJSContainer" width="1920" height="650"></canvas>
+</div>
 
-    <div class="row">
-        <div class="col">
-            <button class="waves-effect btn" id="applyChanges">Apply Changes</button>
-            <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>
-            <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>
-            <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>
-            <button class="waves-effect btn" id="zoom-switch" onclick="toggleDragMode()">Disable zoom mode</button>
-            <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode</button>
+<div class="darken-container">
+    <div class="container-fluid">
+        <div class="row controls badges">
+            <div class="col-xs-5">
+                <ul class="list small float-left" id="activity-badges">
+                </ul>
+            </div>
+
+            <div class="col-xs-7">
+                <ul class="list small float-right" id="action-badges">
+
+                </ul>
+            </div>
+        </div>
+        <div class="row controls badges">
+            <div class="col-xs-5">
+                <ul class="list small float-left" id="config-badges">
+                </ul>
+            </div>
+        </div>
+        {#    </div>#}
+        {#    <div class="row">#}
+        {#        <div class="col">#}
+        {#            <button class="waves-effect btn" id="applyChanges">Apply Changes</button>#}
+        {#            <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>#}
+        {#            <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>#}
+        {#            <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>#}
+        {#            <button class="waves-effect btn" id="zoom-switch" onclick="toggleDragMode()">Disable zoom mode</button>#}
+        {#            <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode</button>#}
+        {#        </div>#}
+        {#    </div>#}
+
+        <div class="row">
+            <div class="col s4 offset-s8">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">PLAN</div>
+                        <div class="collapsible-body">
+                            {{ form(form) }}
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col s4 offset-s8">
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header">PLAN</div>
-                    <div class="collapsible-body">
-                        {{ form(form) }}
-
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-{% endblock %}
+    {% endblock %}

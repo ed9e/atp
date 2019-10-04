@@ -1,3 +1,5 @@
+import {createTimeArray} from "../functions/tools";
+
 export class ChartDataAction {
     constructor(chart) {
         this.chart = chart;

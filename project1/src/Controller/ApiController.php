@@ -8,9 +8,8 @@ use App\Entity\WeeklyActivity;
 use App\Repository\ActivityDetailsRepository;
 use App\Repository\WeeklyRepository;
 use App\Service\Atp\Plan;
-use Doctrine\ORM\EntityManager;
-use DateTime;
 use DateInterval;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -69,7 +68,7 @@ class ApiController extends AbstractController
             'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P120W')),
             'to' => (new DateTime())->setTimestamp(strtotime('next friday')),
         ];
-        $plan = new Plan($options);
+        $plan = new Plan($options, $request);
         $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
 
         /** @var WeeklyRepository $weekly */
