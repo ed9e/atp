@@ -1,6 +1,6 @@
 import {FTP_data, bar_data, phases_dataset} from "./DataSetFunctions";
 
-global.atpYAxes = {max: 1000};
+global.atpYAxes = {max: 1300};
 let callback = undefined;
 
 global.atpOptions = {
@@ -88,7 +88,7 @@ global.atpOptions = {
                 })),
                 borderColor: general.ftp.borderColor,
                 borderWidth: 1,
-                borderDash: [0, 0],
+                borderDash: [1, 1],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
@@ -305,7 +305,7 @@ global.atpOptions = {
                 ticks: {
                     reverse: false,
                     min: -20,
-                    //max: atpYAxes.max,
+                    max: atpYAxes.max,
                     display: false,
                     padding: 10
                 }
