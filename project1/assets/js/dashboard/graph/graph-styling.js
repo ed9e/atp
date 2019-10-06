@@ -31,15 +31,16 @@ FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'aa');
 FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '11');
 FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
 
-gridGradient.addColorStop(0, theme.gradient.grid + '44');
-gridGradient.addColorStop(0.3, theme.gradient.grid + '11');
+gridGradient.addColorStop(0, theme.gradient.grid + 'ff');
+gridGradient.addColorStop(0.3, theme.gradient.grid + '22');
 gridGradient.addColorStop(0.6, theme.gradient.grid + '00');
-gridPhasesGradient.addColorStop(0, theme.gradient.grid + '44');
-gridPhasesGradient.addColorStop(0.4, theme.gradient.grid + '00');
+gridPhasesGradient.addColorStop(0, theme.gradient.grid + 'ff');
+gridPhasesGradient.addColorStop(0.4, theme.gradient.grid + '22');
 gridPhasesGradient.addColorStop(0.6, theme.gradient.grid + '00');
 
 global.general = {
     grid: {
+        fontColor: theme.grid.fontColor,
         gridLinesColor: gridGradient,
         gridPhasesLinesColor: gridPhasesGradient
     },

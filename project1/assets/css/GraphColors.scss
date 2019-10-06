@@ -37,7 +37,10 @@ html {
     }
 
     .grid {
-      color: $font-color;
+      color: $primary-color;
+    }
+    .grid-font{
+      color: $primary-color;
     }
 
     .tunecontainer {

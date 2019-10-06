@@ -40,6 +40,7 @@ gridPhasesGradient.addColorStop(0.6, theme.gradient.grid + '00');
 
 global.general = {
     grid: {
+        gridFontColor: theme.grid.fontColor,
         gridLinesColor: gridGradient,
         gridPhasesLinesColor: gridPhasesGradient
     },
