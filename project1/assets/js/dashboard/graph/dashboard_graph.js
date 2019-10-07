@@ -192,7 +192,7 @@ global.atpOptions = {
                     },
                     gridLines: {
                         drawTicks: true,
-                        tickMarkLength: 6,
+                        tickMarkLength: 0,
                         display: true,
                         color: general.grid.gridLinesColor,
                         borderDash: [1, 2],
@@ -202,7 +202,7 @@ global.atpOptions = {
 
                     },
                     ticks: {
-                        padding: 6,
+                        padding: 7,
                         lineHeight: 1.2,
                         fontColor: general.grid.fontColor,
                         fontSize: 10,
