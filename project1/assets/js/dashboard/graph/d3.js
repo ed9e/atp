@@ -8,9 +8,12 @@ d3.select(chartAtpInstance.chart.canvas).call(
 );
 
 d3.select(chartAtpInstance.chart.canvas).call(
-    d3.zoom().on('zoom', () => scroll(d3.event))
+    d3.zoom()
+        .on('start', () => {
+        console.log('start');
+        })
+        .on('zoom', () => scroll(d3.event))
 );
-
 
 
 let par = {
@@ -30,7 +33,7 @@ function scroll(t) {
         return;
     }
     par.chart = par.element['_chart'];
-    par.datasetIndex = 0;
+    //par.datasetIndex = 0;
     par.scale = undefined;
     par.scale = par.element['_yScale'];
     if (par.datasetIndex != 0 || par.scale == undefined) {
@@ -44,6 +47,7 @@ function scroll(t) {
     chartAtpInstance.update(0);
 
 }
+
 //Get an class of {points: [{x, y},], type: event.type} clicked or touched
 function getEventPoints(event) {
     let retval = {
@@ -125,7 +129,7 @@ function getActivities(date) {
 
 function updateData() {
     let e = d3.event.sourceEvent;
-    par.datasetIndex=0;
+    par.datasetIndex = 0;
     if (par.datasetIndex != 0 || par.scale == undefined) {
         return;
     }
