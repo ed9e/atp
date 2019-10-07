@@ -201,8 +201,9 @@ global.atpOptions = {
                         tickMarkLength: 0,
                     },
                     ticks: {
-                        padding: 10,
-                        lineHeight: 1,
+                        padding: 3,
+                        lineHeight: 1.2,
+                        fontColor: general.grid.fontColor,
                         fontSize: 10,
                         callback: function (value, index, values) {
                             if (index % 2)
@@ -239,6 +240,7 @@ global.atpOptions = {
                     },
                     ticks: {
                         fontSize: 10,
+                        fontColor: general.grid.gridLinesColor,
                         mirror: false,
                         padding: 5,
                         callback: function (value, index, values) {

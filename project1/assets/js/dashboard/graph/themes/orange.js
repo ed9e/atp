@@ -33,7 +33,11 @@ let border_ftp = getColor('border-ftp');
 let bardone = getColor('bardone');
 let bardoneBorder = getColor('bardoneborder');
 let grid = getColor('grid');
+let gridFont = getColor('grid-font');
 exports.sass = {
+    grid: {
+        fontColor: gridFont,
+    },
     gradient: {
         bar: bar, //'#ff4e00',
         bar2: bar2, //'#ff4e00',
@@ -63,6 +67,9 @@ exports.sass = {
     }
 };
 exports.orange = {
+    grid: {
+        fontColor: gridFont,
+    },
     gradient: {
         bar: '#ff4e00',
         bar2: '#ff4e00',
