@@ -240,7 +240,7 @@ global.atpOptions = {
                     },
                     ticks: {
                         fontSize: 10,
-                        fontColor: general.grid.gridLinesColor,
+                        fontColor: general.grid.fontColor,
                         mirror: false,
                         padding: 5,
                         callback: function (value, index, values) {

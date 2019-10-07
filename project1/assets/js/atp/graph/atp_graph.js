@@ -1,4 +1,4 @@
-import {FTP_data, bar_data, phases_dataset} from "./DataSetFunctions";
+import {bar_data, FTP_data, phases_dataset} from "./DataSetFunctions";
 
 global.atpYAxes = {max: 1300};
 let callback = undefined;
@@ -44,7 +44,7 @@ global.atpOptions = {
                 backgroundColor: general.bardone.bg,
                 fill: true,
                 data: bar_data(done),
-                borderWidth: 0,
+                borderWidth: 1,
                 borderDash: [1, 1],
                 borderColor: general.bardone.borderColor,
                 xAxisID: "x-axis1",
@@ -211,7 +211,8 @@ global.atpOptions = {
                         tickMarkLength: 0,
                     },
                     ticks: {
-                        padding: 10,
+                        fontColor: general.grid.fontColor,
+                        padding: 5,
                         callback: function (value, index, values) {
                             if (index % 2)
                                 return value;
@@ -244,6 +245,7 @@ global.atpOptions = {
                         offsetGridLines: true,
                     },
                     ticks: {
+                        fontColor: general.grid.fontColor,
                         padding: 5,
                         callback: function (value, index, values) {
                             return phases[value];
@@ -277,6 +279,7 @@ global.atpOptions = {
                         offsetGridLines: true,
                     },
                     ticks: {
+                        fontColor: general.grid.fontColor,
                         fontSize: 10,
                         mirror: false,
                         padding: 5,
