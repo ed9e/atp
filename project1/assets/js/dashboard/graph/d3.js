@@ -26,6 +26,9 @@ let par = {
 function scroll(t) {
     let e = t.sourceEvent;
     par.element = chartAtpInstance.getElementAtEvent(e)[0];
+    if (par.element == undefined) {
+        return;
+    }
     par.chart = par.element['_chart'];
     par.datasetIndex = 0;
     par.scale = undefined;
@@ -34,9 +37,10 @@ function scroll(t) {
         return;
     }
     par.index = par.element['_index'];
-    console.log(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y);
+    //console.log(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y);
     let v = par.chart.config.data.datasets[par.datasetIndex].data[par.index].y;
-    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = v;
+    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y++;
+    drawValue(par);
     chartAtpInstance.update(0);
 
 }
