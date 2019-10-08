@@ -54,6 +54,7 @@ export class OptionChecker extends Checker {
 
     ifToggled(event) {
         let key = event.data.key;
+        console.log(event.data.chart.options[key].enabled);
         event.data.chart.options[key].enabled = !event.data.chart.options[key].enabled;
         event.data.chart.update();
     }

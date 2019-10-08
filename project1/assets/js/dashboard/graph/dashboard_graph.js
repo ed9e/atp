@@ -191,17 +191,18 @@ global.atpOptions = {
                         stepSize: 1
                     },
                     gridLines: {
-                        drawTicks: false,
+                        drawTicks: true,
+                        tickMarkLength: 6,
                         display: true,
                         color: general.grid.gridLinesColor,
                         borderDash: [1, 2],
                         zeroLineWidth: 0,
                         offsetGridLines: false,
                         drawBorder: true,
-                        tickMarkLength: 0,
+
                     },
                     ticks: {
-                        padding: 3,
+                        padding: 6,
                         lineHeight: 1.2,
                         fontColor: general.grid.fontColor,
                         fontSize: 10,

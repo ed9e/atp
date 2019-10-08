@@ -1,0 +1,62 @@
+
+.zinggrid {
+
+  //overflow: hidden !importan#t;
+}
+zing-grid {
+  overflow: hidden;
+  background: #000000;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  background: linear-gradient(to bottom, transparentize(lighten($body-color, 0%), 0.66) 0%, transparentize($body-color, 0.66) 10%), radial-gradient(at top center, darken(color($theme, "accent-2"), 40%) 30%, darken($body-color, 20%) 72%) darken(color($theme, "accent-2"), 40%);
+  mix-blend-mode: lighten;
+  color: $font-color;
+  margin-top: 50px;
+  font-size: smaller;
+  --zg-watermark-background: none;
+  --zg-head-cell-background_sorted: #00000019;
+  --zg-cell-background_sorted: #00000019;
+  --zg-watermark-color: #00000019;
+  --zg-watermark-color_strong: #00000019;
+}
+
+zg-colgroup {
+  transition: max-height 0.4s linear;
+}
+
+zg-caption:hover {
+  opacity: 1;
+}
+
+zg-head, zg-row {
+  background: none !important;
+}
+
+zg-header, zg-caption {
+  background: #00000033 !important;
+}
+
+zg-row {
+  border: 1px solid #ffffff22;
+
+  &:nth-child(even) {
+    background-color: #ffffff10 !important;
+  }
+
+  &:hover:nth-child(even) {
+    background-color: #FFFFFF20 !important;
+  }
+
+  &:hover:nth-child(odd) {
+    background-color: #ffffff20 !important;
+  }
+}
+
+zg-body {
+  background: none !important;
+}
+
+zg-head {
+  background-color: transparentize(desaturate($primary-color, 20%), 0.5) !important;
+}
