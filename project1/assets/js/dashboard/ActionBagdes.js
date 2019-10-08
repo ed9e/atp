@@ -45,8 +45,9 @@ let actionBadges = new ActionBagdes();
 actionBadges.createBadges();
 
 
-import {OptionChecker, EditAtp, ResetZoom} from './BadgesClasses';
-const zoom = new OptionChecker('toggle-zoom', chartAtpInstance, 'zoom');
+import {EditAtp, OptionChecker, ResetZoom, ZoomToggler} from './BadgesClasses';
+
+global.zoom = new ZoomToggler('toggle-zoom', chartAtpInstance, 'zoom');
 zoom.iCheckSetStartState().iCheckToggleSet();
 const pan = new OptionChecker('toggle-pan', chartAtpInstance, 'pan');
 pan.iCheckSetStartState().iCheckToggleSet();

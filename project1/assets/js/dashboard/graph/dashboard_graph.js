@@ -191,8 +191,8 @@ global.atpOptions = {
                         stepSize: 1
                     },
                     gridLines: {
-                        drawTicks: true,
-                        tickMarkLength: 6,
+                        drawTicks: false,
+                        tickMarkLength: 0,
                         display: true,
                         color: general.grid.gridLinesColor,
                         borderDash: [1, 2],
@@ -202,7 +202,7 @@ global.atpOptions = {
 
                     },
                     ticks: {
-                        padding: 6,
+                        padding: 3,
                         lineHeight: 1.2,
                         fontColor: general.grid.fontColor,
                         fontSize: 10,
@@ -317,10 +317,12 @@ global.atpOptions = {
             // Speed of zoom via mouse wheel
             // (percentage of zoom on a wheel event)
             speed: 0.2,
-            onZoom: function ({chart}) {
-            },
-            onZoomComplete: function ({chart}) {
-            }
+            // onZoom: function (chart) {
+            //     console.log(chart)
+            //
+            // },
+            // onZoomComplete: function ({chart}) {
+            // }
         }
     }
 };

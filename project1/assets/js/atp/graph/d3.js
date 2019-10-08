@@ -8,6 +8,16 @@ d3.select(chartAtpInstance.chart.canvas).call(
         .on('end', callback)
 );
 
+let _tmpZoomSpeed;
+d3.select(chartAtpInstance.chart.canvas).call(
+    d3.zoom()
+        .on('start', () => {
+
+        })
+        .on('zoom', () => scroll(d3.event))
+        .on("end", () => scrollEnd(d3.event))
+);
+
 let par = {
     chart: undefined,
     element: undefined,
@@ -18,6 +28,32 @@ let par = {
     datasetIndex: undefined,
 };
 
+function scrollEnd(t) {
+    //chartAtpInstance.update(0);
+}
+
+function scroll(t) {
+
+    let e = t.sourceEvent;
+    par.element = chartAtpInstance.getElementAtEvent(e)[0];
+    if (par.element == undefined) {
+        return;
+    }
+    par.chart = par.element['_chart'];
+    //par.datasetIndex = 0;
+    par.scale = undefined;
+    par.scale = par.element['_yScale'];
+    if (par.datasetIndex != 0 || par.scale == undefined) {
+        return;
+    }
+    par.index = par.element['_index'];
+    //console.log(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y);
+    let v = par.chart.config.data.datasets[par.datasetIndex].data[par.index].y;
+    let value = e.altKey ? (parseInt(e.deltaY) / 3) * 20 : parseInt(e.deltaY) / 3;
+    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = parseInt(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y) - value;
+
+
+}
 //Get an class of {points: [{x, y},], type: event.type} clicked or touched
 function getEventPoints(event) {
     let retval = {
@@ -108,9 +144,9 @@ function updateData() {
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     //par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
 
-    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = par.value;
+    par.chart.config.data.datasets.find('newTune').data[par.index].y = par.value;
     //par.chart.config.data.datasets[2].data[par.index] =  par.value;
-    par.chart.config.data.datasets.find('FTP').data = FTP_data(par.chart.config.data.datasets[par.datasetIndex].data);
+    par.chart.config.data.datasets.find('FTP').data = FTP_data(par.chart.config.data.datasets.find('newTune').data);
 
     chartAtpInstance.update(0);
 
@@ -123,7 +159,7 @@ function drawValue(par) {
     par.chart.ctx.textBaseline = "bottom";
     // let duration = moment.duration(par.value, 'minutes');
     // let text = duration.get('hours') + ':' + duration.get('minutes');
-    par.chart.ctx.fillText(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y, par.element._model.x, par.element._model.y - 5);
+    par.chart.ctx.fillText(par.chart.config.data.datasets.find('newTune').data[par.index].y, par.element._model.x, par.element._model.y - 5);
 }
 
 //Show y data after point drag

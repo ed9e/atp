@@ -2,7 +2,7 @@ global.theme = require('./themes/orange.js').sass;
 
 let barGradient = ctx.createLinearGradient(0, 0, 0, 700);
 let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 700);
-let FTPgradient = ctx.createLinearGradient(0, 0, 0, 600);
+let FTPgradient = ctx.createLinearGradient(0, 0, 0, 700);
 let FTPDonegradient = ctx.createLinearGradient(0, 0, 0, 700);
 let gridGradient = ctx.createLinearGradient(0, 0, 0, 700);
 let gridPhasesGradient = ctx.createLinearGradient(0, 0, 0, 700);
@@ -15,27 +15,29 @@ barGradient.addColorStop(0.6, theme.gradient.bar + '22');
 timeGradient.addColorStop(1, theme.gradient.time + 'ff');
 timeGradient.addColorStop(0.6, theme.gradient.time + '88');
 timeGradient.addColorStop(0, theme.gradient.time + '44');
-bardoneBorderGradient.addColorStop(1, theme.bar.borderColor + 'ff');
-bardoneBorderGradient.addColorStop(0.6, theme.bar.borderColor + '88');
-bardoneBorderGradient.addColorStop(0, theme.bar.borderColor + '00');
+bardoneBorderGradient.addColorStop(1, theme.bar.borderColor + 'cc');
+bardoneBorderGradient.addColorStop(0.6, theme.bar.borderColor + '66');
+bardoneBorderGradient.addColorStop(0, theme.bar.borderColor + '22');
 
 bar2Gradient.addColorStop(0, theme.gradient.bar2 + 'ff');
 bar2Gradient.addColorStop(0.6, theme.gradient.bar2 + 'aa');
 bar2Gradient.addColorStop(1, theme.gradient.bar2 + '66');
 
 FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
-FTPgradient.addColorStop(0.7, theme.gradient.ftp + '22');
+FTPgradient.addColorStop(0.2, theme.gradient.ftp + 'ff');
+FTPgradient.addColorStop(0.65, theme.gradient.ftp + '00');
 FTPgradient.addColorStop(1, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
 FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'ee');
-FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '22');
+
+FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '11');
 FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
 
-gridGradient.addColorStop(0, theme.gradient.grid + '44');
-gridGradient.addColorStop(0.3, theme.gradient.grid + '11');
+gridGradient.addColorStop(0, theme.gradient.grid + 'ff');
+gridGradient.addColorStop(0.3, theme.gradient.grid + '22');
 gridGradient.addColorStop(0.6, theme.gradient.grid + '00');
-gridPhasesGradient.addColorStop(0, theme.gradient.grid + '44');
-gridPhasesGradient.addColorStop(0.4, theme.gradient.grid + '00');
+gridPhasesGradient.addColorStop(0, theme.gradient.grid + 'ff');
+gridPhasesGradient.addColorStop(0.4, theme.gradient.grid + '22');
 gridPhasesGradient.addColorStop(0.6, theme.gradient.grid + '00');
 
 global.general = {
@@ -51,7 +53,7 @@ global.general = {
     },
     ftpDone: {
         bg: FTPDonegradient,
-        borderColor: theme.bar.valueColor
+        borderColor: FTPDonegradient
     },
     newVal: {
         bg: barGradient,
@@ -88,7 +90,7 @@ global.general = {
         valueColor: theme.bar.valueColor
     },
     bardone: {
-        bg: bardoneBorderGradient,
-        borderColor: theme.borderColor.barDone
+        bg: theme.bar.valueColor,
+        borderColor: bardoneBorderGradient
     }
 };

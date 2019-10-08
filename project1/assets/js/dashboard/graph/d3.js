@@ -6,13 +6,14 @@ d3.select(chartAtpInstance.chart.canvas).call(
         .on('drag', updateData)
         .on('end', callback)
 );
-
+let _tmpZoomSpeed;
 d3.select(chartAtpInstance.chart.canvas).call(
     d3.zoom()
         .on('start', () => {
-        console.log('start');
+
         })
         .on('zoom', () => scroll(d3.event))
+        .on("end", () => scrollEnd(d3.event))
 );
 
 
@@ -26,7 +27,12 @@ let par = {
     datasetIndex: undefined,
 };
 
+function scrollEnd(t) {
+    //chartAtpInstance.update(0);
+}
+
 function scroll(t) {
+
     let e = t.sourceEvent;
     par.element = chartAtpInstance.getElementAtEvent(e)[0];
     if (par.element == undefined) {
@@ -42,9 +48,9 @@ function scroll(t) {
     par.index = par.element['_index'];
     //console.log(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y);
     let v = par.chart.config.data.datasets[par.datasetIndex].data[par.index].y;
-    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y++;
-    drawValue(par);
-    chartAtpInstance.update(0);
+    let value = e.altKey ? (parseInt(e.deltaY) / 3) * 20 : parseInt(e.deltaY) / 3;
+    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = parseInt(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y) - value;
+
 
 }
 

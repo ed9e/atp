@@ -9,6 +9,18 @@ global.atpOptions = {
     data: {
         labels: bar_data(done),
         datasets: [
+
+            {
+                label: 'Done',
+                backgroundColor: general.bardone.bg,
+                fill: true,
+                data: bar_data(done),
+                borderWidth: 1,
+                borderDash: [1, 1],
+                borderColor: general.bardone.borderColor,
+                xAxisID: "x-axis1",
+                id: 'Done'
+            },
             {
                 label: 'New Tuning ',
                 backgroundColor: general.newVal.bg,
@@ -38,17 +50,6 @@ global.atpOptions = {
                 pointHitRadius: 10,
                 pointHoverRadius: 3,
                 id: 'oldTune'
-            },
-            {
-                label: 'Done',
-                backgroundColor: general.bardone.bg,
-                fill: true,
-                data: bar_data(done),
-                borderWidth: 1,
-                borderDash: [1, 1],
-                borderColor: general.bardone.borderColor,
-                xAxisID: "x-axis1",
-                id: 'Done'
             },
             {
                 label: 'FTP DONE',
