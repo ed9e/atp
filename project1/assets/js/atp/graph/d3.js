@@ -35,23 +35,26 @@ function scrollEnd(t) {
 function scroll(t) {
 
     let e = t.sourceEvent;
+
     par.element = chartAtpInstance.getElementAtEvent(e)[0];
-    if (par.element == undefined) {
+    if (par.element === undefined) {
         return;
     }
     par.chart = par.element['_chart'];
     //par.datasetIndex = 0;
-    par.scale = undefined;
-    par.scale = par.element['_yScale'];
-    if (par.datasetIndex != 0 || par.scale == undefined) {
-        return;
-    }
+    // par.scale = undefined;
+    // par.scale = par.element['_yScale'];
+    // if (par.datasetIndex != 0 || par.scale == undefined) {
+    //     return;
+    // }
     par.index = par.element['_index'];
     //console.log(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y);
-    let v = par.chart.config.data.datasets[par.datasetIndex].data[par.index].y;
-    let value = e.altKey ? (parseInt(e.deltaY) / 3) * 20 : parseInt(e.deltaY) / 3;
-    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = parseInt(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y) - value;
-
+    //let v = par.chart.config.data.datasetsfind('newTune').data[par.index].y;
+    let scale = e.deltaMode ? 3 : 53;
+    let value = e.altKey ? (parseInt(e.deltaY) / scale) * 20 : parseInt(e.deltaY) / scale;
+    let newTune = par.chart.config.data.datasets.find('newTune');
+    newTune.data[par.index].y = parseInt(newTune.data[par.index].y) - value;
+    par.chart.update(0);
 
 }
 //Get an class of {points: [{x, y},], type: event.type} clicked or touched

@@ -79,6 +79,7 @@ class ATP
     {
         $weekly = $this->em->getRepository(WeeklyActivity::class);
         $weeklyResult = $weekly->getWeekly2($this->prepareWeeklyQueryParams($this->requestStack->getCurrentRequest()));
+
         return $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
 
         return [
@@ -98,15 +99,15 @@ class ATP
         ];
 
     }
-    protected function prepareWeeklyQueryParams(Request $request)
+    protected function prepareWeeklyQueryParams(Request $request): array
     {
         $activity_id = array_filter(explode(',', $request->query->get('activityId')));
         $userDisplayName = $request->query->get('profileId');
         $weeklyType = $request->query->get('weeklyType');
-        return ['activityId' => $activity_id, 'userDisplayName' => $userDisplayName, 'weeklyType' => $weeklyType];
+        return ['activityId' => $activity_id?:[1,6], 'userDisplayName' => $userDisplayName?:'lbrzozowski', 'weeklyType' => $weeklyType?:'time'];
     }
 
-    public function rework()
+    public function rework(): ATP
     {
         $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P60W');
         //$prev = [];
@@ -118,7 +119,7 @@ class ATP
 
 
         $phases = array_flip(
-            array_map(function ($x) {
+            array_map(static function ($x) {
                 $from = (new DateTime(end($x)))->getTimestamp();
                 $to = (new DateTime(reset($x) . '+0 days'))->getTimestamp();
                 $diff = $to - $from;

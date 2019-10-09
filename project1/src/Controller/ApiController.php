@@ -5,11 +5,15 @@ namespace App\Controller;
 
 use App\Entity\GarminActivityDetails;
 use App\Repository\ActivityDetailsRepository;
+use App\Service\Atp\ATP;
 use App\Service\GroupedData;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -71,9 +75,11 @@ class ApiController extends AbstractController
     /**
      * @Route("/atp")
      * @param Request $request
+     * @param ATP $atp
      * @return JsonResponse
+     * @throws Exception
      */
-    public function atp(Request $request, ATP $atp)
+    public function atp(Request $request, ATP $atp): JsonResponse
     {
         $from = (new DateTime())->setTimestamp(strtotime('next friday'));
         $to = (new DateTime())->setTimestamp(strtotime('next friday'))->add(new DateInterval('P36W'));
