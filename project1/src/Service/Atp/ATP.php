@@ -7,6 +7,7 @@ namespace App\Service\Atp;
 use App\Entity\WeeklyActivity;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class ATP
@@ -77,7 +78,7 @@ class ATP
     public function getDone()
     {
         $weekly = $this->em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->getWeekly2($queryData = ['activityId'=>[1,6], 'userDisplayName'=>'lbrzozowski']);
+        $weeklyResult = $weekly->getWeekly2($this->prepareWeeklyQueryParams($this->requestStack->getCurrentRequest()));
         return $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
 
         return [
@@ -96,6 +97,13 @@ class ATP
             '2019-05-13' => 516,
         ];
 
+    }
+    protected function prepareWeeklyQueryParams(Request $request)
+    {
+        $activity_id = array_filter(explode(',', $request->query->get('activityId')));
+        $userDisplayName = $request->query->get('profileId');
+        $weeklyType = $request->query->get('weeklyType');
+        return ['activityId' => $activity_id, 'userDisplayName' => $userDisplayName, 'weeklyType' => $weeklyType];
     }
 
     public function rework()

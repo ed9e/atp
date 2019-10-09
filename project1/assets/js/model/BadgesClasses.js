@@ -60,6 +60,27 @@ export class OptionChecker extends Checker {
     }
 }
 
+export class ZoomToggler extends OptionChecker {
+    constructor(id, chart, optionsKey) {
+        super(id, chart);
+        this.optionKey = optionsKey;
+        this.event.push('key', this.optionKey);
+
+    }
+
+    isEnabled() {
+        return this.chart.options[this.optionKey].speed > 0
+    }
+
+    ifToggled(event) {
+        let key = event.data.key;
+        this._tmp == undefined ? this._tmp = event.data.chart.options[key].speed : '';
+        event.data.chart.options[key].speed = event.data.chart.options[key].speed > 0 ? 0 : this._tmp;
+
+        event.data.chart.update();
+    }
+}
+
 export class EditAtp extends Checker {
 
     constructor(id, chart) {

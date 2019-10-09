@@ -3,12 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\WeeklyActivity;
-use App\Repository\WeeklyRepository;
-use App\Service\Atp\Plan;
-use DateInterval;
-use DateTime;
+use App\Service\GroupedData;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -20,52 +16,24 @@ class DashboardController extends AbstractController
 {
     /**
      * @param EntityManagerInterface $em
+     * @param RequestStack $requestStack
+     * @return Response
      * @Route("/dashboard")
      * @Route("/dashboard/index")
-     * @return Response
-     * @throws Exception
      */
-    public function index(EntityManagerInterface $em, RequestStack $requestStack)
+    public function index(EntityManagerInterface $em, RequestStack $requestStack): Response
     {
-        $from = 'P80W';
-        $to = 'P20W';
-
-        $options = [
-            'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P120W')),
-            'to' => (new DateTime())->setTimestamp(strtotime('next friday')),
-        ];
-        $plan = new Plan($options, $requestStack);
-        $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
-
-        /** @var WeeklyRepository $weekly */
-        $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->getWeekly2(['activityId' => [1,6], 'userDisplayName' => 'lbrzozowski']);
-        //$weeklyData = array_column($weeklyResult, 'distanceSum', 'weekly');
-        $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
-        $diff = array_diff($keys, array_keys($weeklyData));
-        $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
-        ksort($done);
-
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);
-        $zawody = [
-            '2017-03-11' => '12h w Kopalni Soli',
-            '2019-01-26' => 'ZMB 2019',
-            '2018-01-28' => 'ZMB 2018',
-            '2019-05-18' => 'UltraRoztocze 65k',
-            '2019-09-02' => 'Gorzycka 5',
-            '2019-09-28' => 'Chartatywna 20',
-            '2019-10-12' => 'UltraMaraton 52k',
-
-        ];
-        $template = ['keys' => $keys, 'done' => $done, 'values' => $values, 'phases' => $zawody];
-        return $this->render('dashboard/index.html.twig', $template);
+        $weekly = new GroupedData($requestStack->getCurrentRequest(), $em);
+        $data = $weekly->getWeekly();
+        return $this->render('dashboard/index.html.twig', $data);
     }
 
     /**
      * @Route("dashboard/calendar")
-     *
+     * @param EntityManagerInterface $em
+     * @return JsonResponse
      */
-    public function calendar(EntityManagerInterface $em)
+    public function calendar(EntityManagerInterface $em): JsonResponse
     {
         $weekly = $em->getRepository(WeeklyActivity::class);
         $weeklyResult = $weekly->getWeekly2(['activityId' => [1,2], 'userDisplayName' => 'lbrzozowski']);
@@ -75,7 +43,7 @@ class DashboardController extends AbstractController
     /**
      * @Route("dashboard/statistics")
      */
-    public function statistics()
+    public function statistics(): void
     {
     }
 }

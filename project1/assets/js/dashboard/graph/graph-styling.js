@@ -27,7 +27,8 @@ FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
 FTPgradient.addColorStop(0.5, theme.gradient.ftp + '44');
 FTPgradient.addColorStop(0.8, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
-FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'aa');
+FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'ee');
+
 FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '11');
 FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
 
