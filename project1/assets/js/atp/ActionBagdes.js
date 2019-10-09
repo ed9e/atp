@@ -20,11 +20,11 @@ class ActionBagdes {
         this.types = {
             zoom: {id: 'toggle-zoom', txt: 'Toggle zoom'},
             pan: {id: 'toggle-pan', txt: 'Toggle pan'},
-//            edit_atp: {id: 'edit-atp', txt: 'Edit ATP'},
+            edit_atp: {id: 'edit-atp', txt: 'Edit ATP'},
             reset_zoom: {id: 'reset-zoom', txt: 'Reset zoom'},
-            // undoChanges: {id: 'undoChanges', txt: 'Undo applied changes'},
-            // cancelChanges: {id: 'cancelChanges', txt: 'Cancel changes'},
-            // applyChanges: {id: 'applyChanges', txt: 'Apply changes'},
+            undoChanges: {id: 'undoChanges', txt: 'Undo applied changes'},
+            cancelChanges: {id: 'cancelChanges', txt: 'Cancel changes'},
+            applyChanges: {id: 'applyChanges', txt: 'Apply changes'},
         };
     };
 
@@ -45,13 +45,13 @@ let actionBadges = new ActionBagdes();
 actionBadges.createBadges();
 
 
-import {OptionChecker, ResetZoom, ZoomToggler} from '../model/BadgesClasses';
+import {EditAtp, OptionChecker, ResetZoom, ZoomToggler} from '../model/BadgesClasses';
 
 global.zoom = new ZoomToggler('toggle-zoom', chartAtpInstance, 'zoom');
 zoom.iCheckSetStartState().iCheckToggleSet();
 const pan = new OptionChecker('toggle-pan', chartAtpInstance, 'pan');
 pan.iCheckSetStartState().iCheckToggleSet();
-// const editAtp = new EditAtp('edit-atp', chartAtpInstance);
-// editAtp.iCheckToggleSet().iCheckSetStartState();
+const editAtp = new EditAtp('edit-atp', chartAtpInstance);
+editAtp.iCheckToggleSet().iCheckSetStartState();
 const resetZoom = new ResetZoom('reset-zoom', chartAtpInstance);
 resetZoom.iCheckToggleSet().iCheckSetStartState();

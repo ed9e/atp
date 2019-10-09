@@ -170,26 +170,26 @@ function callback() {
 
 //Apply changes to old dataset
 let history = [];
-document.getElementById('applyChanges').addEventListener('click', function () {
-    history.push(atpOptions.data.datasets[1].data.slice());
-    atpOptions.data.datasets[1].data = atpOptions.data.datasets[0].data.slice();
-    chartAtpInstance.update();
-});
+// document.getElementById('applyChanges').addEventListener('click', function () {
+//     history.push(atpOptions.data.datasets[1].data.slice());
+//     atpOptions.data.datasets[1].data = atpOptions.data.datasets[0].data.slice();
+//     chartAtpInstance.update();
+// });
 
 //Cancel changes - rrevert to old dataset
-document.getElementById('cancelChanges').addEventListener('click', function () {
-    atpOptions.data.datasets[0].data = atpOptions.data.datasets[1].data.slice();
-
-});
+// document.getElementById('cancelChanges').addEventListener('click', function () {
+//     atpOptions.data.datasets[0].data = atpOptions.data.datasets[1].data.slice();
+//
+// });
 
 //Cancel changes - rrevert to old dataset
-document.getElementById('undoChanges').addEventListener('click', function () {
-    var data = history.pop();
-    if (data) {
-        atpOptions.data.datasets[0].data = data.slice();
-        atpOptions.data.datasets[1].data = data.slice();
-        atpOptions.data.datasets[2].data = data.slice().ftpO();
-
-        chartAtpInstance.update();
-    }
-});
+// document.getElementById('undoChanges').addEventListener('click', function () {
+//     var data = history.pop();
+//     if (data) {
+//         atpOptions.data.datasets[0].data = data.slice();
+//         atpOptions.data.datasets[1].data = data.slice();
+//         atpOptions.data.datasets[2].data = data.slice().ftpO();
+//
+//         chartAtpInstance.update();
+//     }
+// });

@@ -12,7 +12,7 @@ require('./atp/graph/atp_graph.js');
 
 global.chartDataAction = new ChartDataAction(chartAtpInstance);
 global.apiUrlConfig = new ApiUrlConfig();
-require('./dashboard/ActionBagdes');
 require('./atp/ActivityBadges');
+require('./atp/ActionBagdes');
 require('./dashboard/ConfigBadges');
 require('./atp/graph/d3.js');
