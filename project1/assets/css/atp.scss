@@ -193,7 +193,7 @@ body {
       & li a {
         & i {
           filter: grayscale(10%);
-          transition: .3s ease-in;
+          transition: .25s ease-in;
           color: $link-color;
           font-size: larger;
         }
@@ -208,7 +208,7 @@ body {
       & li a {
         & i {
           filter: grayscale(20%);
-          transition: .3s ease-out;
+          transition: .25s ease-out;
           color: $primary-color;
         }
 
