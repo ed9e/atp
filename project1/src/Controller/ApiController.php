@@ -7,6 +7,7 @@ use App\Entity\GarminActivityDetails;
 use App\Repository\ActivityDetailsRepository;
 use App\Service\Atp\ATP;
 use App\Service\GroupedData;
+use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;

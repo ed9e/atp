@@ -1,5 +1,5 @@
 import {ApiUrlConfig} from "./dashboard/ApiUrlConfig";
-import {ChartDataAction} from "./dashboard/ChartDataAction";
+import {ChartDataAction} from "./atp/ChartDataAction";
 
 require('chart.js');
 require('chartjs-plugin-zoom');

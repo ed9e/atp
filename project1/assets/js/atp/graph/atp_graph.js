@@ -68,7 +68,7 @@ global.atpOptions = {
             {
                 label: 'FTP DONE BG',
                 type: 'line',
-                backgroundColor: '#01010188',
+                backgroundColor: '#010101ee',
                 fill: true,
                 data: bar_data(done).ftpO(),
                 borderColor: '#010101ff',
@@ -103,7 +103,7 @@ global.atpOptions = {
                 data: FTP_data(bar_data(yValues, (x) => {
                     return typeof x === 'string' ? 0 : x
                 })),
-                borderColor: '#01010177',
+                borderColor: '#010101ff',
                 borderWidth: 2,
                 //borderDash: [1, 1],
                 xAxisID: "x-axis1",
@@ -388,6 +388,7 @@ Object.entries(phases2).forEach(phases_dataset);
 
 //TODO: to tu
 global.chartAtpInstance = new Chart(ctx, atpOptions);
+console.log(chartAtpInstance);
 global.chartAtpInstance.config.data.datasets.find = function (id) {
     for (let o in this) {
         if (this[o].id === id) {

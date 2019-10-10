@@ -48,7 +48,7 @@ global.general = {
     ftp: {
         //bg: "rgba(42, 187, 155, 1)"
         bg: FTPgradient,
-        borderColor: theme.borderColor.ftp
+        borderColor: FTPgradient//theme.borderColor.ftp
     },
     ftpDone: {
         bg: FTPDonegradient,
