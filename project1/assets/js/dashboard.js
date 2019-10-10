@@ -14,7 +14,7 @@ require('./dashboard/graph/dashboard_graph.js');
 require('zinggrid');
 
 global.chartDataAction = new ChartDataAction(chartAtpInstance);
-global.apiUrlConfig = new ApiUrlConfig();
+global.apiUrlConfig = new ApiUrlConfig('weekly');
 require('./dashboard/Ajax');
 require('./dashboard/datatable');
 require('./dashboard/ActivityBadges');

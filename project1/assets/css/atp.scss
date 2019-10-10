@@ -193,7 +193,7 @@ body {
       & li a {
         & i {
           filter: grayscale(10%);
-          transition: .3s ease-in;
+          transition: .25s ease-in;
           color: $link-color;
           font-size: larger;
         }
@@ -208,7 +208,7 @@ body {
       & li a {
         & i {
           filter: grayscale(20%);
-          transition: .3s ease-out;
+          transition: .25s ease-out;
           color: $primary-color;
         }
 
@@ -224,7 +224,7 @@ body {
     }
 
     & .wrapper {
-      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.16) 0%, transparentize($body-color, 0.25) 10%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 20%);
+      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 20%);
       background-blend-mode: multiply, multiply;
       overflow: hidden;
     }

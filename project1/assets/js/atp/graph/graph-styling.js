@@ -2,7 +2,7 @@ global.theme = require('./themes/orange.js').sass;
 
 let barGradient = ctx.createLinearGradient(0, 0, 0, 700);
 let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 700);
-let FTPgradient = ctx.createLinearGradient(0, 0, 0, 700);
+let FTPgradient = ctx.createLinearGradient(0, 0, 0, 650);
 let FTPDonegradient = ctx.createLinearGradient(0, 0, 0, 700);
 let gridGradient = ctx.createLinearGradient(0, 0, 0, 700);
 let gridPhasesGradient = ctx.createLinearGradient(0, 0, 0, 700);
@@ -24,8 +24,8 @@ bar2Gradient.addColorStop(0.6, theme.gradient.bar2 + 'aa');
 bar2Gradient.addColorStop(1, theme.gradient.bar2 + '66');
 
 FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
-FTPgradient.addColorStop(0.2, theme.gradient.ftp + 'ff');
-FTPgradient.addColorStop(0.65, theme.gradient.ftp + '00');
+FTPgradient.addColorStop(0.15, theme.gradient.ftp + 'ff');
+FTPgradient.addColorStop(0.75, theme.gradient.ftp + '05');
 FTPgradient.addColorStop(1, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
 FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'ee');

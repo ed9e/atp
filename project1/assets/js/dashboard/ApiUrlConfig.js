@@ -1,17 +1,18 @@
 export class ApiUrlConfig {
-    constructor() {
+    constructor(weeklyPath) {
+        this.weeklyPath = weeklyPath;
         this.url = new URL('http://127.0.0.1:8000/api/');
         this.urlParams = {
             activityIds: {default: [1, 6]},
             profileId: {default: 'lbrzozowski'},
             weeklyType: {default: 'time'},
-            weekDate: {default:'', store:null}
+            weekDate: {default: '', store: null}
         };
     }
 
     hrefWeekly() {
         let url = new URL(this.url);
-        url.pathname += 'weekly';
+        url.pathname += this.weeklyPath;
         let searchParams = this.getSearchParams();
         Object.keys(searchParams).forEach(function (x) {
             url.searchParams.append(x, searchParams[x])
@@ -20,8 +21,7 @@ export class ApiUrlConfig {
         return url.href;
     }
 
-    storeWeekDate(date)
-    {
+    storeWeekDate(date) {
         this.urlParams.weekDate.store = date;
         return this;
     }

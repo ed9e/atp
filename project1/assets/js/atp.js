@@ -11,7 +11,7 @@ require('./atp/graph/graph-styling.js');
 require('./atp/graph/atp_graph.js');
 
 global.chartDataAction = new ChartDataAction(chartAtpInstance);
-global.apiUrlConfig = new ApiUrlConfig();
+global.apiUrlConfig = new ApiUrlConfig('atp');
 require('./atp/ActivityBadges');
 require('./atp/ActionBagdes');
 require('./dashboard/ConfigBadges');
