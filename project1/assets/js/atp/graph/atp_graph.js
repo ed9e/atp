@@ -59,7 +59,7 @@ global.atpOptions = {
                 data: bar_data(done).ftpO(),
                 borderColor: general.ftpDone.borderColor,
                 borderWidth: 1,
-                borderDash: [2, 2],
+                borderDash: [0, 0],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
@@ -68,10 +68,10 @@ global.atpOptions = {
             {
                 label: 'FTP DONE BG',
                 type: 'line',
-                backgroundColor: '#01010177',
+                backgroundColor: '#01010188',
                 fill: true,
                 data: bar_data(done).ftpO(),
-                borderColor: '#01010177',
+                borderColor: '#010101ff',
                 borderWidth: 2,
                 //borderDash: [1, 1],
                 xAxisID: "x-axis1",
@@ -89,12 +89,28 @@ global.atpOptions = {
                 })),
                 borderColor: general.ftp.borderColor,
                 borderWidth: 1,
-                borderDash: [1, 1],
+                borderDash: [0, 0],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
                 id: 'FTP',
-            }
+            },
+            {
+                label: 'FTP BG',
+                type: 'line',
+                backgroundColor: '#01010177',
+                fill: true,
+                data: FTP_data(bar_data(yValues, (x) => {
+                    return typeof x === 'string' ? 0 : x
+                })),
+                borderColor: '#01010177',
+                borderWidth: 2,
+                //borderDash: [1, 1],
+                xAxisID: "x-axis1",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+                id: 'FTPBg'
+            },
         ]
     },
     options: {
