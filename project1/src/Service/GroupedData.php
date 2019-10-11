@@ -48,7 +48,7 @@ class GroupedData
 
 
         $diff = array_diff($keys, array_keys($weeklyData));
-        $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
+        $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
         ksort($done);
 
         $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);

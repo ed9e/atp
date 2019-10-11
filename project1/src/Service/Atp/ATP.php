@@ -109,10 +109,17 @@ class ATP
 
     public function rework(): ATP
     {
-        $prev = $this->plan->createIntervalArrayByPrev($this->plan->getStart(), 'P60W');
+        $doneKeys = array_keys($this->getDone());
+        ksort($doneKeys);
+        $firstKey = $doneKeys[0];
+        $lastKey = end($doneKeys);
+
+        $prev = $this->plan->createIntervalArrayByPrev($firstKey, 'P60W');
         //$prev = [];
-        $last = $this->plan->createIntervalArrayBy($this->plan->getEnd(), 'P20W');
-        $keys = array_merge($prev, array_keys($this->data), $last);
+        $last = $this->plan->createIntervalArrayBy($lastKey, 'P220W');
+        $keys = array_merge($prev, $doneKeys, $last);
+        ksort($keys);
+
         $values = array_values($this->data);
         $values = array_merge(array_fill_keys(array_keys($prev), 15), $values);
         $values = array_merge($values, array_fill_keys(array_keys($last), 15));
@@ -134,7 +141,7 @@ class ATP
             return [$from, $to];
         }, $this->groupPhases);
 
-        $diff = array_diff($keys, array_keys($this->getDone()));
+        $diff = array_diff($keys, $doneKeys);
         $done = array_merge(array_fill_keys($diff, 1), $this->getDone());
         ksort($done);
 //        $done = array_values($done);

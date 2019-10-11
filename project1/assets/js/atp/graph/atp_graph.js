@@ -103,8 +103,8 @@ global.atpOptions = {
                 data: FTP_data(bar_data(yValues, (x) => {
                     return typeof x === 'string' ? 0 : x
                 })),
-                borderColor: '#010101ff',
-                borderWidth: 2,
+                borderColor: '#00000022',
+                borderWidth: 1,
                 //borderDash: [1, 1],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
@@ -325,7 +325,7 @@ global.atpOptions = {
                 ticks: {
                     reverse: false,
                     min: -20,
-                    max: atpYAxes.max,
+                    //max: atpYAxes.max,
                     display: false,
                     padding: 10
                 }
