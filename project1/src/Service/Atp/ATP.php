@@ -124,7 +124,7 @@ class ATP
         if (!$czyAtpZaczacOdZera) {
             $values = array_merge($this->getDone(), $this->data);
             $diff = array_diff($keys, array_keys($values));
-            $values = array_merge(array_fill_keys($diff, 1), $values);
+            $values = array_merge(array_fill_keys($diff, 0), $values);
         } else {
             $values = array_merge(array_fill_keys($diff, 1), $this->data);
         }

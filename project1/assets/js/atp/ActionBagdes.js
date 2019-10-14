@@ -45,13 +45,13 @@ let actionBadges = new ActionBagdes();
 actionBadges.createBadges();
 
 
-import {EditAtp, OptionChecker, ResetZoom, ZoomToggler} from '../model/BadgesClasses';
+import {ApplyChanges, EditAtp, OptionChecker, ResetZoom, ZoomToggler} from '../model/BadgesClasses';
 
 global.zoom = new ZoomToggler('toggle-zoom', chartAtpInstance, 'zoom');
 zoom.iCheckSetStartState().iCheckToggleSet();
 const pan = new OptionChecker('toggle-pan', chartAtpInstance, 'pan');
 pan.iCheckSetStartState().iCheckToggleSet();
-// const editAtp = new EditAtp('edit-atp', chartAtpInstance);
-// editAtp.iCheckToggleSet().iCheckSetStartState();
+const applyChanges = new ApplyChanges('applyChanges', chartAtpInstance);
+applyChanges.iCheckToggleSet().iCheckSetStartState();
 const resetZoom = new ResetZoom('reset-zoom', chartAtpInstance);
 resetZoom.iCheckToggleSet().iCheckSetStartState();
