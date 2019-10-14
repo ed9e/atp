@@ -19,6 +19,8 @@ class ATP
     protected $done;
     protected $em;
     protected $requestStack;
+    protected $from;
+    protected $to;
 
     public function __construct(EntityManagerInterface $em, RequestStack $requestStack)
     {
@@ -52,111 +54,130 @@ class ATP
 
     protected $atp;
 
-    public function plan(array $options)
+    public function plan(array $options): ATP
     {
+        $this->from = $this->fixDate($options[0]['from']);
+        $this->to = $this->fixDate(end($options)['to']);
 
-        $this->plan = new Plan([
-            'from' => (new DateTime())->setTimestamp(strtotime('next friday', strtotime($options['from'])))->format('Y-m-d'),
-            'to' => (new DateTime())->setTimestamp(strtotime('next friday', strtotime($options['to'])))->format('Y-m-d')
-        ], $this->requestStack);
+        foreach ($options as &$option) {
+            $option['from'] = $this->fixDate($option['from']);
+            $option['to'] = $this->fixDate($option['to']);
+        }
+        $this->plan = new Plan($options, $this->requestStack);
         return $this;
     }
 
-    public function fetchPlan()
+    protected function fixDate($date): string
+    {
+        return (new DateTime())->setTimestamp(strtotime('next friday', strtotime($date)))->format('Y-m-d');
+    }
+
+    public function fetchPlan(): ATP
     {
         $this->data = array_reverse($this->plan->create()->fetch()->getTimeValueByWeek());
         $this->groupPhases = $this->plan->getCalendar()->getGroupedExoPhase();
         return $this;
     }
 
-    public function fetchData()
-    {
-        $this->data = ['2020-08-30' => 155, '2020-09-06' => 315, '2020-09-13' => 345, '2020-09-20' => 165, '2020-09-27' => 270, '2020-10-04' => 315, '2020-10-11' => 345, '2020-10-18' => 165, '2020-10-25' => 280, '2020-11-01' => 325, '2020-11-08' => 355, '2020-11-15' => 165, '2020-11-22' => 280, '2020-11-29' => 325, '2020-12-06' => 355, '2020-12-13' => 165, '2020-12-20' => 335, '2020-12-27' => 365, '2021-01-03' => 165, '2021-01-10' => 290, '2021-01-17' => 335, '2021-01-24' => 365, '2021-01-31' => 165, '2021-02-07' => 290, '2021-02-14' => 335, '2021-02-21' => 365, '2021-02-28' => 165, '2021-03-07' => 290, '2021-03-14' => 335, '2021-03-21' => 365, '2021-03-28' => 165, '2021-04-04' => 315, '2021-04-11' => 315, '2021-04-18' => 315, '2021-04-25' => 155, '2021-05-02' => 315, '2021-05-09' => 315, '2021-05-16' => 155, '2021-05-23' => 315, '2021-05-30' => 315, '2021-06-06' => 315, '2021-06-13' => 155, '2021-06-20' => 255, '2021-06-27' => 240,];
-        return $this;
-    }
-
-    public function getDone()
+    public function getDone(): array
     {
         $weekly = $this->em->getRepository(WeeklyActivity::class);
         $weeklyResult = $weekly->getWeekly2($this->prepareWeeklyQueryParams($this->requestStack->getCurrentRequest()));
-
-        return $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
-
-        return [
-            '2019-08-05' => 278,
-            '2019-07-29' => 154,
-            '2019-07-22' => 201,
-            '2019-07-15' => 249,
-            '2019-07-08' => 101,
-            '2019-07-01' => 249,
-            '2019-06-24' => 278,
-            '2019-06-17' => 116,
-            '2019-06-10' => 213,
-            '2019-06-03' => 197,
-            '2019-05-27' => 176,
-            '2019-05-20' => 389,
-            '2019-05-13' => 516,
-        ];
+        return array_column($weeklyResult, 'timeMinuteSum', 'weekly');
 
     }
+
     protected function prepareWeeklyQueryParams(Request $request): array
     {
         $activity_id = array_filter(explode(',', $request->query->get('activityId')));
         $userDisplayName = $request->query->get('profileId');
         $weeklyType = $request->query->get('weeklyType');
-        return ['activityId' => $activity_id?:[1,6], 'userDisplayName' => $userDisplayName?:'lbrzozowski', 'weeklyType' => $weeklyType?:'time'];
+        return ['activityId' => $activity_id ?: [1, 6], 'userDisplayName' => $userDisplayName ?: 'lbrzozowski', 'weeklyType' => $weeklyType ?: 'time'];
     }
 
     public function rework(): ATP
     {
         $doneKeys = array_keys($this->getDone());
         ksort($doneKeys);
-        $firstKey = $doneKeys[0];
-        $lastKey = end($doneKeys);
 
-        $prev = $this->plan->createIntervalArrayByPrev($firstKey, 'P60W');
-        //$prev = [];
-        $last = $this->plan->createIntervalArrayBy($lastKey, 'P220W');
-        $keys = array_merge($prev, $doneKeys, $last);
+        $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime('2014-12-01')))->format('Y-m-d');
+        $lastKey = $this->to;
+        $keys = $this->plan->createIntervalArray($firstKey, $lastKey);
         ksort($keys);
 
         $values = array_values($this->data);
-        $values = array_merge(array_fill_keys(array_keys($prev), 15), $values);
-        $values = array_merge($values, array_fill_keys(array_keys($last), 15));
+//        $values = array_merge(array_fill_keys(array_keys($prev), 15), $values);
+//        $values = array_merge($values, array_fill_keys(array_keys($last), 15));
 
 
-        $phases = array_flip(
-            array_map(static function ($x) {
-                $from = (new DateTime(end($x)))->getTimestamp();
-                $to = (new DateTime(reset($x) . '+0 days'))->getTimestamp();
-                $diff = $to - $from;
-                $halfTime = $from + floor($diff / 2);
-                return date('Y-m-d', $halfTime);
-            }, $this->groupPhases)
-        );
-
-        $phases2 = array_map(function ($x) {
-            $from = (new DateTime(end($x) . '-4 days'))->format('Y-m-d');
-            $to = (new DateTime(reset($x) . '+4 days'))->format('Y-m-d');
-            return [$from, $to];
-        }, $this->groupPhases);
+        $phases = $this->remapPhases($this->groupPhases);
+        $phases2 = $this->remapPhasesLine($this->groupPhases);
 
         $diff = array_diff($keys, $doneKeys);
-        $done = array_merge(array_fill_keys($diff, 1), $this->getDone());
+
+        $done = array_merge(array_fill_keys($diff, 0), $this->getDone());
         ksort($done);
-//        $done = array_values($done);
-//        $done = $this->getDone();
+
         $diff = array_diff($keys, array_keys($this->data));
+
         $czyAtpZaczacOdZera = false;
-        if(!$czyAtpZaczacOdZera) {
+        if (!$czyAtpZaczacOdZera) {
             $values = array_merge($this->getDone(), $this->data);
-        }else{
-            $values = array_merge(array_fill_keys($diff, 15), $this->data);
+            $diff = array_diff($keys, array_keys($values));
+            $values = array_merge(array_fill_keys($diff, 1), $values);
+        } else {
+            $values = array_merge(array_fill_keys($diff, 1), $this->data);
         }
         ksort($values);
-        $this->atp = ['keys' => $keys, 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
+        $this->atp = ['keys' => $this->getZoomKeys(), 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
         //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
         return $this;
+    }
+
+    protected function remapPhases($phases): array
+    {
+        $result = [];
+        foreach ($phases as $phase) {
+            $res = array_flip(
+                array_map(static function ($x) {
+                    $from = (new DateTime(end($x)))->getTimestamp();
+                    $to = (new DateTime(reset($x) . '+0 days'))->getTimestamp();
+                    $diff = $to - $from;
+                    $halfTime = $from + floor($diff / 2);
+                    return date('Y-m-d', $halfTime);
+                }, $phase)
+            );
+            foreach ($res as $k => $re) {
+                $result[$k] = $re;
+            }
+        }
+        return $result;
+    }
+
+    protected function remapPhasesLine($phases): array
+    {
+        $result = [];
+        foreach ($phases as $phase) {
+            $res = array_map(static function ($x) {
+                $from = (new DateTime(reset($x) . '-4 days'))->format('Y-m-d');
+                $to = (new DateTime(end($x) . '+4 days'))->format('Y-m-d');
+                return [$from, $to];
+            }, $phase);
+
+            foreach ($res as $k => $re) {
+                sort($re);
+                $result[$k][] = $re;
+            }
+        }
+        return $result;
+    }
+
+    protected function getZoomKeys(): array
+    {
+        $keys = $this->plan->createIntervalArray($this->from, $this->to);
+        $prev = $this->plan->createIntervalArrayByPrev($this->from, 'P40W');
+        $last = $this->plan->createIntervalArrayBy($this->to, 'P20W');
+        return array_merge($prev, $keys, $last);
     }
 
     /**

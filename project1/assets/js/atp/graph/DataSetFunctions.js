@@ -24,13 +24,15 @@ function bar_data(oIn, func = null) {
     return arr;
 }
 
+
 function phases_dataset(d) {
-    for (let i = 0; d[1][i] != undefined; i += 2) {
+
+    for (let i = 0; d[1][i] != undefined; i += 1) {
 
         let label = d[1]['label'] || d[0];
         let colorInd = d[1]['color'] || d[0];
-        let from = d[1][i];
-        let to = d[1][i + 1];
+        let from = d[1][i][0];
+        let to = d[1][i][1];
 
         let dataset = {
             label: label,

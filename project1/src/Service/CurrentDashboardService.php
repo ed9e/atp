@@ -10,7 +10,7 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class GroupedData
+class CurrentDashboardService
 {
     protected $request;
     protected $em;

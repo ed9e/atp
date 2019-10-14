@@ -5,17 +5,19 @@ namespace App\Service\Atp;
 
 
 use App\Service\Atp\ExoPhase\PhaseIterator;
+use App\Service\Atp\ExoPhase\Race;
 use App\Service\Atp\MicroPhase\PhaseIterator as MicroPhaseIterator;
 
 class Calendar
 {
-    protected $weeks;
+    protected $weeks = [];
     protected $countWeeks;
     protected $weekPointer = 0;
     protected $calendar;
     protected $groupedExoPhase;
     protected $timeValueByWeek;
     protected $requestStack;
+    protected $planNo = 0;
 
     /**
      * @return mixed
@@ -41,11 +43,18 @@ class Calendar
         return $this->groupedExoPhase;
     }
 
-    public function __construct($weeks, $requestStack)
+    public function __construct($requestStack)
     {
-        $this->weeks = $weeks;
-        $this->countWeeks = count($weeks);
+
         $this->requestStack = $requestStack;
+    }
+
+    public function addWeeks($weeks): Calendar
+    {
+        $this->weeks = array_merge($weeks, $this->weeks);
+        $this->countWeeks = count($weeks);
+        $this->weekPointer = 0;
+        return $this;
     }
 
     /**
@@ -55,7 +64,10 @@ class Calendar
     {
         foreach ($this->calendar as $week => $phases) {
             $this->timeValueByWeek[$week] = $phases['microphase']->getTimeValue();
-            $this->groupedExoPhase[$phases['exophase']->getLabel()][] = $week;
+            $this->groupedExoPhase[$this->planNo][$phases['exophase']->getLabel()][] = $week;
+            if (get_class($phases['exophase']) === Race::class) {
+                $this->planNo++;
+            }
         }
 
         return $this;
@@ -70,7 +82,7 @@ class Calendar
         return date('Y-m-d', $halfTime);
     }
 
-    public function fill(PhaseIterator $phaseIterator)
+    public function fill(PhaseIterator $phaseIterator): void
     {
         foreach ($phaseIterator as $exoPhase) {
             foreach ($exoPhase->getMesoPhases() as $mesoPhase) {
@@ -86,13 +98,16 @@ class Calendar
         while ($count > 0) {
             $count--;
 
-            $this->calendar[$this->weeks[$this->weekPointer]] = [
-                'exophase' => $exoPhase,
-                'mesophase' => $mesoPhase,
-                'microphase' => $microPhases->first(),
-            ];
-            $this->weekPointer++;
+            if (array_key_exists($this->weekPointer, $this->weeks)) {
+                $this->calendar[$this->weeks[$this->weekPointer]] = [
+                    'exophase' => $exoPhase,
+                    'mesophase' => $mesoPhase,
+                    'microphase' => $microPhases->first(),
+                ];
+                $this->weekPointer++;
+            }
         }
+        ksort($this->calendar);
     }
 
     /**

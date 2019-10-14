@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\WeeklyActivity;
-use App\Service\GroupedData;
+use App\Service\CurrentDashboardService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,7 +23,7 @@ class DashboardController extends AbstractController
      */
     public function index(EntityManagerInterface $em, RequestStack $requestStack): Response
     {
-        $weekly = new GroupedData($requestStack->getCurrentRequest(), $em);
+        $weekly = new CurrentDashboardService($requestStack->getCurrentRequest(), $em);
         $data = $weekly->getWeekly();
         return $this->render('dashboard/index.html.twig', $data);
     }

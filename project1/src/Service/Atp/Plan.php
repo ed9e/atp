@@ -15,6 +15,7 @@ class Plan
     protected $end;
     protected $calendar;
     protected $request;
+    protected $options;
 
     /**
      * @return mixed
@@ -27,56 +28,61 @@ class Plan
 
     public function __construct($options, $request)
     {
-        $this->start = $options['from'];
-        $this->end = $options['to'];
+        $this->options = $options;
+        foreach ($options as $dates) {
+            $this->start[] = $dates['from'];
+            $this->end[] = $dates['to'];
+        }
+
         $this->request = $request;
     }
 
-    public function getStart()
+    public function getStart($i)
     {
-        return $this->start;
+        return $this->start[$i];
     }
 
-    public function getEnd()
+    public function getEnd($i)
     {
-        return $this->end;
+        return $this->end[$i];
     }
 
     public function create(array $options = null): Calendar
     {
-        if (null === $options) {
-            $options['from'] = $this->getStart();
-            $options['to'] = $this->getEnd();
-        }
+        $this->calendar = new Calendar($this->request);
+        foreach ($this->options as $dates) {
 
-        $dateArray = $this->createIntervalArray($options['from'], $options['to']);
+            $dateArray = $this->createIntervalArray($dates['from'], $dates['to']);
 
-        $reversedDates = array_reverse($dateArray);
-        $this->calendar = new Calendar($reversedDates, $this->request);
-        /** Składowe jakie będą brały udział w tworzeniu planu */
-        $phasesComponent = new Component($this->calendar);
-        /** Liczba iteracji do stworzenia planu */
-        $planIterator = new PlanIterator(7);
+            $reversedDates = array_reverse($dateArray);
 
-        $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
+            $this->calendar->addWeeks($reversedDates);
+            /** Składowe jakie będą brały udział w tworzeniu planu */
+            $phasesComponent = new Component($this->calendar);
+            /** Liczba iteracji do stworzenia planu */
+            $planIterator = new PlanIterator(7);
 
-        foreach ($planIterator as $iterationNo => $iteration) {
+            $phasesIterator = new PhaseIterator($phasesComponent->getPhases());
 
-            foreach ($phasesIterator as $phase) {
-                try {
-                    /** Zabieranie wolnych mikrofaz */
-                    $phase->getPlaceTaker()->takePlace($iterationNo);
-                } catch (Exception $e) {
+            foreach ($planIterator as $iterationNo => $iteration) {
 
+                foreach ($phasesIterator as $phase) {
+                    try {
+                        /** Zabieranie wolnych mikrofaz */
+                        $phase->getPlaceTaker()->takePlace($iterationNo);
+                    } catch (Exception $e) {
+
+                    }
                 }
             }
+
+            $this->calendar->fill($phasesIterator);
         }
 
-        $this->calendar->fill($phasesIterator);
         return $this->calendar;
     }
 
-    public function createIntervalArray($start, $end, $interval_spec = 'P7D')
+    public function createIntervalArray($start, $end, $interval_spec = 'P7D'): array
     {
         if (!($start instanceof DateTime)) {
             $start = new DateTime($start);
@@ -96,7 +102,7 @@ class Plan
         return $dateArray;
     }
 
-    public function createIntervalArrayBy($start, $by_interval_spec = 'P7D', $interval_spec = 'P7D')
+    public function createIntervalArrayBy($start, $by_interval_spec = 'P7D', $interval_spec = 'P7D'): array
     {
         if (!($start instanceof DateTime)) {
             $start = new DateTime($start);
@@ -108,7 +114,7 @@ class Plan
         return $this->createIntervalArray($start, $end);
     }
 
-    public function createIntervalArrayByPrev($start, $by_interval_spec = 'P7D', $interval_spec = 'P7D')
+    public function createIntervalArrayByPrev($start, $by_interval_spec = 'P7D', $interval_spec = 'P7D'): array
     {
         $start = new DateTime($start);
         $end = clone($start);
