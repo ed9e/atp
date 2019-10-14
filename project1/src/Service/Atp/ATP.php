@@ -101,7 +101,7 @@ class ATP
         ksort($doneKeys);
 
         $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime('2014-12-01')))->format('Y-m-d');
-        $lastKey = $this->to;
+        $lastKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->to)))->add( new \DateInterval('P20W'))->format('Y-m-d');
         $keys = $this->plan->createIntervalArray($firstKey, $lastKey);
         ksort($keys);
 
