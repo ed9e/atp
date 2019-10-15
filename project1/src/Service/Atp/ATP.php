@@ -5,6 +5,7 @@ namespace App\Service\Atp;
 
 
 use App\Entity\WeeklyActivity;
+use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -97,41 +98,49 @@ class ATP
 
     public function rework(): ATP
     {
-        $doneKeys = array_keys($this->getDone());
-        ksort($doneKeys);
-
-        $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime('2014-12-01')))->format('Y-m-d');
-        $lastKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->to)))->add( new \DateInterval('P20W'))->format('Y-m-d');
-        $keys = $this->plan->createIntervalArray($firstKey, $lastKey);
-        ksort($keys);
-
-        $values = array_values($this->data);
-//        $values = array_merge(array_fill_keys(array_keys($prev), 15), $values);
-//        $values = array_merge($values, array_fill_keys(array_keys($last), 15));
-
-
+        $keys = $this->remapKeys();
         $phases = $this->remapPhases($this->groupPhases);
         $phases2 = $this->remapPhasesLine($this->groupPhases);
+        $doneValues = $this->remapDoneValues($keys);
+        $atpValues = $this->remapAtpValues($keys);
+        $this->atp = ['keys' => $this->getZoomKeys(), 'values' => $atpValues, 'phases' => $phases, 'phases2' => $phases2, 'done' => $doneValues];
 
+        return $this;
+    }
+
+    protected function remapKeys(): array
+    {
+        $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->from)))->sub(new DateInterval('P250W'))->format('Y-m-d');
+        $lastKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->to)))->add(new DateInterval('P20W'))->format('Y-m-d');
+        $keys = $this->plan::createIntervalArray($firstKey, $lastKey);
+        ksort($keys);
+        return $keys;
+    }
+
+    protected function remapDoneValues($keys): array
+    {
+        $doneKeys = array_keys($this->getDone());
+        ksort($doneKeys);
         $diff = array_diff($keys, $doneKeys);
-
         $done = array_merge(array_fill_keys($diff, 0), $this->getDone());
         ksort($done);
+        return $done;
+    }
 
+    protected function remapAtpValues($keys): array
+    {
         $diff = array_diff($keys, array_keys($this->data));
 
         $czyAtpZaczacOdZera = false;
         if (!$czyAtpZaczacOdZera) {
-            $values = array_merge($this->getDone(), $this->data);
-            $diff = array_diff($keys, array_keys($values));
-            $values = array_merge(array_fill_keys($diff, 0), $values);
+            $atpValues = array_merge($this->getDone(), $this->data);
+            $diff = array_diff($keys, array_keys($atpValues));
+            $atpValues = array_merge(array_fill_keys($diff, 0), $atpValues);
         } else {
-            $values = array_merge(array_fill_keys($diff, 1), $this->data);
+            $atpValues = array_merge(array_fill_keys($diff, 1), $this->data);
         }
-        ksort($values);
-        $this->atp = ['keys' => $this->getZoomKeys(), 'values' => $values, 'phases' => $phases, 'phases2' => $phases2, 'done' => $done];
-        //$this->atp = ['keys' => $keys, 'values' => $values, 'phases' => [], 'phases2' => []];
-        return $this;
+        ksort($atpValues);
+        return $atpValues;
     }
 
     protected function remapPhases($phases): array
@@ -174,7 +183,7 @@ class ATP
 
     protected function getZoomKeys(): array
     {
-        $keys = $this->plan->createIntervalArray($this->from, $this->to);
+        $keys = $this->plan::createIntervalArray($this->from, $this->to);
         $prev = $this->plan->createIntervalArrayByPrev($this->from, 'P40W');
         $last = $this->plan->createIntervalArrayBy($this->to, 'P20W');
         return array_merge($prev, $keys, $last);
