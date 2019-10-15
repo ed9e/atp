@@ -15,6 +15,7 @@ class ATP
 {
     /** @var Plan */
     protected $plan;
+    protected $atp;
     protected $data;
     protected $groupPhases;
     protected $done;
@@ -29,46 +30,27 @@ class ATP
         $this->requestStack = $requestStack;
     }
 
-    /**
-     * @param mixed $done
-     * @return ATP
-     */
-    public function setDone($done)
-    {
-        $this->done = $done;
-        return $this;
-    }
-
-    /**
-     * @return Plan
-     */
-    public function getPlan(): Plan
-    {
-        return $this->plan;
-    }
-
-    public function setData($data)
+    public function setData($data): ATP
     {
         $this->data = $data;
         return $this;
     }
 
-    protected $atp;
-
     public function plan(array $options): ATP
     {
-        $this->from = $this->fixDate($options[0]['from']);
-        $this->to = $this->fixDate(end($options)['to']);
+        $this->from = $this::fixDate($options[0]['from']);
+        $this->to = $this::fixDate(end($options)['to']);
 
         foreach ($options as &$option) {
-            $option['from'] = $this->fixDate($option['from']);
-            $option['to'] = $this->fixDate($option['to']);
+            $option['from'] = $this::fixDate($option['from']);
+            $option['to'] = $this::fixDate($option['to']);
         }
+        unset($option);
         $this->plan = new Plan($options, $this->requestStack);
         return $this;
     }
 
-    protected function fixDate($date): string
+    protected static function fixDate($date): string
     {
         return (new DateTime())->setTimestamp(strtotime('next friday', strtotime($date)))->format('Y-m-d');
     }
@@ -82,10 +64,20 @@ class ATP
 
     public function getDone(): array
     {
+        $queryParams = $this->prepareWeeklyQueryParams($this->requestStack->getCurrentRequest());
         $weekly = $this->em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->getWeekly2($this->prepareWeeklyQueryParams($this->requestStack->getCurrentRequest()));
-        return array_column($weeklyResult, 'timeMinuteSum', 'weekly');
+        $weeklyResult = $weekly->getWeekly2($queryParams);
+        switch ($queryParams['weeklyType']) {
+            default:
+            case 'time':
+                $result = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
+                break;
+            case 'distance':
+                $result = array_column($weeklyResult, 'distanceSum', 'weekly');
+                break;
 
+        }
+        return $result;
     }
 
     protected function prepareWeeklyQueryParams(Request $request): array
