@@ -59,7 +59,7 @@ global.atpOptions = {
                 data: bar_data(done).ftpO(),
                 borderColor: general.ftpDone.borderColor,
                 borderWidth: 1,
-                borderDash: [0, 0],
+                borderDash: [2, 1],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
@@ -72,7 +72,7 @@ global.atpOptions = {
                 fill: true,
                 data: bar_data(done).ftpO(),
                 borderColor: '#010101ff',
-                borderWidth: 2,
+                borderWidth: 1,
                 //borderDash: [1, 1],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
@@ -124,11 +124,11 @@ global.atpOptions = {
         elements: {
             point: {radius: 0},
             line: {
-                tension: 0.3
+                tension: 0.4
             }
         },
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         aspectRatio: 1920/450,
         layout: {
             padding: {
@@ -160,7 +160,7 @@ global.atpOptions = {
             // }
         },
         animation: {
-            duration: 1000,
+            duration: 800,
 
             onComplete: function (animation) {
                 //console.log(animation)
@@ -228,7 +228,7 @@ global.atpOptions = {
                         tickMarkLength: 0,
                     },
                     ticks: {
-                        fontColor: general.grid.fontColor,
+                        //fontColor: general.grid.fontColor,
                         padding: 5,
                         callback: function (value, index, values) {
                             if (index % 2)
@@ -262,8 +262,8 @@ global.atpOptions = {
                         offsetGridLines: true,
                     },
                     ticks: {
-                        fontColor: general.grid.fontColor,
-                        padding: 0,
+                        //fontColor: general.grid.fontColor,
+                        padding: 2,
                         callback: function (value, index, values) {
                             return phases[value];
                         }
@@ -296,7 +296,7 @@ global.atpOptions = {
                         offsetGridLines: true,
                     },
                     ticks: {
-                        fontColor: general.grid.fontColor,
+                        //fontColor: general.grid.fontColor,
                         fontSize: 10,
                         mirror: false,
                         padding: 5,
