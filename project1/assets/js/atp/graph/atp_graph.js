@@ -198,7 +198,7 @@ global.atpOptions = {
                         offsetGridLines: true,
                     },
                     ticks: {
-                        padding: 1,
+                        padding: 0,
                         display: false,
                     },
                     categoryPercentage: .9,
@@ -327,7 +327,7 @@ global.atpOptions = {
                     min: -20,
                     //max: atpYAxes.max,
                     display: false,
-                    padding: 10
+
                 }
             }]
         },

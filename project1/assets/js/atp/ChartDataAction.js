@@ -1,12 +1,14 @@
-import {createTimeArray} from "../functions/tools";
+import {bar_data, FTP_data} from "./graph/DataSetFunctions";
 
 export class ChartDataAction {
     constructor(chart) {
         this.chart = chart;
         this.datasets = this.chart.config.data.datasets;
         this.atp = this.datasets.find('newTune');
+        this.atpOld = this.datasets.find('oldTune');
         this.done = this.datasets.find('Done');
         this.atpFTP = this.datasets.find('FTP');
+        this.atpFTPBg = this.datasets.find('FTPBg');
         this.doneFTP = this.datasets.find('FTPDone');
         this.doneFTPBg = this.datasets.find('FTPDoneBg');
     }
@@ -38,10 +40,14 @@ export class ChartDataAction {
     }
 
     onDataLoad(data) {
-        let vals = createTimeArray(data.data.done);
+        let vals = bar_data(data.data.done);
         this.done.data = vals;
-        //this.atp.data = vals.kopia().ftpOReset();
-        //this.atpFTP.data = vals.kopia().ftpOReset();
+
+        let atpData = bar_data(data.data.values);
+        this.atp.data = atpData;
+        this.atpOld.data = atpData;
+        this.atpFTP.data = FTP_data(atpData);
+        this.atpFTPBg.data = FTP_data(atpData);
         this.doneFTP.data = vals.ftpO();
         this.doneFTPBg.data = vals.ftpO();
 

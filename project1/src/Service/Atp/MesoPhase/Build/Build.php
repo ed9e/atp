@@ -15,16 +15,16 @@ class Build extends MesoPhaseAbstract
     {
         if ($count == 4) {
             return [
-                (clone $this->microPhaseTmp)->setTimeValue(285),
-                (clone $this->microPhaseTmp)->setTimeValue(285),
-                (clone $this->microPhaseTmp)->setTimeValue(285),
-                (clone $this->microPhaseTmp)->setTimeValue(125),
+                (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                (clone $this->microPhaseTmp)->setTimeValue(125)->setRatio(0.416),
             ];
         }
         return [
-            (clone $this->microPhaseTmp)->setTimeValue(285),
-            (clone $this->microPhaseTmp)->setTimeValue(295),
-            (clone $this->microPhaseTmp)->setTimeValue(125),
+            (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+            (clone $this->microPhaseTmp)->setTimeValue(295)->setRatio(0.95),
+            (clone $this->microPhaseTmp)->setTimeValue(125)->setRatio(0.416),
         ];
     }
 }

@@ -16,7 +16,7 @@ class Preparation extends MesoPhaseAbstract
         $i = 0;
         while ($i < $count) {
             $return[] =
-                (clone $this->microPhaseTmp)->setTimeValue(125);
+                (clone $this->microPhaseTmp)->setTimeValue(125)->setRatio(0.416);
             $i++;
         }
         return $return;

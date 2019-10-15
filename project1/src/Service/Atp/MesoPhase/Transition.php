@@ -11,7 +11,7 @@ class Transition extends MesoPhaseAbstract
     protected function calculateMicroPhases(int $count, $number = 0): array
     {
         return [
-            (clone $this->microPhaseTmp)->setTimeValue(0),
+            (clone $this->microPhaseTmp)->setTimeValue(0)->setRatio(0),
         ];
     }
 }

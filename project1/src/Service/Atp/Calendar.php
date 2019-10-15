@@ -4,9 +4,12 @@
 namespace App\Service\Atp;
 
 
+use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
 use App\Service\Atp\ExoPhase\PhaseIterator;
 use App\Service\Atp\ExoPhase\Race;
+use App\Service\Atp\MicroPhase\MicroPhase;
 use App\Service\Atp\MicroPhase\PhaseIterator as MicroPhaseIterator;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class Calendar
 {
@@ -20,9 +23,9 @@ class Calendar
     protected $planNo = 0;
 
     /**
-     * @return mixed
+     * @return RequestStack
      */
-    public function getRequestStack()
+    public function getRequestStack(): RequestStack
     {
         return $this->requestStack;
     }
@@ -43,7 +46,7 @@ class Calendar
         return $this->groupedExoPhase;
     }
 
-    public function __construct($requestStack)
+    public function __construct(RequestStack $requestStack)
     {
 
         $this->requestStack = $requestStack;
@@ -63,15 +66,17 @@ class Calendar
     public function fetch(): Calendar
     {
         foreach ($this->calendar as $week => $phases) {
-            $this->timeValueByWeek[$week] = $phases['microphase']->getTimeValue();
-            $this->groupedExoPhase[$this->planNo][$phases['exophase']->getLabel()][] = $week;
-            if (get_class($phases['exophase']) === Race::class) {
+            /** @var MicroPhase $microPhase */
+            $microPhase = $phases['microphase'];
+            $this->timeValueByWeek[$week] = $microPhase->getTimeValue();
+            /** @var ExoPhaseAbstract $exoPhase */
+            $exoPhase = $phases['exophase'];
+            $this->groupedExoPhase[$this->planNo][$exoPhase->getLabel()][] = $week;
+            if (get_class($exoPhase) === Race::class) {
                 $this->planNo++;
             }
         }
-
         return $this;
-        //return array_reverse($ret);
     }
 
     public function calculateMidOfInterval($from, $to)

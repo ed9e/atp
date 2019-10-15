@@ -21,7 +21,7 @@ abstract class MesoPhaseAbstract
     protected $microPhaseIterationConfig;
     protected $number;
 
-    public function __construct($calendar)
+    public function __construct(Calendar $calendar)
     {
         $this->calendar = $calendar;
         $this->microPhases = new \App\Service\Atp\MicroPhase\PhaseIterator();

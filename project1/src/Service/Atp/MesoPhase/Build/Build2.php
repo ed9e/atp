@@ -11,27 +11,27 @@ class Build2 extends Build
         $phases = [
             4 => [
                 [
-                    (clone $this->microPhaseTmp)->setTimeValue(285),
-                    (clone $this->microPhaseTmp)->setTimeValue(285),
-                    (clone $this->microPhaseTmp)->setTimeValue(285),
-                    (clone $this->microPhaseTmp)->setTimeValue(115),
+                    (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                    (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                    (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                    (clone $this->microPhaseTmp)->setTimeValue(115)->setRatio(0.38333),
                 ],
                 [
-                    (clone $this->microPhaseTmp)->setTimeValue(285),
-                    (clone $this->microPhaseTmp)->setTimeValue(285),
-                    (clone $this->microPhaseTmp)->setTimeValue(285),
-                    (clone $this->microPhaseTmp)->setTimeValue(115),
+                    (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                    (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                    (clone $this->microPhaseTmp)->setTimeValue(285)->setRatio(0.95),
+                    (clone $this->microPhaseTmp)->setTimeValue(115)->setRatio(0.38333),
                 ]
             ],
             [
-                (clone $this->microPhaseTmp)->setTimeValue(315),
-                (clone $this->microPhaseTmp)->setTimeValue(315),
-                (clone $this->microPhaseTmp)->setTimeValue(115),
+                (clone $this->microPhaseTmp)->setTimeValue(315)->setRatio(1.05),
+                (clone $this->microPhaseTmp)->setTimeValue(315)->setRatio(1.05),
+                (clone $this->microPhaseTmp)->setTimeValue(115)->setRatio(0.38333),
             ],
             [
-                (clone $this->microPhaseTmp)->setTimeValue(300),
-                (clone $this->microPhaseTmp)->setTimeValue(300),
-                (clone $this->microPhaseTmp)->setTimeValue(115),
+                (clone $this->microPhaseTmp)->setTimeValue(300)->setRatio(1),
+                (clone $this->microPhaseTmp)->setTimeValue(300)->setRatio(1),
+                (clone $this->microPhaseTmp)->setTimeValue(115)->setRatio(0.38333),
             ]
         ];
 
