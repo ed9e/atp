@@ -3,6 +3,7 @@ import {ChartDataAction} from "./atp/ChartDataAction";
 
 require('chart.js');
 require('chartjs-plugin-zoom');
+require('chartjs-plugin-deferred');
 require('./atp/graph/ftp.js');
 let chartTune = document.getElementById('chartJSContainer');
 global.ctx = chartTune.getContext('2d');

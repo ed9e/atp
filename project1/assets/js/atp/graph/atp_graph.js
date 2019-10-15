@@ -263,7 +263,7 @@ global.atpOptions = {
                     },
                     ticks: {
                         fontColor: general.grid.fontColor,
-                        padding: 5,
+                        padding: 0,
                         callback: function (value, index, values) {
                             return phases[value];
                         }
@@ -388,7 +388,6 @@ Object.entries(phases2).forEach(phases_dataset);
 
 //TODO: to tu
 global.chartAtpInstance = new Chart(ctx, atpOptions);
-console.log(chartAtpInstance);
 global.chartAtpInstance.config.data.datasets.find = function (id) {
     for (let o in this) {
         if (this[o].id === id) {

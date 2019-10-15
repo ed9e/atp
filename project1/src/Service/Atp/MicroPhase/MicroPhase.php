@@ -37,7 +37,7 @@ class MicroPhase
                 $this->basis = 300;
                 break;
             case 'distance':
-                $this->basis = 30;
+                $this->basis = 60;
                 break;
         }
     }

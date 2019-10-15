@@ -69,7 +69,7 @@ global.general = {
         borderColor: '#5a5b60',
     },
     timeline: {
-        thick: 12,
+        thick: 3,
         thick2: 5,
         color: timeGradient
     },
