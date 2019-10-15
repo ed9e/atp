@@ -52,7 +52,7 @@ class Plan
         $this->calendar = new Calendar($this->request);
         foreach ($this->options as $dates) {
 
-            $dateArray = $this->createIntervalArray($dates['from'], $dates['to']);
+            $dateArray = $this::createIntervalArray($dates['from'], $dates['to']);
 
             $reversedDates = array_reverse($dateArray);
 
@@ -82,7 +82,7 @@ class Plan
         return $this->calendar;
     }
 
-    public function createIntervalArray($start, $end, $interval_spec = 'P7D'): array
+    public static function createIntervalArray($start, $end, $interval_spec = 'P7D'): array
     {
         if (!($start instanceof DateTime)) {
             $start = new DateTime($start);

@@ -17,7 +17,10 @@ function bar_data(oIn, func = null) {
         }
         arr.push({
             x: moment(x),
-            y: oIn[x]
+            y: oIn[x],
+            get: ()=>{
+                return {x:oIn[x]}
+            }
         });
     });
 

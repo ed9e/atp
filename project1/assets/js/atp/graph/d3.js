@@ -45,7 +45,7 @@ function scroll(t) {
     let scale = e.deltaMode ? 3 : 53;
     let value = e.altKey ? (parseInt(e.deltaY) / scale) * 20 : parseInt(e.deltaY) / scale;
     let newTune = par.chart.config.data.datasets.find('newTune');
-    console.log(newTune);
+
     newTune.data[par.index].y = parseInt(newTune.data[par.index].y) - value;
     par.chart.config.data.datasets.find('FTP').data = FTP_data(newTune.data);
     par.chart.update(0);

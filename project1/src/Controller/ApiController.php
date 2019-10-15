@@ -84,4 +84,12 @@ class ApiController extends AbstractController
         return $this->json(['data' => $plan]);
     }
 
+    /**
+     * @Route("/atp-post")
+     * @param RequestStack $requestStack
+     */
+    public function atpPost(RequestStack $requestStack)
+    {
+        return $this->json();
+    }
 }

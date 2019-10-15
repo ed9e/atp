@@ -26,11 +26,11 @@ class CurrentDashboardService
     {
         $queryParams = $this->prepareWeeklyQueryParams($this->request);
         $options = [
-            'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P120W')),
+            'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P250W')),
             'to' => (new DateTime())->setTimestamp(strtotime('next friday')),
         ];
-        $plan = new Plan($options, $this->request);
-        $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
+
+        $keys = Plan::createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
 
         /** @var WeeklyRepository $weekly */
         $weekly = $this->em->getRepository(WeeklyActivity::class);
@@ -48,11 +48,11 @@ class CurrentDashboardService
 
 
         $diff = array_diff($keys, array_keys($weeklyData));
-        $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
+        $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
         ksort($done);
 
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);
-
+        //$values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);
+        $values = [];
         $notes = [
             '2017-03-11' => '12h w Kopalni Soli',
             '2019-01-26' => 'ZMB 2019',

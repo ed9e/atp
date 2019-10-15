@@ -41,7 +41,7 @@ $img: (
 );
 
 $img2: (
-        "font": #f0f5ec,
+        "font": #edf2e9,
         "base": #000,
         "accent-1": #00185c
 );
@@ -268,92 +268,6 @@ body {
       //width: 1920px;
       //  max-height: 400px;
     }
-
-    //.sidebar-menu {
-    //  & > li {
-    //    //background-color: $menu-color;
-    //
-    //    background-color: #ffffff22;
-    //    background-color: transparentize(lighten($primary-color, 1%), 0.97);
-    //    border-top: solid 1px darken($menu-color, 2%);
-    //
-    //    & a {
-    //      filter: grayscale(10%);
-    //      transition: .2s ease-in;
-    //    }
-    //
-    //    & a:hover {
-    //      //background-color: $menu-color;
-    //      background-color: #ffffff33;
-    //      background-color: desaturate(darken($primary-color, 3%), 10%);
-    //      filter: grayscale(20%);
-    //      color: #fff;
-    //      //border-left: solid 5px darken($menu-color, 20%);
-    //    }
-    //
-    //    &.treeview {
-    //      &.menu-open a {
-    //
-    //        background-color: desaturate(darken($primary-color, 3%), 10%);
-    //      }
-    //
-    //      &.active > a {
-    //
-    //
-    //        //background-color: $menu-level2-color-active;
-    //        color: #fff;
-    //        background-color: $primary-color;
-    //      }
-    //    }
-    //
-    //
-    //    & .treeview-menu {
-    //      padding: 0;
-    //    }
-    //
-    //    & .treeview-menu li {
-    //      //background-color: $menu-color;
-    //      background-color: #ffffff11;
-    //      border-top: solid 1px darken($menu-color, 2%);
-    //
-    //
-    //      & a {
-    //        //padding-left: 20px;
-    //        background-color: #ffffff11;
-    //        background-color: darken($primary-color, 3%);
-    //      }
-    //
-    //      & a:hover {
-    //        border-left: 0;
-    //        color: #fff;
-    //        background-color: lighten($primary-color, 0%);
-    //      }
-    //
-    //      &.active {
-    //
-    //        //background-color: #00000011;
-    //        background-color: lighten($primary-color, 2%);
-    //
-    //        //padding-left: 5px;
-    //        //border-left: solid 5px #ffffff55;
-    //
-    //        & a:hover {
-    //          border-left: 0;
-    //          color: #fff;
-    //          background-color: #ffffff22;
-    //        }
-    //
-    //        & a {
-    //          color: #eee;
-    //          //background-color: $menu-color;
-    //          background-color: #ffffff11;
-    //        }
-    //
-    //      }
-    //    }
-    //
-    //  }
-    //}
 
     .breadcrumb::before {
       content: '' !important;

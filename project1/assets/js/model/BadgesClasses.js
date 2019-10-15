@@ -54,7 +54,6 @@ export class OptionChecker extends Checker {
 
     ifToggled(event) {
         let key = event.data.key;
-        console.log(event.data.chart.options[key].enabled);
         event.data.chart.options[key].enabled = !event.data.chart.options[key].enabled;
         event.data.chart.update();
     }
@@ -110,5 +109,42 @@ export class ResetZoom extends Checker {
         setTimeout(function () {
             event.data.checker.iCheckUncheck();
         }, 1000);
+    }
+}
+
+global.historyTune = [];
+
+export class ApplyChanges extends Checker {
+
+    constructor(id, chart) {
+        super(id, chart);
+    }
+
+    ifToggled(event) {
+        let chart = event.data.chart;
+        let iChecker = event.data.iChecker;
+        if (iChecker.checked) {
+            global.historyTune.push(atpOptions.data.datasets.find('oldTune').data.kopia());
+            global.atpOptions.data.datasets.find('oldTune').data = global.atpOptions.data.datasets.find('newTune').data.kopia();
+
+            let a = global.atpOptions.data.datasets.find('newTune').data;
+            let res = [];
+            let resDate = [];
+            for (let i of a) {
+                if(i.y<=0)
+                    continue;
+                let d = i.x.format('YYYY-MM-DD')
+                resDate.push(d)
+                res.push(i.y);
+            }
+            let result = Object.fromEntries(resDate.map((_, i) => [resDate[i], res[i]]));
+
+            console.log(result)
+
+            chart.update();
+        } else {
+
+        }
+        chart.update();
     }
 }
