@@ -20,11 +20,11 @@ class AtpPlanService
     {
         $this->atp->plan([
             ['from' => '2019-10-02',
-                'to' => '2020-01-11',],
-            ['from' => '2020-01-11',
+                'to' => '2020-01-12',],
+            ['from' => '2020-01-12',
                 'to' => '2020-05-03',],
             ['from' => '2020-05-03',
-                'to' => '2020-10-13',],
+                'to' => '2020-10-10',],
         ])->fetchPlan()->rework();
         $atpPlan = $this->atp->getAtp();
 
@@ -36,6 +36,9 @@ class AtpPlanService
             '2019-09-02' => 'Gorzycka 5',
             '2019-09-28' => 'Chartatywna 20',
             '2019-10-12' => 'UltraMaraton 52k',
+            '2020-01-12' => 'Zimowe Roztocze',
+            '2020-05-03' => '5K Test',
+            '2020-10-10' => 'UltraMaraton 52k',
         ];
 
         $atpPlan['flags'] = $notes;
