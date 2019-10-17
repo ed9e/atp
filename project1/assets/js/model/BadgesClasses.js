@@ -122,6 +122,9 @@ export class ApplyChanges extends Checker {
         super(id, chart);
     }
 
+    isEnabled() {
+        return true;
+    }
     iCheckUncheck() {
         $('#' + this.id).iCheck('uncheck');
     }
@@ -149,7 +152,7 @@ export class ApplyChanges extends Checker {
             }));
             console.log(result);
             chart.update();
-
+            this.iCheckUncheck();
         } else {
 
         }

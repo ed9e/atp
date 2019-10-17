@@ -24,7 +24,7 @@ class ActionBagdes {
             reset_zoom: {id: 'reset-zoom', txt: 'Reset zoom'},
             undoChanges: {id: 'undoChanges', txt: 'Undo applied changes'},
             cancelChanges: {id: 'cancelChanges', txt: 'Cancel changes'},
-            applyChanges: {id: 'applyChanges', txt: 'Apply changes', enabled: true},
+            applyChanges: {id: 'applyChanges', txt: 'Apply changes'},
         };
     };
 
