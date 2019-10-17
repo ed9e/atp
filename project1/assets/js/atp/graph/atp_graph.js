@@ -59,7 +59,7 @@ global.atpOptions = {
                 data: bar_data(done).ftpO(),
                 borderColor: general.ftpDone.borderColor,
                 borderWidth: 1,
-                borderDash: [2, 1],
+                borderDash: [0, 0],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
