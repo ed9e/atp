@@ -53,17 +53,8 @@ class CurrentDashboardService
 
         //$values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);
         $values = [];
-        $notes = [
-            '2017-03-11' => '12h w Kopalni Soli',
-            '2019-01-26' => 'ZMB 2019',
-            '2018-01-28' => 'ZMB 2018',
-            '2019-05-18' => 'UltraRoztocze 65k',
-            '2019-09-02' => 'Gorzycka 5',
-            '2019-09-28' => 'Chartatywna 20',
-            '2019-10-12' => 'UltraMaraton 52k',
 
-        ];
-        return ['keys' => $keys, 'done' => $done, 'values' => $values, 'phases' => $notes];
+        return ['keys' => $keys, 'done' => $done, 'values' => $values, 'phases' => NotesService::getNotes()];
     }
 
     protected function prepareWeeklyQueryParams(Request $request): array
