@@ -48,6 +48,7 @@ function phases_dataset(d) {
             //pointStyle: 'line',
             //radius: 0,
             xAxisID: "czas",
+            yAxisID: "static",
             pointHitRadius: 0,
             pointHoverRadius: 0,
         };
@@ -63,7 +64,7 @@ function getDateArray(start, end) {
     while (dt <= end) {
         arr.push({
             x: new Date(dt),
-            y: -1 * general.timeline.thick
+            y: 1 * general.timeline.thick
         });
         dt.setDate(dt.getDate() + 1);
     }

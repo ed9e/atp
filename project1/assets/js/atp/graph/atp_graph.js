@@ -129,7 +129,7 @@ global.atpOptions = {
         },
         responsive: true,
         maintainAspectRatio: true,
-        aspectRatio: 1920/450,
+        aspectRatio: 1920 / 450,
         layout: {
             padding: {
                 left: 0,
@@ -166,7 +166,7 @@ global.atpOptions = {
                 //console.log(animation)
             }
         },
-        scaleStartValue: 0,
+        //scaleStartValue: -10,
         scales: {
             xAxes: [
                 {
@@ -324,12 +324,40 @@ global.atpOptions = {
                 },
                 ticks: {
                     reverse: false,
-                    min: -20,
-                    //max: atpYAxes.max,
+                    min: 0,
+                    //max: 1500,
                     display: false,
+                    id: 'nonstatic',
+                    callback: function (value, index, values) {
 
+                        if (global.chartAtpInstance !== undefined) {
+                            global.chartAtpInstance.chart.config.options.scales.yAxes[0].ticks.min = -1 * values[0] * 0.016
+                        }
+                    }
                 }
-            }]
+            },
+                {
+                    id: 'static',
+                    display: true,
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'VALUE'
+                    },
+                    gridLines: {
+                        drawTicks: false,
+                        display: false,
+                        color: general.grid.gridLinesColor,
+                        borderDash: [1, 2],
+                        zeroLineWidth: 0
+                    },
+                    ticks: {
+                        reverse: true,
+                        min: -200,
+                        max: 15,
+                        display: false,
+
+                    }
+                }]
         },
         pan: {
             enabled: true,
