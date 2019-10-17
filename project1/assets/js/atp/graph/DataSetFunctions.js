@@ -8,6 +8,16 @@ function FTP_data(newV) {
     return newV.ftpO();
 }
 
+function FTP_data0(newV) {
+    Object.keys(newV).forEach(function (x) {
+
+        // if (newV[x].y === 0) {
+        //     newV[x].y = done[newV[x].x.format('YYYY-MM-DD')]
+        // }
+    });
+    return newV.ftpO();
+}
+
 function bar_data(oIn, func = null) {
     let arr = [];
 
@@ -18,8 +28,8 @@ function bar_data(oIn, func = null) {
         arr.push({
             x: moment(x),
             y: oIn[x],
-            get: ()=>{
-                return {x:oIn[x]}
+            get: () => {
+                return {x: oIn[x]}
             }
         });
     });
@@ -71,4 +81,4 @@ function getDateArray(start, end) {
     return arr;
 }
 
-export {FTP_data, bar_data, phases_dataset};
+export {FTP_data, FTP_data0, bar_data, phases_dataset};

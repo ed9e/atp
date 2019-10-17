@@ -1,4 +1,4 @@
-import {bar_data, FTP_data} from "./graph/DataSetFunctions";
+import {bar_data, FTP_data, FTP_data0} from "./graph/DataSetFunctions";
 
 export class ChartDataAction {
     constructor(chart) {
@@ -45,9 +45,9 @@ export class ChartDataAction {
 
         let atpData = bar_data(data.data.values);
         this.atp.data = atpData;
-        this.atpOld.data = atpData;
-        this.atpFTP.data = FTP_data(atpData);
-        this.atpFTPBg.data = FTP_data(atpData);
+         this.atpOld.data = atpData;
+         this.atpFTP.data = FTP_data0(atpData);
+         this.atpFTPBg.data = FTP_data0(atpData);
         this.doneFTP.data = vals.ftpO();
         this.doneFTPBg.data = vals.ftpO();
 
