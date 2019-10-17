@@ -122,10 +122,14 @@ export class ApplyChanges extends Checker {
         super(id, chart);
     }
 
+    iCheckUncheck() {
+        $('#' + this.id).iCheck('uncheck');
+    }
+
     ifToggled(event) {
         let chart = event.data.chart;
         let iChecker = event.data.iChecker;
-        if (iChecker.checked) {
+        if (!iChecker.checked) {
             global.historyTune.push(atpOptions.data.datasets.find('oldTune').data.kopia());
             global.atpOptions.data.datasets.find('oldTune').data = global.atpOptions.data.datasets.find('newTune').data.kopia();
 
@@ -140,11 +144,12 @@ export class ApplyChanges extends Checker {
                 resDate.push(d);
                 res.push(i.y);
             }
-            let result = Object.fromEntries(resDate.map((_, i) => [resDate[i], res[i]]));
+            let result = Object.fromEntries(resDate.map((_, i) => {
+                return [resDate[i], typeof res[i] === "string" ? null : res[i]];
+            }));
             console.log(result);
             chart.update();
 
-            this.iCheckUncheck();
         } else {
 
         }

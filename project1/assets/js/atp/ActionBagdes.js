@@ -24,7 +24,7 @@ class ActionBagdes {
             reset_zoom: {id: 'reset-zoom', txt: 'Reset zoom'},
             undoChanges: {id: 'undoChanges', txt: 'Undo applied changes'},
             cancelChanges: {id: 'cancelChanges', txt: 'Cancel changes'},
-            applyChanges: {id: 'applyChanges', txt: 'Apply changes'},
+            applyChanges: {id: 'applyChanges', txt: 'Apply changes', enabled: true},
         };
     };
 
@@ -45,7 +45,7 @@ let actionBadges = new ActionBagdes();
 actionBadges.createBadges();
 
 
-import {ApplyChanges, EditAtp, OptionChecker, ResetZoom, ZoomToggler} from '../model/BadgesClasses';
+import {ApplyChanges, OptionChecker, ResetZoom, ZoomToggler} from '../model/BadgesClasses';
 
 global.zoom = new ZoomToggler('toggle-zoom', chartAtpInstance, 'zoom');
 zoom.iCheckSetStartState().iCheckToggleSet();
