@@ -28,8 +28,8 @@ FTPgradient.addColorStop(0.3, theme.gradient.ftp + 'ee');
 FTPgradient.addColorStop(0.7, theme.gradient.ftp + '11');
 FTPgradient.addColorStop(1, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
-FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'ee');
-FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '11');
+FTPDonegradient.addColorStop(0.2, theme.gradient.ftpDone + 'ff');
+FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '22');
 FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
 
 gridGradient.addColorStop(0, theme.gradient.grid + 'ff');

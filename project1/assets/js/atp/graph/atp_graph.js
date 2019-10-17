@@ -68,7 +68,7 @@ global.atpOptions = {
             {
                 label: 'FTP DONE BG',
                 type: 'line',
-                backgroundColor: '#010101ee',
+                backgroundColor: '#010101d4',
                 fill: true,
                 data: bar_data(done).ftpO(),
                 borderColor: '#010101ff',

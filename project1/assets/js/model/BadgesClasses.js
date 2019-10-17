@@ -1,3 +1,5 @@
+import {FTP_data} from "../atp/graph/DataSetFunctions";
+
 class Checker {
 
     constructor(id, chart) {
@@ -128,20 +130,21 @@ export class ApplyChanges extends Checker {
             global.atpOptions.data.datasets.find('oldTune').data = global.atpOptions.data.datasets.find('newTune').data.kopia();
 
             let a = global.atpOptions.data.datasets.find('newTune').data;
+            global.atpOptions.data.datasets.find('FTPBg').data = FTP_data(a);
             let res = [];
             let resDate = [];
             for (let i of a) {
                 if(i.y<=0)
                     continue;
-                let d = i.x.format('YYYY-MM-DD')
-                resDate.push(d)
+                let d = i.x.format('YYYY-MM-DD');
+                resDate.push(d);
                 res.push(i.y);
             }
             let result = Object.fromEntries(resDate.map((_, i) => [resDate[i], res[i]]));
-
-            console.log(result)
-
+            console.log(result);
             chart.update();
+
+            this.iCheckUncheck();
         } else {
 
         }
