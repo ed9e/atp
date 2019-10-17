@@ -266,7 +266,8 @@ global.atpOptions = {
                         padding: 2,
                         callback: function (value, index, values) {
                             return phases[value];
-                        }
+                        },
+                        fontSize: 12,
                     },
 
                 },
@@ -297,7 +298,7 @@ global.atpOptions = {
                     },
                     ticks: {
                         //fontColor: general.grid.fontColor,
-                        fontSize: 10,
+                        fontSize: 11,
                         mirror: false,
                         padding: 5,
                         callback: function (value, index, values) {
