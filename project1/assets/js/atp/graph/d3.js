@@ -11,9 +11,7 @@ d3.select(chartAtpInstance.chart.canvas).call(
 let _tmpZoomSpeed;
 d3.select(chartAtpInstance.chart.canvas).call(
     d3.zoom()
-        .on('start', () => {
-
-        })
+        .on('start', () => scrollStart(d3.event))
         .on('zoom', () => scroll(d3.event))
         .on("end", () => scrollEnd(d3.event))
 );
@@ -28,8 +26,10 @@ let par = {
     datasetIndex: undefined,
 };
 
+function scrollStart(e) {
+}
+
 function scrollEnd(t) {
-    //chartAtpInstance.update(0);
 }
 
 function scroll(t) {
@@ -37,7 +37,7 @@ function scroll(t) {
     let e = t.sourceEvent;
 
     par.element = chartAtpInstance.getElementAtEvent(e)[0];
-    if (par.element === undefined) {
+    if (par.element === undefined || e.ctrlKey === true) {
         return;
     }
     par.chart = par.element['_chart'];
@@ -51,6 +51,7 @@ function scroll(t) {
     par.chart.update(0);
 
 }
+
 //Get an class of {points: [{x, y},], type: event.type} clicked or touched
 function getEventPoints(event) {
     let retval = {

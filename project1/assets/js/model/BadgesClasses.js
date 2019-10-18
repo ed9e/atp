@@ -125,9 +125,6 @@ export class ApplyChanges extends Checker {
     isEnabled() {
         return true;
     }
-    iCheckUncheck() {
-        $('#' + this.id).iCheck('uncheck');
-    }
 
     ifToggled(event) {
         let chart = event.data.chart;
@@ -151,8 +148,8 @@ export class ApplyChanges extends Checker {
                 return [resDate[i], typeof res[i] === "string" ? null : res[i]];
             }));
             console.log(result);
-            chart.update();
-            this.iCheckUncheck();
+            event.data.checker.iCheckUncheck(); // TO DO: czemu to nie działa
+
         } else {
 
         }

@@ -21,8 +21,8 @@ require('./dashboard/ActivityBadges');
 require('./dashboard/ActionBagdes');
 require('./dashboard/ConfigBadges');
 require('./dashboard/ZingGrid');
-
 require('./dashboard/graph/d3.js');
+require('./functions/listeners');
 
 
 

@@ -1,7 +1,7 @@
 import {bar_data, FTP_data, phases_dataset} from "./DataSetFunctions";
 
 global.atpYAxes = {max: 1300};
-let callback = undefined;
+
 
 global.atpOptions = {
     type: 'bar',
@@ -128,7 +128,7 @@ global.atpOptions = {
             }
         },
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         aspectRatio: 1920 / 450,
         layout: {
             padding: {
@@ -234,7 +234,8 @@ global.atpOptions = {
                             if (index % 2)
                                 return value;
                             return '';
-                        }
+                        },
+                        fontSize: 9
                     }
                 },
                 {
@@ -310,7 +311,6 @@ global.atpOptions = {
 
             ],
             yAxes: [{
-
                 display: false,
                 scaleLabel: {
                     display: false,
@@ -330,38 +330,38 @@ global.atpOptions = {
                     display: false,
                     id: 'nonstatic',
                     callback: function (value, index, values) {
-
+                        //potrzebne żeby zachować statyczność wględem osi x przy zmianie sklali osi y
                         if (global.chartAtpInstance !== undefined) {
                             global.chartAtpInstance.chart.config.options.scales.yAxes[0].ticks.min = -1 * values[0] * 0.016
                         }
-                    }
+                    },
+                    padding: 0
                 }
-            },
-                {
-                    id: 'static',
-                    display: true,
-                    scaleLabel: {
-                        display: false,
-                        labelString: 'VALUE'
-                    },
-                    gridLines: {
-                        drawTicks: false,
-                        display: false,
-                        color: general.grid.gridLinesColor,
-                        borderDash: [1, 2],
-                        zeroLineWidth: 0
-                    },
-                    ticks: {
-                        reverse: true,
-                        min: -200,
-                        max: 15,
-                        display: false,
-
-                    }
-                }]
+            }, {
+                id: 'static',
+                display: false,
+                scaleLabel: {
+                    display: false,
+                    labelString: 'VALUE'
+                },
+                gridLines: {
+                    drawTicks: false,
+                    display: false,
+                    color: general.grid.gridLinesColor,
+                    borderDash: [1, 2],
+                    zeroLineWidth: 0
+                },
+                ticks: {
+                    reverse: true,
+                    min: -200,
+                    max: 15,
+                    display: false,
+                    padding: 0
+                }
+            }]
         },
         pan: {
-            enabled: true,
+            enabled: false,
             mode: "x",
             speed: 10,
             threshold: 10,
@@ -401,7 +401,7 @@ global.atpOptions = {
             },
             // Speed of zoom via mouse wheel
             // (percentage of zoom on a wheel event)
-            speed: 0.2,
+            speed: 0,
             onZoom: function ({chart}) {
             },
             onZoomComplete: function ({chart}) {

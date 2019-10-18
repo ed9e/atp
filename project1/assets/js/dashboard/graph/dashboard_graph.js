@@ -214,7 +214,6 @@ global.atpOptions = {
                     }
                 },
                 {
-
                     display: true,
                     stacked: false,
                     id: 'fazy',
@@ -276,7 +275,7 @@ global.atpOptions = {
             }]
         },
         pan: {
-            enabled: true,
+            enabled: false,
             mode: "x",
             speed: 10,
             threshold: 10,
@@ -316,7 +315,7 @@ global.atpOptions = {
             },
             // Speed of zoom via mouse wheel
             // (percentage of zoom on a wheel event)
-            speed: 0.2,
+            speed: 0,
             // onZoom: function (chart) {
             //     console.log(chart)
             //

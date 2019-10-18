@@ -18,24 +18,6 @@
         let flags = {{ flags|json_encode|raw }};
         let phases2 = {{ phases2|json_encode|raw }};
 
-        function resetZoom() {
-            chartAtpInstance.resetZoom();
-        }
-
-        window.toggleDragMode = function () {
-            let chart = chartAtpInstance;
-            let zoomOptions = chart.options.zoom;
-            zoomOptions.enabled = !zoomOptions.enabled;
-            chart.update();
-            document.getElementById('zoom-switch').innerText = zoomOptions.enabled ? 'Disable zoom mode' : 'Enable zoom mode';
-        };
-        window.togglePanMode = function () {
-            let chart = chartAtpInstance;
-            let panOptions = chart.options.pan;
-            panOptions.enabled = !panOptions.enabled;
-            chart.update();
-            document.getElementById('pan-switch').innerText = panOptions.enabled ? 'Disable pan mode' : 'Enable pan mode';
-        };
     </script>
     {{ parent() }}
     {{ encore_entry_script_tags('atp') }}
