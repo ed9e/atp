@@ -68,7 +68,7 @@ global.atpOptions = {
             {
                 label: 'FTP DONE BG',
                 type: 'line',
-                backgroundColor: '#010101d4',
+                backgroundColor: '#010101a4',
                 fill: true,
                 data: bar_data(done).ftpO(),
                 borderColor: '#010101ff',
@@ -98,7 +98,7 @@ global.atpOptions = {
             {
                 label: 'FTP BG',
                 type: 'line',
-                backgroundColor: '#01010177',
+                backgroundColor: '#05000033',
                 fill: true,
                 data: FTP_data(bar_data(yValues, (x) => {
                     return typeof x === 'string' ? 0 : x
@@ -266,7 +266,8 @@ global.atpOptions = {
                         padding: 2,
                         callback: function (value, index, values) {
                             return phases[value];
-                        }
+                        },
+                        fontSize: 12,
                     },
 
                 },
@@ -297,7 +298,7 @@ global.atpOptions = {
                     },
                     ticks: {
                         //fontColor: general.grid.fontColor,
-                        fontSize: 10,
+                        fontSize: 11,
                         mirror: false,
                         padding: 5,
                         callback: function (value, index, values) {

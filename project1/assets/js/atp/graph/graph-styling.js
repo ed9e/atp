@@ -20,11 +20,11 @@ bardoneBorderGradient.addColorStop(0.6, theme.bar.borderColor + '66');
 bardoneBorderGradient.addColorStop(0, theme.bar.borderColor + '22');
 
 bar2Gradient.addColorStop(0, theme.gradient.bar2 + 'ff');
-bar2Gradient.addColorStop(0.6, theme.gradient.bar2 + '99');
+bar2Gradient.addColorStop(0.6, theme.gradient.bar2 + 'ff');
 bar2Gradient.addColorStop(1, theme.gradient.bar2 + '22');
 
-FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
-FTPgradient.addColorStop(0.3, theme.gradient.ftp + 'ee');
+FTPgradient.addColorStop(0, theme.gradient.ftp + 'ee');
+FTPgradient.addColorStop(0.3, theme.gradient.ftp + 'dd');
 FTPgradient.addColorStop(0.7, theme.gradient.ftp + '11');
 FTPgradient.addColorStop(1, theme.gradient.ftp + '00');
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
