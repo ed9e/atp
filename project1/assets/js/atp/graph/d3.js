@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import {FTP_data} from "./DataSetFunctions";
+import {PhaseDrag} from "./PhaseDrag";
 
 d3.select(chartAtpInstance.chart.canvas).call(
     d3.drag().container(chartAtpInstance.chart.canvas)
@@ -22,6 +23,7 @@ let par = {
     scale: undefined,
     value: undefined,
     grabOffsetY: undefined,
+    grabOffsetX: undefined,
     index: undefined,
     datasetIndex: undefined,
 };
@@ -93,13 +95,18 @@ function getElement() {
     }
     par.chart = par.element['_chart'];
     par.scale = par.element['_yScale'];
-
     par.datasetIndex = par.element['_datasetIndex'];
+    global.element = par.element;
     par.index = par.element['_index'];
-
+    let dataset = par.chart.config.data.datasets[par.datasetIndex];
+    if (dataset.class !== undefined && dataset.class === 'phase') {
+        let phaseDrag = new PhaseDrag(par, e);
+        phaseDrag.getElement();
+        return;
+    }
     //Get pixel y-offset from datapoint to mouse/touch point
     par.grabOffsetY = par.scale.getPixelForValue(
-        par.chart.config.data.datasets[par.datasetIndex].data[par.index],
+        dataset.data[par.index],
         par.index,
         par.datasetIndex,
         false
@@ -109,32 +116,25 @@ function getElement() {
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     //par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
 
-    drawValue(par);
-    findAndSwipe();
 }
 
-function findAndSwipe() {
-    let e = d3.event.sourceEvent;
-    par.element = chartAtpInstance.getElementAtEvent(e)[0];
-    par.chart = par.element['_chart'];
-    par.datasetIndex = par.element['_datasetIndex'];
-    par.index = par.element['_index'];
-    let week = par.chart.config.data.datasets[par.datasetIndex].data[par.index];
 
-    //getActivities(week.x.format('Y-MM-DD'));
-}
 
-function getActivities(date) {
-    let dataTable = $('#data-table');
-    apiUrlConfig.storeWeekDate(date);
-    dataTable.DataTable().ajax.url(apiUrlConfig.hrefDataTable()).load();
-    zingGrid.dataLoad()
-}
 
 function updateData() {
     let e = d3.event.sourceEvent;
-    par.datasetIndex = 0;
-    if (par.datasetIndex != 0 || par.scale == undefined) {
+    //par.element = chartAtpInstance.getElementAtEvent(e)[0];
+    par.element = global.element;
+
+    par.datasetIndex = par.element['_datasetIndex'];
+    par.scale = par.element['_yScale'];
+    let dataset = par.chart.config.data.datasets[par.datasetIndex];
+    if (dataset.class !== undefined && dataset.class === 'phase') {
+        let phaseDrag = new PhaseDrag(par, e);
+        phaseDrag.updateData();
+        return;
+    }
+    if (dataset.id !== 'newTune' || par.scale === undefined) {
         return;
     }
 
@@ -142,13 +142,11 @@ function updateData() {
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     //par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
 
-    par.chart.config.data.datasets.find('newTune').data[par.index].y = par.value;
+    dataset.data[par.index].y = par.value;
     //par.chart.config.data.datasets[2].data[par.index] =  par.value;
-    par.chart.config.data.datasets.find('FTP').data = FTP_data(par.chart.config.data.datasets.find('newTune').data);
-
-    chartAtpInstance.update(0);
-
+    par.chart.config.data.datasets.find('FTP').data = FTP_data(dataset.data);
     drawValue(par);
+    chartAtpInstance.update(0);
 }
 
 function drawValue(par) {
@@ -162,7 +160,7 @@ function drawValue(par) {
 
 //Show y data after point drag
 function callback() {
-
+    global.element = undefined;
 }
 
 //Apply changes to old dataset

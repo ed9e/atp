@@ -164,12 +164,13 @@ class ATP
                 $to = (new DateTime(end($x) . '+4 days'))->format('Y-m-d');
                 return [$from, $to];
             }, $phase);
-
+            $return[] = $res;
             foreach ($res as $k => $re) {
                 sort($re);
                 $result[$k][] = $re;
             }
         }
+        return $return;
         return $result;
     }
 
