@@ -61,7 +61,7 @@ function eachPhasesDataset(d) {
         //radius: 0,
         xAxisID: "czas",
         yAxisID: "static",
-        pointHitRadius: 5,
+        pointHitRadius: 3,
         pointHoverRadius: 3,
         class: 'phase',
     };

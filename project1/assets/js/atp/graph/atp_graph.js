@@ -264,7 +264,7 @@ global.atpOptions = {
                     },
                     ticks: {
                         //fontColor: general.grid.fontColor,
-                        padding: 2,
+                        padding: 4,
                         callback: function (value, index, values) {
                             return phases[value];
                         },
@@ -354,7 +354,7 @@ global.atpOptions = {
                 ticks: {
                     reverse: true,
                     min: -200,
-                    max: 15,
+                    max: 18,
                     display: false,
                     padding: 0
                 }

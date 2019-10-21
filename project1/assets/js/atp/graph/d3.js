@@ -28,6 +28,8 @@ let par = {
     datasetIndex: undefined,
 };
 
+let phaseDrag;
+
 function scrollStart(e) {
 }
 
@@ -96,8 +98,8 @@ function getElement() {
     par.chart = par.element['_chart'];
     par.scale = par.element['_yScale'];
     par.datasetIndex = par.element['_datasetIndex'];
-    global.element = par.element;
     par.index = par.element['_index'];
+    global.element = par.element;
     let dataset = par.chart.config.data.datasets[par.datasetIndex];
     if (dataset.class !== undefined && dataset.class === 'phase') {
         let phaseDrag = new PhaseDrag(par, e);
@@ -118,9 +120,6 @@ function getElement() {
 
 }
 
-
-
-
 function updateData() {
     let e = d3.event.sourceEvent;
     //par.element = chartAtpInstance.getElementAtEvent(e)[0];
@@ -130,7 +129,8 @@ function updateData() {
     par.scale = par.element['_yScale'];
     let dataset = par.chart.config.data.datasets[par.datasetIndex];
     if (dataset.class !== undefined && dataset.class === 'phase') {
-        let phaseDrag = new PhaseDrag(par, e);
+
+        phaseDrag = new PhaseDrag(par, e);
         phaseDrag.updateData();
         return;
     }
@@ -161,6 +161,9 @@ function drawValue(par) {
 //Show y data after point drag
 function callback() {
     global.element = undefined;
+    //TODO: callback tworzy dziwny problem
+    // phaseDrag !== undefined ? phaseDrag.callback():null;
+    // phaseDrag = undefined;
 }
 
 //Apply changes to old dataset
