@@ -478,7 +478,7 @@ class GarminActivityDetails extends AbstractEntity
         return $this->distance;
     }
 
-    public function setDistance(float $distance): self
+    public function setDistance(?float $distance): self
     {
         $this->distance = $distance;
 
