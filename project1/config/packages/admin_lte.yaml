@@ -27,6 +27,7 @@ admin_lte:
     home:
       icon: fas fa-home
       template: control-sidebar/home.html.twig
+      controller: 'App\Controller\ControlSidebarController::index'
     settings:
       icon: fas fa-cogs
       controller: 'App\Controller\ControlSidebarController::index'

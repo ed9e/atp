@@ -269,7 +269,7 @@ global.atpOptions = {
                         callback: function (value) {
                             return phases[value];
                         },
-                        fontSize: 12,
+                        fontSize: 11,
                     },
 
                 },
