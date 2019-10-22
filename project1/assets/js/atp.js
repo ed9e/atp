@@ -17,5 +17,4 @@ require('./atp/ActivityBadges');
 require('./atp/ActionBagdes');
 require('./dashboard/ConfigBadges');
 require('./atp/graph/d3.js');
-//require('./atp/graph/PhaseDrag.js');
 require('./functions/listeners');

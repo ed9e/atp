@@ -1,4 +1,5 @@
-import {bar_data, FTP_data, phases_dataset} from "./DataSetFunctions";
+import {bar_data, FTP_data} from "./DataSetFunctions";
+import {phases_dataset} from "./PhaseLine";
 
 global.atpYAxes = {max: 1300};
 
@@ -265,7 +266,7 @@ global.atpOptions = {
                     ticks: {
                         //fontColor: general.grid.fontColor,
                         padding: 4,
-                        callback: function (value, index, values) {
+                        callback: function (value) {
                             return phases[value];
                         },
                         fontSize: 12,
@@ -425,24 +426,3 @@ global.chartAtpInstance.config.data.datasets.find = function (id) {
     }
     return null;
 };
-
-
-function objectConcat(oIn, pIn) {
-    let arr = [];
-
-    Object.keys(oIn).forEach(function (x) {
-        if (!(x in pIn)) {
-            arr.push({
-                x: moment(x),
-                y: oIn[x]
-            });
-        } else {
-            arr.push({
-                x: moment(x),
-                y: pIn[x]
-            });
-        }
-    });
-
-    return arr;
-}

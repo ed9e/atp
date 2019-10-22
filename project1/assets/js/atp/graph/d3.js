@@ -130,8 +130,11 @@ function updateData() {
     let dataset = par.chart.config.data.datasets[par.datasetIndex];
     if (dataset.class !== undefined && dataset.class === 'phase') {
 
-        phaseDrag = new PhaseDrag(par, e);
-        phaseDrag.updateData();
+        if (phaseDrag === undefined) {
+            phaseDrag = new PhaseDrag(par, e);
+        }
+        phaseDrag.setUp(par, e);
+        phaseDrag.updateData(par, e);
         return;
     }
     if (dataset.id !== 'newTune' || par.scale === undefined) {
@@ -161,9 +164,7 @@ function drawValue(par) {
 //Show y data after point drag
 function callback() {
     global.element = undefined;
-    //TODO: callback tworzy dziwny problem
-    // phaseDrag !== undefined ? phaseDrag.callback():null;
-    // phaseDrag = undefined;
+    phaseDrag = undefined;
 }
 
 //Apply changes to old dataset

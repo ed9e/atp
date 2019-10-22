@@ -71,7 +71,7 @@ global.general = {
     timeline: {
         thick: 18,
         thick2: 7,
-        color: timeGradient
+        color: timeGradient,
     },
     phaseDataset: {
         color: {
@@ -83,7 +83,8 @@ global.general = {
             Build2: theme.phasesDataset.Build2,
             Peak: theme.phasesDataset.Peak,
             Race: theme.phasesDataset.Race,
-        }
+        },
+        padding: 30,
     },
     bar: {
         valueColor: theme.bar.valueColor
