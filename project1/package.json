@@ -4,6 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@polymer/paper-checkbox": "^3.1.0",
+    "@polymer/paper-dropdown-menu": "^3.0.1",
+    "@polymer/paper-input": "^3.0.2",
+    "@polymer/paper-item": "^3.0.1",
+    "@polymer/paper-listbox": "^3.0.1",
+    "@polymer/polymer": "^3.3.0",
     "admin-lte": "^2.4.17",
     "chart.js": "^2.8.0",
     "chartjs": "^0.3.24",
@@ -36,6 +42,7 @@
     "materialize-css": "^1.0.0",
     "materialize-js": "^1.0.0",
     "slice": "^1.0.0",
+    "web-animations-js": "^2.3.2",
     "zinggrid": "^1.1.1"
   },
   "devDependencies": {
