@@ -32,8 +32,8 @@ $dark: (
 );
 
 $img: (
-        "accent-2": #a7a29b,
-        "base": #26b82e, //#37b83c,
+        "accent-2": #5d5656,
+        "base": #17bb24, //#37b83c,
         "base2": #ff5e10, //#ff6b36,
   //"base": #795548,
   //"base2": #8d6e63,
@@ -224,7 +224,7 @@ body {
     }
 
     & .wrapper {
-      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 20%);
+      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 0%);
       background-blend-mode: multiply, multiply;
       overflow: hidden;
     }
