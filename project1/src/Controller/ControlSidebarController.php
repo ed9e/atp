@@ -12,9 +12,18 @@ class ControlSidebarController extends AbstractController
      */
     public function index()
     {
-//        return $this->render('default/index.html.twig', [
-//            'controller_name' => 'DefaultController',
-//        ]);
-        return $this->render('control-sidebar/settings.html.twig', []);
+        $data = [
+            'users' => [
+                ['username' => 'lbrzozowski'],
+                ['username' => 'faramka'],
+                ['username' => 'rpasieczny'],
+                ['username' => 'dziorki'],
+                ['username' => 'MichalHarnik'],
+                ['username' => 'Leprecian'],
+                ['username' => 'ad478d14-a089-43a8-a9a4-0e964917a6fc'], //aga
+                ['username' => 'da2a7a64-c01c-4f9b-b2bc-dbff1eaf559a'], //Jerzy
+            ]
+        ];
+        return $this->render('control-sidebar/home.html.twig', $data);
     }
 }

@@ -54,7 +54,9 @@ export class ApiUrlConfig {
     }
 
     getProfileId() {
-        return this.urlParams.profileId.default;
+        let url = new URL(window.location.href);
+        let hash = url.hash.replace('#', '');
+        return hash ? hash : this.urlParams.profileId.default;
     }
 
     getWeeklyType() {

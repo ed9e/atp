@@ -43,8 +43,9 @@ Array.prototype.ftpO = function () {
             muppetY = O[k].y / 1.2;
             muppetX = O[k].x;
             l = 1;
+            let m =1;
             while (l <= k) {
-                divider = (waga * l);
+                divider = (waga * l + m);
                 if (k === 0) {
                     divider = waga;
                 }

@@ -55,13 +55,19 @@
       }
 
       & .dropdown-menu {
-        background-color: #00000066;
+        background-color: darken($primary-color, 10%);
         border-color: #00000077;
         font-size: smaller;
 
         & .dropdown-item {
+          display: block;
+          padding-left: 10px;
+          transition: 0.5s ease-out;
+          background-color: transparentize(darken($primary-color, 10%), 0.5);
+          color: #ffffffee;
           &:hover {
-            margin: 1px;
+            color: #111111;
+            background-color: darken($primary-color, 5%);
           }
         }
 
