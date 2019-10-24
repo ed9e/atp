@@ -57,7 +57,8 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // enables @babel/preset-env polyfills
-    .configureBabel(() => {
+    .configureBabel((babelConfig) => {
+        //babelConfig.presets.push('@babel/preset-flow');
     }, {
         useBuiltIns: 'usage',
         corejs: 3

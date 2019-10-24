@@ -57,30 +57,8 @@
                 </ul>
             </div>
         </div>
-        {#    </div>#}
-        {#    <div class="row">#}
-        {#        <div class="col">#}
-        {#            <button class="waves-effect btn" id="applyChanges">Apply Changes</button>#}
-        {#            <button class="waves-effect btn" id="cancelChanges">Cancel Edits</button>#}
-        {#            <button class="waves-effect btn" id="undoChanges">Undo Applied Changes</button>#}
-        {#            <button class="waves-effect btn" onclick="resetZoom()">Reset Zoom</button>#}
-        {#            <button class="waves-effect btn" id="zoom-switch" onclick="toggleDragMode()">Disable zoom mode</button>#}
-        {#            <button class="waves-effect btn" id="pan-switch" onclick="togglePanMode()">Disable pan mode</button>#}
-        {#        </div>#}
-        {#    </div>#}
 
-        <div class="row">
-            <div class="col s4 offset-s8">
-                <ul class="collapsible">
-                    <li>
-                        <div class="collapsible-header">PLAN</div>
-                        <div class="collapsible-body">
-                            {{ form(form) }}
+        <plan-form-collapse id="collapse"></plan-form-collapse>
 
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
     {% endblock %}

@@ -26,7 +26,7 @@ class CurrentDashboardService
     {
         $queryParams = $this->prepareWeeklyQueryParams($this->request);
         $options = [
-            'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P250W')),
+            'from' => (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P330W')),
             'to' => (new DateTime())->setTimestamp(strtotime('next friday')),
         ];
 

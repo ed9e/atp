@@ -102,7 +102,7 @@ class ATP
 
     protected function remapKeys(): array
     {
-        $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->from)))->sub(new DateInterval('P250W'))->format('Y-m-d');
+        $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->from)))->sub(new DateInterval('P330W'))->format('Y-m-d');
         $lastKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->to)))->add(new DateInterval('P20W'))->format('Y-m-d');
         $keys = $this->plan::createIntervalArray($firstKey, $lastKey);
         ksort($keys);

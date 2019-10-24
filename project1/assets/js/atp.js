@@ -18,3 +18,5 @@ require('./atp/ActionBagdes');
 require('./dashboard/ConfigBadges');
 require('./atp/graph/d3.js');
 require('./functions/listeners');
+require('./deafult-layout/Persons');
+require('./atp/PlanFormCollapse');

@@ -12,11 +12,6 @@ require('font-awesome/css/font-awesome.css');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 
-import '@polymer/paper-checkbox/paper-checkbox';
-import '@polymer/paper-dropdown-menu/paper-dropdown-menu';
-import '@polymer/paper-item/paper-item';
-import '@polymer/paper-listbox/paper-listbox';
-import '@polymer/paper-input/paper-input';
 import 'web-animations-js/web-animations-next-lite.min';
 
 require('../css/scss/materialize.scss');

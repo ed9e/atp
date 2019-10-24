@@ -54,9 +54,7 @@ export class ApiUrlConfig {
     }
 
     getProfileId() {
-        let url = new URL(window.location.href);
-        let hash = url.hash.replace('#', '');
-        return hash ? hash : this.urlParams.profileId.default;
+        return this.urlParams.profileId ? this.urlParams.profileId : this.urlParams.profileId.default;
     }
 
     getWeeklyType() {
@@ -71,5 +69,9 @@ export class ApiUrlConfig {
 
     getSearchParam(name) {
         return this.url.searchParams.get(name);
+    }
+
+    setProfileId(name) {
+        this.urlParams.profileId = name;
     }
 }
