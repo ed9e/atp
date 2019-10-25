@@ -715,7 +715,7 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-flex-layout@^3.0.0-pre.26":
+"@polymer/iron-flex-layout@^3.0.0-pre.26", "@polymer/iron-flex-layout@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-flex-layout/-/iron-flex-layout-3.0.1.tgz#36f9e1a8eb792d279b2bc75d362628721ad37f0c"
   integrity sha512-7gB869czArF+HZcPTVSgvA7tXYFze9EKckvM95NB7SqYF+NnsQyhoXgKnpFwGyo95lUjUW9TFDLUwDXnCYFtkw==
@@ -1942,7 +1942,7 @@ bootstrap-colorpicker@^2.5.3:
   dependencies:
     jquery ">=1.10"
 
-bootstrap-datepicker@^1.8:
+bootstrap-datepicker@^1.8, bootstrap-datepicker@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/bootstrap-datepicker/-/bootstrap-datepicker-1.9.0.tgz#e4bfce3fcce1967876b21dc6833ec5994aaed090"
   integrity sha512-9rYYbaVOheGYxjOr/+bJCmRPihfy+LkLSg4fIFMT9Od8WwWB/MB50w0JO1eBgKUMbb7PFHQD5uAfI3ArAxZRXA==
@@ -4275,6 +4275,11 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+formselect@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/formselect/-/formselect-1.0.0.tgz#6063157ef4efdbd42264b0f0f6fd12653b0a81fb"
+  integrity sha512-06nADibAR8O/NRNGovEAreKRyVxp0waOWvoaXTZxeVoVtWinQCOwZnrSvl3pVPRR9NIjJg9hrhJ1JW8UQAmoMA==
+
 forwarded@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
@@ -6333,6 +6338,11 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
+
+nouislider@^14.0.3:
+  version "14.0.3"
+  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-14.0.3.tgz#c0d51a25ae97395fe835254a1ff68765e40a4cc9"
+  integrity sha512-jJYqX5UqBjkHWf0Bz+OsYcdeKW1CgvntDGBSLL/+lQ/u/DD6rx1XIrO+2TSYlLEw2quLpsRMZ4JrBl0r/LPQyg==
 
 npm-bundled@^1.0.1:
   version "1.0.6"
@@ -8820,6 +8830,10 @@ v8-compile-cache@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.3.tgz#00f7494d2ae2b688cfe2899df6ed2c54bef91dbe"
   integrity sha512-CNmdbwQMBjwr9Gsmohvm0pbL954tJrNzf6gWL3K+QMQf00PF7ERGrEiLgjuU3mKreLC2MeGhUsNV9ybTbLgd3w==
+
+vaadin-valo-styles@vaadin/vaadin-valo-theme:
+  version "2.0.0-alpha8"
+  resolved "https://codeload.github.com/vaadin/vaadin-valo-theme/tar.gz/42fb10b052329f229c1ad34a9c6375bd62e1d942"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"

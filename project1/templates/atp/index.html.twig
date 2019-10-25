@@ -30,35 +30,70 @@
 
 {% block page_content %}
 
-<div class="row canvas">
-    <div style="">
-        <span></span>
-    </div>
-    <canvas id="chartJSContainer" width="1920" height="650"></canvas>
-</div>
-
-<div class="darken-container">
-    <div class="container-fluid">
-        <div class="row controls badges">
-            <div class="col-xs-5">
-                <ul class="list small float-left" id="activity-badges">
-                </ul>
-            </div>
-
-            <div class="col-xs-7">
-                <ul class="list small float-right" id="action-badges">
-
-                </ul>
-            </div>
+    <div class="row canvas">
+        <div style="">
+            <span></span>
         </div>
-        <div class="row controls badges">
-            <div class="col-xs-5">
-                <ul class="list small float-left" id="config-badges">
-                </ul>
+        <canvas id="chartJSContainer" width="1920" height="650"></canvas>
+    </div>
+
+    <div class="darken-container">
+        <div class="container-fluid">
+            <div class="row controls badges">
+                <div class="col-xs-5">
+                    <ul class="list small float-left" id="activity-badges">
+                    </ul>
+                </div>
+
+                <div class="col-xs-7">
+                    <ul class="list small float-right" id="action-badges">
+
+                    </ul>
+                </div>
             </div>
+            <div class="row controls badges">
+                <div class="col-xs-5">
+                    <ul class="list small float-left" id="config-badges">
+                    </ul>
+                </div>
+            </div>
+
+
+            <plan-form-collapse id="collapse">
+                testte
+            </plan-form-collapse>
+
+
+            <form>
+                <div class="row">
+
+                    <div class="input-field col-xs-2">
+                        <input id="plan_name" type="text" class="validate">
+                        <label for="plan_name">Plan Name</label>
+                    </div>
+                    <div class="input-field col-xs-2">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Opis</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p class="range-field">
+                            <input type="range" id="test5" min="0" max="100"/>
+                        </p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p class="range-field">
+                            <input type="range" id="test5" min="0" max="100"/>
+                        </p>
+                    </div>
+                </div>
+
+            </form>
+
+
         </div>
 
-        <plan-form-collapse id="collapse"></plan-form-collapse>
-
     </div>
-    {% endblock %}
+{% endblock %}

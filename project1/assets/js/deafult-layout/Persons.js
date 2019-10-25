@@ -23,7 +23,7 @@ class PersonsElement extends PolymerElement {
                  debounce-duration="300"
                  ></iron-ajax>
       <paper-dropdown-menu label="Person" on-iron-select="changed">
-        <paper-listbox slot="dropdown-content" selected="1">
+        <paper-listbox slot="dropdown-content" selected="0">
           <template is="dom-repeat" items="[[users]]">
             <paper-item id="[[item.username]]">[[item.name]]</paper-item>
           </template>

@@ -1,6 +1,6 @@
 require('@webcomponents/webcomponentsjs/webcomponents-bundle');
 import 'paper-collapse-item/paper-collapse-item';
-
+import '@polymer/iron-flex-layout/iron-flex-layout-classes';
 import '@polymer/iron-icons/';
 import '@polymer/iron-ajax';
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
@@ -13,21 +13,21 @@ class PlanFormCollapse extends PolymerElement {
 
     static get template() {
         return html`
-
+        <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
         <paper-collapse-item icon="icons:assignment" opened>
             <div slot="header">
             Planning
             </div>
-            <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm">
+            
+            <div class="horizontal layout">
+                <div class="">
                     <paper-input always-float-label label="Plan Label"></paper-input>
                 </div>
-                <div class="col-sm-4">
+                <div>
                     <date-picker id="date-picker"></date-picker>
                 </div>
             </div>
-            </div>
+            
         </paper-collapse-item>
         
     `;
@@ -41,12 +41,10 @@ class DatePicker extends PolymerElement {
 
     static get template() {
         return html`
-        <vaadin-date-picker show-week-numbers label="Plan start" class="date-picker"></vaadin-date-picker>
-
+        <vaadin-date-picker  label="Plan start" class="my-picker"></vaadin-date-picker>
         `;
     }
 }
-
 customElements.define(DatePicker.is, DatePicker);
 customElements.define(PlanFormCollapse.is, PlanFormCollapse);
 // customElements.whenDefined('vaadin-date-picker').then(function() {

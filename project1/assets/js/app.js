@@ -15,6 +15,8 @@ const $ = require('jquery');
 import 'web-animations-js/web-animations-next-lite.min';
 
 require('../css/scss/materialize.scss');
+require('materialize-js');
+
 
 require('icheck/icheck');
 require('icheck/skins/all.css');
