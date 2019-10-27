@@ -19,7 +19,7 @@ class AtpPlanService
     public function getWeekly(): array
     {
         $this->atp->plan([
-            ['from' => '2019-11-14',
+            ['from' => '2019-10-25',
                 'to' => '2020-01-12',],
             ['from' => '2020-01-12',
                 'to' => '2020-05-03',],

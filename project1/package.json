@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@babel/preset-env": "^7.6.3",
+    "@fooloomanzoo/datetime-picker": "^3.0.9",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.1",
     "@polymer/iron-flex-layout": "^3.0.1",

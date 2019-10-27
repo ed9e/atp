@@ -35,8 +35,29 @@
             <span></span>
         </div>
         <canvas id="chartJSContainer" width="1920" height="650"></canvas>
+        <ul id="contextMenu">
+            <li class="menu-item" onclick="menu(1)">remove</li>
+            <li class="menu-item" onclick="menu(2)">change</li>
+            <li class="menu-item" onclick="menu(3)">add</li>
+        </ul>
     </div>
+    <dom-module id="my-custom-stuff" theme-for="vaadin-text-field vaadin-date-picker-overlay-content">
+        <template>
 
+            <style>
+                /*:host([theme="my-theme"]) [part="label"], [part="input-field"], [part="toggle-button"] [part="button"] {*/
+                /*    color: var(--primary-color) !important;*/
+                /*    background-color: var(--primary-background-color);*/
+
+                /*}*/
+
+                /*:host([part="toggle-button"]) {*/
+                /*    color: var(--primary-color) !important;*/
+
+                /*}*/
+            </style>
+        </template>
+    </dom-module>
     <div class="darken-container">
         <div class="container-fluid">
             <div class="row controls badges">
@@ -63,7 +84,7 @@
                 testte
             </plan-form-collapse>
 
-
+            <overlay-date-picker></overlay-date-picker>
             <form>
                 <div class="row">
 

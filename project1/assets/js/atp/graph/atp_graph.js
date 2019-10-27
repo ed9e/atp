@@ -426,3 +426,12 @@ global.chartAtpInstance.config.data.datasets.find = function (id) {
     }
     return null;
 };
+global.chartAtpInstance.config.data.datasets.findByClass = function (id) {
+    let $ret = [];
+    for (let o in this) {
+        if (this[o].class === id) {
+            $ret.push( this[o]);
+        }
+    }
+    return $ret;
+};

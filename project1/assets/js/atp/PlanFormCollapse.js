@@ -4,7 +4,7 @@ import '@polymer/iron-flex-layout/iron-flex-layout-classes';
 import '@polymer/iron-icons/';
 import '@polymer/iron-ajax';
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@vaadin/vaadin-date-picker';
+import '@fooloomanzoo/datetime-picker/overlay-date-picker';
 
 class PlanFormCollapse extends PolymerElement {
     static get is() {
@@ -36,12 +36,12 @@ class PlanFormCollapse extends PolymerElement {
 
 class DatePicker extends PolymerElement {
     static get is() {
-        return 'date-picker';
+        return 'my-date-picker';
     }
 
     static get template() {
         return html`
-        <vaadin-date-picker  label="Plan start" class="my-picker"></vaadin-date-picker>
+       <overlay-date-picker></overlay-date-picker>
         `;
     }
 }
