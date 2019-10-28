@@ -17,9 +17,35 @@ class ATP
     protected $plan;
     protected $atp;
     protected $data;
+
+    /**
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
     protected $groupPhases;
     protected $done;
     protected $em;
+
+    /**
+     * @return mixed
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTo()
+    {
+        return $this->to;
+    }
+
     protected $requestStack;
     protected $from;
     protected $to;
@@ -90,88 +116,19 @@ class ATP
 
     public function rework(): ATP
     {
-        $keys = $this->remapKeys();
-        $phases = $this->remapPhases($this->groupPhases);
-        $phases2 = $this->remapPhasesLine($this->groupPhases);
-        $doneValues = $this->remapDoneValues($keys);
-        $atpValues = $this->remapAtpValues($keys);
-        $this->atp = ['keys' => $this->getZoomKeys(), 'values' => $atpValues, 'phases' => $phases, 'phases2' => $phases2, 'done' => $doneValues];
+        $rework = new Rework($this);
+        $reworked = $rework->getReworked();
+        $this->atp = array_merge(['keys' => $this->getZoomKeys()], $reworked);
 
         return $this;
     }
 
-    protected function remapKeys(): array
+    /**
+     * @return mixed
+     */
+    public function getGroupPhases()
     {
-        $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->from)))->sub(new DateInterval('P330W'))->format('Y-m-d');
-        $lastKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->to)))->add(new DateInterval('P20W'))->format('Y-m-d');
-        $keys = $this->plan::createIntervalArray($firstKey, $lastKey);
-        ksort($keys);
-        return $keys;
-    }
-
-    protected function remapDoneValues($keys): array
-    {
-        $doneKeys = array_keys($this->getDone());
-        ksort($doneKeys);
-        $diff = array_diff($keys, $doneKeys);
-        $done = array_merge(array_fill_keys($diff, 0), $this->getDone());
-        ksort($done);
-        return $done;
-    }
-
-    protected function remapAtpValues($keys): array
-    {
-        $diff = array_diff($keys, array_keys($this->data));
-
-        $czyAtpZaczacOdZera = false;
-        if (!$czyAtpZaczacOdZera) {
-            $atpValues = array_merge($this->getDone(), $this->data);
-            $diff = array_diff($keys, array_keys($atpValues));
-            $atpValues = array_merge(array_fill_keys($diff, 0), $atpValues);
-        } else {
-            $atpValues = array_merge(array_fill_keys($diff, 1), $this->data);
-        }
-        ksort($atpValues);
-        return $atpValues;
-    }
-
-    protected function remapPhases($phases): array
-    {
-        $result = [];
-        foreach ($phases as $phase) {
-            $res = array_flip(
-                array_map(static function ($x) {
-                    $from = (new DateTime(end($x)))->getTimestamp();
-                    $to = (new DateTime(reset($x) . '+0 days'))->getTimestamp();
-                    $diff = $to - $from;
-                    $halfTime = $from + floor($diff / 2);
-                    return date('Y-m-d', $halfTime);
-                }, $phase)
-            );
-            foreach ($res as $k => $re) {
-                $result[$k] = $re;
-            }
-        }
-        return $result;
-    }
-
-    protected function remapPhasesLine($phases): array
-    {
-        $result = [];
-        foreach ($phases as $phase) {
-            $res = array_map(static function ($x) {
-                $from = (new DateTime(reset($x) . '-4 days'))->format('Y-m-d');
-                $to = (new DateTime(end($x) . '+4 days'))->format('Y-m-d');
-                return [$from, $to];
-            }, $phase);
-            $return[] = $res;
-            foreach ($res as $k => $re) {
-                sort($re);
-                $result[$k][] = $re;
-            }
-        }
-        return $return;
-        return $result;
+        return $this->groupPhases;
     }
 
     protected function getZoomKeys(): array
