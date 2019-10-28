@@ -637,6 +637,51 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@fooloomanzoo/datetime-input@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@fooloomanzoo/datetime-input/-/datetime-input-3.0.4.tgz#f525ab75180c2eff694fc7a5d63d4d5d4f56b077"
+  integrity sha512-oBUMvte2vRVgVjQMHdBl2ieeD32T6VhEXj77s66LFpvAz4nX44PgDUIi3MJmzaBvzXliqml57KKTW7WhgFc28w==
+  dependencies:
+    "@fooloomanzoo/input-picker-pattern" "^3.0.10"
+    "@fooloomanzoo/number-input" "^3.0.9"
+    "@fooloomanzoo/property-mixins" "^3.0.9"
+    "@polymer/polymer" "^3"
+
+"@fooloomanzoo/datetime-picker@^3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/@fooloomanzoo/datetime-picker/-/datetime-picker-3.0.9.tgz#1a97bbc3b712c0b21ff9e6604312ceef69d537f2"
+  integrity sha512-4VfrNQCQOFjeOb7UuG06k2om17FMYfm12lFBhCHkHlNnjgafXwrz3ygx4aSFpWCZSz91VR2aIYBYaczU9HkSdA==
+  dependencies:
+    "@fooloomanzoo/datetime-input" "^3.0.4"
+    "@fooloomanzoo/input-picker-pattern" "^3.0.10"
+    "@fooloomanzoo/number-input" "^3.0.10"
+    "@fooloomanzoo/property-mixins" "^3.0.10"
+    "@polymer/polymer" "^3"
+
+"@fooloomanzoo/input-picker-pattern@^3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@fooloomanzoo/input-picker-pattern/-/input-picker-pattern-3.0.10.tgz#fff7a3f7d0897c7674f5eb8c6c576d6633c37e6a"
+  integrity sha512-jEzJNEXoPsuSTZ51euxJHCfs95v4fX3tl+KCZD81xLVlJXHhfMK40iaUoY2+pE02+m54aQuFH8hxL7c6QQvjSA==
+  dependencies:
+    "@polymer/iron-overlay-behavior" "^3"
+    "@polymer/polymer" "^3"
+
+"@fooloomanzoo/number-input@^3.0.10", "@fooloomanzoo/number-input@^3.0.9":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@fooloomanzoo/number-input/-/number-input-3.0.10.tgz#c3d29ef2557368f7932285ffcdf7ef2f8dcceed3"
+  integrity sha512-Da5ONp6q4TiksMI2mJ6fsnoDNlghL7uag22Pcd8VJq8NOuLZ0BepGV6DQsCwcjmPJbX2yh5BFuwc+08HYi+nFA==
+  dependencies:
+    "@fooloomanzoo/input-picker-pattern" "^3.0.10"
+    "@fooloomanzoo/property-mixins" "^3.0.9"
+    "@polymer/polymer" "^3"
+
+"@fooloomanzoo/property-mixins@^3.0.10", "@fooloomanzoo/property-mixins@^3.0.9":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@fooloomanzoo/property-mixins/-/property-mixins-3.0.10.tgz#d51c538c0bd889308abbc52d817028ecda4c5927"
+  integrity sha512-V6mO7u0Nzbbgj8eu2U7ReEeuzxO9YgE9VAR4khO7lqCu8+nbiOagv5rSmkMxqVjAfZR1XRt19lEZ7zOx2wrasQ==
+  dependencies:
+    "@polymer/polymer" "^3"
+
 "@polymer/font-roboto@^3.0.1":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@polymer/font-roboto/-/font-roboto-3.0.2.tgz#80cdaa7225db2359130dfb2c6d9a3be1820020c3"
@@ -788,7 +833,7 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-overlay-behavior@^3.0.0-pre.27":
+"@polymer/iron-overlay-behavior@^3", "@polymer/iron-overlay-behavior@^3.0.0-pre.27":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@polymer/iron-overlay-behavior/-/iron-overlay-behavior-3.0.2.tgz#6a12a3f4eab4721eb6978ed950be534c9c283983"
   integrity sha512-j1qmt6mJHCwpe1mKOvqK5kcCUPQr5LSrlqpgRDbUuLgUfNJ/vGTipjrkBlfbEUagm5FEQdc1VLPLSQP6WVuP9g==
@@ -941,7 +986,7 @@
     "@polymer/iron-flex-layout" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.0.5", "@polymer/polymer@^3.3.0":
+"@polymer/polymer@^3", "@polymer/polymer@^3.0.0", "@polymer/polymer@^3.0.5", "@polymer/polymer@^3.3.0":
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.3.0.tgz#52a0665ac29654728e8f46e8ee178c02c49efdd0"
   integrity sha512-rij7suomS7DxdBamnwr/Xa0V5hpypf7I9oYKseF2FWz5Xh2a3wJNpVjgJy1adXVCxqIyPhghsrthnfCt7EblsQ==

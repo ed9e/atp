@@ -379,6 +379,7 @@ body {
 
 @import "ControlSidebar";
 @import "GraphColors";
+@import "ContexMenu";
 @import "DataTable";
 @import "Curtain";
 @import "Ripple";
@@ -391,10 +392,19 @@ body {
 html body {
   --primary-color: #00ff00 !important;
   --primary-text-color: $font-color !important;
-  --primary-background-color: #00000099 !important;
+  --primary-background-color: #ffffff99 !important;
 }
 
 .date-picker {
   border: 1px solid gray;
   background-color: #ff0 !important;
+}
+
+vaadin-date-picker{
+  --paper-input-container-label:{
+    color:red;
+  }
+}
+html {
+  --lumo-contrast-60pc: #ffffff;
 }

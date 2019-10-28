@@ -122,6 +122,9 @@ function getElement() {
 
 function updateData() {
     let e = d3.event.sourceEvent;
+    if(global.element === undefined){
+        return;
+    }
     //par.element = chartAtpInstance.getElementAtEvent(e)[0];
     par.element = global.element;
 

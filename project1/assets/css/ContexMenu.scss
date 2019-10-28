@@ -1,0 +1,27 @@
+#contextMenu {
+  display:none;
+  position: absolute;
+  background: #00000099;
+  list-style: none;
+  z-index: 9999;
+  border: none;
+
+  & .menu-item {
+    text-align: right;
+    color: #ffffffaa;
+    font-size: small;
+    background: #00000088;
+    transition: all 500ms ease;
+    font-weight: bold;
+    padding: 2px 8px;
+
+    &:hover {
+      padding-right: 10px;
+      background: #ddddddff;
+      cursor: pointer;
+      color: #444444;
+      font-weight: bolder;
+    }
+  }
+}
+
