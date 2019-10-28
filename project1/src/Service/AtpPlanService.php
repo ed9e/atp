@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Service\Atp\ATP;
+use App\Service\Atp\ATPFetch;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class AtpPlanService
@@ -28,6 +29,15 @@ class AtpPlanService
         ])->fetchPlan()->rework();
         $atpPlan = $this->atp->getAtp();
 
+        $atpPlan['flags'] = NotesService::getNotes();
+
+        return $atpPlan;
+    }
+
+    public function getFetch()
+    {
+        $atpFetch = new ATPFetch($this->request);
+        $atpPlan = $atpFetch->fetchPlan()->rework()->getAtp();
         $atpPlan['flags'] = NotesService::getNotes();
 
         return $atpPlan;
