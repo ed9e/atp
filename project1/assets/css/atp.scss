@@ -104,7 +104,8 @@ $primary-color: color($theme, "base") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color($theme, "base2") !default;
+$secondary-color: color($theme, "base") !default;
+$atp-color: color($theme, "base2") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: $font-color !default;
@@ -392,7 +393,7 @@ body {
 html body {
   --primary-color: #00ff00 !important;
   --primary-text-color: $font-color !important;
-  --primary-background-color: #ffffff99 !important;
+  --primary-background-color: #00000066 !important;
 }
 
 .date-picker {

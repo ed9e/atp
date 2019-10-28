@@ -5,6 +5,12 @@ import '@polymer/iron-icons/';
 import '@polymer/iron-ajax';
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@fooloomanzoo/datetime-picker/overlay-date-picker';
+import '@vaadin/vaadin-date-picker';
+//import '@material-ui/pickers/DatePicker/index'
+import 'air-datepicker/dist/js/datepicker.min'
+import 'air-datepicker/dist/css/datepicker.min.css'
+import 'air-datepicker/dist/js/i18n/datepicker.pl'
+import 'air-datepicker/dist/js/i18n/datepicker.en'
 
 class PlanFormCollapse extends PolymerElement {
     static get is() {
@@ -41,7 +47,7 @@ class DatePicker extends PolymerElement {
 
     static get template() {
         return html`
-       <overlay-date-picker></overlay-date-picker>
+       <vaadin-date-picker label="My label" theme="my-theme"></vaadin-date-picker>
         `;
     }
 }
@@ -52,3 +58,4 @@ customElements.define(PlanFormCollapse.is, PlanFormCollapse);
 //     let datepicker = document.querySelector('vaadin-date-picker');
 //     datepicker.set('i18n.firstDayOfWeek', 2);
 // });
+$('.datepicker-here').data('datepicker');

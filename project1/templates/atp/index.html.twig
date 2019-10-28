@@ -45,16 +45,21 @@
         <template>
 
             <style>
-                /*:host([theme="my-theme"]) [part="label"], [part="input-field"], [part="toggle-button"] [part="button"] {*/
-                /*    color: var(--primary-color) !important;*/
-                /*    background-color: var(--primary-background-color);*/
+                :host([theme="my-theme"]) [part="label"], [part="input-field"], [part="toggle-button"] [part="button"] {
+                    color: var(--primary-color) !important;
+                    background-color: var(--primary-background-color);
 
-                /*}*/
+                }
 
-                /*:host([part="toggle-button"]) {*/
-                /*    color: var(--primary-color) !important;*/
+                :host([theme="my-theme"]) :focus {
+                    background-color: #ffffff;
+                    color: #fff;
+                }
 
-                /*}*/
+                :host([part="toggle-button"]) {
+                    color: var(--primary-color) !important;
+
+                }
             </style>
         </template>
     </dom-module>
@@ -80,22 +85,34 @@
             </div>
 
 
-            <plan-form-collapse id="collapse">
-                testte
-            </plan-form-collapse>
+            {#            <plan-form-collapse id="collapse">#}
+            {#                testte#}
+            {#            </plan-form-collapse>#}
 
-            <overlay-date-picker></overlay-date-picker>
+
             <form>
                 <div class="row">
 
                     <div class="input-field col-xs-2">
-                        <input id="plan_name" type="text" class="validate">
+                        <input id="plan_name" type="text">
                         <label for="plan_name">Plan Name</label>
+                        {#                        <overlay-date-picker></overlay-date-picker>#}
+                        {#                        <my-date-picker></my-date-picker>#}
+
                     </div>
                     <div class="input-field col-xs-2">
                         <input id="last_name" type="text" class="validate">
                         <label for="last_name">Opis</label>
                     </div>
+                    <div class="input-field col-xs-2">
+                        <input type='text' class="datepicker-here" id="air-datapicker"
+                               data-language='pl'
+                               data-multiple-dates="3"
+                               data-multiple-dates-separator=" -> "
+                               data-position='top left'
+                        />
+                        <label for="air-datapicker">Air datapicker</label>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -104,12 +121,9 @@
                             <input type="range" id="test5" min="0" max="100"/>
                         </p>
                     </div>
-                    <div class="col-xs-4">
-                        <p class="range-field">
-                            <input type="range" id="test5" min="0" max="100"/>
-                        </p>
-                    </div>
+
                 </div>
+
 
             </form>
 
