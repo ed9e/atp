@@ -138,9 +138,9 @@ export class ApplyChanges extends Checker {
             global.atpOptions.data.datasets.find('FTPBg').data = FTP_data(a);
 
             let atp = checker.getAtp(a);
-            console.log(atp);
+            console.log(JSON.stringify(atp));
             let phases = checker.getPhases(a);
-            console.log(phases);
+            console.log(JSON.stringify(phases));
             event.data.checker.iCheckUncheck(); // TO DO: czemu to nie działa
 
         } else {
@@ -159,12 +159,23 @@ export class ApplyChanges extends Checker {
             resDate.push(d);
             res.push(i.y);
         }
-        return Object.fromEntries(resDate.map((_, i) => {
+        let $return = Object.fromEntries(resDate.map((_, i) => {
             return [resDate[i], typeof res[i] === "string" ? null : res[i]];
         }));
+        Object.keys($return).forEach((key) => ($return[key] == null) && delete $return[key]);
+        return $return;
     }
 
     getPhases(a) {
-        return global.atpOptions.data.datasets.findByClass('phase');
+        let $ret = [];
+        global.atpOptions.data.datasets.findByClass('phase').forEach((phase) => {
+            let $ret1 = {};
+            let fromTo = [];
+            fromTo.push(moment(phase.data[0].x).format('YYYY-MM-DD'));
+            fromTo.push(moment(phase.data[1].x).format('YYYY-MM-DD'));
+            $ret1[phase.label] = fromTo;
+            $ret.push($ret1);
+        }, $ret);
+        return $ret;
     }
 }
