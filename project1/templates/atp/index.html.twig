@@ -6,6 +6,7 @@
     {{ encore_entry_link_tags('atp') }}
     <!-- Renders a link tag (if your module requires any CSS)
                      <link rel="stylesheet" href="/build/app.css"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 {% endblock %}
 {% block javascripts %}
@@ -29,6 +30,83 @@
 
 
 {% block page_content %}
+
+
+    <form>
+        <div class="row">
+            <div class="col-xs-1 text-left">
+                <i class="material-icons" title="Add trial" id="add-trial">control_point</i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs">
+                <ul class="collapsible popout" id="time-trials">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">playlist_add_check</i>Set up plan1
+                        </div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+                            <div class="row">
+                                <div class="input-field col-xs-2">
+                                    <input id="plan_name" type="text">
+                                    <label for="plan_name">Plan name</label>
+                                </div>
+                                <div class="input-field col-xs-2">
+                                    <input id="last_name" type="text" class="validate">
+                                    <label for="last_name">Description</label>
+                                </div>
+                                <div class="input-field col-xs-2">
+                                    <input type='text' class="datepicker-here" id="air-datapicker"
+                                           data-language='pl'
+                                           data-multiple-dates="3"
+                                           data-multiple-dates-separator=" -> "
+                                           data-position='bottom right'
+                                    />
+                                    <label for="air-datapicker">Plan start</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="time-trial" id="li-time-trial-1">
+
+                        <div class="collapsible-header" style="justify-content: space-between">
+                            <div>
+                                <i class="material-icons">playlist_add</i>Time trial
+                            </div>
+                            <div><i class="material-icons remove-trial" title="Remove trial" id="1">clear</i>
+                            </div>
+                        </div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+                            <div class="row">
+                                <div class="input-field col-xs-2">
+                                    <input id="plan_name" type="text">
+                                    <label for="plan_name">Trial name</label>
+                                </div>
+                                <div class="input-field col-xs-2">
+
+                                    <input type='text' class="datepicker-here"
+                                           data-language='pl'
+                                           data-multiple-dates="1"
+                                           data-position='bottom right'
+                                    />
+                                    <label for="air-datapicker">Trial start</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {#        <div class="row">#}
+        {#            <div class="col-xs-4">#}
+        {#                <p class="range-field">#}
+        {#                    <input type="range" id="test5" min="0" max="100"/>#}
+        {#                </p>#}
+        {#            </div>#}
+        {#        </div>#}
+
+    </form>
 
     <div class="row canvas">
         <div style="">
@@ -88,44 +166,6 @@
             {#            <plan-form-collapse id="collapse">#}
             {#                testte#}
             {#            </plan-form-collapse>#}
-
-
-            <form>
-                <div class="row">
-
-                    <div class="input-field col-xs-2">
-                        <input id="plan_name" type="text">
-                        <label for="plan_name">Plan Name</label>
-                        {#                        <overlay-date-picker></overlay-date-picker>#}
-                        {#                        <my-date-picker></my-date-picker>#}
-
-                    </div>
-                    <div class="input-field col-xs-2">
-                        <input id="last_name" type="text" class="validate">
-                        <label for="last_name">Opis</label>
-                    </div>
-                    <div class="input-field col-xs-2">
-                        <input type='text' class="datepicker-here" id="air-datapicker"
-                               data-language='pl'
-                               data-multiple-dates="3"
-                               data-multiple-dates-separator=" -> "
-                               data-position='top left'
-                        />
-                        <label for="air-datapicker">Air datapicker</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-4">
-                        <p class="range-field">
-                            <input type="range" id="test5" min="0" max="100"/>
-                        </p>
-                    </div>
-
-                </div>
-
-
-            </form>
 
 
         </div>
