@@ -70,6 +70,6 @@ abstract class MesoPhaseAbstract
 
     protected function shouldCutPhase(): bool
     {
-        return $this->calendar->getCountWeeks() < 13;
+        return $this->calendar->getCountWeeks() < 7;
     }
 }
