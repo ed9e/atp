@@ -22,6 +22,8 @@ class NotesService
             '2020-08-20' => 'VI ULTRAMARATON MAGURSKI',
             '2020-10-10' => 'UltraMaraton 52k',
         ];
-        return $notes;
+        return array_map(static function ($n) {
+            return substr($n, 0, 16);
+        }, $notes);
     }
 }

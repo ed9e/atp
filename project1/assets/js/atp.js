@@ -5,34 +5,10 @@ require('chart.js');
 require('chartjs-plugin-zoom');
 require('chartjs-plugin-deferred');
 require('./atp/graph/ftp.js');
-let chartTune = document.getElementById('chartJSContainer');
+global.chartTune = document.getElementById('chartJSContainer');
 global.ctx = chartTune.getContext('2d');
-let BB = chartTune.getBoundingClientRect(),
-    offsetX = BB.left,
-    offsetY = BB.top;
-let $menu = $('#contextMenu');
-chartTune.addEventListener('contextmenu', handleContextMenu, false);
-chartTune.addEventListener('mousedown', handleMouseDown, false);
-function handleContextMenu(e){
-    let paddingX = 10;
-    let paddingY = 155;
-    e.preventDefault();
-    e.stopPropagation();
-    let x = parseInt(e.clientX-offsetX+paddingX);
-    let y = parseInt(e.clientY-offsetY+paddingY);
-    $menu.css({left:x,top:y});
-    $menu.show();
-    return(false);
-}
 
-function handleMouseDown(e){
-    $menu.hide();
-}
- function menu(n) {
-    console.log("select menu " + n);
-    $menu.hide();
-}
-
+require('./atp/ContextMenu');
 
 require('./atp/graph/graph-styling.js');
 require('./atp/graph/atp_graph.js');

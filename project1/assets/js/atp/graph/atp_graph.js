@@ -304,7 +304,9 @@ global.atpOptions = {
                         mirror: false,
                         padding: 5,
                         callback: function (value, index, values) {
-                            return flags[value];
+                            if (typeof flags[value] === 'string') {
+                                return flags[value];
+                            }
                         }
                     },
 
@@ -430,7 +432,7 @@ global.chartAtpInstance.config.data.datasets.findByClass = function (id) {
     let $ret = [];
     for (let o in this) {
         if (this[o].class === id) {
-            $ret.push( this[o]);
+            $ret.push(this[o]);
         }
     }
     return $ret;

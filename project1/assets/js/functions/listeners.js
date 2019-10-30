@@ -15,3 +15,17 @@ window.addEventListener('keyup', (e) => {
 
 //append next time trial
 let timeTrial = new TimeTrial();
+
+let flagSubmits = document.querySelectorAll('.flag-submit');
+
+for (let i = 0; i < flagSubmits.length; i++) {
+    let flag = flagSubmits[i];
+    flag.addEventListener('click', (e) => {
+        let sliced = e.target.id.slice('-');
+        let id = sliced[sliced.length - 1];
+        let inputs = $('#li-time-trial-' + id).find('input');
+        flags[inputs[1].value] = inputs[0].value;
+        global.chartAtpInstance.update(0);
+    });
+
+}
