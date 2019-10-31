@@ -23,7 +23,7 @@ require('./dashboard/ConfigBadges');
 require('./dashboard/ZingGrid');
 require('./dashboard/graph/d3.js');
 require('./functions/listeners');
-require('./deafult-layout/Persons');
+require('./graph-layout/Persons');
 
 
 

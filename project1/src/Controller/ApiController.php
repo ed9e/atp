@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\GarminActivityDetails;
 use App\Repository\ActivityDetailsRepository;
 use App\Service\Atp\ATP;
+use App\Service\Atp\ATPFetch;
 use App\Service\AtpPlanService;
 use App\Service\CurrentDashboardService;
 use DateTime;
@@ -78,6 +79,19 @@ class ApiController extends AbstractController
      * @return JsonResponse
      */
     public function atp(RequestStack $request, ATP $atp): JsonResponse
+    {
+        $service = new AtpPlanService($request, $atp);
+        $plan = $service->getWeekly();
+        return $this->json(['data' => $plan]);
+    }
+
+    /**
+     * @Route("/atp/fetch")
+     * @param RequestStack $request
+     * @param ATP $atp
+     * @return JsonResponse
+     */
+    public function atpFetch(RequestStack $request, ATPFetch $atp): JsonResponse
     {
         $service = new AtpPlanService($request, $atp);
         $plan = $service->getWeekly();

@@ -4,6 +4,7 @@
 namespace App\Service\Atp;
 
 
+use App\Service\Atp\ExoPhase\Race;
 use DateInterval;
 use DateTime;
 
@@ -80,29 +81,28 @@ class Rework
                     return date('Y-m-d', $halfTime);
                 }, $phase)
             );
-            foreach ($res as $k => $re) {
-                $result[$k] = $re;
-            }
+            $result[array_key_first($res)] = array_values($res)[0];
         }
         return $result;
     }
 
     protected function remapPhasesLine($phases): array
     {
-        $result = [];
+        $return = [];
+        $i = 0;
         foreach ($phases as $phase) {
             $res = array_map(static function ($x) {
                 $from = (new DateTime(reset($x) . '-4 days'))->format('Y-m-d');
-                $to = (new DateTime(end($x) . '+4 days'))->format('Y-m-d');
+                $to = (new DateTime(end($x) . '+2 days'))->format('Y-m-d');
                 return [$from, $to];
             }, $phase);
-            $return[] = $res;
-            foreach ($res as $k => $re) {
-                sort($re);
-                $result[$k][] = $re;
+            $phaseLabel = array_key_first($res);
+            $return[$i][$phaseLabel] = array_pop($res);
+            $class = explode('\\', Race::class);
+            if ($phaseLabel === array_pop($class)) {
+                $i++;
             }
         }
         return $return;
-        return $result;
     }
 }

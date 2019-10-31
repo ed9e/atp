@@ -5,7 +5,6 @@ namespace App\Service\Atp;
 
 
 use App\Entity\WeeklyActivity;
-use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -102,7 +101,6 @@ class ATP
             case 'distance':
                 $result = array_column($weeklyResult, 'distanceSum', 'weekly');
                 break;
-
         }
         return $result;
     }

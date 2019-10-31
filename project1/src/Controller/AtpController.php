@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\WeeklyActivity;
 use App\Service\Atp\ATP;
+use App\Service\Atp\ATPFetch;
 use App\Service\Atp\Plan;
+use App\Service\AtpFetchService;
 use App\Service\AtpPlanService;
 use DateInterval;
 use DateTime;
@@ -46,6 +48,21 @@ class AtpController extends AbstractController
         $plan = $service->getWeekly();
 
         return $this->render('atp/index.html.twig', array_merge($plan, ['form' => $form->createView()]));
+    }
+
+    /**
+     * @Route("/fetch")
+     * @param RequestStack $request
+     * @param ATP $atp
+     * @return Response
+     * @throws Exception
+     */
+    public function fetch(RequestStack $request, ATPFetch $atp): Response
+    {
+        $service = new AtpFetchService($request, $atp);
+        $plan = $service->getWeekly();
+
+        return $this->render('atp/fetch.html.twig', array_merge($plan, ['form' => '']));
     }
 
     /**

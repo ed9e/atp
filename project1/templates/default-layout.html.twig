@@ -77,6 +77,7 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
         </header>
 
         <aside class="main-sidebar">
+            <div id="trigger"></div>
             <section class="sidebar">
                 {% block sidebar_user %}
                     {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -100,12 +101,6 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
 
         <div class="content-wrapper">
             <section class="content-header">
-                <div class="row">
-                    <div class="col-xs-3">
-                        {{ render(controller('App\\Controller\\DefaultLayoutController:personsAction', {'request':app.request})) }}
-                    </div>
-
-                </div>
                 <h1>
                     {% block page_title %}{{ 'Admin LTE'|trans({}, 'AdminLTEBundle') }}{% endblock %}
                     <small>{% block page_subtitle %}{{ 'A short subtitle for your page'|trans({}, 'AdminLTEBundle') }}{% endblock %}</small>
@@ -120,8 +115,9 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
                 {% endblock %}
             </section>
 
-            {% block page_content_before %}{% endblock %}
-
+            <div class="row">
+                {% block page_content_before %}{% endblock %}
+            </div>
             <section class="{% block page_content_class %}content{% endblock %}">
                 <div id="content">
                     {% block page_content_start %}{{ include('@AdminLTE/Partials/_flash_messages.html.twig') }}{% endblock %}

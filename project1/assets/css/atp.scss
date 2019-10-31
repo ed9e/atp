@@ -441,3 +441,10 @@ html body {
   --primary-text-color: $font-color !important;
   --primary-background-color: #00000066 !important;
 }
+
+#trigger {
+  background-color: #00000000;
+  width: 2px;
+  height: 900px;
+  float: left;
+}

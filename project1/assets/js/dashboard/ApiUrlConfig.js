@@ -4,9 +4,10 @@ export class ApiUrlConfig {
         this.url = new URL('http://127.0.0.1:8000/api/');
         this.urlParams = {
             activityIds: {default: [1, 6]},
-            profileId: {default: 'lbrzozowski'},
+            profileId: {default: 'lbrzozowski', value: null},
             weeklyType: {default: 'time'},
-            weekDate: {default: '', store: null}
+            weekDate: {default: '', store: null},
+            atp: {default: '', value: null},
         };
     }
 
@@ -42,6 +43,7 @@ export class ApiUrlConfig {
         searchParams.activityId = this.getActivityIds().join(',');
         searchParams.profileId = this.getProfileId();
         searchParams.weeklyType = this.getWeeklyType();
+        searchParams.atp = this.getAtpId();
         return searchParams;
     }
 
@@ -54,7 +56,11 @@ export class ApiUrlConfig {
     }
 
     getProfileId() {
-        return this.urlParams.profileId ? this.urlParams.profileId : this.urlParams.profileId.default;
+        return this.urlParams.profileId.value ? this.urlParams.profileId.value : this.urlParams.profileId.default;
+    }
+
+    getAtpId() {
+        return this.urlParams.atp.value ? this.urlParams.atp.value : this.urlParams.atp.default;
     }
 
     getWeeklyType() {
@@ -72,6 +78,10 @@ export class ApiUrlConfig {
     }
 
     setProfileId(name) {
-        this.urlParams.profileId = name;
+        this.urlParams.profileId.value = name;
+    }
+
+    setAtpId(name) {
+        this.urlParams.atp.value = name;
     }
 }

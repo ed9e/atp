@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DefaultLayoutController extends AbstractController
+class GraphLayoutController extends AbstractController
 {
     public function personsAction(Request $request)
     {
-        return $this->render('persons.html.twig');
+        return $this->render('layout/persons.html.twig');
     }
 
     /**

@@ -6,7 +6,6 @@ namespace App\Service\Atp;
 
 use App\Service\Atp\ExoPhase\ExoPhaseAbstract;
 use App\Service\Atp\ExoPhase\PhaseIterator;
-use App\Service\Atp\ExoPhase\Race;
 use App\Service\Atp\MicroPhase\MicroPhase;
 use App\Service\Atp\MicroPhase\PhaseIterator as MicroPhaseIterator;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -65,16 +64,18 @@ class Calendar
      */
     public function fetch(): Calendar
     {
+        $labelTmp = null;
         foreach ($this->calendar as $week => $phases) {
             /** @var MicroPhase $microPhase */
             $microPhase = $phases['microphase'];
             $this->timeValueByWeek[$week] = $microPhase->getTimeValue();
             /** @var ExoPhaseAbstract $exoPhase */
             $exoPhase = $phases['exophase'];
-            $this->groupedExoPhase[$this->planNo][$exoPhase->getLabel()][] = $week;
-            if (get_class($exoPhase) === Race::class) {
+            if ($labelTmp && $labelTmp !== $exoPhase->getLabel()) {
                 $this->planNo++;
             }
+            $this->groupedExoPhase[$this->planNo][$exoPhase->getLabel()][] = $week;
+            $labelTmp = $exoPhase->getLabel();
         }
         return $this;
     }

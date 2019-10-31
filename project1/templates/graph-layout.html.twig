@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+
+    <!-- Renders a link tag (if your module requires any CSS)
+                     <link rel="stylesheet" href="/build/app.css"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <!-- Renders app.js & a webpack runtime.js file
+        <script src="/build/runtime.js"></script>
+        <script src="/build/app.js"></script> -->
+{% endblock %}
+
+{% block page_content_before %}
+    {{ parent() }}
+    <div class="col-xs-2">
+        {{ render(controller('App\\Controller\\GraphLayoutController:personsAction', {'request':app.request})) }}
+    </div>
+{% endblock %}

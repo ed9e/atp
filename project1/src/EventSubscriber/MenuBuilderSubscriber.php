@@ -31,28 +31,30 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
         );
     }
 
-    protected function dashboard(SidebarMenuEvent $event)
+    protected function dashboard(SidebarMenuEvent $event): void
     {
         $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-cookie-bite');
         $atpMenu
             ->addChild(
                 new MenuItemModel('currentId', 'Current fitness score', 'app_dashboard_index', [], 'fas fa-ruler')
-            )->addChild(
-                new MenuItemModel('calendarId', 'Calendar', 'app_dashboard_calendar', [], 'far fa-calendar-alt')
-            )->addChild(
-                new MenuItemModel('statisticsId', 'Statistics', 'app_dashboard_statistics', [], 'fas fa-chart-line') //chart-pie chart-area chart-bar
             );
+//             ->addChild(
+//                new MenuItemModel('calendarId', 'Calendar', 'app_dashboard_calendar', [], 'far fa-calendar-alt')
+//            )->addChild(
+//                new MenuItemModel('statisticsId', 'Statistics', 'app_dashboard_statistics', [], 'fas fa-chart-line') //chart-pie chart-area chart-bar
+//            );
+
         $event->addItem($atpMenu);
     }
 
-    protected function atp(SidebarMenuEvent $event)
+    protected function atp(SidebarMenuEvent $event): void
     {
         $atpMenu = new MenuItemModel('atpId', 'Atp', null, [], 'fas fa-globe');
 
         $atpMenu->addChild(
-            new MenuItemModel('planId', 'Plan', 'app_atp_index', [], 'fas  fa-edit')
+            new MenuItemModel('planId', 'Let\'s Plan', 'app_atp_index', [], 'fas  fa-edit')
         )->addChild(
-            new MenuItemModel('doneId', 'Done', '/atp/current', [], 'fas fa-hourglass-end')
+            new MenuItemModel('plans', 'Planed', '/atp/fetch', [], 'fas fa-hourglass-end')
         );
 
         $event->addItem($atpMenu);

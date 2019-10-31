@@ -46,7 +46,7 @@
             </div>
 
             <div class="curtain__panel curtain__panel--right">
-                <h2 id="time"></h2>
+                <h2 id="minutes"></h2>
                 <script type="application/javascript">
                     function Clock(date) {
                         this.date = date;
@@ -55,8 +55,12 @@
                     Clock.prototype.tick = function () {
                         let timestamp = this.date.getTime();
                         setInterval(() => {
-                            $('#time').html((new Date(timestamp)).toTimeString().slice(4, 8));
-                            $('#hour').html((new Date(timestamp)).toTimeString().slice(0, 4));
+                            $('#hour').html(
+                                (new Date(timestamp)).toTimeString().slice(0, 3)
+                            );
+                            $('#minutes').html(
+                                (new Date(timestamp)).toTimeString().slice(3, 9)
+                            );
                             timestamp += 1000;
                         }, 1000);
                     };

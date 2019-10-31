@@ -1,12 +1,8 @@
-{% extends 'layout.html.twig' %}
-{% block title %}ATP!{% endblock %}
+{% extends 'graph-layout.html.twig' %}
+{% block title %}Dashboard{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    {# 'app' must match the first argument to addEntry() in webpack.config.js #}
     {{ encore_entry_link_tags('dashboard') }}
-    <!-- Renders a link tag (if your module requires any CSS)
-                     <link rel="stylesheet" href="/build/app.css"> -->
-
 {% endblock %}
 {% block javascripts %}
     <script type="application/javascript">
@@ -16,7 +12,6 @@
         let yDone = {{ done|json_encode|raw }};
         let phases = {{ phases|json_encode|raw }};
         let phases2 = [];
-
 
         function createTimeArray(oIn) {
             let arr = [];
@@ -54,10 +49,6 @@
     </script>
     {{ parent() }}
     {{ encore_entry_script_tags('dashboard') }}
-
-    <!-- Renders app.js & a webpack runtime.js file
-        <script src="/build/runtime.js"></script>
-        <script src="/build/app.js"></script> -->
 {% endblock %}
 
 {% block time %}
@@ -65,7 +56,6 @@
 {% endblock %}
 
 {% block page_content %}
-
 
     <div class="row canvas">
         <div style="">

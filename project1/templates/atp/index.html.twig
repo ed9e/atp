@@ -1,13 +1,9 @@
-{% extends 'layout.html.twig' %}
+{% extends 'graph-layout.html.twig' %}
 {% block title %}ATP!{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     {# 'app' must match the first argument to addEntry() in webpack.config.js #}
     {{ encore_entry_link_tags('atp') }}
-    <!-- Renders a link tag (if your module requires any CSS)
-                     <link rel="stylesheet" href="/build/app.css"> -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 {% endblock %}
 {% block javascripts %}
     <script type="application/javascript">
@@ -22,16 +18,18 @@
     </script>
     {{ parent() }}
     {{ encore_entry_script_tags('atp') }}
-
-    <!-- Renders app.js & a webpack runtime.js file
-        <script src="/build/runtime.js"></script>
-        <script src="/build/app.js"></script> -->
 {% endblock %}
 
+{% block page_content_before %}
+    {{ parent() }}
+
+    <div class="col-xs-2">
+        {{ render(controller('App\\Controller\\AtpLayoutController:plansAction', {'request':app.request})) }}
+    </div>
+
+{% endblock %}
 
 {% block page_content %}
-
-
     <form>
         <div class="row">
             <div class="col-xs-1 text-left">
@@ -101,17 +99,7 @@
                 </ul>
             </div>
         </div>
-
-        {#        <div class="row">#}
-        {#            <div class="col-xs-4">#}
-        {#                <p class="range-field">#}
-        {#                    <input type="range" id="test5" min="0" max="100"/>#}
-        {#                </p>#}
-        {#            </div>#}
-        {#        </div>#}
-
     </form>
-
     <div class="row canvas">
         <div style="">
             <span></span>
@@ -123,28 +111,6 @@
             <li class="menu-item" onclick="menu(3)">add</li>
         </ul>
     </div>
-    <dom-module id="my-custom-stuff" theme-for="vaadin-text-field vaadin-date-picker-overlay-content">
-        <template>
-
-            <style>
-                :host([theme="my-theme"]) [part="label"], [part="input-field"], [part="toggle-button"] [part="button"] {
-                    color: var(--primary-color) !important;
-                    background-color: var(--primary-background-color);
-
-                }
-
-                :host([theme="my-theme"]) :focus {
-                    background-color: #ffffff;
-                    color: #fff;
-                }
-
-                :host([part="toggle-button"]) {
-                    color: var(--primary-color) !important;
-
-                }
-            </style>
-        </template>
-    </dom-module>
     <div class="darken-container">
         <div class="container-fluid">
             <div class="row controls badges">
@@ -165,14 +131,6 @@
                     </ul>
                 </div>
             </div>
-
-
-            {#            <plan-form-collapse id="collapse">#}
-            {#                testte#}
-            {#            </plan-form-collapse>#}
-
-
         </div>
-
     </div>
 {% endblock %}

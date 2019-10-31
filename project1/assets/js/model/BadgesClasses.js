@@ -140,7 +140,20 @@ export class ApplyChanges extends Checker {
             let atp = checker.getAtp(a);
             console.log(JSON.stringify(atp));
             let phases = checker.getPhases(a);
-            console.log(JSON.stringify(phases));
+            let returnPhases = [];
+            for (let i = 0; i < phases.length; i++) {
+                Object.entries(phases[i]).forEach((phase) => {
+                    let ret = {};
+                    ret[phase[0]] = [
+                        moment(phase[1][0]).add(3, 'days').format('YYYY-MM-DD'),
+                        moment(phase[1][1]).add(-2, 'days').format('YYYY-MM-DD'),
+                    ];
+                    returnPhases.push(ret);
+                });
+
+            }
+
+            console.log(JSON.stringify(returnPhases));
             event.data.checker.iCheckUncheck(); // TO DO: czemu to nie działa
 
         } else {

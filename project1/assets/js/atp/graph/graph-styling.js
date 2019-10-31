@@ -85,6 +85,8 @@ global.general = {
             Race: theme.phasesDataset.Race,
         },
         padding: 30,
+        paddingLeft: 28,
+        paddingRight: 20,
     },
     bar: {
         valueColor: theme.bar.valueColor

@@ -36,10 +36,8 @@ function eachPhasesDataset(d) {
 function getDateArray(start, end) {
     let
         arr = [],
-        dt = new Date(moment(start).add(general.phaseDataset.padding, 'hours'));
-
-    end = new Date(moment(end).add(-1 * general.phaseDataset.padding, 'hours'));
-
+        dt = new Date(moment(start).add(general.phaseDataset.paddingLeft, 'hours'));
+    end = new Date(moment(end).add(general.phaseDataset.paddingRight, 'hours'));
     arr.push({
         x: new Date(dt),
         y: 1 * general.timeline.thick
@@ -48,13 +46,6 @@ function getDateArray(start, end) {
         x: new Date(end),
         y: 1 * general.timeline.thick
     });
-    // while (dt <= end) {
-    //     arr.push({
-    //         x: new Date(dt),
-    //         y: 1 * general.timeline.thick
-    //     });
-    //     dt.setDate(dt.getDate() + 1);
-    // }
     return arr;
 }
 
