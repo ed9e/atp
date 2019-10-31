@@ -253,14 +253,14 @@ global.atpOptions = {
             ],
             yAxes: [{
 
-                display: false,
+                display: true,
                 scaleLabel: {
                     display: false,
                     labelString: 'VALUE'
                 },
                 gridLines: {
-                    drawTicks: false,
-                    display: false,
+                    drawTicks: true,
+                    display: true,
                     color: general.grid.gridLinesColor,
                     borderDash: [1, 2],
                     zeroLineWidth: 0
@@ -269,7 +269,7 @@ global.atpOptions = {
                     reverse: false,
                     min: 0,
                     //max: atpYAxes.max,
-                    display: false,
+                    display: true,
                     padding: 10
                 }
             }]

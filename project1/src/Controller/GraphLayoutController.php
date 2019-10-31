@@ -27,6 +27,7 @@ class GraphLayoutController extends AbstractController
             'users' => [
                 ['name' => 'Łukasz', 'username' => 'lbrzozowski'],
                 ['name' => 'FAramka', 'username' => 'faramka'],
+                ['name' => 'Skoor', 'username' => 'Skoor'],
                 ['name' => 'Robert', 'username' => 'rpasieczny'],
                 ['name' => 'Dziorek', 'username' => 'dziorki'],
                 ['name' => 'Harnik', 'username' => 'MichalHarnik'],
