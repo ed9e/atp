@@ -133,8 +133,8 @@ class ATP
     protected function getZoomKeys(): array
     {
         $keys = $this->plan::createIntervalArray($this->from, $this->to);
-        $prev = $this->plan->createIntervalArrayByPrev($this->from, 'P40W');
-        $last = $this->plan->createIntervalArrayBy($this->to, 'P20W');
+        $prev = $this->plan->createIntervalArrayByPrev($this->from, 'P20W');
+        $last = $this->plan->createIntervalArrayBy($this->to, 'P10W');
         return array_merge($prev, $keys, $last);
     }
 
