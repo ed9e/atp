@@ -440,6 +440,9 @@ html body {
   --primary-color: #00ff00 !important;
   --primary-text-color: $font-color !important;
   --primary-background-color: #00000066 !important;
+  & .collapsible-header{
+    background-color: #00000099;
+  }
 }
 
 #trigger {
