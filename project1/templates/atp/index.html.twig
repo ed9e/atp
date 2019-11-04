@@ -38,20 +38,21 @@
         </div>
         <div class="row">
 
-            <div class="col-xs-3">
-                <ul class="collapsible popout" id="time-trials">
+            <div class="col-xs-6">
+                <ul class="collapsible popout">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">playlist_add_check</i>Set up plan1
+                        <div class="collapsible-header"><i class="material-icons">playlist_add_check</i>Ramy czasowe
+                            planu
                         </div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+                        <div class="collapsible-body"><span>Nazwij, opisz, ustaw datę rozpoczęcia.</span>
                             <div class="row">
                                 <div class="input-field col-xs-4">
                                     <input id="plan_name1" type="text">
-                                    <label for="plan_name1">Plan name</label>
+                                    <label for="plan_name1">Nazwa</label>
                                 </div>
                                 <div class="input-field col-xs-4">
                                     <input id="last_name1" type="text" class="validate">
-                                    <label for="last_name1">Description</label>
+                                    <label for="last_name1">Opis</label>
                                 </div>
                                 <div class="input-field col-xs-4">
                                     <input type='text' class="datepicker-here" id="air-datapicker1"
@@ -61,26 +62,32 @@
                                            data-position='bottom right'
 
                                     />
-                                    <label for="air-datapicker1">Plan start</label>
+                                    <label for="air-datapicker1">Data rozpoczęcia</label>
                                 </div>
                             </div>
                         </div>
                     </li>
 
+
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <ul class="collapsible popout" id="time-trials">
+
                     <li class="time-trial" id="li-time-trial-1">
 
                         <div class="collapsible-header" style="justify-content: space-between">
                             <div>
-                                <i class="material-icons">playlist_add</i>Time trial
+                                <i class="material-icons">playlist_add</i>Zawody lub test
                             </div>
                             <div><i class="material-icons remove-trial" title="Remove trial" id="1">clear</i>
                             </div>
                         </div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+                        <div class="collapsible-body"><span>Data i nazwa wydarzenia</span>
                             <div class="row">
                                 <div class="input-field col-xs-4">
                                     <input id="plan_name2" type="text">
-                                    <label for="plan_name2">Trial name</label>
+                                    <label for="plan_name2">Nazwa</label>
                                 </div>
                                 <div class="input-field col-xs-4">
 
@@ -90,135 +97,64 @@
                                            data-position='bottom right'
                                            id="air-datapicker2"
                                     />
-                                    <label for="air-datapicker2">Trial start</label>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a class="waves-effect waves-teal btn-flat flag-submit"
-                                       id="flag-submit-1">Button</a>
+                                    <label for="air-datapicker2">Data</label>
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
+
             </div>
             <div class="col-xs-3">
-                <ul class="collapsible popout" id="time-trials3">
+                <ul class="collapsible popout" id="plan_values_settings">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">playlist_add_check</i>Set up plan1
+                        <div class="collapsible-header"><i class="material-icons">playlist_add_check</i>Ustawienia
+                            wartości
                         </div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+                        <div class="collapsible-body"><span>Wartośći treningu</span>
                             <div class="row">
-                                <div class="input-field col-xs-4">
-                                    <input id="plan_name3" type="text">
-                                    <label for="plan_name3">Plan name</label>
+                                <div class="input-field col-xs-5">
+                                    <input id="avg_week_time" type="text">
+                                    <label for="avg_week_time">Tygodniowy średni czas</label>
                                 </div>
-                                <div class="input-field col-xs-4">
-                                    <input id="last_name3" type="text" class="validate">
-                                    <label for="last_name3">Description</label>
+                                <div class="input-field col-xs-5">
+                                    <input id="avg_week_distance" type="text" class="validate">
+                                    <label for="avg_week_distance">Tygodniowy średni dystans</label>
                                 </div>
-                                <div class="input-field col-xs-4">
-                                    <input type='text' class="datepicker-here" id="air-datapicker3"
-                                           data-language='pl'
-                                           data-multiple-dates="3"
-                                           data-multiple-dates-separator=" -> "
-                                           data-position='bottom right'
-                                    />
-                                    <label for="air-datapicker3">Plan start</label>
-                                </div>
+
                             </div>
                         </div>
                     </li>
 
-                    <li class="time-trial" id="li-time-trial-1">
+                    <li class="time-trial">
 
                         <div class="collapsible-header" style="justify-content: space-between">
                             <div>
-                                <i class="material-icons">playlist_add</i>Time trial
-                            </div>
-                            <div><i class="material-icons remove-trial" title="Remove trial" id="1">clear</i>
+                                <i class="material-icons">playlist_add</i>Mezocykle
                             </div>
                         </div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+                        <div class="collapsible-body"><span>Konfiguracja mezocykli</span>
                             <div class="row">
-                                <div class="input-field col-xs-4">
-                                    <input id="plan_name4" type="text">
-                                    <label for="plan_name4">Trial name</label>
+                                <div class="input-field col-xs-8">
+                                    <select id="cycles_in_mezocycle">
+                                        {#<option value="" disabled selected>Choose your option</option>#}
+                                        <option value="3">3</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                    <label for="cycles_in_mezo">Ilość cykli w mezocyklu</label>
                                 </div>
-                                <div class="input-field col-xs-4">
 
-                                    <input type='text' class="datepicker-here"
-                                           data-language='pl'
-                                           data-multiple-dates="1"
-                                           data-position='bottom right'
-                                           id="air-datapicker4"
-                                    />
-                                    <label for="air-datapicker4">Trial start</label>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a class="waves-effect waves-teal btn-flat flag-submit"
-                                       id="flag-submit-1">Button</a>
-                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-offset-6">
-                <ul class="collapsible popout" id="time-trials">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">playlist_add_check</i>Set up plan1
-                        </div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
-                            <div class="row">
-                                <div class="input-field col-xs-4">
-                                    <input id="plan_name5" type="text">
-                                    <label for="plan_name5">Plan name</label>
+                            <div class="row text-left">
+                                <div class="input-field col-xs-8">
+                                    <p>
+                                        <label>
+                                            <input id="decrease_cycles_possibility" type="checkbox" checked="checked"/>
+                                            <span>Możliwość zmniejszenia cykli</span>
+                                        </label>
+                                    </p>
                                 </div>
-                                <div class="input-field col-xs-4">
-                                    <input id="last_name"5 type="text" class="validate">
-                                    <label for="last_name5">Description</label>
-                                </div>
-                                <div class="input-field col-xs-4">
-                                    <input type='text' class="datepicker-here" id="air-datapicker5"
-                                           data-language='pl'
-                                           data-multiple-dates="3"
-                                           data-multiple-dates-separator=" -> "
-                                           data-position='bottom right'
-                                    />
-                                    <label for="air-datapicker5">Plan start</label>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
 
-                    <li class="time-trial" id="li-time-trial-1">
-
-                        <div class="collapsible-header" style="justify-content: space-between">
-                            <div>
-                                <i class="material-icons">playlist_add</i>Time trial
-                            </div>
-                            <div><i class="material-icons remove-trial" title="Remove trial" id="1">clear</i>
-                            </div>
-                        </div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
-                            <div class="row">
-                                <div class="input-field col-xs-4">
-                                    <input id="plan_name6" type="text">
-                                    <label for="plan_name6">Trial name</label>
-                                </div>
-                                <div class="input-field col-xs-4">
-
-                                    <input type='text' class="datepicker-here" id="air-datapicker6"
-                                           data-language='pl'
-                                           data-multiple-dates="1"
-                                           data-position='bottom right'
-                                    />
-                                    <label for="air-datapicker6">Trial start</label>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a class="waves-effect waves-teal btn-flat flag-submit"
-                                       id="flag-submit-1">Button</a>
-                                </div>
                             </div>
                         </div>
                     </li>

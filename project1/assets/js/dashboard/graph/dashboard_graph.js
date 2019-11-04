@@ -136,7 +136,6 @@ global.atpOptions = {
             duration: 800,
 
             onComplete: function (animation) {
-                //console.log(animation)
             }
         },
         scaleStartValue: 0,
@@ -360,6 +359,21 @@ global.chartAtpInstance.config.data.datasets.find = function (id) {
     }
     return null;
 };
+global.chartAtpInstance.readyZoom = function (min) {
+
+    Chart.helpers.each(global.chartAtpInstance.scales, function (scale) {
+
+        let timeOptions = scale.options.time;
+        let tickOptions = scale.options.ticks;
+
+        if (timeOptions) {
+            timeOptions.min = min;
+        }
+    });
+
+    chartAtpInstance.update();
+};
+
 
 function getDateArray(start, end) {
     let

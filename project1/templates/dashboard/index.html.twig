@@ -11,6 +11,7 @@
         let yValues = {{ values|json_encode|raw }};
         let yDone = {{ done|json_encode|raw }};
         let phases = {{ phases|json_encode|raw }};
+        let zoomMin = {{ zoomMin|json_encode|raw }};
         let phases2 = [];
 
         function createTimeArray(oIn) {

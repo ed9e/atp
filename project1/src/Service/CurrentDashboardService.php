@@ -46,15 +46,15 @@ class CurrentDashboardService
                 break;
         }
 
-
         $diff = array_diff($keys, array_keys($weeklyData));
         $done = array_merge(array_fill_keys($diff, 0), $weeklyData);
         ksort($done);
 
         //$values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous friday')), 'P20W'), 0);
         $values = [];
+        $zoomMin = $this->getZoomStartDate();
 
-        return ['keys' => $keys, 'done' => $done, 'values' => $values, 'phases' => NotesService::getNotes()];
+        return ['zoomMin' => $zoomMin, 'keys' => $keys, 'done' => $done, 'values' => $values, 'phases' => NotesService::getNotes()];
     }
 
     protected function prepareWeeklyQueryParams(Request $request): array
@@ -66,5 +66,10 @@ class CurrentDashboardService
 
 
         return ['activityId' => $activity_id, 'userDisplayName' => $userDisplayName, 'weeklyType' => $weeklyType];
+    }
+
+    protected function getZoomStartDate()
+    {
+        return (new DateTime())->setTimestamp(strtotime('next friday'))->sub(new DateInterval('P130W'))->format('Y-m-d');
     }
 }

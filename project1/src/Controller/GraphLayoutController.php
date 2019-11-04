@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Service\PersonsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,25 +18,13 @@ class GraphLayoutController extends AbstractController
 
     /**
      * @Route("/layout/personsapi")
+     * @param PersonsService $service
      * @param Request $request
      * @return JsonResponse
      * @throws Exception
      */
-    public function personsapiAction(Request $request): JsonResponse
+    public function personsapiAction(PersonsService $service, Request $request): JsonResponse
     {
-        $data = [
-            'users' => [
-                ['name' => 'Łukasz', 'username' => 'lbrzozowski'],
-                ['name' => 'FAramka', 'username' => 'faramka'],
-                ['name' => 'Skoor', 'username' => 'Skoor'],
-                ['name' => 'Robert', 'username' => 'rpasieczny'],
-                ['name' => 'Dziorek', 'username' => 'dziorki'],
-                ['name' => 'Harnik', 'username' => 'MichalHarnik'],
-                ['name' => 'Henek', 'username' => 'Leprecian'],
-                ['name' => 'Aga', 'username' => 'ad478d14-a089-43a8-a9a4-0e964917a6fc'], //aga
-                ['name' => 'Jerzy', 'username' => 'da2a7a64-c01c-4f9b-b2bc-dbff1eaf559a'], //Jerzy
-            ]
-        ];
-        return $this->json($data['users']);
+        return $this->json($service->get());
     }
 }
