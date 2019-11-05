@@ -115,6 +115,12 @@ $button-raised-background: darken($primary-color, 20%) !default;
 $button-raised-background-hover: lighten($button-raised-background, 15%) !default;
 $button-raised-color: #eee !default;
 $collapsible-border-color: color($theme, "accent-1");
+$select-background: color($theme2, "base") !default;
+$select-option-hover: color($theme, "base") !default;
+$select-option-hover-color: #000;
+$select-option-focus-color: color($theme2, "base") !default;
+$select-option-selected-color: color($theme2, "base") !default;
+
 
 html {
   overflow: scroll;
@@ -228,6 +234,40 @@ body {
       }
     }
 
+    & .select-field {
+      & label {
+        font-size: 1rem;
+        line-height: 35px;
+      }
+
+      & .dropdown-content {
+        background-color: #000000aa;
+
+        & li, & li.selected {
+          transition: .2s ease-in;
+
+          &.active {
+            background-color: darken($select-option-hover, 10%);
+            transition: .2s ease-in;
+
+            & > a, & > span {
+              transition: .2s ease-in;
+              color: #ffffff99;
+            }
+          }
+
+          &:hover {
+            background-color: $select-option-hover;
+            transition: .2s ease-in;
+
+            & > a, & > span {
+              transition: .2s ease-in;
+              color: #000000;
+            }
+          }
+        }
+      }
+    }
 
     a:hover, a:active, a:link, a:visited {
       color: $link-color;
@@ -440,7 +480,8 @@ html body {
   --primary-color: #00ff00 !important;
   --primary-text-color: $font-color !important;
   --primary-background-color: #00000066 !important;
-  & .collapsible-header{
+
+  & .collapsible-header {
     background-color: #00000099;
   }
 }
