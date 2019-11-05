@@ -128,7 +128,7 @@ global.atpOptions = {
                 tension: 0.4
             }
         },
-        responsive: false,
+        responsive: true,
         maintainAspectRatio: false,
         //aspectRatio: 1950 / 650,
         layout: {

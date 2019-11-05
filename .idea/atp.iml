@@ -10,9 +10,11 @@
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/cache" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/collections" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/common" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/data-fixtures" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/dbal" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/doctrine-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/doctrine-cache-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/doctrine-fixtures-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/doctrine-migrations-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/event-manager" />
       <excludeFolder url="file://$MODULE_DIR$/project1/vendor/doctrine/inflector" />
