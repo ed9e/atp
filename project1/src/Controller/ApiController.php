@@ -12,6 +12,7 @@ use App\Service\CurrentDashboardService;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,13 +32,16 @@ class ApiController extends AbstractController
     }
 
     /**
+     * DataTable data
      * @Route("/")
      * @param Request $request
      * @return JsonResponse
      * @throws Exception
+     * @IsGranted("ROLE_USER")
      */
     public function index(Request $request): JsonResponse
     {
+
         /** @var ActivityDetailsRepository $repository */
         $repository = $this->entityManager->getRepository(GarminActivityDetails::class);
         $data = $repository->findByStartTime($this->prepareQueryRequest($request));
@@ -63,6 +67,7 @@ class ApiController extends AbstractController
      * @param Request $request
      * @param EntityManagerInterface $em
      * @return JsonResponse
+     * @IsGranted("ROLE_USER")
      */
     public function weekly(Request $request, EntityManagerInterface $em): JsonResponse
     {
@@ -77,6 +82,7 @@ class ApiController extends AbstractController
      * @param RequestStack $request
      * @param ATP $atp
      * @return JsonResponse
+     * @IsGranted("ROLE_USER")
      */
     public function atp(RequestStack $request, ATP $atp): JsonResponse
     {
@@ -90,6 +96,7 @@ class ApiController extends AbstractController
      * @param RequestStack $request
      * @param ATP $atp
      * @return JsonResponse
+     * @IsGranted("ROLE_USER")
      */
     public function atpFetch(RequestStack $request, ATPFetch $atp): JsonResponse
     {
@@ -104,6 +111,8 @@ class ApiController extends AbstractController
      */
     public function atpPost(RequestStack $requestStack)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         return $this->json();
     }
 }

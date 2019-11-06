@@ -1,0 +1,31 @@
+.login-wrapper {
+  color: #ffeabd;
+  padding: 15px;
+
+  & input {
+    color: #ffeabd;
+
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+      background-color: transparent !important;
+    }
+  }
+
+  & .login-form {
+    color: #ffeabd;
+    display: flex;
+    align-items: center; // vertical centering
+    justify-content: center; // horizontal centering
+
+    min-height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    & label {
+      color: #9f8a5d;
+    }
+  }
+}

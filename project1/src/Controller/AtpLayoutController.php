@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 
+use Exception;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +22,7 @@ class AtpLayoutController extends AbstractController
      * @param Request $request
      * @return JsonResponse
      * @throws Exception
+     * @IsGranted("ROLE_USER")
      */
     public function plansapiAction(Request $request): JsonResponse
     {

@@ -18,11 +18,13 @@ class DashboardController extends AbstractController
      * @param EntityManagerInterface $em
      * @param RequestStack $requestStack
      * @return Response
-     * @Route("/dashboard")
+     * @Route("/dashboard", name="dashboard")
      * @Route("/dashboard/index")
      */
     public function index(EntityManagerInterface $em, RequestStack $requestStack): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $weekly = new CurrentDashboardService($requestStack->getCurrentRequest(), $em);
         $data = $weekly->getWeekly();
         return $this->render('dashboard/index.html.twig', $data);

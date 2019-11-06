@@ -25,6 +25,8 @@ class GraphLayoutController extends AbstractController
      */
     public function personsapiAction(PersonsService $service, Request $request): JsonResponse
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         return $this->json($service->get());
     }
 }

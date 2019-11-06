@@ -6,7 +6,6 @@ namespace App\Controller;
 use App\Service\GarminManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GarminCalendarController extends AbstractController
@@ -14,7 +13,7 @@ class GarminCalendarController extends AbstractController
     /**
      * @Route("/garmin/calendar", name="garmin_calendar")
      * @param GarminManager $manager
-     * @return Response
+     * @return JsonResponse
      */
     public function index(GarminManager $manager): JsonResponse
     {

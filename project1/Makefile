@@ -55,6 +55,10 @@ db-apply:
 entity:
 	./bin/console make:entity
 
+## make fixtures-append
+fixtures-append:
+	php bin/console doctrine:fixtures:load --append
+
 ## make migration
 migration:
 	./bin/console make:migration

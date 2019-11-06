@@ -24,6 +24,7 @@
     "symfony/http-client": "4.3.*",
     "symfony/monolog-bundle": "^3.3",
     "symfony/orm-pack": "^1.0",
+    "symfony/routing": "4.3.*",
     "symfony/security": "4.3.*",
     "symfony/security-bundle": "4.3.*",
     "symfony/twig-bundle": "4.3.*",

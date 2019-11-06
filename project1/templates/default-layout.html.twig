@@ -73,6 +73,11 @@ fixed, layout-boxed, layout-top-nav, sidebar-collapse, sidebar-mini
                         {% endblock %}
                     </ul>
                 </div>
+                {% if app.user %}
+                    <div class="text-right">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
             </nav>
         </header>
 

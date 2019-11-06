@@ -2,16 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\WeeklyActivity;
 use App\Service\Atp\ATP;
 use App\Service\Atp\ATPFetch;
-use App\Service\Atp\Plan;
 use App\Service\AtpFetchService;
 use App\Service\AtpPlanService;
 use DateInterval;
 use DateTime;
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -31,9 +29,11 @@ class AtpController extends AbstractController
      * @param ATP $atp
      * @return Response
      * @throws Exception
+     * @IsGranted("ROLE_USER")
      */
     public function index(RequestStack $request, ATP $atp): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
 
         $from = (new DateTime())->setTimestamp(strtotime('next friday'));
         $to = (new DateTime())->setTimestamp(strtotime('next friday'))->add(new DateInterval('P36W'));
@@ -53,44 +53,19 @@ class AtpController extends AbstractController
     /**
      * @Route("/fetch")
      * @param RequestStack $request
-     * @param ATP $atp
+     * @param ATPFetch $atp
      * @return Response
      * @throws Exception
+     * @IsGranted("ROLE_USER")
      */
     public function fetch(RequestStack $request, ATPFetch $atp): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $service = new AtpFetchService($request, $atp);
         $plan = $service->getWeekly();
 
         return $this->render('atp/fetch.html.twig', array_merge($plan, ['form' => '']));
     }
 
-    /**
-     * @Route("/current")
-     */
-    public function current(EntityManagerInterface $em)
-    {
-        $from = 'P80W';
-        $to = 'P20W';
-
-        $options = [
-            'from' => (new DateTime())->setTimestamp(strtotime('next monday'))->sub(new DateInterval('P120W')),
-            'to' => (new DateTime())->setTimestamp(strtotime('next monday')),
-        ];
-        $plan = new Plan($options);
-        $keys = $plan->createIntervalArray($options['from'], clone ($options['to'])->add(new DateInterval('P20W')));
-
-        $queryData = ['activityId' => [1, 6], 'userDisplayName' => 'lbrzozowski'];
-
-        $weekly = $em->getRepository(WeeklyActivity::class);
-        $weeklyResult = $weekly->getWeekly2($queryData);
-        $weeklyData = array_column($weeklyResult, 'timeMinuteSum', 'weekly');
-        $diff = array_diff($keys, array_keys($weeklyData));
-        $done = array_merge(array_fill_keys($diff, 1), $weeklyData);
-        ksort($done);
-
-        $values = array_fill_keys($plan->createIntervalArrayBy((new DateTime())->setTimestamp(strtotime('previous monday')), 'P20W'), 5);
-        $template = ['keys' => $keys, 'done' => $done, 'values' => $values];
-        return $this->render('atp/current.html.twig', $template);
-    }
 }
