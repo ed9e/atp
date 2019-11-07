@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Config\Service;
 use App\Entity\GarminActivityDetails;
 use App\Repository\ActivityDetailsRepository;
 use App\Service\Atp\ATP;
@@ -29,6 +30,19 @@ class ApiController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @Route("/setGarminCookie")
+     * @param Request $request
+     * @param Service $service
+     * @return JsonResponse
+     */
+    public function setGarminCookie(Request $request, Service $service): JsonResponse
+    {
+        return $this->json($session = $request->headers);
+        $response = $service->save($service::SESSION_KEY_ID, $session, $service::RESOURCE_SESSION_CONFIG);
+        return $this->json($response);
     }
 
     /**

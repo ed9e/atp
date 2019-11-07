@@ -13,7 +13,7 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
     {
         return [
             ThemeEvents::THEME_SIDEBAR_SETUP_MENU => ['onSetupMenu', 100],
-            ThemeEvents::THEME_BREADCRUMB => ['onSetupMenu', 100],
+            //ThemeEvents::THEME_BREADCRUMB => ['onSetupMenu', 100],
         ];
     }
 
@@ -102,7 +102,7 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
      * @param string $route
      * @param MenuItemModel[] $items
      */
-    protected function activateByRoute($route, $items)
+    protected function activateByRoute($route, $items): void
     {
         foreach ($items as $item) {
             if ($item->hasChildren()) {

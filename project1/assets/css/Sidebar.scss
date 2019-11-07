@@ -1,0 +1,74 @@
+body {
+  &.sidebar-expanded-on-hover .main-sidebar {
+    background-color: transparentize($body-color, 0.3);
+    transition: .2s ease-out;
+  }
+
+  &.sidebar-collapse .main-sidebar {
+    background-color: #00000022;
+    transition: .5s ease-out;
+  }
+
+  &.sidebar-collapse .sidebar-menu {
+    & li a {
+      & i {
+        filter: grayscale(10%);
+        transition: .25s ease-in;
+        color: $link-color;
+        font-size: larger;
+      }
+
+      & i.pull-right {
+        color: $link-color;
+      }
+    }
+  }
+
+  .sidebar-menu {
+    & li a {
+      & i {
+        filter: grayscale(20%);
+        transition: .25s ease-out;
+        color: $primary-color;
+      }
+
+      & i.pull-right {
+        color: $link-color;
+      }
+    }
+
+    & .treeview-menu {
+      & li {
+        padding-left: 10px;
+        transition: .1s ease-in;
+
+        & span, i {
+          transition: .2s ease-in;
+        }
+
+        &:not(:first-child) {
+          border-top: solid 1px $body-color;
+        }
+
+        &.active {
+          background-color: transparentize($primary-color, 0.1);
+
+          & span, i {
+            color: lighten($body-color, 5%);
+            transition: .2s ease-in;
+          }
+        }
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+          transition: .3s ease-in;
+
+          & span, i {
+            color: lighten($body-color, 5%);
+            transition: .2s ease-in;
+          }
+        }
+      }
+    }
+  }
+}

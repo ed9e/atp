@@ -188,6 +188,9 @@ body {
 }
 
 body {
+  & form {
+    padding-right: 15px;
+  }
   background-color: $body-color;
   //background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
   //background-blend-mode: multiply, multiply;
@@ -199,44 +202,6 @@ body {
   }
 
   & {
-    &.sidebar-expanded-on-hover .main-sidebar {
-      background-color: transparentize($body-color, 0.3);
-      transition: .2s ease-out;
-    }
-
-    &.sidebar-collapse .main-sidebar {
-      background-color: #00000022;
-      transition: .5s ease-out;
-    }
-
-    &.sidebar-collapse .sidebar-menu {
-      & li a {
-        & i {
-          filter: grayscale(10%);
-          transition: .25s ease-in;
-          color: $link-color;
-          font-size: larger;
-        }
-
-        & i.pull-right {
-          color: $link-color;
-        }
-      }
-    }
-
-    .sidebar-menu {
-      & li a {
-        & i {
-          filter: grayscale(20%);
-          transition: .25s ease-out;
-          color: $primary-color;
-        }
-
-        & i.pull-right {
-          color: $link-color;
-        }
-      }
-    }
 
     & .select-field {
       & label {
@@ -418,57 +383,9 @@ body {
   }
 }
 
-#add-trial {
-  cursor: pointer;
-}
-
-form {
-  & > .row {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-
-  & .time-trial {
-    animation: animateElement ease-in .2s;
-    animation-iteration-count: 1;
-
-    @keyframes animateElement {
-      0% {
-        opacity: 0;
-        transform: translate(0px, 20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translate(0px, 0px);
-      }
-    }
-
-    & .remove-trial {
-
-      -webkit-transition: all 300ms ease-in;
-      -webkit-transform: rotate(0deg);
-      -ms-transition: all 300ms ease-in;
-      -ms-transform: rotate(0deg);
-      -moz-transition: all 300ms ease-in;
-      -moz-transform: rotate(0deg);
-      transition: all 300ms ease-in;
-      transform: rotate(0deg);
-
-      &:hover {
-        -webkit-transition: all 200ms ease-in;
-        -webkit-transform: rotate(180deg);
-        -ms-transition: all 300ms ease-in;
-        -ms-transform: rotate(180deg);
-        -moz-transition: all 300ms ease-in;
-        -moz-transform: rotate(180deg);
-        transition: all 300ms ease-in;
-        transform: rotate(180deg);
-      }
-    }
-  }
-}
-
+@import "Sidebar";
 @import "ControlSidebar";
+@import "TimeTrial";
 @import "GraphColors";
 @import "ContexMenu";
 @import "DataTable";
