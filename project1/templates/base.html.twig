@@ -2,8 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Training, training, training, rest.{% endblock %}</title>
     {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/adminlte/adminlte.css') }}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         {# 'app' must match the first argument to addEntry() in webpack.config.js #}
         {{ encore_entry_link_tags('app') }}
         <!-- Renders a link tag (if your module requires any CSS)

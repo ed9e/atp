@@ -131,6 +131,7 @@ html {
 
 
 body {
+  -webkit-font-smoothing: antialiased;
   //background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   //background: linear-gradient(to bottom, #ee7752 0% , #e73c7e 100%), radial-gradient(at top center, #23a6d5 10%, #23d5ab 120%), #23a6d5  ;
   //background: linear-gradient(to bottom, transparentize($body-color, 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 20%);
@@ -191,6 +192,7 @@ body {
   & form {
     padding-right: 15px;
   }
+
   background-color: $body-color;
   //background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) color($theme, "accent-2");
   //background-blend-mode: multiply, multiply;
@@ -428,5 +430,22 @@ html body {
 
 canvas {
   width: 105%
+}
+
+.zbiorniczek {
+  position: relative;
+  height: auto;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  background: rgb(2, 0, 36);
+  background: -moz-linear-gradient(149deg, rgba(2, 0, 36, 1) 0%, rgba(9, 30, 121, 1) 46%, rgba(0, 212, 255, 1) 100%);
+  background: -webkit-linear-gradient(149deg, rgba(2, 0, 36, 1) 0%, rgba(9, 30, 121, 1) 46%, rgba(0, 212, 255, 1) 100%);
+  background: linear-gradient(149deg, rgba(2, 0, 36, 1) 0%, rgba(9, 30, 121, 1) 46%, rgba(0, 212, 255, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#00d4ff", GradientType=1);
 
 }
