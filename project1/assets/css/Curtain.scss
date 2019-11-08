@@ -8,36 +8,27 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: all 1200ms ease-out;
 
     & #curtain__checkbox {
       position: absolute;
       cursor: pointer;
       z-index: 100;
-      opacity: 0.5;
-      top: 97.7%;
+      opacity: 0;
+      //top: 97.7%;
+      top: -20px;
       left: 0;
       pointer-events: auto;
 
       // When the checkbox is checked...
+      & ~ div.curtain__content {
+        transition: all 200ms ease-in;
+        filter: sepia(0%) blur(0px);
+      }
       &:checked {
         & ~ div.curtain__content {
-          filter: blur(7px);
-          //-webkit-animation: blur 100ms ease-out;
-          transition: blur 200ms ease;
-          //filter: sepia(60%);
-          @-webkit-keyframes blur {
-            0% {
-              filter: blur(0px);
-            }
-            100% {
-              filter: blur(7px);
-            }
-          }
+          transition: all 100ms ease-out;
+          filter: sepia(100%) blur(8px);
         }
-
-
-        opacity: 0;
 
         // Slide the first panel
         & ~ div.curtain__panel--left {
@@ -56,26 +47,34 @@
     display: flex;
     align-items: center;
     background: #000000;
-    background: linear-gradient(240deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 0, 0, 0) 77.71%),
-    linear-gradient(120deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 0, 255, 0) 77.71%),
-    linear-gradient(0deg, darken(desaturate($body-color, 10%), 10%), rgba(0, 255, 0, 0) 77.71%);
+
     opacity: 1;
     color: #fff;
     float: left;
     position: relative;
     width: 50%;
     height: 100vh;
-    transition: all 300ms ease-out;
+    transition: transform 100ms ease-out;
     z-index: 2;
 
     &--left {
       justify-content: flex-end;
       transform: translateX(-100%);
+      background: linear-gradient(180deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 67.71%),
+      linear-gradient(90deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 41.71%),
+      linear-gradient(0deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 67.71%),
+      linear-gradient(270deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 67.71%);
+      background-blend-mode: multiply, multiply;
     }
 
     &--right {
       justify-content: flex-start;
       transform: translateX(100%);
+      background: linear-gradient(180deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 67.71%),
+      linear-gradient(90deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 67.71%),
+      linear-gradient(0deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 41.71%),
+      linear-gradient(270deg, darken(desaturate($body-color, 10%), 10%), rgba(255, 255, 255, 0) 67.71%);
+      background-blend-mode: multiply, multiply;
     }
   }
 

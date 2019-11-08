@@ -19,6 +19,7 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
 
     public function onSetupMenu(SidebarMenuEvent $event)
     {
+        $this->curtain($event);
         $this->dashboard($event);
         $this->atp($event);
 //        $this->herbs($event);
@@ -29,6 +30,12 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
             $event->getRequest()->get('_route'),
             $event->getItems()
         );
+    }
+
+    protected function curtain(SidebarMenuEvent $event): void
+    {
+        $model = new MenuItemModel('curtainId', 'Curtain', null, [], 'fas fa-adjust');
+        $event->addItem($model);
     }
 
     protected function dashboard(SidebarMenuEvent $event): void

@@ -25,6 +25,14 @@ body {
   }
 
   .sidebar-menu {
+    & li.header {
+      padding: 10px 25px 10px 17px;
+
+      & i {
+        width: 20px;
+      }
+    }
+
     & li a {
       & i {
         filter: grayscale(20%);
