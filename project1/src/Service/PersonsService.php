@@ -15,6 +15,7 @@ class PersonsService
             ['name' => 'Robert', 'username' => 'rpasieczny'],
             ['name' => 'Krzemiński', 'username' => 'krzemyk11'],
             ['name' => 'Dziorek', 'username' => 'dziorki'],
+            ['name' => 'Przemolec88', 'username' => 'Przemolec88'],
             ['name' => 'Harnik', 'username' => 'MichalHarnik'],
             ['name' => 'Henek', 'username' => 'Leprecian'],
             ['name' => 'Aga', 'username' => 'ad478d14-a089-43a8-a9a4-0e964917a6fc'], //aga
