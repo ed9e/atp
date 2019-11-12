@@ -3,7 +3,7 @@
 body {
   font-family: "Exo 2", sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-y: visible;
+  //overflow-y: visible;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -11,23 +11,19 @@ body {
 }
 
 body, html {
-  height: 100%;
+  //height: 100%;
   background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
-  background: #00000099;
+  //background: #00000099;
   background-size: 400% 150%;
-
-}
-
-html {
-  overflow-y: hidden;
+  background-attachment: fixed;
 }
 
 #scene {
-  background-attachment: fixed;
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 54vh;
+  //background-attachment: fixed;
+  //background-position: 50% 0;
+  //background-repeat: no-repeat;
+  //background-size: cover;
+  //height: 54vh;
   //max-height: 1200px;
   //min-height: 200px;
 
@@ -35,8 +31,8 @@ html {
     & > div {
       //background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
       //background-size: 400% 350%;
-      padding: 28% 0% 0% 0;
-      min-height: 100%;
+      padding: 15% 0% 0% 0;
+      //min-height: 100%;
       width: 100%;
       /* Create the parallax scrolling effect */
       background-attachment: fixed;
@@ -46,42 +42,45 @@ html {
     }
 
     & div > div:first-child {
-      padding: 10% 10%;
+      padding: 5% 10%;
       width: 100%;
       //min-height: 100%;
-      background: #000000dd;
-      color: #ffffffaa;
-      //background: radial-gradient(circle, #ff5e10 62%, #ffffff 100%);
+      background: #00000000;
+      color: #000000aa;
+      //background: radial-gradient(circle, #00000044 32%, #ff5e1088 100%);
+
+
     }
 
-    & #p1 {
-      background-image: url("../images/1.jpg");
-    }
-
-    & #p2 {
-      background-image: url("../images/2.jpg");
-    }
-
-    & #p3 {
-      background-image: url("../images/3.jpg");
-    }
-
-    & #p4 {
-      background-image: url("../images/4.jpg");
-    }
+    //& #p1 {
+    //  background-image: url("../images/1.jpg");
+    //
+    //}
+    //
+    //& #p2 {
+    //  background-image: url("../images/2.jpg");
+    //}
+    //
+    //& #p3 {
+    //  background-image: url("../images/3.jpg");
+    //}
+    //
+    //& #p4 {
+    //  background-image: url("../images/4.jpg");
+    //}
 
   }
 }
 
 .container-e {
-  position: relative;
-  height: auto;
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
+  //position: relative;
+  //height: auto;
+  //width: 100%;
+  //min-height: 100%;
+  //margin: 0;
+  //padding: 0;
+  //border: 0;
+  //vertical-align: baseline;
 
   //background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   //background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
@@ -101,11 +100,13 @@ html {
   }
 
   & .container-notes {
+    background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
+    background-size: 400% 1400%;
     position: fixed;
     top: 0;
-    right: 15px;
+    right: 0px;
     z-index: 999;
-    background: #000000;
+    //    background: #000000;
     width: 100%;
     color: #ffffffcc;
     padding: 0.5% 1%;
@@ -120,9 +121,12 @@ html {
 
     & a {
       transition: all 0.8s ease-in;
+      color: $font-color;
 
       &:hover {
-        color: $primary-color;
+        color: black;
+        background: #999;
+
         transition: all 50ms ease-in;
       }
     }
@@ -134,7 +138,7 @@ html {
     text-align: center;
 
     & .container-pad {
-      height: 100%;
+      //height: 100%;
       color: #00000099;
       width: auto;
       margin: 0 0%;
