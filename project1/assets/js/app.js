@@ -15,7 +15,7 @@ const $ = require('jquery');
 import 'web-animations-js/web-animations-next-lite.min';
 
 $(document).ready(function () {
-    require('../css/scss/materialize.scss');
+    //require('../css/scss/materialize.scss');
     require('materialize-js');
     $('select').material_select();
     $('.select-wrapper .caret').text('');

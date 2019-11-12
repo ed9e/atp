@@ -2,6 +2,7 @@ const imagesContext = require.context('../images', true, /\.(png|jpg|jpeg|gif|ic
 imagesContext.keys().forEach(imagesContext);
 require('./control-sidebar/listenner');
 
+if (document.getElementById('curtainId'))
 document.getElementById('curtainId').addEventListener('click', () => {
     document.getElementById('curtain__checkbox').checked = true;
 });

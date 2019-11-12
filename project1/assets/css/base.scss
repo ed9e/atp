@@ -1,0 +1,143 @@
+@import "Colors";
+
+body {
+  font-family: "Exo 2", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-y: visible;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: "Exo 2", sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
+  background: #00000099;
+  background-size: 400% 150%;
+
+}
+
+html {
+  overflow-y: hidden;
+}
+
+#scene {
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 54vh;
+  //max-height: 1200px;
+  //min-height: 200px;
+
+  & .container-pad {
+    & > div {
+      //background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
+      //background-size: 400% 350%;
+      padding: 28% 0% 0% 0;
+      min-height: 100%;
+      width: 100%;
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    & div > div:first-child {
+      padding: 10% 10%;
+      width: 100%;
+      //min-height: 100%;
+      background: #000000dd;
+      color: #ffffffaa;
+      //background: radial-gradient(circle, #ff5e10 62%, #ffffff 100%);
+    }
+
+    & #p1 {
+      background-image: url("../images/1.jpg");
+    }
+
+    & #p2 {
+      background-image: url("../images/2.jpg");
+    }
+
+    & #p3 {
+      background-image: url("../images/3.jpg");
+    }
+
+    & #p4 {
+      background-image: url("../images/4.jpg");
+    }
+
+  }
+}
+
+.container-e {
+  position: relative;
+  height: auto;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+
+  //background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  //background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
+  //background-size: 400% 150%;
+
+  & h1 {
+    font-weight: 300;
+  }
+
+  & ol {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    text-align: left;
+    list-style: circle;
+  }
+
+  & .container-notes {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    z-index: 999;
+    background: #000000;
+    width: 100%;
+    color: #ffffffcc;
+    padding: 0.5% 1%;
+
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+      //font-family: 'Yeon Sung', cursive;
+    }
+
+    & small {
+      color: #ffffffcc;
+    }
+
+    & a {
+      transition: all 0.8s ease-in;
+
+      &:hover {
+        color: $primary-color;
+        transition: all 50ms ease-in;
+      }
+    }
+
+  }
+
+  & .center {
+    width: 100%;
+    text-align: center;
+
+    & .container-pad {
+      height: 100%;
+      color: #00000099;
+      width: auto;
+      margin: 0 0%;
+    }
+  }
+}

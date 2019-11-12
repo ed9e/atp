@@ -1,136 +1,15 @@
-@import "colors";
-
-$dark: (
-        "body": desaturate(darken(#471624, 15%), 40%),
-        "menu": #ffffff,
-        "font": #83878f,
-  //"base": #471624,
-        "base": #471624,
-        "ftp": #ffffff,
-        "ftpborder": #ff7a4b,
-        "ftpdone": #131313,
-        "ftpdoneborder": #232323,
-        "bar1": #ff7a4b,
-        "bar1border": #ff7a4b,
-        "bar2": #dd6e42,
-        "bar2border": desaturate(#dd6e42, 20%),
-        "bardone": #121212,
-        "bardoneborder": #191919,
-        "lighten-5": lighten(#1c1c1c, 6%),
-        "lighten-4": lighten(#1c1c1c, 5%),
-        "lighten-3": lighten(#1c1c1c, 4%),
-        "lighten-2": lighten(#1c1c1c, 3%),
-        "lighten-1": lighten(#1c1c1c, 2%),
-        "darken-1": desaturate(darken(#1c1c1c, 1%), 20%),
-        "darken-2": desaturate(darken(#1c1c1c, 2%), 30%),
-        "darken-3": desaturate(darken(#1c1c1c, 3%), 30%),
-        "darken-4": desaturate(darken(#1c1c1c, 4%), 30%),
-        "accent-1": #1c1c1c,
-        "accent-2": #eeeeee,
-        "accent-3": #1c1c1c,
-        "accent-4": #1c1c1c
-);
-
-$img: (
-        "accent-2": #5d5656,
-        "base": #17bb24, //#37b83c,
-        "base2": #ff5e10, //#ff6b36,
-  //"base": #795548,
-  //"base2": #8d6e63,
-        "accent-1": #474642
-);
-
-$img2: (
-        "font": #edf2e9,
-        "base": #000,
-        "accent-1": #00185c
-);
-$theme: 'img';
-$theme2: 'img2';
-
-$shades: (
-        "black": #000000,
-        "white": #FFFFFF,
-        "transparent": transparent
-);
-
-$colors: (
-        "materialize-red": $materialize-red,
-        "red": $red,
-        "pink": $pink,
-        "purple": $purple,
-        "deep-purple": $deep-purple,
-        "indigo": $indigo,
-        "blue": $blue,
-        "light-blue": $light-blue,
-        "cyan": $cyan,
-        "teal": $teal,
-        "green": $green,
-        "light-green": $light-green,
-        "lime": $lime,
-        "yellow": $yellow,
-        "amber": $amber,
-        "orange": $orange,
-        "deep-orange": $deep-orange,
-        "brown": $brown,
-        "blue-grey": $blue-grey,
-        "grey": $grey,
-        "shades": $shades,
-        "dark": $dark,
-        "img": $img,
-        "img2": $img2,
-) !default;
-
-// usage: color("name_of_color", "type_of_color")
-// to avoid to repeating map-get($colors, ...)
-
-@function color($color, $type) {
-  @if map-has-key($colors, $color) {
-    $curr_color: map-get($colors, $color);
-    @if map-has-key($curr_color, $type) {
-      @return map-get($curr_color, $type);
-    }
-  }
-  @warn "Unknown `#{$color}` - `#{$type}` in $colors.";
-  @return null;
-}
-
-$font-color: color($theme2, "font") !default;
-$body-color: color($theme2, "base") !default;
-$menu-color: darken($body-color, 3%) !default;
-$menu-level2-color: darken($body-color, 6%) !default;
-$menu-level2-color-active: lighten($body-color, 2%) !default;
-$primary-color: color($theme, "base") !default;
-$primary-color-light: lighten($primary-color, 15%) !default;
-$primary-color-dark: darken($primary-color, 15%) !default;
-
-$secondary-color: color($theme, "base") !default;
-$atp-color: color($theme, "base2") !default;
-$success-color: color("green", "base") !default;
-$error-color: color("red", "base") !default;
-$link-color: $font-color !default;
-
-$collapsible-header-color: $body-color !default;
-$button-raised-background: darken($primary-color, 20%) !default;
-$button-raised-background-hover: lighten($button-raised-background, 15%) !default;
-$button-raised-color: #eee !default;
-$collapsible-border-color: color($theme, "accent-1");
-$select-background: color($theme2, "base") !default;
-$select-option-hover: color($theme, "base") !default;
-$select-option-hover-color: #000;
-$select-option-focus-color: color($theme2, "base") !default;
-$select-option-selected-color: color($theme2, "base") !default;
-
+@import "Colors";
 
 html {
   overflow: scroll;
   overflow-x: hidden;
-  scrollbar-width: none;
+  //scrollbar-width: none;
   background: #000;
 }
 
 
 body {
+  font-family: "Exo 2", sans-serif;
   -webkit-font-smoothing: antialiased;
   //background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   //background: linear-gradient(to bottom, #ee7752 0% , #e73c7e 100%), radial-gradient(at top center, #23a6d5 10%, #23d5ab 120%), #23a6d5  ;
@@ -138,6 +17,10 @@ body {
   background-size: 200% 200%;
   animation: gradientBG 15s ease infinite;
 
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: "Exo 2", sans-serif;
 }
 
 @keyframes gradientBG {
@@ -152,15 +35,15 @@ body {
   }
 }
 
-::-webkit-scrollbar {
-  width: 0px; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
-}
-
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-  background: #FF0000;
-}
+//::-webkit-scrollbar {
+//  width: 0px; /* Remove scrollbar space */
+//  background: transparent; /* Optional: just make scrollbar invisible */
+//}
+//
+///* Optional: show position indicator in red */
+//::-webkit-scrollbar-thumb {
+//  background: #FF0000;
+//}
 
 .content-wrapper {
   /*background-color: #74c98f;*/
@@ -432,20 +315,3 @@ canvas {
   width: 105%
 }
 
-.zbiorniczek {
-  position: relative;
-  height: auto;
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
-  background: rgb(2, 0, 36);
-  background: -moz-linear-gradient(149deg, rgba(2, 0, 36, 1) 0%, rgba(9, 30, 121, 1) 46%, rgba(0, 212, 255, 1) 100%);
-  background: -webkit-linear-gradient(149deg, rgba(2, 0, 36, 1) 0%, rgba(9, 30, 121, 1) 46%, rgba(0, 212, 255, 1) 100%);
-  background: linear-gradient(149deg, rgba(2, 0, 36, 1) 0%, rgba(9, 30, 121, 1) 46%, rgba(0, 212, 255, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#00d4ff", GradientType=1);
-
-}

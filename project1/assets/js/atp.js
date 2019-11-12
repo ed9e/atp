@@ -1,3 +1,4 @@
+require('../css/scss/materialize.scss');
 import {ChartDataAction} from "./atp/ChartDataAction";
 
 require('chart.js');

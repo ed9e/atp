@@ -24,7 +24,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
-    .addEntry('welcome', './assets/js/app.js')
+    .addEntry('welcome', './assets/js/base.js')
     .addEntry('login', './assets/js/login/login_form.js')
     .addEntry('atp', './assets/js/atp/index.js')
     .addEntry('atp-fetch', './assets/js/atp/fetch.js')

@@ -1,3 +1,4 @@
+require('../css/scss/materialize.scss');
 import {ChartDataAction} from "./dashboard/ChartDataAction";
 import {ApiUrlConfig} from "./dashboard/ApiUrlConfig";
 
