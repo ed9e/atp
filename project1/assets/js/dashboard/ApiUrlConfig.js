@@ -1,6 +1,7 @@
 export class ApiUrlConfig {
     constructor(weeklyPath) {
         this.weeklyPath = weeklyPath;
+        this.importPath = 'activities-import';
         this.url = new URL('http://127.0.0.1:8000/api/');
         this.urlParams = {
             activityIds: {default: [1, 6]},
@@ -19,6 +20,13 @@ export class ApiUrlConfig {
             url.searchParams.append(x, searchParams[x])
         });
 
+        return url.href;
+    }
+
+    hrefImport() {
+        let url = new URL(this.url);
+        url.pathname += this.weeklyPath;
+        url.searchParams.append('profileId', this.getProfileId());
         return url.href;
     }
 

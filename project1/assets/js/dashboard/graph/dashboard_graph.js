@@ -269,8 +269,10 @@ global.atpOptions = {
                     min: 0,
                     //max: atpYAxes.max,
                     display: true,
-                    padding: 10
-                }
+                    padding: 10,
+
+                },
+                position: 'left'
             }]
         },
         pan: {

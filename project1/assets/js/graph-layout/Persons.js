@@ -37,7 +37,7 @@ class PersonsElement extends PolymerElement {
     }
 
     changed(e) {
-
+//TODO: activities-import
         apiUrlConfig.setProfileId(e.detail.item.id);
         let dataTable = $('#data-table');
         if (dataTable.length > 0) {

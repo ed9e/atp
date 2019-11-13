@@ -10,6 +10,7 @@ use App\Service\Atp\ATP;
 use App\Service\Atp\ATPFetch;
 use App\Service\AtpPlanService;
 use App\Service\CurrentDashboardService;
+use App\Service\GarminActivitiesManager;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -128,5 +129,17 @@ class ApiController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_USER');
 
         return $this->json();
+    }
+
+    /**
+     * @Route("/acitivities-import")
+     * @param Request $request
+     * @param GarminActivitiesManager $garminManager
+     */
+    public function importActivities(Request $request, GarminActivitiesManager $garminManager): void
+    {
+        $user = $request->get('profileId');
+        $garminManager->setUserDisplayName($user);
+        $garminManager->import();
     }
 }
