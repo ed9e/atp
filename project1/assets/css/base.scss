@@ -8,89 +8,33 @@ body {
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-family: "Exo 2", sans-serif;
+  line-height: 1.5;
 }
 
 body, html {
-  //height: 100%;
-  background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
+  background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000) fixed;
   //background: #00000099;
   background-size: 400% 150%;
-  background-attachment: fixed;
 }
 
-#scene {
-  //background-attachment: fixed;
-  //background-position: 50% 0;
-  //background-repeat: no-repeat;
-  //background-size: cover;
-  //height: 54vh;
-  //max-height: 1200px;
-  //min-height: 200px;
-
-  & .container-pad {
-    & > div {
-      //background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
-      //background-size: 400% 350%;
-      padding: 15% 0% 0% 0;
-      //min-height: 100%;
-      width: 100%;
-      /* Create the parallax scrolling effect */
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-    & div > div:first-child {
-      padding: 5% 10%;
-      width: 100%;
-      //min-height: 100%;
-      background: #00000000;
-      color: #000000aa;
-      //background: radial-gradient(circle, #00000044 32%, #ff5e1088 100%);
-
-
-    }
-
-    //& #p1 {
-    //  background-image: url("../images/1.jpg");
-    //
-    //}
-    //
-    //& #p2 {
-    //  background-image: url("../images/2.jpg");
-    //}
-    //
-    //& #p3 {
-    //  background-image: url("../images/3.jpg");
-    //}
-    //
-    //& #p4 {
-    //  background-image: url("../images/4.jpg");
-    //}
-
-  }
-}
-
-.container-e {
-  //position: relative;
-  //height: auto;
-  //width: 100%;
-  //min-height: 100%;
-  //margin: 0;
-  //padding: 0;
-  //border: 0;
-  //vertical-align: baseline;
-
-  //background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  //background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
-  //background-size: 400% 150%;
+.aos-box {
+  //display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 0 4px #000;
+  width: 60%;
+  text-align: center;
 
   & h1 {
-    font-weight: 300;
+    margin: 5%;
   }
 
+  & h4 {
+    margin: 2%;
+  }
   & ol {
+    margin: 2%;
     display: -moz-inline-stack;
     display: inline-block;
     zoom: 1;
@@ -98,50 +42,31 @@ body, html {
     text-align: left;
     list-style: circle;
   }
+}
 
-  & .container-notes {
-    background: linear-gradient(225deg, #000000, #17bb24, #f1fc13, #ff5e10, #000000);
-    background-size: 400% 1400%;
-    position: fixed;
-    top: 0;
-    right: 0px;
-    z-index: 999;
-    //    background: #000000;
-    width: 100%;
+.aos-a {
+  margin: 35vh auto 60vh auto;
+}
+
+.aos-b {
+  margin: 50vh auto 50vh auto;
+}
+
+.aos-footer {
+  margin: 50vh auto 10vh auto;
+
+  & small {
     color: #ffffffcc;
-    padding: 0.5% 1%;
-
-    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-      //font-family: 'Yeon Sung', cursive;
-    }
-
-    & small {
-      color: #ffffffcc;
-    }
-
-    & a {
-      transition: all 0.8s ease-in;
-      color: $font-color;
-
-      &:hover {
-        color: black;
-        background: #999;
-
-        transition: all 50ms ease-in;
-      }
-    }
-
   }
 
-  & .center {
-    width: 100%;
-    text-align: center;
+  & a {
+    transition: all 0.8s ease-in;
+    color: $font-color;
 
-    & .container-pad {
-      //height: 100%;
-      color: #00000099;
-      width: auto;
-      margin: 0 0%;
+    &:hover {
+      color: black;
+      text-shadow: 0 0 5px #fff;
+      transition: all 50ms ease-in;
     }
   }
 }
