@@ -25,17 +25,17 @@ $(document).ready(function () {
 require('icheck/icheck');
 require('icheck/skins/all.css');
 
-require('ion-checkradio/js/ion.checkRadio');
-require('ion-checkradio/css/ion.checkRadio.green.css');
+// require('ion-checkradio/js/ion.checkRadio');
+// require('ion-checkradio/css/ion.checkRadio.green.css');
 require('./_main');
 //require('./checkers.js');
 //let instance = M.Collapsible.getInstance(elem);
 $(document).ready(function () {
-    setTimeout(function () {
-        $('.lds-ripple').css({"opacity": 0});
+    // setTimeout(function () {
+    //     $('.lds-ripple').css({"opacity": 0});
         setTimeout(function () {
             $('.curtain__wrapper').css({"opacity": 1});
             $('.lds-ripple').css({'display': 'none'});
         }, 1450);
-    }, 300);
+//    }, 300);
 });

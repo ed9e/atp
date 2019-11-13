@@ -46,7 +46,7 @@ export class ChartDataAction {
         this.atp.hidden = true;
         this.atpFTP.hidden = true;
 
-        this.chart.readyZoom(data.data.zoomMin);
+        this.chart.readyZoom(data.data.zoomMin);//czy zoomować do wybranego obsaru
         this.chart.update();
 
         this.atp.hasOwnProperty('data_') ? delete this.atp.data_ : '';
