@@ -1,9 +1,19 @@
-@import 'Colors.scss';
-@import "atp";
+//@import 'Colors.scss';
+@import "base";
+@import "scss/materialize";
+
+body {
+  animation: none;
+}
 .login-wrapper {
-  color: #ffeabd;
+  color: #000;
   padding: 15px;
 
+  & .btn, .btn-large, .btn-small {
+    text-decoration: none;
+    color: #eee;
+    background-color: #ff5e10;
+  }
   & input {
     color: #ffeabd;
 
@@ -20,19 +30,20 @@
       border-top: 0;
       border-left: 0;
       border-right: 0;
-      -webkit-text-fill-color: green;
+      -webkit-text-fill-color: white;
       -webkit-box-shadow: 0 0 0 0 #000 inset;
-      background-color: #4f4f4f;
+      background-color: #ff5e10;
       transition: background-color 5000s ease-in-out 0s;
     }
   }
 
   & .login-form {
+    margin: auto;
     color: #ffeabd;
-    display: flex;
+    //display: flex;
     align-items: center; // vertical centering
     justify-content: center; // horizontal centering
-
+    max-width: 50vh;
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
@@ -40,7 +51,9 @@
     background-size: cover;
 
     & label {
-      color: #9f8a5d;
+
+      text-shadow: 0 0 4px #000;
+      color: white;
     }
   }
 }

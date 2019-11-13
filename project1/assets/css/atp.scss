@@ -1,5 +1,8 @@
 @import "Colors";
 
+$theme: 'dark';
+@import "scss/materialize";
+
 html {
   overflow: scroll;
   overflow-x: hidden;
