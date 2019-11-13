@@ -6,10 +6,15 @@ require('font-awesome/css/font-awesome.css');
 const $ = require('jquery');
 import Rellax from 'rellax/rellax';
 
-let rellax = new Rellax('.container-pad div > div', {
-    speed: 7,
-    center: true,
-    wrapper: 'body'
-});
+// let rellax = new Rellax('.container-pad div > div', {
+//     speed: 7,
+//     center: true,
+//     wrapper: 'body'
+// });
+
+require('aos/dist/aos.css');
+import AOS from 'aos/dist/aos';
+
+AOS.init();
 
 
