@@ -5,15 +5,22 @@
 body {
   animation: none;
 }
+
 .login-wrapper {
   color: #000;
   padding: 15px;
 
+  & .form-submit {
+
+  }
   & .btn, .btn-large, .btn-small {
     text-decoration: none;
     color: #eee;
     background-color: #ff5e10;
+
+
   }
+
   & input {
     color: #ffeabd;
 
@@ -56,4 +63,9 @@ body {
       color: white;
     }
   }
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  border: none;
+  border-bottom: 1px solid #fff;
 }
