@@ -103,8 +103,11 @@ Array.prototype.formFSB = function () {
 
     while (k < len) {
         if (k in O) {
+            if (O[k].y == 0) {
+                O[k].y = 10;
+            }
 
-            muppetY = -1 * O[k].y / 1;
+            muppetY = O[k].y / 1.5;
             muppetX = O[k].x;
             l = 1;
             while (l <= k) {

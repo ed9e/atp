@@ -40,7 +40,7 @@ export class ChartDataAction {
         let vals = createTimeArray(data.data.done);
         this.done.data = vals;
         this.atp.data = vals.kopia();
-        this.atpFTP.data = vals.formFSB();
+        this.atpFTP.data = vals.kopia().formFSB();
         this.doneFTP.data = vals.ftpO();
 
         this.atpFTP.hidden = false;

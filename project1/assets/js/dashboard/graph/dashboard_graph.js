@@ -39,7 +39,7 @@ global.atpOptions = {
                 type: 'line',
                 backgroundColor: general.ftp.bg,
                 fill: false,
-                data: createTimeArray(yDone).formFSB(),
+                data: createTimeArray(yDone).kopia().formFSB(),
                 borderColor: general.ftp.borderColor,
                 borderWidth: 1,
                 borderDash: [0, 0],
@@ -48,7 +48,7 @@ global.atpOptions = {
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
                 id: 'FTP',
-                hidden: true,
+                hidden: false,
             },
             {
                 label: 'Done',
@@ -290,8 +290,8 @@ global.atpOptions = {
                 },
                 ticks: {
                     reverse: false,
-                    min: 0,
-                    //max: atpYAxes.max,
+                    min: -200,
+                    max: 200,
                     display: true,
                     padding: 10,
 
