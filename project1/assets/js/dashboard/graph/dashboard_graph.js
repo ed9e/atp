@@ -38,12 +38,13 @@ global.atpOptions = {
                 label: 'FTP',
                 type: 'line',
                 backgroundColor: general.ftp.bg,
-                fill: true,
-                data: createTimeArray(yDone).ftpOReset(),
+                fill: false,
+                data: createTimeArray(yDone).formFSB(),
                 borderColor: general.ftp.borderColor,
                 borderWidth: 1,
                 borderDash: [0, 0],
                 xAxisID: "x-axis1",
+                yAxisID: "fsb",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
                 id: 'FTP',
@@ -87,12 +88,12 @@ global.atpOptions = {
         elements: {
             point: {radius: 0.5},
             line: {
-                tension: 0.5
+                tension: 0.2
             }
         },
         responsive: true,
         maintainAspectRatio: false,
-        aspectRatio: 1920/450,
+        aspectRatio: 1920 / 450,
         layout: {
             padding: {
                 left: 0,
@@ -122,7 +123,7 @@ global.atpOptions = {
                     //tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`
 
                 },
-                title: (x,y) => {
+                title: (x, y) => {
 
                     let d = moment(x[0].label, 'MMM Do YYYY, h:mm:ss a');
                     let from = d.add(-4, 'days').format('DD');
@@ -252,6 +253,29 @@ global.atpOptions = {
             ],
             yAxes: [{
 
+                display: true,
+                scaleLabel: {
+                    display: false,
+                    labelString: 'VALUE'
+                },
+                gridLines: {
+                    drawTicks: true,
+                    display: true,
+                    color: general.grid.gridLinesColor,
+                    borderDash: [1, 2],
+                    zeroLineWidth: 0
+                },
+                ticks: {
+                    reverse: false,
+                    min: 0,
+                    //max: atpYAxes.max,
+                    display: true,
+                    padding: 10,
+
+                },
+                position: 'left'
+            }, {
+                id: 'fsb',
                 display: true,
                 scaleLabel: {
                     display: false,

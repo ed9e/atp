@@ -85,12 +85,10 @@ class GarminActivitiesManager
     {
         if (!$this->request) {
             if (null !== $this->getUserDisplayName()) {
-                dump('By user display name');
                 $this->request = new ByUserDisplayName();
                 $this->request->setUserDisplayName($this->getUserDisplayName());
             } else {
                 $this->request = new ByCurrentUser();
-                dump('By current user');
             }
         }
         return $this->request;

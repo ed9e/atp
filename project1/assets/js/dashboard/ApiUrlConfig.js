@@ -25,7 +25,7 @@ export class ApiUrlConfig {
 
     hrefImport() {
         let url = new URL(this.url);
-        url.pathname += this.weeklyPath;
+        url.pathname += this.importPath;
         url.searchParams.append('profileId', this.getProfileId());
         return url.href;
     }

@@ -132,14 +132,16 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/acitivities-import")
+     * @Route("/activities-import")
      * @param Request $request
      * @param GarminActivitiesManager $garminManager
      */
-    public function importActivities(Request $request, GarminActivitiesManager $garminManager): void
+    public function importActivities(Request $request, GarminActivitiesManager $garminManager): JsonResponse
     {
         $user = $request->get('profileId');
         $garminManager->setUserDisplayName($user);
         $garminManager->import();
+//TODO: sprawdzanie czy zaimportowały się nowe
+        return $this->json(['new' => true]);
     }
 }

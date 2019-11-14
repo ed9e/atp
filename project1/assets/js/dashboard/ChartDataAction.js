@@ -39,12 +39,11 @@ export class ChartDataAction {
     onDataLoad(data) {
         let vals = createTimeArray(data.data.done);
         this.done.data = vals;
-        this.atp.data = vals.kopia().ftpOReset();
-        this.atpFTP.data = vals.kopia().ftpOReset();
+        this.atp.data = vals.kopia();
+        this.atpFTP.data = vals.formFSB();
         this.doneFTP.data = vals.ftpO();
 
-        this.atp.hidden = true;
-        this.atpFTP.hidden = true;
+        this.atpFTP.hidden = false;
 
         this.chart.readyZoom(data.data.zoomMin);//czy zoomować do wybranego obsaru
         this.chart.update();

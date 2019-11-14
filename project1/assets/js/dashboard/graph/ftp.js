@@ -91,3 +91,35 @@ Array.prototype.kopia = function () {
 
     return A;
 };
+
+Array.prototype.formFSB = function () {
+
+    let A, k, l, divider, muppetX, muppetY;
+    let O = Object(this);
+    let len = O.length >>> 0;
+
+    A = new Array(len);
+    k = 0;
+
+    while (k < len) {
+        if (k in O) {
+
+            muppetY = -1 * O[k].y / 1;
+            muppetX = O[k].x;
+            l = 1;
+            while (l <= k) {
+                divider = (waga * l + 1);
+                if (k === 0) {
+                    divider = waga;
+                }
+                muppetY += O[k - l].y / divider;
+                l++;
+            }
+            A[k] = {x: muppetX, y: Math.floor(muppetY)};
+
+        }
+        k++;
+    }
+
+    return A;
+};

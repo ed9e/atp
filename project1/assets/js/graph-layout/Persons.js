@@ -43,13 +43,30 @@ class PersonsElement extends PolymerElement {
         if (dataTable.length > 0) {
             dataTable.DataTable().ajax.url(apiUrlConfig.hrefDataTable()).load();
         }
-        $.ajax({
-            url: apiUrlConfig.hrefWeekly(),
-            context: document.body
-        }).done(function (data) {
-            chartDataAction.onDataLoad(data);
-        });
+        chartLoad();
+        activitiesImport();
     }
+}
+
+function chartLoad() {
+    $.ajax({
+        url: apiUrlConfig.hrefWeekly(),
+        context: document.body
+    }).done(function (data) {
+        chartDataAction.onDataLoad(data);
+    });
+}
+
+function activitiesImport() {
+    $.ajax({
+        url: apiUrlConfig.hrefImport(),
+        context: document.body
+    }).done(function (data) {
+        console.log(data);
+        if (data.new) {
+            chartLoad();
+        }
+    });
 }
 
 customElements.define(PersonsElement.is, PersonsElement);
