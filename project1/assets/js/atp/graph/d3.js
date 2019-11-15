@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import {FTP_data} from "./DataSetFunctions";
+import {formFSB_data, FTP_data} from "./DataSetFunctions";
 import {PhaseDrag} from "./PhaseDrag";
 
 d3.select(chartAtpInstance.chart.canvas).call(
@@ -52,6 +52,7 @@ function scroll(t) {
 
     newTune.data[par.index].y = parseInt(newTune.data[par.index].y) - value;
     par.chart.config.data.datasets.find('FTP').data = FTP_data(newTune.data);
+    par.chart.config.data.datasets.find('formFSB').data = formFSB_data(newTune.data);
     par.chart.update(0);
 
 }
@@ -151,6 +152,7 @@ function updateData() {
     dataset.data[par.index].y = par.value;
     //par.chart.config.data.datasets[2].data[par.index] =  par.value;
     par.chart.config.data.datasets.find('FTP').data = FTP_data(dataset.data);
+    par.chart.config.data.datasets.find('formFSB').data = formFSB_data(dataset.data);
     drawValue(par);
     chartAtpInstance.update(0);
 }

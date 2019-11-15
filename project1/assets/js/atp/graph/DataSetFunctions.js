@@ -37,4 +37,14 @@ function bar_data(oIn, func = null) {
     return arr;
 }
 
-export {FTP_data, FTP_data0, bar_data};
+function formFSB_data(newV) {
+    Object.keys(newV).forEach(function (x) {
+
+        if (newV[x].y === 0) {
+            newV[x].y = done[newV[x].x.format('YYYY-MM-DD')]
+        }
+    });
+    return newV.formFSB();
+}
+
+export {FTP_data, FTP_data0, bar_data, formFSB_data};

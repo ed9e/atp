@@ -6,7 +6,22 @@ global.atpOptions = {
 
     data: {
         labels: createTimeArray(yDone),
-        datasets: [
+        datasets: [{
+            label: 'Form FSB',
+            type: 'line',
+            backgroundColor: general.ftp.bg,
+            fill: true,
+            data: createTimeArray(yDone).formFSB(),
+            borderColor: general.ftp.borderColor,
+            borderWidth: 1,
+            borderDash: [0, 0],
+            xAxisID: "x-axis1",
+            yAxisID: "fsb",
+            pointHitRadius: 10,
+            pointHoverRadius: 2,
+            id: 'formFSB',
+
+        },
             {
                 label: 'New Tuning',
                 backgroundColor: general.newVal.bg,
@@ -39,7 +54,7 @@ global.atpOptions = {
                 type: 'line',
                 backgroundColor: general.ftp.bg,
                 fill: false,
-                data: createTimeArray(yDone).kopia().formFSB(),
+                data: createTimeArray(yDone).formFSB(),
                 borderColor: general.ftp.borderColor,
                 borderWidth: 1,
                 borderDash: [0, 0],
@@ -48,7 +63,7 @@ global.atpOptions = {
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
                 id: 'FTP',
-                hidden: false,
+                hidden: true,
             },
             {
                 label: 'Done',
@@ -75,6 +90,7 @@ global.atpOptions = {
                 pointHoverRadius: 2,
                 id: 'FTPDone'
             },
+
         ]
     },
     options: {
@@ -290,9 +306,9 @@ global.atpOptions = {
                 },
                 ticks: {
                     reverse: false,
-                    min: -200,
-                    max: 200,
-                    display: true,
+                    min: -10,
+                    max: 1,
+                    display: false,
                     padding: 10,
 
                 },
@@ -374,6 +390,7 @@ function createPhaseDataset(d) {
     };
     atpOptions.data.datasets.push(dataset);
 }
+
 
 //TODO: to tu
 global.chartAtpInstance = new Chart(ctx, atpOptions);

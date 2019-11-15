@@ -8,6 +8,7 @@ export class ChartDataAction {
         this.done = this.datasets.find('Done');
         this.atpFTP = this.datasets.find('FTP');
         this.doneFTP = this.datasets.find('FTPDone');
+        this.formFSB = this.datasets.find('formFSB');
     }
 
     onEdit() {
@@ -40,10 +41,10 @@ export class ChartDataAction {
         let vals = createTimeArray(data.data.done);
         this.done.data = vals;
         this.atp.data = vals.kopia();
-        this.atpFTP.data = vals.kopia().formFSB();
+        this.formFSB.data = vals.kopia().formFSB();
         this.doneFTP.data = vals.ftpO();
 
-        this.atpFTP.hidden = false;
+        this.atpFTP.hidden = true;
 
         this.chart.readyZoom(data.data.zoomMin);//czy zoomować do wybranego obsaru
         this.chart.update();

@@ -1,4 +1,4 @@
-import {bar_data, FTP_data, FTP_data0} from "./graph/DataSetFunctions";
+import {bar_data, FTP_data0} from "./graph/DataSetFunctions";
 
 export class ChartDataAction {
     constructor(chart) {
@@ -11,6 +11,7 @@ export class ChartDataAction {
         this.atpFTPBg = this.datasets.find('FTPBg');
         this.doneFTP = this.datasets.find('FTPDone');
         this.doneFTPBg = this.datasets.find('FTPDoneBg');
+        this.formFSB = this.datasets.find('formFSB');
     }
 
     onEdit() {
@@ -45,12 +46,12 @@ export class ChartDataAction {
 
         let atpData = bar_data(data.data.values);
         this.atp.data = atpData;
-         this.atpOld.data = atpData;
-         this.atpFTP.data = FTP_data0(atpData);
-         this.atpFTPBg.data = FTP_data0(atpData);
+        this.atpOld.data = atpData;
+        this.atpFTP.data = FTP_data0(atpData);
+        this.atpFTPBg.data = FTP_data0(atpData);
         this.doneFTP.data = vals.ftpO();
         this.doneFTPBg.data = vals.ftpO();
-
+        this.formFSB.data = atpData.kopia().formFSB();
         //this.atp.hidden = true;
         //this.atpFTP.hidden = true;
 

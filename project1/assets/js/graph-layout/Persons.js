@@ -44,7 +44,7 @@ class PersonsElement extends PolymerElement {
             dataTable.DataTable().ajax.url(apiUrlConfig.hrefDataTable()).load();
         }
         chartLoad();
-        activitiesImport();
+        //activitiesImport();
     }
 }
 

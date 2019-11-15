@@ -10,7 +10,22 @@ global.atpOptions = {
     data: {
         labels: bar_data(done),
         datasets: [
+            {
+                label: 'Form FSB',
+                type: 'line',
+                backgroundColor: general.ftp.bg,
+                fill: true,
+                data: bar_data(done).formFSB(),
+                borderColor: general.ftp.borderColor,
+                borderWidth: 1,
+                borderDash: [0, 0],
+                xAxisID: "x-axis1",
+                yAxisID: "fsb",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+                id: 'formFSB',
 
+            },
             {
                 label: 'Done',
                 backgroundColor: general.bardone.bg,
@@ -329,7 +344,7 @@ global.atpOptions = {
                 ticks: {
                     reverse: false,
                     min: 0,
-                    //max: 1500,
+                    //max: 2500,
                     display: false,
                     id: 'nonstatic',
                     callback: function (value, index, values) {
@@ -361,6 +376,29 @@ global.atpOptions = {
                     display: false,
                     padding: 0
                 }
+            }, {
+                id: 'fsb',
+                display: true,
+                scaleLabel: {
+                    display: false,
+                    labelString: 'VALUE'
+                },
+                gridLines: {
+                    drawTicks: true,
+                    display: true,
+                    color: general.grid.gridLinesColor,
+                    borderDash: [1, 2],
+                    zeroLineWidth: 0
+                },
+                ticks: {
+                    reverse: false,
+                    min: -20,
+                    max: 2,
+                    display: false,
+                    padding: 10,
+
+                },
+                position: 'left'
             }]
         },
         pan: {
