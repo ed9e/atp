@@ -125,7 +125,7 @@ Array.prototype.formFSB = function () {
             poprzedniY = muppetY;
             muppetY = (sredniaPoprzednich - biezacy) / sredniaPoprzednich;
 
-            A[k] = {x: muppetX, y: muppetY * 1.5};
+            A[k] = {x: muppetX, y: muppetY + 1};
         }
         k++;
     }
