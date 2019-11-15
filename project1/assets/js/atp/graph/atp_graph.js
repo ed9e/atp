@@ -2,7 +2,7 @@ import {bar_data, FTP_data} from "./DataSetFunctions";
 import {phases_dataset} from "./PhaseLine";
 
 global.atpYAxes = {max: 1300};
-
+let tmp_max = 0;
 
 global.atpOptions = {
     type: 'bar',
@@ -351,6 +351,7 @@ global.atpOptions = {
                         //potrzebne żeby zachować statyczność wględem osi x przy zmianie sklali osi y
                         if (global.chartAtpInstance !== undefined) {
                             global.chartAtpInstance.chart.config.options.scales.yAxes[0].ticks.min = -1 * values[0] * 0.016
+
                         }
                     },
                     padding: 0
@@ -475,3 +476,13 @@ global.chartAtpInstance.config.data.datasets.findByClass = function (id) {
     }
     return $ret;
 };
+
+function getMax(dataSets) {
+    var max = 0;
+    global.atpOptio;
+    dataSets.forEach(function (x, i) {
+        max = Math.max(max, Math.max.apply(null, x.data));
+    });
+
+    return max + 2;
+}

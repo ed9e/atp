@@ -104,7 +104,7 @@ global.atpOptions = {
         elements: {
             point: {radius: 0.5},
             line: {
-                tension: 0.2
+                tension: 0.4
             }
         },
         responsive: true,
@@ -306,8 +306,8 @@ global.atpOptions = {
                 },
                 ticks: {
                     reverse: false,
-                    min: -10,
-                    max: 1,
+                    min: -20,
+                    max: 3,
                     display: false,
                     padding: 10,
 
