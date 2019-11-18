@@ -37,10 +37,10 @@ function bar_data(oIn, func = null) {
     return arr;
 }
 
-function formFSB_data(newV) {
+function formFSB_data(newV, leaveZero = false) {
     Object.keys(newV).forEach(function (x) {
 
-        if (newV[x].y === 0) {
+        if (!leaveZero && newV[x].y === 0) {
             newV[x].y = done[newV[x].x.format('YYYY-MM-DD')]
         }
     });

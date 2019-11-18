@@ -44,7 +44,9 @@ export class ChartDataAction {
         let vals = bar_data(data.data.done);
         this.done.data = vals;
 
-        let atpData = bar_data(data.data.values);
+        let atpData = bar_data(data.data.values, (x) => {
+            return x === 0 ? "0" : x
+        });
         this.atp.data = atpData;
         this.atpOld.data = atpData;
         this.atpFTP.data = FTP_data0(atpData);
