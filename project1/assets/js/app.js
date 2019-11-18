@@ -14,6 +14,9 @@ const $ = require('jquery');
 
 import 'web-animations-js/web-animations-next-lite.min';
 
+import 'materialize-css/extras/noUiSlider/nouislider.css';
+
+
 $(document).ready(function () {
     //require('../css/scss/materialize.scss');
     require('materialize-js');

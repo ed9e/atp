@@ -6,6 +6,7 @@
     {{ encore_entry_link_tags('atp') }}
 {% endblock %}
 {% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/9.1.0/nouislider.min.js"></script>
     <script type="application/javascript">
 
         let xKeys = {{ keys|json_encode|raw }};
@@ -177,13 +178,12 @@
             </div>
         </div>
     </form>
-    <div class="row canvas">
-        <div style="">
-            <span></span>
-        </div>
-        <div id="canvas-container">
+    <div class="canvas">
+
+        <div id="canvas-container" style="float:left; width:99%">
             <canvas id="chartJSContainer" height="650"></canvas>
         </div>
+        <div id="test-slider" style="height: 100px; width: 4px; float:left; margin-top: 100px;"></div>
         <ul id="contextMenu">
             <li class="menu-item" onclick="menu(1)">remove</li>
             <li class="menu-item" onclick="menu(2)">change</li>
