@@ -52,7 +52,7 @@ function scroll(t) {
 
     newTune.data[par.index].y = parseInt(newTune.data[par.index].y) - value;
     par.chart.config.data.datasets.find('FTP').data = FTP_data0(newTune.data);
-    //par.chart.config.data.datasets.find('formFSB').data = formFSB_data(newTune.data, true);
+    par.chart.config.data.datasets.find('formFSB').data = formFSB_data(newTune.data, true);
     par.chart.update(0);
 
 }

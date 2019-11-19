@@ -318,3 +318,28 @@ canvas {
   width: 105%
 }
 
+.noUi-horizontal, .noUi-vertical {
+  & .noUi-handle {
+    width: 9px;
+    height: 5px;
+    background-color: $primary-color
+  }
+}
+
+.noUi-target {
+  background-color: $atp-color;
+}
+
+.noUi-target .noUi-active {
+  &.noUi-handle {
+    background-color: $atp-color
+  }
+
+  .noUi-connect {
+    background-color: $atp-color
+  }
+}
+
+.noUi-connect {
+  background-color: $primary-color;
+}
