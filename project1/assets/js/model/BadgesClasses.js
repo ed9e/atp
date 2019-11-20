@@ -138,8 +138,8 @@ export class ApplyChanges extends Checker {
             global.atpOptions.data.datasets.find('FTPBg').data = FTP_data(a);
 
             let atp = checker.getAtp(a);
-            console.log(JSON.stringify(atp));
             let phases = checker.getPhases(a);
+
             let returnPhases = [];
             for (let i = 0; i < phases.length; i++) {
                 Object.entries(phases[i]).forEach((phase) => {
@@ -153,7 +153,18 @@ export class ApplyChanges extends Checker {
 
             }
 
-            console.log(JSON.stringify(returnPhases));
+
+            $.ajax({
+                url: global.apiUrlConfig.hrefAtpSave(),
+                method: 'post',
+                data: {
+                    'atp': JSON.stringify(atp),
+                    'atp_meso': JSON.stringify(returnPhases)
+                },
+                success: function (data) {
+                    console.log(data)
+                }
+            });
             event.data.checker.iCheckUncheck(); // TO DO: czemu to nie działa
 
         } else {

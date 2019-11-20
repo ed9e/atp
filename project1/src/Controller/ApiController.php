@@ -144,4 +144,19 @@ class ApiController extends AbstractController
 //TODO: sprawdzanie czy zaimportowały się nowe
         return $this->json(['new' => true]);
     }
+
+    /**
+     * @Route("/atp_save")
+     * @param Service $configService
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function saveApt(Service $configService, Request $request): JsonResponse
+    {
+        $atp = $request->get('atp');
+        $atpMeso = $request->get('atp_meso');
+        $configService->save($configService::ATP_FETCH_TEST, $atp, $configService::RESOURCE_SESSION_CONFIG);
+        $configService->save($configService::ATP_FETCH_MESO_TEST, $atpMeso, $configService::RESOURCE_SESSION_CONFIG);
+        return $this->json('ok');
+    }
 }

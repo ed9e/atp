@@ -6,13 +6,15 @@ namespace App\Config;
 
 use App\Config\Loader\DelegatingLoader;
 use App\Config\Loader\YamlLoader;
-
+use Exception;
 use Symfony\Component\Config\Loader\LoaderResolver;
 
 class Service
 {
     public const RESOURCE_SESSION_CONFIG = 'session.yaml';
     public const SESSION_KEY_ID = 'session_id';
+    public const ATP_FETCH_TEST = 'atp';
+    public const ATP_FETCH_MESO_TEST = 'atp_meso';
     protected $delegatingLoader;
 
     public function __construct(FileLocator $fileLocator)
@@ -30,8 +32,8 @@ class Service
             {
                 return $array[$key];
             }
-            throw new \Exception('Array key not exists!');
-        } catch (\Exception $e) {
+            throw new Exception('Array key not exists!');
+        } catch (Exception $e) {
             return null;
         }
     }
@@ -41,7 +43,7 @@ class Service
 
         try {
             return $this->delegatingLoader->save($key, $value, $resource);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return null;
         }
     }

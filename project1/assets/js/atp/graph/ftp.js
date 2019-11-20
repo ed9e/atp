@@ -95,7 +95,7 @@ Array.prototype.kopia = function () {
 
 Array.prototype.formFSB = function () {
 
-    let A, k, muppetX, muppetY = 0;
+    let A, k, Y = 0;
     let O = Object(this);
     let len = O.length >>> 0;
 
@@ -104,28 +104,22 @@ Array.prototype.formFSB = function () {
 
     let sredniaPoprzednich,
         sumaPoprzednich = 0,
-        biezacy, poprzedniY;
+        sumaWag = 0,
+        biezacy;
 
     while (k < len) {
         if (k in O) {
-            if (O[k].y == 0) {
-                O[k].y = 0;
-            }
-            if (O[k - 1].y == 0) {
-                O[k - 1].y = 0;
-            }
 
+            biezacy = parseFloat(O[k].y);
+            sumaPoprzednich += k * biezacy;
+            sumaWag += k;
+            sredniaPoprzednich = sumaPoprzednich / sumaWag;
 
-            biezacy = O[k].y;
-            //muppetY = O[k].y;
-            muppetX = O[k].x;
-            sumaPoprzednich += parseInt(O[k - 1].y);
+            Y = (-sredniaPoprzednich - biezacy) / sredniaPoprzednich;
 
-            sredniaPoprzednich = sumaPoprzednich / (k + 1);
-            poprzedniY = muppetY;
-            muppetY = (sredniaPoprzednich - biezacy) / sredniaPoprzednich;
+            Y += 2.2;//przesuniecie osi x w y=0
 
-            A[k] = {x: muppetX, y: muppetY + 0.7};
+            A[k] = {x: O[k].x, y: Y};
         }
         k++;
     }
