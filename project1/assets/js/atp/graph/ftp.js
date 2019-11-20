@@ -105,17 +105,23 @@ Array.prototype.formFSB = function () {
     let sredniaPoprzednich,
         sumaPoprzednich = 0,
         sumaWag = 0,
+        waga = 1,
         biezacy;
 
     while (k < len) {
         if (k in O) {
 
+            waga = k;
             biezacy = parseFloat(O[k].y);
-            sumaPoprzednich += k * biezacy;
-            sumaWag += k;
+            sumaPoprzednich += waga * biezacy;
+            sumaWag += waga;
             sredniaPoprzednich = sumaPoprzednich / sumaWag;
 
-            Y = (-sredniaPoprzednich - biezacy) / sredniaPoprzednich;
+            if (sredniaPoprzednich < 1) {
+                Y = 0
+            } else {
+                Y = (-sredniaPoprzednich - biezacy) / sredniaPoprzednich;
+            }
 
             Y += 2.2;//przesuniecie osi x w y=0
 

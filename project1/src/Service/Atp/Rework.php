@@ -47,7 +47,7 @@ class Rework
         $doneKeys = array_keys($this->atp->getDone());
         ksort($doneKeys);
         $diff = array_diff($keys, $doneKeys);
-        $done = array_merge(array_fill_keys($diff, 0), $this->atp->getDone());
+        $done = array_merge(array_fill_keys($diff, 0.1), $this->atp->getDone());
         ksort($done);
         return $done;
     }
