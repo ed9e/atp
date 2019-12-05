@@ -3,7 +3,10 @@ export class ApiUrlConfig {
         this.weeklyPath = weeklyPath;
         this.importPath = 'activities-import';
         this.atpSavePath = 'atp_save';
-        this.url = new URL('http://127.0.0.1:8000/api/');
+        let locUrl = new URL(location.href);
+        let port = locUrl.port ? ':' + locUrl.port : '';
+        let path = locUrl.protocol + '//' + locUrl.host ;
+        this.url = new URL(path + '/api/');
         this.urlParams = {
             activityIds: {default: [1, 6]},
             profileId: {default: 'lbrzozowski', value: null},
