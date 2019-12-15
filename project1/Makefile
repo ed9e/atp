@@ -76,8 +76,8 @@ controller:
 	./bin/console make:controller
 
 ## make garmin:calendar:import
-garmin-calendar-import:
-	php bin/console garmin:calendar:import
+garmin-import:
+	php bin/console garmin:activities import  --full=1
 
 ## analiza statyczna PHPStanem
 phpstan: 
