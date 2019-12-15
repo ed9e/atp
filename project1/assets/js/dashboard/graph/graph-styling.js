@@ -3,6 +3,7 @@ global.theme = require('./themes/orange.js').sass;
 let barGradient = ctx.createLinearGradient(0, 0, 0, 700);
 let bar2Gradient = ctx.createLinearGradient(0, 0, 0, 700);
 let FTPgradient = ctx.createLinearGradient(0, 0, 0, 700);
+let FSBgradient = ctx.createLinearGradient(0, 0, 0, 700);
 let FTPDonegradient = ctx.createLinearGradient(0, 0, 0, 700);
 let gridGradient = ctx.createLinearGradient(0, 0, 0, 700);
 let gridPhasesGradient = ctx.createLinearGradient(0, 0, 0, 700);
@@ -26,6 +27,11 @@ bar2Gradient.addColorStop(1, theme.gradient.bar2 + '66');
 FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
 FTPgradient.addColorStop(0.5, theme.gradient.ftp + '44');
 FTPgradient.addColorStop(0.8, theme.gradient.ftp + '00');
+
+FSBgradient.addColorStop(0, theme.gradient.ftp + '11');
+FSBgradient.addColorStop(0.5, theme.gradient.ftp + 'ee');
+FSBgradient.addColorStop(0.8, theme.gradient.ftp + 'ff');
+
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
 FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'ee');
 
@@ -48,6 +54,10 @@ global.general = {
     ftp: {
         //bg: "rgba(42, 187, 155, 1)"
         bg: FTPgradient,
+        borderColor: theme.borderColor.ftp
+    },
+    fsb: {
+        bg: FSBgradient,
         borderColor: theme.borderColor.ftp
     },
     ftpDone: {

@@ -17,20 +17,20 @@ $(document).ready(function () {
 
 let configBadgesRadio = {
     sum: {
-        distance: {label: 'Sum by distance', checked: false},
-        time: {label: 'Sum by time', checked: true}
+        distance: {label: 'Sum by distance', checked: true},
+        time: {label: 'Sum by time', checked: false}
     }
 };
 
 for (let key in configBadgesRadio) {
-    for(let radioName in configBadgesRadio[key]) {
+    for (let radioName in configBadgesRadio[key]) {
         let checked = configBadgesRadio[key][radioName].checked ? 'checked' : '';
-        $('ul#config-badges').append('<li><input type="radio" ' + checked + ' name="'+ key+'" id="' + radioName + '"/><label>' + configBadgesRadio[key][radioName].label + '</label></li>');
+        $('ul#config-badges').append('<li><input type="radio" ' + checked + ' name="' + key + '" id="' + radioName + '"/><label>' + configBadgesRadio[key][radioName].label + '</label></li>');
     }
 }
 
 $('ul#config-badges li input').on('ifChecked', function (event) {
-        $('#'+event.target.id).attr('checked', 'checked');
+    $('#' + event.target.id).attr('checked', 'checked');
     $('#edit-atp').iCheck('uncheck');
 
     $.ajax({

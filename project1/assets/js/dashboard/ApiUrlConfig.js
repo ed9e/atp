@@ -7,7 +7,7 @@ export class ApiUrlConfig {
         this.urlParams = {
             activityIds: {default: [1, 6]},
             profileId: {default: 'lbrzozowski', value: null},
-            weeklyType: {default: 'time'},
+            weeklyType: {default: 'distance'},
             weekDate: {default: '', store: null},
             atp: {default: '', value: null},
         };

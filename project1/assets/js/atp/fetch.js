@@ -5,9 +5,10 @@ require('../atp');
 
 
 $(() => {
+    let startPos = global.chartAtpInstance.config.options.scales.yAxes[0].ticks.max;
     let slider = document.getElementById('test-slider');
     noUiSlider.create(slider, {
-        start: [1000],
+        start: [300],
         connect: true,
         step: 1,
         orientation: 'vertical', // 'horizontal' or 'vertical'

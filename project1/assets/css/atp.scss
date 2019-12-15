@@ -131,7 +131,7 @@ body {
     }
 
     & .wrapper {
-      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0.15) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0.1) 120%) darken(color($theme, "accent-2"), 0%);
+      background: linear-gradient(to bottom, transparentize(color($theme, "accent-1"), 0.46) 0%, transparentize($body-color, 0) 100%), radial-gradient(at top center, rgba(171, 171, 171, 0.57) 0%, transparentize($body-color, 0) 120%) (color($theme, "accent-2"));
       background-blend-mode: multiply, multiply;
       overflow: hidden;
     }
@@ -286,8 +286,8 @@ body {
 }
 
 html body {
-  --primary-color: #00ff00 !important;
-  --primary-text-color: $font-color !important;
+  --primary-color: #ff5a1b99 !important;
+  --primary-text-color: #ffffff !important;
   --primary-background-color: #00000066 !important;
 
   & .collapsible-header {

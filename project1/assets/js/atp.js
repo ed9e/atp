@@ -5,6 +5,7 @@ require('chart.js');
 require('chartjs-plugin-zoom');
 require('chartjs-plugin-deferred');
 require('./atp/graph/ftp.js');
+require('./atp/graph/fsb.js');
 global.chartTune = document.getElementById('chartJSContainer');
 global.ctx = chartTune.getContext('2d');
 

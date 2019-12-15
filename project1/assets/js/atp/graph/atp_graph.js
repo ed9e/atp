@@ -13,7 +13,7 @@ global.atpOptions = {
             {
                 label: 'Form FSB',
                 type: 'line',
-                backgroundColor: general.ftp.bg,
+                backgroundColor: general.fsb.bg,
                 fill: true,
                 data: bar_data(done).formFSB(),
                 borderColor: general.ftp.borderColor,
@@ -328,79 +328,93 @@ global.atpOptions = {
                 },
 
             ],
-            yAxes: [{
-                display: false,
-                scaleLabel: {
-                    display: false,
-                    labelString: 'VALUE'
-                },
-                gridLines: {
-                    drawTicks: false,
-                    display: false,
-                    color: general.grid.gridLinesColor,
-                    borderDash: [1, 2],
-                    zeroLineWidth: 0
-                },
-                ticks: {
-                    reverse: false,
-                    min: 0,
-                    //max: 2500,
-                    display: false,
-                    id: 'nonstatic',
-                    callback: function (value, index, values) {
-                        //potrzebne żeby zachować statyczność wględem osi x przy zmianie sklali osi y
-                        if (global.chartAtpInstance !== undefined) {
-                            global.chartAtpInstance.chart.config.options.scales.yAxes[0].ticks.min = -1 * values[0] * 0.016
-
-                        }
-                    },
-                    padding: 0
-                }
-            }, {
-                id: 'static',
-                display: false,
-                scaleLabel: {
-                    display: false,
-                    labelString: 'VALUE'
-                },
-                gridLines: {
-                    drawTicks: false,
-                    display: false,
-                    color: general.grid.gridLinesColor,
-                    borderDash: [1, 2],
-                    zeroLineWidth: 0
-                },
-                ticks: {
-                    reverse: true,
-                    min: -200,
-                    max: 18,
-                    display: false,
-                    padding: 0
-                }
-            }, {
-                id: 'fsb',
-                display: true,
-                scaleLabel: {
-                    display: false,
-                    labelString: 'VALUE'
-                },
-                gridLines: {
-                    drawTicks: true,
+            yAxes: [
+                {
                     display: true,
-                    color: general.grid.gridLinesColor,
-                    borderDash: [1, 2],
-                    zeroLineWidth: 0
-                },
-                ticks: {
-                    reverse: false,
-                    min: -20,
-                    max: 2,
-                    display: false,
-                    padding: 10,
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'VALUE'
+                    },
+                    gridLines: {
+                        drawTicks: true,
+                        display: true,
+                        color: general.grid.gridLinesColor,
+                        borderDash: [1, 2],
+                        zeroLineWidth: 0
+                    },
+                    ticks: {
+                        reverse: false,
+                        min: 0,
+                        //max: 2500,
+                        display: true,
+                        id: 'nonstatic',
+                        callback: function (value, index, values) {
+                            //potrzebne żeby zachować statyczność wględem osi x przy zmianie sklali osi y
+                            if (global.chartAtpInstance !== undefined) {
+                                global.chartAtpInstance.chart.config.options.scales.yAxes[0].ticks.min = -1 * values[0] * 0.016
 
+                            }
+                            return value;
+                        },
+                        padding: 0,
+
+                    },
+                    position: 'right'
                 },
-                position: 'left'
-            }]
+                {
+                    id: 'static',
+                    display: false,
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'VALUE'
+                    },
+                    gridLines: {
+                        drawTicks: false,
+                        display: false,
+                        color: general.grid.gridLinesColor,
+                        borderDash: [1, 2],
+                        zeroLineWidth: 0
+                    },
+                    ticks: {
+                        reverse: true,
+                        min: -200,
+                        max: 18,
+                        display: false,
+                        padding: 0
+                    }
+                },
+                {
+                    id: 'fsb',
+                    display: true,
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'FSB'
+                    },
+                    gridLines: {
+                        drawTicks: false,
+                        display: true,
+                        color: general.grid.gridLinesColor,
+                        borderDash: [1, 2],
+                        zeroLineWidth: 1
+                    },
+                    ticks: {
+                        reverse: false,
+                        min: -20,
+                        max: 2,
+                        display: true,
+                        padding: 10,
+                        stepSize: 0.5,
+                        callback: function (value, index, values) {
+                            if (Math.floor(value) >= -2 && value <= 1) {
+                                if (index % 2)
+                                    return value;
+                                return '';
+                            }
+                        },
+                        fontSize: 9
+                    },
+                    position: 'left'
+                }]
         },
         pan: {
             enabled: false,
