@@ -114,7 +114,7 @@ global.atpOptions = {
             {
                 label: 'FTP BG',
                 type: 'line',
-                backgroundColor: '#05000033',
+                backgroundColor: '#05000000',
                 fill: true,
                 data: FTP_data(bar_data(yValues, (x) => {
                     return typeof x === 'string' ? 0 : x
