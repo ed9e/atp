@@ -4,27 +4,35 @@ let BB = chartTune.getBoundingClientRect(),
 
 
 let $menu = $('#contextMenu');
+global.menuOpened = false;
 chartTune.addEventListener('contextmenu', handleContextMenu, false);
-chartTune.addEventListener('mousedown', handleMouseDown, false);
+//document.getElementById('contextMenu').addEventListener('mousedown', handleMouseDown, false);
+let menuChartElement = null;
 
 function handleContextMenu(e) {
-    let paddingX = 5;
-    let paddingY = 180;
     e.preventDefault();
     e.stopPropagation();
+    if (global.menuOpened) {
+        $menu.hide();
+        global.menuOpened = false;
+        return false;
+    }
+    let paddingX = 5;
+    let paddingY = 180;
 
     let x = parseInt(e.clientX - offsetX + paddingX);
     let y = parseInt(e.clientY - offsetY + paddingY);
     $menu.css({left: x, top: y});
     $menu.show();
-    return (false);
+    global.menuOpened = true;
+
+    chartAtpInstance.selectedElement = chartAtpInstance.getElementAtEvent(e)[0];
+    return false;
 }
 
 function handleMouseDown(e) {
+    console.log(e)
     $menu.hide();
+    global.menuOpened = false;
 }
 
-function menu(n) {
-    console.log("select menu " + n);
-    $menu.hide();
-}

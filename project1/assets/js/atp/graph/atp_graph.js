@@ -159,7 +159,7 @@ global.atpOptions = {
         },
         tooltips: {
             mode: 'index',
-            enabled: true,
+            enabled: false,
             titleFontSize: 11,
             bodyFontSize: 11,
             displayColors: false,
@@ -473,6 +473,7 @@ Object.entries(phases2).forEach(phases_dataset);
 
 //TODO: to tu
 global.chartAtpInstance = new Chart(ctx, atpOptions);
+global.FTP_data = FTP_data;
 global.chartAtpInstance.config.data.datasets.find = function (id) {
     for (let o in this) {
         if (this[o].id === id) {

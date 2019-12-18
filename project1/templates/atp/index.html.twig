@@ -19,6 +19,23 @@
     </script>
     {{ parent() }}
     {{ encore_entry_script_tags('atp') }}
+    <script type="application/javascript">
+        let $menu = $('#contextMenu');
+
+        function menu(n) {
+            console.log("select menu " + n);
+            $menu.hide();
+            menuOpened = false;
+            switch (n) {
+                case 4:
+                    let id = chartAtpInstance.selectedElement._index;
+                    chartAtpInstance.config.data.datasets.find('newTune').data[id].y = chartAtpInstance.config.data.datasets.find('Done').data[id].y;
+                    chartAtpInstance.config.data.datasets.find('FTP').data = FTP_data(chartAtpInstance.config.data.datasets.find('newTune').data);
+                    chartAtpInstance.update();
+                    break;
+            }
+        }
+    </script>
 {% endblock %}
 
 {% block page_content_before %}
@@ -183,11 +200,12 @@
         <div id="canvas-container" style="float:left; width:99%">
             <canvas id="chartJSContainer" height="650"></canvas>
         </div>
-{#        <div id="test-slider" style="height: 400px; width: 4px; float:left; margin-top: 100px;"></div>#}
+        {#        <div id="test-slider" style="height: 400px; width: 4px; float:left; margin-top: 100px;"></div>#}
         <ul id="contextMenu">
             <li class="menu-item" onclick="menu(1)">remove</li>
             <li class="menu-item" onclick="menu(2)">change</li>
             <li class="menu-item" onclick="menu(3)">add</li>
+            <li class="menu-item" onclick="menu(4)">fit</li>
         </ul>
     </div>
     <div class="darken-container">
