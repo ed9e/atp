@@ -1,6 +1,8 @@
 let waga = 1.4;
 Array.prototype.ftp = function () {
 
+    global.maxFTP = 0;
+
     let A, k, l, divider, muppet;
     let O = Object(this);
     let len = O.length >>> 0;
@@ -43,7 +45,7 @@ Array.prototype.ftpO = function () {
             muppetY = O[k].y / 1.2;
             muppetX = O[k].x;
             l = 1;
-            let m =1;
+            let m = 1;
             while (l <= k) {
                 divider = (waga * l + m);
                 if (k === 0) {
@@ -53,7 +55,7 @@ Array.prototype.ftpO = function () {
                 l++;
             }
             A[k] = {x: muppetX, y: Math.floor(muppetY)};
-
+            global.maxFTP = Math.max(global.maxFTP, A[k].y);
         }
         k++;
     }

@@ -39,16 +39,18 @@ export class ChartDataAction {
 
     onDataLoad(data) {
         let vals = createTimeArray(data.data.done);
+        let ftp = vals.ftpO();
+        global.chartAtpInstance.options.scales.yAxes[0].ticks.max = global.maxFTP*1.2;
         this.done.data = vals;
         this.atp.data = vals.kopia();
         this.formFSB.data = vals.kopia().formFSB();
-        this.doneFTP.data = vals.ftpO();
-
+        this.doneFTP.data = ftp;
         this.atpFTP.hidden = true;
 
         this.chart.readyZoom(data.data.zoomMin);//czy zoomować do wybranego obsaru
         this.chart.update();
 
         this.atp.hasOwnProperty('data_') ? delete this.atp.data_ : '';
+
     }
 }

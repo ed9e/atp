@@ -41,18 +41,22 @@ export class ChartDataAction {
     }
 
     onDataLoad(data) {
+        global.maxFTP = 0;
         let vals = bar_data(data.data.done);
-        this.done.data = vals;
-
+        let ftp = vals.ftpO();
         let atpData = bar_data(data.data.values, (x) => {
             return x === 0 ? "0" : x
         });
+        let atpFTP = FTP_data0(atpData);
+        global.chartAtpInstance.options.scales.yAxes[0].ticks.max = global.maxFTP*1.2;
+        this.done.data = vals;
+
         this.atp.data = atpData;
         this.atpOld.data = atpData;
-        this.atpFTP.data = FTP_data0(atpData);
-        this.atpFTPBg.data = FTP_data0(atpData);
-        this.doneFTP.data = vals.ftpO();
-        this.doneFTPBg.data = vals.ftpO();
+        this.atpFTP.data = atpFTP;
+        this.atpFTPBg.data = atpFTP;
+        this.doneFTP.data = ftp;
+        this.doneFTPBg.data = ftp;
         this.formFSB.data = atpData.kopia().formFSB();
         //this.atp.hidden = true;
         //this.atpFTP.hidden = true;
