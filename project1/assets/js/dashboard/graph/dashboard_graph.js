@@ -84,8 +84,8 @@ global.atpOptions = {
                 fill: true,
                 data: createTimeArray(yDone).ftpO(),
                 borderColor: general.ftpDone.borderColor,
-                borderWidth: 2,
-                borderDash: [1, 2],
+                borderWidth: 0.3,
+                //borderDash: [1, 1],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
@@ -136,9 +136,14 @@ global.atpOptions = {
             caretSize: 5,
             cornerRadius: 3,
             callbacks: {
-                label: () => {
-                    //tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`
+                label: (x, y) => {
 
+                    let datasetIndex = x.datasetIndex;
+                    let index = x.index;
+                    let value = y.datasets[datasetIndex].data[index].y;
+                    let label = y.datasets[datasetIndex].label;
+
+                    return label + ' ' + Math.round(value * 100) / 100;
                 },
                 title: (x, y) => {
 

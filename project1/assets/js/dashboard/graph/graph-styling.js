@@ -34,10 +34,10 @@ FSBgradient.addColorStop(0.25, theme.gradient.ftp + 'bb');
 //FSBgradient.addColorStop(0.3, theme.gradient.ftp + 'dd');
 FSBgradient.addColorStop(0.32, '#ff0000' + 'bb');
 
-FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
+FTPDonegradient.addColorStop(0.2, theme.gradient.ftpDone + 'ff');
 //FTPDonegradient.addColorStop(0.2, theme.gradient.ftpDone + 'ff');
-FTPDonegradient.addColorStop(0.6, theme.gradient.ftpDone + '11');
-FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '00');
+FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '33');
+FTPDonegradient.addColorStop(0.8, theme.gradient.ftpDone + '00');
 
 gridGradient.addColorStop(0, theme.gradient.grid + 'ff');
 gridGradient.addColorStop(0.3, theme.gradient.grid + '22');
@@ -63,7 +63,7 @@ global.general = {
     },
     ftpDone: {
         bg: FTPDonegradient,
-        borderColor: FTPDonegradient
+        borderColor: '#ffffff'
     },
     newVal: {
         bg: barGradient,

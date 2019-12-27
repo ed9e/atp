@@ -49,7 +49,6 @@ function scroll(t) {
     let scale = e.deltaMode ? 3 : 53;
     let value = e.altKey ? (parseInt(e.deltaY) / scale) * 20 : parseInt(e.deltaY) / scale;
     let newTune = par.chart.config.data.datasets.find('newTune');
-
     newTune.data[par.index].y = parseInt(newTune.data[par.index].y) - value;
     par.chart.config.data.datasets.find('FTP').data = FTP_data0(newTune.data);
     par.chart.config.data.datasets.find('formFSB').data = formFSB_data(newTune.data, true);
@@ -149,6 +148,9 @@ function updateData() {
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     //par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
 
+    if(par.value <=0){
+        return;
+    }
     dataset.data[par.index].y = par.value;
     //par.chart.config.data.datasets[2].data[par.index] =  par.value;
     par.chart.config.data.datasets.find('FTP').data = FTP_data(dataset.data);
