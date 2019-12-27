@@ -14,7 +14,7 @@ barGradient.addColorStop(0.3, theme.gradient.bar + '77');
 barGradient.addColorStop(0.6, theme.gradient.bar + '22');
 
 timeGradient.addColorStop(1, theme.gradient.time + 'ff');
-timeGradient.addColorStop(0.6, theme.gradient.time + '88');
+timeGradient.addColorStop(0.6, theme.gradient.time + '99');
 timeGradient.addColorStop(0, theme.gradient.time + '44');
 bardoneBorderGradient.addColorStop(1, theme.bar.borderColor + 'cc');
 bardoneBorderGradient.addColorStop(0.6, theme.bar.borderColor + '66');
@@ -59,11 +59,11 @@ global.general = {
     },
     fsb: {
         bg: FSBgradient,
-        borderColor: '#ffffff88'
+        borderColor: '#00000066'
     },
     ftpDone: {
         bg: FTPDonegradient,
-        borderColor: '#ffffff'
+        borderColor: '#00000066'
     },
     newVal: {
         bg: barGradient,
@@ -75,7 +75,7 @@ global.general = {
     },
     tooltip: {
         bg: '#5a5b60',
-        bodyColor: '#ababb0',
+        bodyColor: '#eeeeee',
         titleColor: '#ababb0',
         borderColor: '#5a5b60',
     },

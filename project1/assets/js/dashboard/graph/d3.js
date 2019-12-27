@@ -3,8 +3,8 @@ import * as d3 from 'd3';
 d3.select(chartAtpInstance.chart.canvas).call(
     d3.drag().container(chartAtpInstance.chart.canvas)
         .on('start', getElement)
-        .on('drag', updateData)
-        .on('end', callback)
+        // .on('drag', updateData)
+        // .on('end', callback)
 );
 let _tmpZoomSpeed;
 d3.select(chartAtpInstance.chart.canvas).call(
@@ -28,30 +28,9 @@ let par = {
 };
 
 function scrollEnd(t) {
-    //chartAtpInstance.update(0);
 }
 
 function scroll(t) {
-
-    let e = t.sourceEvent;
-    par.element = chartAtpInstance.getElementAtEvent(e)[0];
-    if (par.element == undefined) {
-        return;
-    }
-    par.chart = par.element['_chart'];
-    //par.datasetIndex = 0;
-    par.scale = undefined;
-    par.scale = par.element['_yScale'];
-    if (par.datasetIndex != 0 || par.scale == undefined) {
-        return;
-    }
-    par.index = par.element['_index'];
-    //console.log(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y);
-    let v = par.chart.config.data.datasets[par.datasetIndex].data[par.index].y;
-    let value = e.altKey ? (parseInt(e.deltaY) / 3) * 20 : parseInt(e.deltaY) / 3;
-    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = parseInt(par.chart.config.data.datasets[par.datasetIndex].data[par.index].y) - value;
-
-
 }
 
 //Get an class of {points: [{x, y},], type: event.type} clicked or touched
@@ -115,7 +94,7 @@ function getElement() {
     findAndSwipe();
 }
 
-function findAndSwipe() {
+function findAndSwipe() { // Zmiana danych w dataTable
     let e = d3.event.sourceEvent;
     par.element = chartAtpInstance.getElementAtEvent(e)[0];
     par.chart = par.element['_chart'];
@@ -143,12 +122,6 @@ function updateData() {
     par.value = Math.floor(par.scale.getValueForPixel(
         par.grabOffsetY + getEventPoints(e).point[0].y) + 0.5);
     //par.value = Math.max(0, Math.min(atpYAxes.max - 100, par.value));
-
-    par.chart.config.data.datasets[par.datasetIndex].data[par.index].y = par.value;
-    //par.chart.config.data.datasets[2].data[par.index] =  par.value;
-    par.chart.config.data.datasets[2].data = par.chart.config.data.datasets[par.datasetIndex].data.ftpO();
-
-    chartAtpInstance.update(0);
 
     drawValue(par);
 }
