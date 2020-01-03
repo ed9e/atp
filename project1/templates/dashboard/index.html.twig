@@ -62,7 +62,9 @@
         <div style="">
             <span></span>
         </div>
-        <canvas id="chartJSContainer" width="1920" height="550"></canvas>
+        <div id="canvas-container" style="float:left; width:99%">
+            <canvas id="chartJSContainer" height="650"></canvas>
+        </div>
     </div>
     <div class="darken-container">
         <div class="container-fluid">
@@ -85,40 +87,40 @@
                 </div>
             </div>
         </div>
-            <div class="row data-table">
-                <table id="data-table" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th>startTimeLocal</th>
-                        <th>Activity Name</th>
-                        <th>Type</th>
-                        <th>Distance</th>
-                        <th>Duration</th>
-                        <th>Average Speed</th>
-                        <th>Average HR</th>
-                        <th>Average Run Cadence</th>
-                        <th>Stride Length</th>
-                        <th>Vertical Oscillation</th>
-                        <th>Training Effect</th>
-                        <th>vO2 Max</th>
-                        <th>Avg Ground Contact Balance</th>
-                    </tr>
-                    </thead>
-{#                                <tfoot>#}
-{#                                <tr>#}
-{#                                    <th>Name</th>#}
-{#                                    <th>Position</th>#}
-{#                                    <th>Office</th>#}
-{#                                    <th>Extn.</th>#}
-{#                                    <th>Start date</th>#}
-{#                                    <th>Salary</th>#}
-{#                                </tr>#}
-{#                                </tfoot>#}
-                </table>
-            </div>
-{#        <div class="row zinggrid">#}
-{#            <zing-grid id="myGrid" sort viewport-stop></zing-grid>#}
-{#        </div>#}
+        <div class="row data-table">
+            <table id="data-table" class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>startTimeLocal</th>
+                    <th>Activity Name</th>
+                    <th>Type</th>
+                    <th>Distance</th>
+                    <th>Duration</th>
+                    <th>Average Speed</th>
+                    <th>Average HR</th>
+                    <th>Average Run Cadence</th>
+                    <th>Stride Length</th>
+                    <th>Vertical Oscillation</th>
+                    <th>Training Effect</th>
+                    <th>vO2 Max</th>
+                    <th>Avg Ground Contact Balance</th>
+                </tr>
+                </thead>
+                {#                                <tfoot>#}
+                {#                                <tr>#}
+                {#                                    <th>Name</th>#}
+                {#                                    <th>Position</th>#}
+                {#                                    <th>Office</th>#}
+                {#                                    <th>Extn.</th>#}
+                {#                                    <th>Start date</th>#}
+                {#                                    <th>Salary</th>#}
+                {#                                </tr>#}
+                {#                                </tfoot>#}
+            </table>
+        </div>
+        {#        <div class="row zinggrid">#}
+        {#            <zing-grid id="myGrid" sort viewport-stop></zing-grid>#}
+        {#        </div>#}
     </div>
 {% endblock %}
 

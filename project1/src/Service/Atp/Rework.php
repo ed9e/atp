@@ -35,7 +35,9 @@ class Rework
 
     protected function remapKeys(): array
     {
-        $firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->atp->getFrom())))->sub(new DateInterval('P330W'))->format('Y-m-d');
+        // dla fetch/atp wylicza pare tygodni wstecz
+        //$firstKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->atp->getFrom())))->sub(new DateInterval('P330W'))->format('Y-m-d');
+        $firstKey = '2013-08-30';
         $lastKey = (new DateTime())->setTimestamp(strtotime('next friday', strtotime($this->atp->getTo())))->add(new DateInterval('P20W'))->format('Y-m-d');
         $keys = Plan::createIntervalArray($firstKey, $lastKey);
         ksort($keys);

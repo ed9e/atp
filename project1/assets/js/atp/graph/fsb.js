@@ -1,3 +1,4 @@
+global.fsb = 500;
 Array.prototype.formFSB = function () {
 
     let A, k, muppetX, muppetY = 0;
@@ -8,7 +9,7 @@ Array.prototype.formFSB = function () {
     k = 1;
 
     let sredniaPoprzednich,
-        sumaPoprzednich = 0,
+        sumaPoprzednich = global.fsb,
         biezacy, poprzedniY;
 
     while (k < len) {
@@ -27,10 +28,11 @@ Array.prototype.formFSB = function () {
             sumaPoprzednich += parseInt(O[k - 1].y);
 
             sredniaPoprzednich = sumaPoprzednich / (k + 1);
+
             poprzedniY = muppetY;
             muppetY = (sredniaPoprzednich - biezacy) / sredniaPoprzednich;
 
-            A[k] = {x: muppetX, y: muppetY + 0.5};
+            A[k] = {x: muppetX, y: Math.max(-2, muppetY + 0.5)};
         }
         k++;
     }

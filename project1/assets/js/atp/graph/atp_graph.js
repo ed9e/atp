@@ -1,22 +1,23 @@
-import {bar_data, FTP_data} from "./DataSetFunctions";
+import {bar_data, FTP_data, formFSB_data} from "./DataSetFunctions";
 import {phases_dataset} from "./PhaseLine";
 
 global.atpYAxes = {max: 1300};
 let tmp_max = 0;
+let barDataDone = bar_data(done);
 
 global.atpOptions = {
     type: 'bar',
 
     data: {
-        labels: bar_data(done),
+        labels: barDataDone,
         datasets: [
             {
                 label: 'Form FSB',
                 type: 'line',
                 backgroundColor: general.fsb.bg,
                 fill: true,
-                data: bar_data(done).formFSB(),
-                borderColor: general.ftp.borderColor,
+                data: barDataDone.formFSB(),
+                borderColor: general.fsb.borderColor,
                 borderWidth: 1,
                 borderDash: [0, 0],
                 xAxisID: "x-axis1",
@@ -30,7 +31,7 @@ global.atpOptions = {
                 label: 'Done',
                 backgroundColor: general.bardone.bg,
                 fill: true,
-                data: bar_data(done),
+                data: barDataDone,
                 borderWidth: 1,
                 borderDash: [1, 1],
                 borderColor: general.bardone.borderColor,
@@ -72,7 +73,7 @@ global.atpOptions = {
                 type: 'line',
                 backgroundColor: general.ftpDone.bg,
                 fill: true,
-                data: bar_data(done).ftpO(),
+                data: barDataDone.ftpO(),
                 borderColor: general.ftpDone.borderColor,
                 borderWidth: 1,
                 borderDash: [0, 0],
@@ -86,7 +87,7 @@ global.atpOptions = {
                 type: 'line',
                 backgroundColor: '#010101a4',
                 fill: true,
-                data: bar_data(done).ftpO(),
+                data: barDataDone.ftpO(),
                 borderColor: '#010101ff',
                 borderWidth: 1,
                 //borderDash: [1, 1],
@@ -251,7 +252,8 @@ global.atpOptions = {
                                 return value;
                             return '';
                         },
-                        fontSize: 9
+                        fontSize: 9,
+                        maxRotation: 0,
                     }
                 },
                 {
@@ -322,10 +324,15 @@ global.atpOptions = {
                             if (typeof flags[value] === 'string') {
                                 return flags[value];
                             }
-                        }
+                        },
+                        max: 50,
+                        height: 50
                     },
+                    afterFit: (scale) => {
+                        scale.height = 100;
+                    }
 
-                },
+                }
 
             ],
             yAxes: [
@@ -345,6 +352,7 @@ global.atpOptions = {
                     ticks: {
                         reverse: false,
                         min: 0,
+                        beginAtZero: true,
                         //max: 2500,
                         display: true,
                         id: 'nonstatic',
@@ -359,7 +367,10 @@ global.atpOptions = {
                         padding: 0,
 
                     },
-                    position: 'right'
+                    position: 'right',
+                    afterFit: (scale) => {
+                        scale.height = 100;
+                    }
                 },
                 {
                     id: 'static',
@@ -380,7 +391,10 @@ global.atpOptions = {
                         min: -200,
                         max: 18,
                         display: false,
-                        padding: 0
+                        padding: 0,
+                        afterFit: (scale) => {
+                            scale.height = 100;
+                        }
                     }
                 },
                 {
@@ -472,8 +486,11 @@ Object.entries(phases2).forEach(phases_dataset);
 
 
 //TODO: to tu
+global.maxFTP = 0;
 global.chartAtpInstance = new Chart(ctx, atpOptions);
 global.FTP_data = FTP_data;
+global.formFSB_data = formFSB_data;
+
 global.chartAtpInstance.config.data.datasets.find = function (id) {
     for (let o in this) {
         if (this[o].id === id) {

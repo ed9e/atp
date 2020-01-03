@@ -54,7 +54,7 @@ class FetchActivitiesCommand extends AbstractCommand
                     $this->garminManager->run();
                 } else {
                     if ($this->input->getOption('full')) {
-                        for ($i = 0; $i <= 16; $i++) {
+                        for ($i = 0; $i <= 26; $i++) {
                             $this->garminManager->clearRequest()->getRequest()->setStart($i * 100);
                             $this->garminManager->import();
                         }

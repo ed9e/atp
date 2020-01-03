@@ -30,6 +30,8 @@ Array.prototype.ftp = function () {
 
 Array.prototype.ftpO = function () {
 
+    global.maxFTP = 0;
+
     let A, k, l, divider, muppetX, muppetY;
     let O = Object(this);
     let len = O.length >>> 0;
@@ -40,11 +42,12 @@ Array.prototype.ftpO = function () {
     while (k < len) {
         if (k in O) {
 
-            muppetY = O[k].y / 1.5;
+            muppetY = O[k].y / 1.2;
             muppetX = O[k].x;
             l = 1;
+            let m = 1;
             while (l <= k) {
-                divider = (waga * l + 1);
+                divider = (waga * l + m);
                 if (k === 0) {
                     divider = waga;
                 }
@@ -53,6 +56,7 @@ Array.prototype.ftpO = function () {
             }
             A[k] = {x: muppetX, y: Math.floor(muppetY)};
 
+            global.maxFTP = Math.max(global.maxFTP, A[k].y);
         }
         k++;
     }
@@ -92,6 +96,7 @@ Array.prototype.kopia = function () {
     return A;
 };
 
+global.fsb = 500;
 Array.prototype.formFSB = function () {
 
     let A, k, muppetX, muppetY = 0;
@@ -102,7 +107,7 @@ Array.prototype.formFSB = function () {
     k = 1;
 
     let sredniaPoprzednich,
-        sumaPoprzednich = 0,
+        sumaPoprzednich = global.fsb,
         biezacy, poprzedniY;
 
     while (k < len) {
@@ -121,10 +126,11 @@ Array.prototype.formFSB = function () {
             sumaPoprzednich += parseInt(O[k - 1].y);
 
             sredniaPoprzednich = sumaPoprzednich / (k + 1);
+
             poprzedniY = muppetY;
             muppetY = (sredniaPoprzednich - biezacy) / sredniaPoprzednich;
 
-            A[k] = {x: muppetX, y: muppetY + 0.5};
+            A[k] = {x: muppetX, y: Math.max(-2, muppetY + 0.5)};
         }
         k++;
     }

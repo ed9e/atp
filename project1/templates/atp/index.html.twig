@@ -31,7 +31,8 @@
                     let id = chartAtpInstance.selectedElement._index;
                     chartAtpInstance.config.data.datasets.find('newTune').data[id].y = chartAtpInstance.config.data.datasets.find('Done').data[id].y;
                     chartAtpInstance.config.data.datasets.find('FTP').data = FTP_data(chartAtpInstance.config.data.datasets.find('newTune').data);
-                    chartAtpInstance.update();
+                    chartAtpInstance.config.data.datasets.find('formFSB').data = formFSB_data(chartAtpInstance.config.data.datasets.find('newTune').data);
+                    chartAtpInstance.update(0);
                     break;
             }
         }

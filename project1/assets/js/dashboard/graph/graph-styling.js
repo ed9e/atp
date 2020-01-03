@@ -14,7 +14,7 @@ barGradient.addColorStop(0.3, theme.gradient.bar + '77');
 barGradient.addColorStop(0.6, theme.gradient.bar + '22');
 
 timeGradient.addColorStop(1, theme.gradient.time + 'ff');
-timeGradient.addColorStop(0.6, theme.gradient.time + '88');
+timeGradient.addColorStop(0.6, theme.gradient.time + '99');
 timeGradient.addColorStop(0, theme.gradient.time + '44');
 bardoneBorderGradient.addColorStop(1, theme.bar.borderColor + 'cc');
 bardoneBorderGradient.addColorStop(0.6, theme.bar.borderColor + '66');
@@ -28,15 +28,16 @@ FTPgradient.addColorStop(0, theme.gradient.ftp + 'ff');
 FTPgradient.addColorStop(0.5, theme.gradient.ftp + '44');
 FTPgradient.addColorStop(0.8, theme.gradient.ftp + '00');
 
-FSBgradient.addColorStop(0, theme.gradient.ftp + '11');
-FSBgradient.addColorStop(0.5, theme.gradient.ftp + 'ee');
-FSBgradient.addColorStop(0.8, theme.gradient.ftp + 'ff');
+FSBgradient.addColorStop(0.15, '#ffffff' + 'ff');
+FSBgradient.addColorStop(0.223, theme.gradient.ftpDone + 'bb');
+FSBgradient.addColorStop(0.25, theme.gradient.ftp + 'bb');
+//FSBgradient.addColorStop(0.3, theme.gradient.ftp + 'dd');
+FSBgradient.addColorStop(0.32, '#ff0000' + 'bb');
 
-FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
-FTPDonegradient.addColorStop(0.3, theme.gradient.ftpDone + 'ee');
-
-FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '11');
-FTPDonegradient.addColorStop(1, theme.gradient.ftpDone + '00');
+FTPDonegradient.addColorStop(0.2, theme.gradient.ftpDone + 'ff');
+//FTPDonegradient.addColorStop(0.2, theme.gradient.ftpDone + 'ff');
+FTPDonegradient.addColorStop(0.7, theme.gradient.ftpDone + '33');
+FTPDonegradient.addColorStop(0.8, theme.gradient.ftpDone + '00');
 
 gridGradient.addColorStop(0, theme.gradient.grid + 'ff');
 gridGradient.addColorStop(0.3, theme.gradient.grid + '22');
@@ -58,11 +59,11 @@ global.general = {
     },
     fsb: {
         bg: FSBgradient,
-        borderColor: theme.borderColor.ftp
+        borderColor: '#00000066'
     },
     ftpDone: {
         bg: FTPDonegradient,
-        borderColor: FTPDonegradient
+        borderColor: '#00000066'
     },
     newVal: {
         bg: barGradient,
@@ -74,7 +75,7 @@ global.general = {
     },
     tooltip: {
         bg: '#5a5b60',
-        bodyColor: '#ababb0',
+        bodyColor: '#eeeeee',
         titleColor: '#ababb0',
         borderColor: '#5a5b60',
     },

@@ -32,9 +32,11 @@ FTPgradient.addColorStop(0.7, '#00FF00' + '11');
 FTPgradient.addColorStop(1, '#00FF00' + '11');
 
 
-FSBgradient.addColorStop(0.23, theme.gradient.ftpDone + '99');
-FSBgradient.addColorStop(0.265, theme.gradient.ftp + 'aa');
-FSBgradient.addColorStop(0.35, theme.gradient.ftp + 'dd');
+FSBgradient.addColorStop(0.15, '#ffffff' + 'ff');
+FSBgradient.addColorStop(0.226, theme.gradient.ftpDone + 'bb');
+FSBgradient.addColorStop(0.24, theme.gradient.ftp + 'bb');
+//FSBgradient.addColorStop(0.3, theme.gradient.ftp + 'dd');
+FSBgradient.addColorStop(0.31, '#ff0000' + 'bb');
 
 FTPDonegradient.addColorStop(0, theme.gradient.ftpDone + 'ff');
 FTPDonegradient.addColorStop(0.2, theme.gradient.ftpDone + 'ff');
@@ -61,7 +63,7 @@ global.general = {
     },
     fsb: {
         bg: FSBgradient,
-        borderColor: theme.borderColor.ftp
+        borderColor: '#ffffff88'
     },
     ftpDone: {
         bg: FTPDonegradient,

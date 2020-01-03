@@ -6,22 +6,23 @@ global.atpOptions = {
 
     data: {
         labels: createTimeArray(yDone),
-        datasets: [{
-            label: 'Form FSB',
-            type: 'line',
-            backgroundColor: general.ftp.bg,
-            fill: true,
-            data: createTimeArray(yDone).formFSB(),
-            borderColor: general.ftp.borderColor,
-            borderWidth: 1,
-            borderDash: [0, 0],
-            xAxisID: "x-axis1",
-            yAxisID: "fsb",
-            pointHitRadius: 10,
-            pointHoverRadius: 2,
-            id: 'formFSB',
+        datasets: [
+            {
+                label: 'Form FSB',
+                type: 'line',
+                backgroundColor: general.fsb.bg,
+                fill: true,
+                data: createTimeArray(yDone).formFSB(),
+                borderColor: general.fsb.borderColor,
+                borderWidth: 1,
+                borderDash: [0, 0],
+                xAxisID: "x-axis1",
+                yAxisID: "fsb",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+                id: 'formFSB',
 
-        },
+            },
             {
                 label: 'New Tuning',
                 backgroundColor: general.newVal.bg,
@@ -83,8 +84,8 @@ global.atpOptions = {
                 fill: true,
                 data: createTimeArray(yDone).ftpO(),
                 borderColor: general.ftpDone.borderColor,
-                borderWidth: 2,
-                borderDash: [1, 2],
+                borderWidth: 0.3,
+                //borderDash: [1, 1],
                 xAxisID: "x-axis1",
                 pointHitRadius: 10,
                 pointHoverRadius: 2,
@@ -135,9 +136,14 @@ global.atpOptions = {
             caretSize: 5,
             cornerRadius: 3,
             callbacks: {
-                label: () => {
-                    //tooltipItem => `${tooltipItem.yLabel}: ${tooltipItem.xLabel}`
+                label: (x, y) => {
 
+                    let datasetIndex = x.datasetIndex;
+                    let index = x.index;
+                    let value = y.datasets[datasetIndex].data[index].y;
+                    let label = y.datasets[datasetIndex].label;
+
+                    return label + ' ' + Math.round(value * 100) / 100;
                 },
                 title: (x, y) => {
 
@@ -222,6 +228,7 @@ global.atpOptions = {
                         lineHeight: 1.2,
                         fontColor: general.grid.fontColor,
                         fontSize: 10,
+                        maxRotation: 0,
                         callback: function (value, index, values) {
                             if (index % 2)
                                 return value;
@@ -263,57 +270,70 @@ global.atpOptions = {
                             return phases[value];
                         }
                     },
+                    afterFit: (scale) => {
+                        scale.height = 100;
+                    }
 
                 },
 
             ],
-            yAxes: [{
+            yAxes: [
+                {
 
-                display: true,
-                scaleLabel: {
-                    display: false,
-                    labelString: 'VALUE'
-                },
-                gridLines: {
-                    drawTicks: true,
                     display: true,
-                    color: general.grid.gridLinesColor,
-                    borderDash: [1, 2],
-                    zeroLineWidth: 0
-                },
-                ticks: {
-                    reverse: false,
-                    min: 0,
-                    //max: atpYAxes.max,
-                    display: true,
-                    padding: 10,
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'VALUE'
+                    },
+                    gridLines: {
+                        drawTicks: true,
+                        display: true,
+                        color: general.grid.gridLinesColor,
+                        borderDash: [1, 2],
+                        zeroLineWidth: 0
+                    },
+                    ticks: {
+                        reverse: false,
+                        min: 0,
+                        //max: atpYAxes.max,
+                        display: true,
+                        padding: 10,
 
+                    },
+                    position: 'right'
                 },
-                position: 'left'
-            }, {
-                id: 'fsb',
-                display: true,
-                scaleLabel: {
-                    display: false,
-                    labelString: 'VALUE'
-                },
-                gridLines: {
-                    drawTicks: true,
+                {
+                    id: 'fsb',
                     display: true,
-                    color: general.grid.gridLinesColor,
-                    borderDash: [1, 2],
-                    zeroLineWidth: 0
-                },
-                ticks: {
-                    reverse: false,
-                    min: -20,
-                    max: 3,
-                    display: false,
-                    padding: 10,
-
-                },
-                position: 'left'
-            }]
+                    scaleLabel: {
+                        display: false,
+                        labelString: 'FSB'
+                    },
+                    gridLines: {
+                        drawTicks: false,
+                        display: true,
+                        color: general.grid.gridLinesColor,
+                        borderDash: [1, 2],
+                        zeroLineWidth: 1
+                    },
+                    ticks: {
+                        reverse: false,
+                        min: -20,
+                        max: 2,
+                        display: true,
+                        padding: 10,
+                        stepSize: 0.5,
+                        callback: function (value, index, values) {
+                            if (Math.floor(value) >= -2 && value <= 1) {
+                                if (index % 2)
+                                    return value;
+                                return '';
+                            }
+                        },
+                        fontSize: 9
+                    },
+                    position: 'left'
+                }]
         },
         pan: {
             enabled: false,
@@ -393,6 +413,7 @@ function createPhaseDataset(d) {
 
 
 //TODO: to tu
+global.maxFTP = 0;
 global.chartAtpInstance = new Chart(ctx, atpOptions);
 global.chartAtpInstance.config.data.datasets.find = function (id) {
     for (let o in this) {
@@ -416,7 +437,6 @@ global.chartAtpInstance.readyZoom = function (min) {
 
     chartAtpInstance.update();
 };
-
 
 function getDateArray(start, end) {
     let
