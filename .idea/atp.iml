@@ -110,5 +110,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="atp-api" />
+    <orderEntry type="module" module-name="atp-api" />
   </component>
 </module>

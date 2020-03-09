@@ -13,6 +13,7 @@ body {
   & .form-submit {
 
   }
+
   & .btn, .btn-large, .btn-small {
     text-decoration: none;
     color: #eee;
@@ -68,4 +69,29 @@ body {
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
   border: none;
   border-bottom: 1px solid #fff;
+}
+
+
+[type="checkbox"].filled-in:checked + span:not(.lever):before {
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+  border: none;
+  background-color: #00000000;
+}
+
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+  border: 1px solid #ffeabd99;
+}
+
+.checkbox label {
+  padding-left: 0px;
+}
+
+.input-field {
+  margin-top: 2rem;
+  padding-bottom: 1rem;
 }

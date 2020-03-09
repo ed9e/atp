@@ -49,6 +49,42 @@
 {% endblock %}
 
 {% block page_content %}
+
+    <div class="canvas">
+
+        <div id="canvas-container" style="float:left; width:99%">
+            <canvas id="chartJSContainer" height="650"></canvas>
+        </div>
+        {#        <div id="test-slider" style="height: 400px; width: 4px; float:left; margin-top: 100px;"></div>#}
+        <ul id="contextMenu">
+            <li class="menu-item" onclick="menu(1)">remove</li>
+            <li class="menu-item" onclick="menu(2)">change</li>
+            <li class="menu-item" onclick="menu(3)">add</li>
+            <li class="menu-item" onclick="menu(4)">fit</li>
+        </ul>
+    </div>
+    <div class="darken-container">
+        <div class="container-fluid">
+            <div class="row controls badges">
+                <div class="col-xs-5">
+                    <ul class="list small float-left" id="activity-badges">
+                    </ul>
+                </div>
+
+                <div class="col-xs-7">
+                    <ul class="list small float-right" id="action-badges">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row controls badges">
+                <div class="col-xs-5">
+                    <ul class="list small float-left" id="config-badges">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <form>
 
         <div class="row">
@@ -196,39 +232,4 @@
             </div>
         </div>
     </form>
-    <div class="canvas">
-
-        <div id="canvas-container" style="float:left; width:99%">
-            <canvas id="chartJSContainer" height="650"></canvas>
-        </div>
-        {#        <div id="test-slider" style="height: 400px; width: 4px; float:left; margin-top: 100px;"></div>#}
-        <ul id="contextMenu">
-            <li class="menu-item" onclick="menu(1)">remove</li>
-            <li class="menu-item" onclick="menu(2)">change</li>
-            <li class="menu-item" onclick="menu(3)">add</li>
-            <li class="menu-item" onclick="menu(4)">fit</li>
-        </ul>
-    </div>
-    <div class="darken-container">
-        <div class="container-fluid">
-            <div class="row controls badges">
-                <div class="col-xs-5">
-                    <ul class="list small float-left" id="activity-badges">
-                    </ul>
-                </div>
-
-                <div class="col-xs-7">
-                    <ul class="list small float-right" id="action-badges">
-
-                    </ul>
-                </div>
-            </div>
-            <div class="row controls badges">
-                <div class="col-xs-5">
-                    <ul class="list small float-left" id="config-badges">
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}

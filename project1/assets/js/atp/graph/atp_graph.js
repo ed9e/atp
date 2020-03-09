@@ -486,7 +486,8 @@ Object.entries(phases2).forEach(phases_dataset);
 
 
 //TODO: to tu
-global.maxFTP = 0;
+global.maxFTP = 150;
+let ctx = document.getElementById("chartJSContainer");
 global.chartAtpInstance = new Chart(ctx, atpOptions);
 global.FTP_data = FTP_data;
 global.formFSB_data = formFSB_data;

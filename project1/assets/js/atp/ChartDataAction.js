@@ -48,7 +48,7 @@ export class ChartDataAction {
             return x === 0 ? "0" : x
         });
         let atpFTP = FTP_data0(atpData);
-        global.chartAtpInstance.options.scales.yAxes[0].ticks.max = global.maxFTP * 1.2;
+        //global.chartAtpInstance.options.scales.yAxes[0].ticks.max = global.maxFTP * 1.2;
         this.done.data = vals;
 
         this.atp.data = atpData;

@@ -30,7 +30,7 @@ let par = {
 
 let phaseDrag;
 
-function scrollStart(e) {
+function scrollStart(t) {
 }
 
 function scrollEnd(t) {
@@ -53,7 +53,6 @@ function scroll(t) {
     par.chart.config.data.datasets.find('FTP').data = FTP_data0(newTune.data);
     par.chart.config.data.datasets.find('formFSB').data = formFSB_data(newTune.data, true);
     par.chart.update(0);
-
 }
 
 //Get an class of {points: [{x, y},], type: event.type} clicked or touched
