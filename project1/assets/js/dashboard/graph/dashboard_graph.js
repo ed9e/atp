@@ -7,22 +7,7 @@ global.atpOptions = {
     data: {
         labels: createTimeArray(yDone),
         datasets: [
-            {
-                label: 'Form FSB',
-                type: 'line',
-                backgroundColor: general.fsb.bg,
-                fill: true,
-                data: createTimeArray(yDone).formFSB(),
-                borderColor: general.fsb.borderColor,
-                borderWidth: 1,
-                borderDash: [0, 0],
-                xAxisID: "x-axis1",
-                yAxisID: "fsb",
-                pointHitRadius: 10,
-                pointHoverRadius: 2,
-                id: 'formFSB',
 
-            },
             {
                 label: 'New Tuning',
                 backgroundColor: general.newVal.bg,
@@ -91,6 +76,22 @@ global.atpOptions = {
                 pointHoverRadius: 2,
                 id: 'FTPDone'
             },
+            {
+                label: 'Form FSB',
+                type: 'line',
+                backgroundColor: general.fsb.bg,
+                fill: true,
+                data: createTimeArray(yDone).formFSB(),
+                borderColor: general.fsb.borderColor,
+                borderWidth: 1,
+                borderDash: [0, 0],
+                xAxisID: "x-axis1",
+                yAxisID: "fsb",
+                pointHitRadius: 10,
+                pointHoverRadius: 2,
+                id: 'formFSB',
+
+            }
 
         ]
     },

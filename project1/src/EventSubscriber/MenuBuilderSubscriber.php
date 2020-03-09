@@ -22,6 +22,7 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
         $this->curtain($event);
         $this->dashboard($event);
         $this->atp($event);
+        $this->race($event);
 //        $this->herbs($event);
 //        $this->analize($event);
 
@@ -67,6 +68,27 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
         $event->addItem($atpMenu);
     }
 
+    protected function race(SidebarMenuEvent $event): void
+    {
+        $menu = new MenuItemModel('raceId', 'Competitions', '/race', [], 'fas fa-list');
+        $event->addItem($menu);
+    }
+
+    /**
+     * @param string $route
+     * @param MenuItemModel[] $items
+     */
+    protected function activateByRoute($route, $items): void
+    {
+        foreach ($items as $item) {
+            if ($item->hasChildren()) {
+                $this->activateByRoute($route, $item->getChildren());
+            } elseif ($item->getRoute() == $route) {
+                $item->setIsActive(true);
+            }
+        }
+    }
+
     protected function herbs(SidebarMenuEvent $event)
     {
         $menu = new MenuItemModel('herbs', 'Zioła', null, [], 'fas fa-industry');
@@ -103,20 +125,5 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
             );
 
         $event->addItem($menu);
-    }
-
-    /**
-     * @param string $route
-     * @param MenuItemModel[] $items
-     */
-    protected function activateByRoute($route, $items): void
-    {
-        foreach ($items as $item) {
-            if ($item->hasChildren()) {
-                $this->activateByRoute($route, $item->getChildren());
-            } elseif ($item->getRoute() == $route) {
-                $item->setIsActive(true);
-            }
-        }
     }
 }

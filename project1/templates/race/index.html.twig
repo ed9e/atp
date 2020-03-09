@@ -1,0 +1,94 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Competition!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+    {{ encore_entry_link_tags('atp') }}
+{% endblock %}
+{% block javascripts %}
+
+    {{ parent() }}
+    {{ encore_entry_script_tags('atp') }}
+{% endblock %}
+
+{% block page_content_before %}
+    {{ parent() }}
+{% endblock %}
+
+{% block page_content %}
+    <form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <ul class="collapsible popout">
+                    <li>
+                        <div class="collapsible-header" style="justify-content: space-between">
+                            <div>
+                                <i class="material-icons">playlist_add_check</i>Dodaj zawody, testy, wydarzenia.
+                            </div>
+                            <div><i class="material-icons remove-trial" title="Remove trial" id="1">clear</i>
+                            </div>
+                        </div>
+                        <div class="collapsible-body">
+                            <i class="material-icons" title="Add trial" id="add-trial">control_point</i>Dodaj zawody,
+                            testy, wydarzenia.
+                            <div class="row"></div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="collapsible popout">
+                    <li>
+                        <div class="collapsible-header" style="justify-content: space-between">
+                            <div>
+                                <i class="material-icons">playlist_add_check</i>Filtry.
+                            </div>
+                            <div><i class="material-icons remove-trial" title="Wyczyść filtr" id="1">clear</i>
+                            </div>
+                        </div>
+                        <div class="collapsible-body">
+                            <i class="material-icons" title="Add trial" id="add-trial">control_point</i>Zastosuj filtry
+                            <div class="row"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-6">
+
+                {% if competitions %}
+                    {% for comp in competitions %}
+                        <ul class="collapsible popout" id="time-trials">
+                            <li class="time-trial" id="li-time-trial-1">
+                                <div class="collapsible-header" style="justify-content: space-between">
+                                    <div>
+                                        <i class="material-icons">playlist_add</i>{{ comp.date }} </div><div> {{ comp.title }}</div>
+                                    
+                                    <div><i class="material-icons remove-trial" title="Remove trial" id="1">clear</i>
+                                    </div>
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="input-field col-xs-6">
+                                            <input id="plan_name2" type="text" value="{{ comp.title }}">
+                                            <label for="plan_name2">Nazwa</label>
+                                        </div>
+                                        <div class="input-field col-xs-6">
+
+                                            <input type='text' class="datepicker-here"
+                                                   data-language='pl'
+                                                   data-multiple-dates="1"
+                                                   data-position='bottom right'
+                                                   id="air-datapicker2"
+                                                   value="{{ comp.date }}"
+                                            />
+                                            <label for="air-datapicker2">Data</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+    </form>
+{% endblock %}
