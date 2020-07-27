@@ -29,7 +29,7 @@ class ImportCommand extends AbstractCommand
             ->addArgument('parameter', $this->requireParam ? InputArgument::REQUIRED : InputArgument::OPTIONAL, 'Require parameter');
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         // TODO: Implement handle() method.
     }

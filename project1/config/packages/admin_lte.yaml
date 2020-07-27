@@ -9,7 +9,7 @@
 admin_lte:
   options:
     skin: skin-material
-    fixed_layout: true
+    fixed_layout: false
     boxed_layout: false
     collapsed_sidebar: true
     mini_sidebar: true

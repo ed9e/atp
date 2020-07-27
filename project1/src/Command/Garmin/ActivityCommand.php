@@ -39,7 +39,7 @@ class ActivityCommand extends AbstractCommand
             ->addArgument($this->paramStringActivityId, InputArgument::OPTIONAL, 'Activity ID is required!');
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         switch ($this->input->getArgument('action')) {
             case 'entity':

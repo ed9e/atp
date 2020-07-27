@@ -41,7 +41,7 @@ class FetchActivitiesCommand extends AbstractCommand
             ->addOption('run', 'r', InputOption::VALUE_OPTIONAL);
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         switch ($this->input->getArgument('action')) {
             case 'import':

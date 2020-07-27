@@ -1,7 +1,13 @@
 doctrine:
     dbal:
         # configure these for your database server
+        dbname: garmin
+        host: localhost
+        port: 5432
         driver: 'pdo_pgsql'
+        server_version: '10.12'
+        password: qweqwe
+        user: qwe
         charset: UTF8
         default_table_options:
             charset: UTF8

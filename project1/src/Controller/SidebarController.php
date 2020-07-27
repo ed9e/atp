@@ -16,14 +16,14 @@ class SidebarController extends \KevinPapst\AdminLTEBundle\Controller\SidebarCon
      * @param Request $request
      * @return Response
      */
-    public function menuAction(Request $request)
+    public function menuAction(Request $request): Response
     {
-        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_SIDEBAR_SETUP_MENU)) {
+        if (!$this->hasListener(SidebarMenuEvent::class)) {
             return new Response();
         }
 
         /** @var SidebarMenuEvent $event */
-        $event = $this->getDispatcher()->dispatch(ThemeEvents::THEME_SIDEBAR_SETUP_MENU, new SidebarMenuEvent($request));
+        $event = $this->dispatch(new SidebarMenuEvent($request));
 
         return $this->render(
             'Sidebar/menu.html.twig',

@@ -1,15 +1,15 @@
 body {
   &.sidebar-expanded-on-hover .main-sidebar {
-    background-color: transparentize($body-color, 0.3);
+   // background-color: transparentize($body-color, 0.3);
     transition: .2s ease-out;
   }
 
-  &.sidebar-collapse .main-sidebar {
-    background-color: #00000022;
+  & .main-sidebar {
+  //  background-color: #00000022;
     transition: .5s ease-out;
   }
 
-  &.sidebar-collapse .sidebar-menu {
+  & .sidebar .sidebar-menu {
     & li a {
       & i {
         filter: grayscale(10%);
@@ -33,7 +33,7 @@ body {
       }
     }
 
-    & li a {
+    & li a:hover {
       & i {
         filter: grayscale(20%);
         transition: .25s ease-out;

@@ -258,7 +258,6 @@ global.atpOptions = {
                 },
                 {
                     display: true,
-                    stacked: false,
                     id: 'fazy',
                     position: 'bottom',
                     type: 'time',

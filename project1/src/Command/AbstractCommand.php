@@ -18,15 +18,16 @@ abstract class AbstractCommand extends Command
     protected $printHeader = true;
     protected $title;
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->input = $input;
         $this->output = $output;
         !$this->printHeader ?: $this->header();
-        return $this->handle();
+        $this->handle();
+        return 0;
     }
 
-    protected abstract function handle();
+    protected abstract function handle(): void;
 
     protected function header()
     {

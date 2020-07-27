@@ -37,7 +37,7 @@ class WorkoutCommand extends AbstractCommand
         ;
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         switch ($this->input->getArgument('action'))
         {

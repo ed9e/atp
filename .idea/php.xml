@@ -83,7 +83,6 @@
       <path value="$PROJECT_DIR$/project1/vendor/phpstan/phpdoc-parser" />
       <path value="$PROJECT_DIR$/project1/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/project1/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/project1/vendor/twig/extensions" />
       <path value="$PROJECT_DIR$/project1/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/project1/vendor/symfony/twig-bridge" />
       <path value="$PROJECT_DIR$/project1/vendor/symfony/twig-bundle" />
@@ -120,7 +119,19 @@
       <path value="$PROJECT_DIR$/project1/vendor/martin-georgiev/postgresql-for-doctrine" />
       <path value="$PROJECT_DIR$/project1/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/project1/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/project1/vendor/webimpress/safe-writer" />
+      <path value="$PROJECT_DIR$/project1/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/project1/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/project1/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/project1/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/project1/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/project1/vendor/twig/extensions" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
 </project>

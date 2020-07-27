@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use KevinPapst\AdminLTEBundle\Event\BreadcrumbMenuEvent;
 use KevinPapst\AdminLTEBundle\Event\SidebarMenuEvent;
 use KevinPapst\AdminLTEBundle\Event\ThemeEvents;
 use KevinPapst\AdminLTEBundle\Model\MenuItemInterface;
@@ -12,14 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BreadcrumbController extends \KevinPapst\AdminLTEBundle\Controller\BreadcrumbController
 {
-    public function breadcrumbAction(Request $request)
+    public function breadcrumbAction(Request $request):Response
     {
-        if (!$this->getDispatcher()->hasListeners(ThemeEvents::THEME_BREADCRUMB)) {
+        if (!$this->hasListener(BreadcrumbMenuEvent::class)) {
             return new Response();
         }
 
         /** @var SidebarMenuEvent $event */
-        $event = $this->getDispatcher()->dispatch(ThemeEvents::THEME_BREADCRUMB, new SidebarMenuEvent($request));
+        $event = $this->dispatch(new BreadcrumbMenuEvent($request));
+
         /** @var MenuItemInterface $active */
         $active = $event->getActive();
         $list = [];

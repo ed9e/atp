@@ -6,6 +6,7 @@ use App\Entity\GarminActivityDetails;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Connection;
+use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,7 +18,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ActivityDetailsRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, GarminActivityDetails::class);
     }

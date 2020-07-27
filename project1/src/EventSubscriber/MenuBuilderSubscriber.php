@@ -41,11 +41,8 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
 
     protected function dashboard(SidebarMenuEvent $event): void
     {
-        $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', null, [], 'fas fa-cookie-bite');
-        $atpMenu
-            ->addChild(
-                new MenuItemModel('currentId', 'Current fitness score', 'app_dashboard_index', [], 'fas fa-ruler')
-            );
+        $atpMenu = new MenuItemModel('dashboardId', 'Dashboard', 'app_dashboard_index', [], 'fas fa-ruler');
+//        $atpMenu
 //             ->addChild(
 //                new MenuItemModel('calendarId', 'Calendar', 'app_dashboard_calendar', [], 'far fa-calendar-alt')
 //            )->addChild(
@@ -57,15 +54,8 @@ class MenuBuilderSubscriber implements EventSubscriberInterface
 
     protected function atp(SidebarMenuEvent $event): void
     {
-        $atpMenu = new MenuItemModel('atpId', 'Atp', null, [], 'fas fa-globe');
-
-        $atpMenu->addChild(
-            new MenuItemModel('planId', 'Let\'s Plan', 'app_atp_index', [], 'fas  fa-edit')
-        )->addChild(
-            new MenuItemModel('plans', 'Planed', '/atp/fetch', [], 'fas fa-hourglass-end')
-        );
-
-        $event->addItem($atpMenu);
+        $event->addItem(new MenuItemModel('planId', 'Let\'s Plan', 'app_atp_index', [], 'fas  fa-edit'));
+        $event->addItem(new MenuItemModel('plans', 'Planed', '/atp/fetch', [], 'fas fa-hourglass-end'));
     }
 
     protected function race(SidebarMenuEvent $event): void

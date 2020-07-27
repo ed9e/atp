@@ -20,7 +20,7 @@ class CalendarCommand extends AbstractCommand
             ->addArgument('action', InputArgument::OPTIONAL, 'Action: response, ');
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         switch ($this->input->getArgument('action')) {
             default:

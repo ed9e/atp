@@ -135,6 +135,7 @@ class ApiController extends AbstractController
      * @Route("/activities-import")
      * @param Request $request
      * @param GarminActivitiesManager $garminManager
+     * @return JsonResponse
      */
     public function importActivities(Request $request, GarminActivitiesManager $garminManager): JsonResponse
     {

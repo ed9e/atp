@@ -29,7 +29,7 @@ class ImportCalendarCommand extends AbstractCommand
             ;
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         $this->garminManager->getGarminCalendar()->setMonth(
             $this->input->getArgument('month')

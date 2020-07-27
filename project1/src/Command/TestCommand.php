@@ -25,7 +25,7 @@ class TestCommand extends AbstractCommand
             ->addArgument('parameter', $this->requireParam ? InputArgument::REQUIRED : InputArgument::OPTIONAL, 'Require parameter');
     }
 
-    protected function handle()
+    protected function handle(): void
     {
         $this->error($this->input->getArguments(), OutputInterface::VERBOSITY_VERBOSE);
     }
