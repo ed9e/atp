@@ -32,7 +32,7 @@ $dark: (
 );
 
 $img: (
-        "accent-2": #6e5d46,
+        "accent-2": #5d5656,
         "base": #17bb24, //#37b83c,
         "base2": #ff5a1b, //#ff6b36,
   //"base": #795548,
@@ -97,6 +97,7 @@ $colors: (
 
 $font-color: color($theme2, "font") !default;
 $body-color: color($theme2, "base") !default;
+$body2-color: color($theme, "base2") !default;
 $menu-color: darken($body-color, 3%) !default;
 $menu-level2-color: darken($body-color, 6%) !default;
 $menu-level2-color-active: lighten($body-color, 2%) !default;
